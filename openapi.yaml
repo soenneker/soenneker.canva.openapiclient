@@ -6960,8 +6960,6 @@ components:
           items:
             type: string
           type: array
-        import_status:
-          $ref: '#/components/schemas/ImportStatus'
         created_at:
           description: |-
             When the asset was added to Canva, as a Unix timestamp (in seconds since the Unix
@@ -6982,6 +6980,8 @@ components:
           $ref: '#/components/schemas/Thumbnail'
         metadata:
           $ref: '#/components/schemas/AssetMetadata'
+        import_status:
+          $ref: '#/components/schemas/ImportStatus'
       required:
       - created_at
       - id
@@ -7116,47 +7116,6 @@ components:
       - video
       example: image
       type: string
-    ImportStatus:
-      deprecated: true
-      description: The import status of the asset.
-      properties:
-        state:
-          $ref: '#/components/schemas/ImportStatusState'
-        error:
-          $ref: '#/components/schemas/ImportError'
-      required:
-      - state
-      type: object
-    ImportStatusState:
-      deprecated: true
-      description: State of the import job for an uploaded asset.
-      enum:
-      - failed
-      - in_progress
-      - success
-      example: success
-      type: string
-    ImportError:
-      deprecated: true
-      description: "If the import fails, this object provides details about the error."
-      properties:
-        code:
-          $ref: '#/components/schemas/ImportErrorCode'
-        message:
-          description: A human-readable description of what went wrong.
-          type: string
-      required:
-      - code
-      - message
-      type: object
-    ImportErrorCode:
-      deprecated: true
-      description: |
-        A short string indicating why the upload failed. This field can be used to handle errors programmatically.
-      enum:
-      - file_too_big
-      - import_failed
-      type: string
     CreateAssetUploadJobResponse:
       properties:
         job:
@@ -7258,6 +7217,47 @@ components:
       required:
       - name_base64
       type: object
+    ImportStatus:
+      deprecated: true
+      description: The import status of the asset.
+      properties:
+        state:
+          $ref: '#/components/schemas/ImportStatusState'
+        error:
+          $ref: '#/components/schemas/ImportError'
+      required:
+      - state
+      type: object
+    ImportStatusState:
+      deprecated: true
+      description: State of the import job for an uploaded asset.
+      enum:
+      - failed
+      - in_progress
+      - success
+      example: success
+      type: string
+    ImportError:
+      deprecated: true
+      description: "If the import fails, this object provides details about the error."
+      properties:
+        code:
+          $ref: '#/components/schemas/ImportErrorCode'
+        message:
+          description: A human-readable description of what went wrong.
+          type: string
+      required:
+      - code
+      - message
+      type: object
+    ImportErrorCode:
+      deprecated: true
+      description: |
+        A short string indicating why the upload failed. This field can be used to handle errors programmatically.
+      enum:
+      - file_too_big
+      - import_failed
+      type: string
     CreateDesignAutofillJobRequest:
       description: |-
         Body parameters for creating a new autofill job. Use the `type` discriminator to choose
@@ -9982,16 +9982,6 @@ components:
             Some designs might not have page IDs, in which case this property is omitted.
           example: PB2NFQ9W78kLDFCK
           type: string
-        index:
-          deprecated: true
-          description: |-
-            WARNING: This property is deprecated. Use `page_number` instead, which returns an identical value.
-
-            The index of the page in the design. The first page in a design has the index value `1`.
-          format: int32
-          maximum: 500
-          minimum: 1
-          type: integer
         page_number:
           description: The 1-based page number within the design. The first page in
             a design has the value `1`.
@@ -10006,6 +9996,16 @@ components:
           $ref: '#/components/schemas/Thumbnail'
         design_type:
           $ref: '#/components/schemas/DesignTypeOutputName'
+        index:
+          deprecated: true
+          description: |-
+            WARNING: This property is deprecated. Use `page_number` instead, which returns an identical value.
+
+            The index of the page in the design. The first page in a design has the index value `1`.
+          format: int32
+          maximum: 500
+          minimum: 1
+          type: integer
       required:
       - design_type
       - index
@@ -11553,13 +11553,6 @@ components:
           description: The folder ID.
           example: FAF2lZtloor
           type: string
-        title:
-          deprecated: true
-          description: |-
-            The folder name, as shown in the Canva UI. This property is deprecated, so you should
-            use the `name` property instead.
-          example: My awesome holiday
-          type: string
         name:
           description: "The folder name, as shown in the Canva UI."
           example: My awesome holiday
@@ -11581,6 +11574,13 @@ components:
         url:
           description: The folder URL.
           example: https://www.canva.com/folder/FAF2lZtloor
+          type: string
+        title:
+          deprecated: true
+          description: |-
+            The folder name, as shown in the Canva UI. This property is deprecated, so you should
+            use the `name` property instead.
+          example: My awesome holiday
           type: string
       required:
       - created_at

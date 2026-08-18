@@ -6864,6 +6864,9 @@
             },
             "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/)."
           },
+          "import_status": {
+            "$ref": "#/components/schemas/ImportStatus"
+          },
           "created_at": {
             "type": "integer",
             "description": "When the asset was added to Canva, as a Unix timestamp (in seconds since the Unix\nEpoch).",
@@ -6884,9 +6887,6 @@
           },
           "metadata": {
             "$ref": "#/components/schemas/AssetMetadata"
-          },
-          "import_status": {
-            "$ref": "#/components/schemas/ImportStatus"
           }
         },
         "description": "The asset object, which contains metadata about the asset."
@@ -7075,6 +7075,94 @@
           ]
         }
       },
+      "ImportStatus": {
+        "required": [
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "state": {
+            "$ref": "#/components/schemas/ImportStatusState"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ImportError"
+          }
+        },
+        "description": "The import status of the asset.",
+        "deprecated": true
+      },
+      "ImportStatusState": {
+        "enum": [
+          "failed",
+          "in_progress",
+          "success"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "State of the import job for an uploaded asset.",
+        "example": "success",
+        "deprecated": true,
+        "x-ms-enum": {
+          "name": "ImportStatusState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "failed",
+              "name": "Failed"
+            },
+            {
+              "value": "in_progress",
+              "name": "InProgress"
+            },
+            {
+              "value": "success",
+              "name": "Success"
+            }
+          ]
+        }
+      },
+      "ImportError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ImportErrorCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of what went wrong."
+          }
+        },
+        "description": "If the import fails, this object provides details about the error.",
+        "deprecated": true
+      },
+      "ImportErrorCode": {
+        "enum": [
+          "file_too_big",
+          "import_failed"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "A short string indicating why the upload failed. This field can be used to handle errors programmatically.\n",
+        "deprecated": true,
+        "x-ms-enum": {
+          "name": "ImportErrorCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "file_too_big",
+              "name": "FileTooBig"
+            },
+            {
+              "value": "import_failed",
+              "name": "ImportFailed"
+            }
+          ]
+        }
+      },
       "CreateAssetUploadJobResponse": {
         "required": [
           "job"
@@ -7236,94 +7324,6 @@
           }
         },
         "description": "Metadata for the asset being uploaded."
-      },
-      "ImportStatus": {
-        "required": [
-          "state"
-        ],
-        "type": "object",
-        "properties": {
-          "state": {
-            "$ref": "#/components/schemas/ImportStatusState"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ImportError"
-          }
-        },
-        "description": "The import status of the asset.",
-        "deprecated": true
-      },
-      "ImportStatusState": {
-        "enum": [
-          "failed",
-          "in_progress",
-          "success"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "State of the import job for an uploaded asset.",
-        "example": "success",
-        "deprecated": true,
-        "x-ms-enum": {
-          "name": "ImportStatusState",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "failed",
-              "name": "Failed"
-            },
-            {
-              "value": "in_progress",
-              "name": "InProgress"
-            },
-            {
-              "value": "success",
-              "name": "Success"
-            }
-          ]
-        }
-      },
-      "ImportError": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ImportErrorCode"
-          },
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of what went wrong."
-          }
-        },
-        "description": "If the import fails, this object provides details about the error.",
-        "deprecated": true
-      },
-      "ImportErrorCode": {
-        "enum": [
-          "file_too_big",
-          "import_failed"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "A short string indicating why the upload failed. This field can be used to handle errors programmatically.\n",
-        "deprecated": true,
-        "x-ms-enum": {
-          "name": "ImportErrorCode",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "file_too_big",
-              "name": "FileTooBig"
-            },
-            {
-              "value": "import_failed",
-              "name": "ImportFailed"
-            }
-          ]
-        }
       },
       "CreateDesignAutofillJobRequest": {
         "type": "object",
@@ -11107,6 +11107,14 @@
             "description": "The ID of the page. This ID is unique within the design and can be used to\ncorrelate a page with per-page data from other APIs.\n\nSome designs might not have page IDs, in which case this property is omitted.",
             "example": "PB2NFQ9W78kLDFCK"
           },
+          "index": {
+            "maximum": 500,
+            "minimum": 1,
+            "type": "integer",
+            "description": "WARNING: This property is deprecated. Use \u0060page_number\u0060 instead, which returns an identical value.\n\nThe index of the page in the design. The first page in a design has the index value \u00601\u0060.",
+            "format": "int32",
+            "deprecated": true
+          },
           "page_number": {
             "maximum": 500,
             "minimum": 1,
@@ -11123,14 +11131,6 @@
           },
           "design_type": {
             "$ref": "#/components/schemas/DesignTypeOutputName"
-          },
-          "index": {
-            "maximum": 500,
-            "minimum": 1,
-            "type": "integer",
-            "description": "WARNING: This property is deprecated. Use \u0060page_number\u0060 instead, which returns an identical value.\n\nThe index of the page in the design. The first page in a design has the index value \u00601\u0060.",
-            "format": "int32",
-            "deprecated": true
           }
         },
         "description": "Basic details about a page in a design, such as the page number and thumbnail."
@@ -13712,6 +13712,12 @@
             "description": "The folder ID.",
             "example": "FAF2lZtloor"
           },
+          "title": {
+            "type": "string",
+            "description": "The folder name, as shown in the Canva UI. This property is deprecated, so you should\nuse the \u0060name\u0060 property instead.",
+            "example": "My awesome holiday",
+            "deprecated": true
+          },
           "name": {
             "type": "string",
             "description": "The folder name, as shown in the Canva UI.",
@@ -13733,12 +13739,6 @@
             "type": "string",
             "description": "The folder URL.",
             "example": "https://www.canva.com/folder/FAF2lZtloor"
-          },
-          "title": {
-            "type": "string",
-            "description": "The folder name, as shown in the Canva UI. This property is deprecated, so you should\nuse the \u0060name\u0060 property instead.",
-            "example": "My awesome holiday",
-            "deprecated": true
           }
         },
         "description": "This object contains some folder metadata. You can retrieve additional metadata\nusing the folder ID and the \u0060/v1/folders/{folderId}\u0060 endpoint."

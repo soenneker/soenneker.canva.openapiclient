@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// Create a new autofilled design from an existing design that contains autofill data fields.WARNING: Creating an autofilled design from an existing design is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.
+    /// Create a new autofilled design from an existing design that contains autofill data fields.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateFromDesignAutofillJobRequest : IAdditionalDataHolder, IParsable

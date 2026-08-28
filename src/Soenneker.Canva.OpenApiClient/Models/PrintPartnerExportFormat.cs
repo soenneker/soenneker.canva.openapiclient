@@ -8,34 +8,35 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// Details about the desired export format.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat"/>, <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat"/>, <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class PrintPartnerExportFormat : IAdditionalDataHolder, IParsable
+    public partial class PrintPartnerExportFormat : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The size of the bleed that should be added to the design. The units of the bleed must be microns. This should match the bleed value used when creating the design with the [Create print partner design API](https://www.canva.dev/docs/connect/api-reference/print-partner/create-print-partner-design/). Use 0 for no bleed. If bleed is not specified, a default of 3000 microns is used.</summary>
-        public int? Bleed { get; set; }
-        /// <summary>Whether the PDF color space should be converted to CMYK.</summary>
-        public bool? Cmyk { get; set; }
-        /// <summary>Whether crop marks should be added to the image.</summary>
-        public bool? CropMarks { get; set; }
-        /// <summary>Whether the PDF standard should be updated to PDF/X, a printer friendlystandard.</summary>
-        public bool? Pdfx { get; set; }
-        /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PdfType? Type { get; set; }
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat"/> and sets the default values.
-        /// </summary>
-        public PrintPartnerExportFormat()
-        {
-            AdditionalData = new Dictionary<string, object>();
-            Bleed = 3000;
-            Cmyk = false;
-            CropMarks = false;
-            Pdfx = false;
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat? PrintPartnerJpgExportFormat { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat PrintPartnerJpgExportFormat { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat? PrintPartnerPdfExportFormat { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat PrintPartnerPdfExportFormat { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat? PrintPartnerPngExportFormat { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat PrintPartnerPngExportFormat { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -44,7 +45,21 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var result = new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat();
+            if("jpg".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.PrintPartnerJpgExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat();
+            }
+            else if("pdf".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.PrintPartnerPdfExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat();
+            }
+            else if("png".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.PrintPartnerPngExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,14 +67,19 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(PrintPartnerJpgExportFormat != null)
             {
-                { "bleed", n => { Bleed = n.GetIntValue(); } },
-                { "cmyk", n => { Cmyk = n.GetBoolValue(); } },
-                { "crop_marks", n => { CropMarks = n.GetBoolValue(); } },
-                { "pdfx", n => { Pdfx = n.GetBoolValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PdfType>(); } },
-            };
+                return PrintPartnerJpgExportFormat.GetFieldDeserializers();
+            }
+            else if(PrintPartnerPdfExportFormat != null)
+            {
+                return PrintPartnerPdfExportFormat.GetFieldDeserializers();
+            }
+            else if(PrintPartnerPngExportFormat != null)
+            {
+                return PrintPartnerPngExportFormat.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -68,12 +88,18 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("bleed", Bleed);
-            writer.WriteBoolValue("cmyk", Cmyk);
-            writer.WriteBoolValue("crop_marks", CropMarks);
-            writer.WriteBoolValue("pdfx", Pdfx);
-            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PdfType>("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
+            if(PrintPartnerJpgExportFormat != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat>(null, PrintPartnerJpgExportFormat);
+            }
+            else if(PrintPartnerPdfExportFormat != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat>(null, PrintPartnerPdfExportFormat);
+            }
+            else if(PrintPartnerPngExportFormat != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat>(null, PrintPartnerPngExportFormat);
+            }
         }
     }
 }

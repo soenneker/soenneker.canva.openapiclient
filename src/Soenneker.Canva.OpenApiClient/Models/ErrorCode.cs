@@ -275,6 +275,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         DesignGenerationNotEnabled,
         #pragma warning restore CS1591
+        [EnumMember(Value = "design_generation_rejected")]
+        #pragma warning disable CS1591
+        DesignGenerationRejected,
+        #pragma warning restore CS1591
         [EnumMember(Value = "license_required")]
         #pragma warning disable CS1591
         LicenseRequired,
@@ -314,6 +318,14 @@ namespace Soenneker.Canva.OpenApiClient.Models
         [EnumMember(Value = "account_exists")]
         #pragma warning disable CS1591
         AccountExists,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "domain_restricted")]
+        #pragma warning disable CS1591
+        DomainRestricted,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "user_already_member")]
+        #pragma warning disable CS1591
+        UserAlreadyMember,
         #pragma warning restore CS1591
     }
 }

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// Autofill an existing design in place with the provided data.WARNING: Autofilling an existing design in place is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.
+    /// Autofill an existing design in place with the provided data.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdateDesignAutofillJobRequest : IAdditionalDataHolder, IParsable

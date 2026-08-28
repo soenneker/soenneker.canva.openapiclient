@@ -1446,7 +1446,7 @@
         "tags": [
           "autofill"
         ],
-        "description": "WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you\u0027ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.\n\n\u003CAvailability\u003E\nTo use this API, your integration must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.\n\nUsers on Canva paid plans have access to a limited trial while your integration is under development. For more information, see [Trial quotas](https://www.canva.dev/docs/connect/api-requests-responses/#trial-quotas).\n\u003C/Availability\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the \u0060type\u0060 field to choose the source of the design:\n\n- \u0060create_from_brand_template\u0060: autofill a new design from a brand template. If \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/connect/api-reference/brand-templates/get-brand-template-dataset/).\n- \u0060create_from_design\u0060: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset\nAPI](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n\n  WARNING: Creating an autofilled design from an existing design is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version.\n- \u0060update_design\u0060: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n\n  WARNING: Autofilling an existing design in place is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version.\n\nData fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn\u0027t exist, it\u0027s silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.\n\nAvailable data field types to autofill include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\n\nWARNING: Chart and sheet data fields and autofilling a video are [preview features](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to these features which won\u0027t produce a new API version.\n\nNOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/get-design-autofill-job/).",
+        "description": "WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you\u0027ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.\n\n\u003CAvailability\u003E\nTo use this API, your integration must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.\n\nUsers on Canva paid plans have access to a limited trial while your integration is under development. For more information, see [Trial quotas](https://www.canva.dev/docs/connect/api-requests-responses/#trial-quotas).\n\u003C/Availability\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the \u0060type\u0060 field to choose the source of the design:\n\n- \u0060create_from_brand_template\u0060: autofill a new design from a brand template. If \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/connect/api-reference/brand-templates/get-brand-template-dataset/).\n- \u0060create_from_design\u0060: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset\nAPI](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n- \u0060update_design\u0060: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n\nData fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn\u0027t exist, it\u0027s silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.\n\nAvailable data field types to autofill include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nNOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/get-design-autofill-job/).",
         "operationId": "CreateDesignAutofillJob",
         "requestBody": {
           "content": {
@@ -3322,7 +3322,7 @@
         "tags": [
           "design"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/connect/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGets the dataset definition of a design. If the design contains autofill data fields, this API\nreturns an object with the data field names and the type of data they accept.\n\n\u003CNote\u003E\n\nTo get the dataset definition of a brand template, use the\n[Get brand template dataset API](https://www.canva.dev/docs/connect/api-reference/brand-templates/get-brand-template-dataset/).\n\n\u003C/Note\u003E\n\nAvailable data field types include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n\nUse the returned field names and types to build the \u0060data\u0060 payload for the\n[Create a design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/create-design-autofill-job/)\nwith \u0060type: create_from_design\u0060.\n\nWARNING: Chart data fields and autofilling a video are [preview features](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to these features which won\u0027t produce a new API version.",
+        "description": "Gets the dataset definition of a design. If the design contains autofill data fields, this API\nreturns an object with the data field names and the type of data they accept.\n\n\u003CNote\u003E\n\nTo get the dataset definition of a brand template, use the\n[Get brand template dataset API](https://www.canva.dev/docs/connect/api-reference/brand-templates/get-brand-template-dataset/).\n\n\u003C/Note\u003E\n\nAvailable data field types include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n\nUse the returned field names and types to build the \u0060data\u0060 payload for the\n[Create a design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/create-design-autofill-job/)\nwith \u0060type: create_from_design\u0060.",
         "operationId": "GetDesignDataset",
         "parameters": [
           {
@@ -7428,7 +7428,7 @@
             "$ref": "#/components/schemas/CreateFromDesignAutofillJobRequestDataProperty"
           }
         },
-        "description": "Create a new autofilled design from an existing design that contains autofill data fields.\n\nWARNING: Creating an autofilled design from an existing design is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version."
+        "description": "Create a new autofilled design from an existing design that contains autofill data fields."
       },
       "UpdateDesignAutofillJobRequest": {
         "required": [
@@ -7451,7 +7451,7 @@
             "$ref": "#/components/schemas/UpdateDesignAutofillJobRequestDataProperty"
           }
         },
-        "description": "Autofill an existing design in place with the provided data.\n\nWARNING: Autofilling an existing design in place is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version."
+        "description": "Autofill an existing design in place with the provided data."
       },
       "CreateDesignAutofillJobResponse": {
         "required": [
@@ -7726,7 +7726,7 @@
             "example": "VAHCkrNUANI"
           }
         },
-        "description": "If autofilling a video into an image data field.\n\nWARNING: Autofilling a video is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version."
+        "description": "If autofilling a video into an image data field."
       },
       "DatasetTextValue": {
         "required": [
@@ -7760,7 +7760,7 @@
             "$ref": "#/components/schemas/DataTable"
           }
         },
-        "description": "If the data field is a chart.\n\nNote the following behavior:\n- If \u0060column_configs\u0060 is not provided, the first row is assumed to contain column headers where applicable.\n- Chart autofill supports a maximum of 100 rows and 20 columns.\n- \u0060number\u0060 cells with formatting metadata are not currently supported for autofill and will result in an error response.\n- \u0060media\u0060 cells are not supported for chart autofill and will result in an error response.\n\n WARNING: Chart data fields are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version."
+        "description": "If the data field is a chart.\n\nNote the following behavior:\n- If \u0060column_configs\u0060 is not provided, the first row is assumed to contain column headers where applicable.\n- Chart autofill supports a maximum of 100 rows and 20 columns.\n- \u0060number\u0060 cells with formatting metadata are not currently supported for autofill and will result in an error response.\n- \u0060media\u0060 cells are not supported for chart autofill and will result in an error response."
       },
       "DatasetSheetValue": {
         "required": [
@@ -7776,7 +7776,7 @@
             "$ref": "#/components/schemas/DataTable"
           }
         },
-        "description": "If the data field is a sheet element.\n\nNote the following behavior:\n- \u0060number\u0060 cells with formatting metadata are not currently supported for autofill and will result in an error response.\n- \u0060media\u0060 cells are not supported for sheet autofill and will result in an error response.\n\nWARNING: Sheet element data fields are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version."
+        "description": "If the data field is a sheet element.\n\nNote the following behavior:\n- \u0060number\u0060 cells with formatting metadata are not currently supported for autofill and will result in an error response.\n- \u0060media\u0060 cells are not supported for sheet autofill and will result in an error response."
       },
       "GetDesignAutofillJobResponse": {
         "required": [
@@ -7875,7 +7875,7 @@
             "$ref": "#/components/schemas/DesignSummary"
           }
         },
-        "description": "The existing design has been autofilled in place.\n\nWARNING: Autofilling an existing design in place is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version."
+        "description": "The existing design has been autofilled in place."
       },
       "DesignAutofillStatus": {
         "enum": [
@@ -9656,7 +9656,7 @@
             "description": "Rows of data."
           }
         },
-        "description": "Tabular data, structured in rows of cells.\n\n- Each cell must have a data type configured.\n- All rows must have the same number of cells.\n- The number of entries in \u0060column_configs\u0060 must match the number of columns in the data.\n\nWARNING: Chart and sheet data fields are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version.",
+        "description": "Tabular data, structured in rows of cells.\n\n- Each cell must have a data type configured.\n- All rows must have the same number of cells.\n- The number of entries in \u0060column_configs\u0060 must match the number of columns in the data.",
         "example": {
           "column_configs": [
             {
@@ -11198,7 +11198,7 @@
             "$ref": "#/components/schemas/ImageType"
           }
         },
-        "description": "An image data field. You can autofill it with an image by providing its \u0060asset_id\u0060.\n\nYou can also autofill it with a video asset. Autofilling a video is currently a [preview feature](https://www.canva.dev/docs/connect/#preview-apis)."
+        "description": "An image data field. You can autofill it with an image by providing its \u0060asset_id\u0060.\n\nYou can also autofill it with a video asset."
       },
       "TextDataField": {
         "required": [
@@ -11222,7 +11222,7 @@
             "$ref": "#/components/schemas/ChartType"
           }
         },
-        "description": "A chart data field. You can autofill it with tabular data.\n\nWARNING: Chart data fields are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won\u0027t produce a new API version."
+        "description": "A chart data field. You can autofill it with tabular data."
       },
       "DesignImportMetadata": {
         "required": [
@@ -11747,6 +11747,7 @@
           "feature_not_available",
           "unsupported_design_type",
           "design_generation_not_enabled",
+          "design_generation_rejected",
           "license_required",
           "input_unsafe",
           "display_name_unavailable",
@@ -11756,7 +11757,9 @@
           "user_email_unverified",
           "user_not_active",
           "user_pending_consent",
-          "account_exists"
+          "account_exists",
+          "domain_restricted",
+          "user_already_member"
         ],
         "type": "string",
         "additionalProperties": false,
@@ -12034,6 +12037,10 @@
               "name": "DesignGenerationNotEnabled"
             },
             {
+              "value": "design_generation_rejected",
+              "name": "DesignGenerationRejected"
+            },
+            {
               "value": "license_required",
               "name": "LicenseRequired"
             },
@@ -12072,6 +12079,14 @@
             {
               "value": "account_exists",
               "name": "AccountExists"
+            },
+            {
+              "value": "domain_restricted",
+              "name": "DomainRestricted"
+            },
+            {
+              "value": "user_already_member",
+              "name": "UserAlreadyMember"
             }
           ]
         }
@@ -12611,12 +12626,15 @@
         "oneOf": [
           {
             "$ref": "#/components/schemas/PrintPartnerPdfExportFormat"
+          },
+          {
+            "$ref": "#/components/schemas/PrintPartnerJpgExportFormat"
+          },
+          {
+            "$ref": "#/components/schemas/PrintPartnerPngExportFormat"
           }
         ],
         "properties": {
-          "type": {
-            "$ref": "#/components/schemas/PdfType"
-          },
           "bleed": {
             "maximum": 150000,
             "minimum": 0,
@@ -12646,7 +12664,11 @@
           "propertyName": "type",
           "mapping": {
             "pdf": "#/components/schemas/PrintPartnerPdfExportFormat",
-            "PrintPartnerPdfExportFormat": "#/components/schemas/PrintPartnerPdfExportFormat"
+            "jpg": "#/components/schemas/PrintPartnerJpgExportFormat",
+            "png": "#/components/schemas/PrintPartnerPngExportFormat",
+            "PrintPartnerPdfExportFormat": "#/components/schemas/PrintPartnerPdfExportFormat",
+            "PrintPartnerJpgExportFormat": "#/components/schemas/PrintPartnerJpgExportFormat",
+            "PrintPartnerPngExportFormat": "#/components/schemas/PrintPartnerPngExportFormat"
           }
         }
       },
@@ -12684,6 +12706,30 @@
           }
         },
         "description": "Export the design as a Print-quality PDF."
+      },
+      "PrintPartnerJpgExportFormat": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/JpgType"
+          }
+        },
+        "description": "Export the design as a print-quality JPEG."
+      },
+      "PrintPartnerPngExportFormat": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PngType"
+          }
+        },
+        "description": "Export the design as a print-quality PNG."
       },
       "CreatePrintPartnerDesignExportJobResponse": {
         "required": [

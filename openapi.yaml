@@ -1146,11 +1146,7 @@ paths:
         - `create_from_brand_template`: autofill a new design from a brand template. If `type` isn't specified in the request, the request type is assumed to be `create_from_brand_template`. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/connect/api-reference/brand-templates/get-brand-template-dataset/).
         - `create_from_design`: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset
         API](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).
-
-          WARNING: Creating an autofilled design from an existing design is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
         - `update_design`: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).
-
-          WARNING: Autofilling an existing design in place is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
 
         Data fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn't exist, it's silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.
 
@@ -1160,9 +1156,6 @@ paths:
         - Text
         - Charts
         - Sheets
-
-
-        WARNING: Chart and sheet data fields and autofilling a video are [preview features](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to these features which won't produce a new API version.
 
         NOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/get-design-autofill-job/).
       operationId: createDesignAutofillJob
@@ -2642,16 +2635,6 @@ paths:
   /v1/designs/{designId}/dataset:
     get:
       description: |-
-        <Warning>
-
-        This API is currently provided as a preview. Be aware of the following:
-
-        - There might be unannounced breaking changes.
-        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/connect/versions/).
-        - Public integrations that use preview APIs will not pass the review process, and can't be made available to all Canva users.
-
-        </Warning>
-
         Gets the dataset definition of a design. If the design contains autofill data fields, this API
         returns an object with the data field names and the type of data they accept.
 
@@ -2671,8 +2654,6 @@ paths:
         Use the returned field names and types to build the `data` payload for the
         [Create a design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/create-design-autofill-job/)
         with `type: create_from_design`.
-
-        WARNING: Chart data fields and autofilling a video are [preview features](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to these features which won't produce a new API version.
       operationId: getDesignDataset
       parameters:
       - description: The design ID.
@@ -7392,10 +7373,8 @@ components:
       - type
       type: object
     CreateFromDesignAutofillJobRequest:
-      description: |-
-        Create a new autofilled design from an existing design that contains autofill data fields.
-
-        WARNING: Creating an autofilled design from an existing design is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
+      description: Create a new autofilled design from an existing design that contains
+        autofill data fields.
       properties:
         type:
           enum:
@@ -7508,10 +7487,7 @@ components:
       - type
       type: object
     UpdateDesignAutofillJobRequest:
-      description: |-
-        Autofill an existing design in place with the provided data.
-
-        WARNING: Autofilling an existing design in place is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
+      description: Autofill an existing design in place with the provided data.
       properties:
         type:
           enum:
@@ -7741,10 +7717,7 @@ components:
       - type
       type: object
     DatasetVideoValue:
-      description: |-
-        If autofilling a video into an image data field.
-
-        WARNING: Autofilling a video is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
+      description: If autofilling a video into an image data field.
       properties:
         type:
           enum:
@@ -7783,8 +7756,6 @@ components:
         - Chart autofill supports a maximum of 100 rows and 20 columns.
         - `number` cells with formatting metadata are not currently supported for autofill and will result in an error response.
         - `media` cells are not supported for chart autofill and will result in an error response.
-
-         WARNING: Chart data fields are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
       properties:
         type:
           enum:
@@ -7803,8 +7774,6 @@ components:
         Note the following behavior:
         - `number` cells with formatting metadata are not currently supported for autofill and will result in an error response.
         - `media` cells are not supported for sheet autofill and will result in an error response.
-
-        WARNING: Sheet element data fields are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
       properties:
         type:
           enum:
@@ -7870,10 +7839,7 @@ components:
       - type
       type: object
     UpdateDesignAutofillJobResult:
-      description: |-
-        The existing design has been autofilled in place.
-
-        WARNING: Autofilling an existing design in place is a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
+      description: The existing design has been autofilled in place.
       properties:
         type:
           enum:
@@ -9129,8 +9095,6 @@ components:
         - Each cell must have a data type configured.
         - All rows must have the same number of cells.
         - The number of entries in `column_configs` must match the number of columns in the data.
-
-        WARNING: Chart and sheet data fields are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
       example:
         column_configs:
         - name: Geographic Region
@@ -10060,7 +10024,7 @@ components:
       description: |-
         An image data field. You can autofill it with an image by providing its `asset_id`.
 
-        You can also autofill it with a video asset. Autofilling a video is currently a [preview feature](https://www.canva.dev/docs/connect/#preview-apis).
+        You can also autofill it with a video asset.
       properties:
         type:
           enum:
@@ -10080,10 +10044,7 @@ components:
       - type
       type: object
     ChartDataField:
-      description: |-
-        A chart data field. You can autofill it with tabular data.
-
-        WARNING: Chart data fields are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to this feature which won't produce a new API version.
+      description: A chart data field. You can autofill it with tabular data.
       properties:
         type:
           enum:
@@ -10427,6 +10388,7 @@ components:
       - feature_not_available
       - unsupported_design_type
       - design_generation_not_enabled
+      - design_generation_rejected
       - license_required
       - input_unsafe
       - display_name_unavailable
@@ -10437,6 +10399,8 @@ components:
       - user_not_active
       - user_pending_consent
       - account_exists
+      - domain_restricted
+      - user_already_member
       type: string
     CreateDesignExportJobRequest:
       description: |-
@@ -10929,9 +10893,13 @@ components:
       discriminator:
         mapping:
           pdf: '#/components/schemas/PrintPartnerPdfExportFormat'
+          jpg: '#/components/schemas/PrintPartnerJpgExportFormat'
+          png: '#/components/schemas/PrintPartnerPngExportFormat'
         propertyName: type
       oneOf:
       - $ref: '#/components/schemas/PrintPartnerPdfExportFormat'
+      - $ref: '#/components/schemas/PrintPartnerJpgExportFormat'
+      - $ref: '#/components/schemas/PrintPartnerPngExportFormat'
       type: object
     PrintPartnerPdfExportFormat:
       description: Export the design as a Print-quality PDF.
@@ -10966,6 +10934,26 @@ components:
             Whether the PDF standard should be updated to PDF/X, a printer friendly
             standard.
           type: boolean
+      required:
+      - type
+      type: object
+    PrintPartnerJpgExportFormat:
+      description: Export the design as a print-quality JPEG.
+      properties:
+        type:
+          enum:
+          - jpg
+          type: string
+      required:
+      - type
+      type: object
+    PrintPartnerPngExportFormat:
+      description: Export the design as a print-quality PNG.
+      properties:
+        type:
+          enum:
+          - png
+          type: string
       required:
       - type
       type: object

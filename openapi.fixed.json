@@ -1446,7 +1446,7 @@
         "tags": [
           "autofill"
         ],
-        "description": "WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you\u0027ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.\n\n\u003CAvailability\u003E\nTo use this API, your integration must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.\n\nUsers on Canva paid plans have access to a limited trial while your integration is under development. For more information, see [Trial quotas](https://www.canva.dev/docs/connect/api-requests-responses/#trial-quotas).\n\u003C/Availability\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the \u0060type\u0060 field to choose the source of the design:\n\n- \u0060create_from_brand_template\u0060: autofill a new design from a brand template. If \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/connect/api-reference/brand-templates/get-brand-template-dataset/).\n- \u0060create_from_design\u0060: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset\nAPI](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n- \u0060update_design\u0060: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n\nData fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn\u0027t exist, it\u0027s silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.\n\nAvailable data field types to autofill include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nNOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/get-design-autofill-job/).",
+        "description": "\u003CAvailability\u003E\nTo use this API, your integration must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.\n\nUsers on Canva paid plans have access to a limited trial while your integration is under development. For more information, see [Trial quotas](https://www.canva.dev/docs/connect/api-requests-responses/#trial-quotas).\n\u003C/Availability\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the \u0060type\u0060 field to choose the source of the design:\n\n- \u0060create_from_brand_template\u0060: autofill a new design from a brand template. If \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/connect/api-reference/brand-templates/get-brand-template-dataset/).\n- \u0060create_from_design\u0060: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset\nAPI](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n- \u0060update_design\u0060: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n\nData fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn\u0027t exist, it\u0027s silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.\n\nAvailable data field types to autofill include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nNOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/get-design-autofill-job/).",
         "operationId": "CreateDesignAutofillJob",
         "requestBody": {
           "content": {
@@ -1676,7 +1676,7 @@
         "tags": [
           "brand_template"
         ],
-        "description": "WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you\u0027ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.\n\nAVAILABILITY: To use this API, your integration must act on behalf of a user that\u0027s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\nGet a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.",
+        "description": "AVAILABILITY: To use this API, your integration must act on behalf of a user that\u0027s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\nGet a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.",
         "operationId": "ListBrandTemplates",
         "parameters": [
           {
@@ -1906,7 +1906,7 @@
         "tags": [
           "brand_template"
         ],
-        "description": "WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you\u0027ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.\n\nAVAILABILITY: To use this API, your integration must act on behalf of a user that\u0027s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\nRetrieves the metadata for a brand template.",
+        "description": "AVAILABILITY: To use this API, your integration must act on behalf of a user that\u0027s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\nRetrieves the metadata for a brand template.",
         "operationId": "GetBrandTemplate",
         "parameters": [
           {
@@ -1986,7 +1986,7 @@
         "tags": [
           "brand_template"
         ],
-        "description": "WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you\u0027ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.\n\nAVAILABILITY: To use this API, your integration must act on behalf of a user that\u0027s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\nGets the dataset definition of a brand template. If the brand\ntemplate contains autofill data fields, this API returns an object with the data field\nnames and the type of data they accept.\n\n\u003CNote\u003E\n\nTo get the dataset definition of a design, use the\n[Get design dataset API](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n\n\u003C/Note\u003E\n\nAvailable data field types include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n\nYou can autofill a brand template using the [Create a design autofill job\nAPI](https://www.canva.dev/docs/connect/api-reference/autofills/create-design-autofill-job/).\n\nWARNING: Chart data fields and autofilling a video are [preview features](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to these features which won\u0027t produce a new API version.",
+        "description": "AVAILABILITY: To use this API, your integration must act on behalf of a user that\u0027s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\nGets the dataset definition of a brand template. If the brand\ntemplate contains autofill data fields, this API returns an object with the data field\nnames and the type of data they accept.\n\n\u003CNote\u003E\n\nTo get the dataset definition of a design, use the\n[Get design dataset API](https://www.canva.dev/docs/connect/api-reference/designs/get-design-dataset/).\n\n\u003C/Note\u003E\n\nAvailable data field types include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n\nYou can autofill a brand template using the [Create a design autofill job\nAPI](https://www.canva.dev/docs/connect/api-reference/autofills/create-design-autofill-job/).\n\nWARNING: Chart data fields and autofilling a video are [preview features](https://www.canva.dev/docs/connect/#preview-apis). There might be unannounced breaking changes to these features which won\u0027t produce a new API version.",
         "operationId": "GetBrandTemplateDataset",
         "parameters": [
           {
@@ -10587,19 +10587,13 @@
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/PrintPartnerProductIdDesignSource"
+            "$ref": "#/components/schemas/PrintPartnerDimensionsDesignSource"
           },
           {
-            "$ref": "#/components/schemas/PrintPartnerDimensionsDesignSource"
+            "$ref": "#/components/schemas/PrintPartnerProductIdDesignSource"
           }
         ],
         "properties": {
-          "partner_product_id": {
-            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-            "type": "string",
-            "description": "The ID of the partner-defined product.",
-            "example": "CVAFDC1091"
-          },
           "dimensions": {
             "$ref": "#/components/schemas/PrintPartnerDesignDimensions"
           },
@@ -10607,16 +10601,22 @@
             "type": "string",
             "description": "The product type is used alongside your dimensions to find a matching product in Canva Print\u0027s product catalogue, and templates for that product are recommended. If no match is found, only dimensions are used, so templates may include unrelated product types.",
             "example": "tshirt"
+          },
+          "partner_product_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+            "type": "string",
+            "description": "The ID of the partner-defined product.",
+            "example": "CVAFDC1091"
           }
         },
         "description": "The desired source for the design creation.",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "partner_product_id": "#/components/schemas/PrintPartnerProductIdDesignSource",
             "dimensions": "#/components/schemas/PrintPartnerDimensionsDesignSource",
-            "PrintPartnerProductIdDesignSource": "#/components/schemas/PrintPartnerProductIdDesignSource",
-            "PrintPartnerDimensionsDesignSource": "#/components/schemas/PrintPartnerDimensionsDesignSource"
+            "partner_product_id": "#/components/schemas/PrintPartnerProductIdDesignSource",
+            "PrintPartnerDimensionsDesignSource": "#/components/schemas/PrintPartnerDimensionsDesignSource",
+            "PrintPartnerProductIdDesignSource": "#/components/schemas/PrintPartnerProductIdDesignSource"
           }
         }
       },

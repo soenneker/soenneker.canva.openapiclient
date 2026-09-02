@@ -47,7 +47,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.BrandTemplates
         {
         }
         /// <summary>
-        /// WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you&apos;ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Get a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.
+        /// AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Get a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.ListBrandTemplatesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -105,7 +105,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.BrandTemplates
             return await RequestAdapter.SendAsync<global::Soenneker.Canva.OpenApiClient.Models.PublishBrandTemplateResponse>(requestInfo, global::Soenneker.Canva.OpenApiClient.Models.PublishBrandTemplateResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you&apos;ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Get a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.
+        /// AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Get a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -155,7 +155,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.BrandTemplates
             return new global::Soenneker.Canva.OpenApiClient.V1.BrandTemplates.BrandTemplatesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you&apos;ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Get a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.
+        /// AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Get a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class BrandTemplatesRequestBuilderGetQueryParameters 

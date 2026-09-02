@@ -40,7 +40,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.BrandTemplates.Item
         {
         }
         /// <summary>
-        /// WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you&apos;ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Retrieves the metadata for a brand template.
+        /// AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Retrieves the metadata for a brand template.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.GetBrandTemplateResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -67,7 +67,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.BrandTemplates.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Canva.OpenApiClient.Models.GetBrandTemplateResponse>(requestInfo, global::Soenneker.Canva.OpenApiClient.Models.GetBrandTemplateResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you&apos;ll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Retrieves the metadata for a brand template.
+        /// AVAILABILITY: To use this API, your integration must act on behalf of a user that&apos;s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).Retrieves the metadata for a brand template.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

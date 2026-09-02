@@ -1133,8 +1133,6 @@ paths:
   /v1/autofills:
     post:
       description: |-
-        WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you'll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.
-
         <Availability>
         To use this API, your integration must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.
 
@@ -1311,8 +1309,6 @@ paths:
   /v1/brand-templates:
     get:
       description: |-
-        WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you'll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.
-
         AVAILABILITY: To use this API, your integration must act on behalf of a user that's on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).
 
         Get a list of the [brand templates](https://www.canva.com/help/publish-team-template/) the user has access to.
@@ -1511,8 +1507,6 @@ paths:
   /v1/brand-templates/{brandTemplateId}:
     get:
       description: |-
-        WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you'll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.
-
         AVAILABILITY: To use this API, your integration must act on behalf of a user that's on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).
 
         Retrieves the metadata for a brand template.
@@ -1567,8 +1561,6 @@ paths:
   /v1/brand-templates/{brandTemplateId}/dataset:
     get:
       description: |-
-        WARNING: Brand templates were migrated to use a new ID format in September 2025. If your integration stores brand template IDs, you'll need to migrate to use the new IDs. Old brand template IDs will continue to be accepted for 6 months to give you time to migrate to the new IDs.
-
         AVAILABILITY: To use this API, your integration must act on behalf of a user that's on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).
 
         Gets the dataset definition of a brand template. If the brand
@@ -9674,12 +9666,12 @@ components:
       description: The desired source for the design creation.
       discriminator:
         mapping:
-          partner_product_id: '#/components/schemas/PrintPartnerProductIdDesignSource'
           dimensions: '#/components/schemas/PrintPartnerDimensionsDesignSource'
+          partner_product_id: '#/components/schemas/PrintPartnerProductIdDesignSource'
         propertyName: type
       oneOf:
-      - $ref: '#/components/schemas/PrintPartnerProductIdDesignSource'
       - $ref: '#/components/schemas/PrintPartnerDimensionsDesignSource'
+      - $ref: '#/components/schemas/PrintPartnerProductIdDesignSource'
       type: object
     PrintPartnerProductIdDesignSource:
       description: Creates a design using an external partner product ID.

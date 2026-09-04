@@ -6520,6 +6520,9 @@
         "description": "Filters and pagination controls for page-level analytics."
       },
       "PageViewFilter": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -6542,6 +6545,9 @@
             "type": "string",
             "description": "The viewer ID to filter by.",
             "example": "b2d44753-f996-46ff-8f01-d4143911550f"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "A filter for page view data.",
@@ -6892,6 +6898,9 @@
         "description": "The asset object, which contains metadata about the asset."
       },
       "AssetMetadata": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -6927,6 +6936,9 @@
             "description": "The duration of the video in seconds.",
             "format": "int32",
             "example": 60
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "Type-specific metadata for the asset.",
@@ -7326,6 +7338,9 @@
         "description": "Metadata for the asset being uploaded."
       },
       "CreateDesignAutofillJobRequest": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -7356,6 +7371,9 @@
             "type": "string",
             "description": "ID of the design to use as the autofill source.",
             "example": "DAFVztcvd9z"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "Body parameters for creating a new autofill job. Use the \u0060type\u0060 discriminator to choose\nthe autofill mode:\n\n- Use \u0060create_from_brand_template\u0060 to create a new design from a brand template.\n\nNOTE: For backward compatibility, if \u0060type\u0060 isn\u0027t specified in the request,\nthe request type is assumed to be \u0060create_from_brand_template\u0060.",
@@ -7465,6 +7483,9 @@
         }
       },
       "DatasetValue": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -7499,6 +7520,9 @@
           },
           "sheet_data": {
             "$ref": "#/components/schemas/DataTable"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The data field to autofill.",
@@ -7814,6 +7838,9 @@
         "description": "Details about the autofill job."
       },
       "DesignAutofillJobResult": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -7829,6 +7856,9 @@
           },
           "trial_information": {
             "$ref": "#/components/schemas/AutofillTrialInformation"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "Result of the design autofill job. Only present if job status is \u0060success\u0060.",
@@ -8357,6 +8387,9 @@
         "description": "Successful response from a \u0060getReply\u0060 request."
       },
       "Comment": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -8405,6 +8438,9 @@
             "type": "string",
             "description": "The ID of the comment thread this reply is in. This ID is the same as the \u0060id\u0060 of the\nparent comment.",
             "example": "KeAbiEAjZEj"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The comment object, which contains metadata about the comment.\nDeprecated in favor of the new \u0060thread\u0060 object.",
@@ -8528,6 +8564,9 @@
         "deprecated": true
       },
       "CommentObject": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -8578,6 +8617,9 @@
         "deprecated": true
       },
       "CommentObjectInput": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -8697,6 +8739,9 @@
         }
       },
       "CommentEvent": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -8734,6 +8779,9 @@
           },
           "content": {
             "$ref": "#/components/schemas/MentionEventContent"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The type of comment event, including additional type-specific properties.",
@@ -8858,6 +8906,9 @@
         "description": "Event type for a mention in a comment thread or reply."
       },
       "MentionEventContent": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -8883,6 +8934,9 @@
           },
           "reply": {
             "$ref": "#/components/schemas/Reply"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The type of mention event content, along with additional type-specific properties.",
@@ -9002,6 +9056,9 @@
         "description": "A discussion thread on a design.\n\nThe \u0060type\u0060 of the thread can be found in the \u0060thread_type\u0060 object, along with additional type-specific properties.\nThe \u0060author\u0060 of the thread might be missing if that user account no longer exists."
       },
       "ThreadType": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -9033,6 +9090,9 @@
           },
           "status": {
             "$ref": "#/components/schemas/SuggestionStatus"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The type of the discussion thread, along with additional type-specific properties.",
@@ -9097,6 +9157,9 @@
         "description": "A suggestion thread."
       },
       "SuggestedEdit": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -9116,6 +9179,9 @@
           },
           "format": {
             "$ref": "#/components/schemas/SuggestionFormat"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The type of the suggested edit, along with additional type-specific properties.",
@@ -9394,6 +9460,9 @@
         "description": "The content of a comment thread or reply."
       },
       "SuggestionEventType": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -9428,6 +9497,9 @@
           },
           "reply": {
             "$ref": "#/components/schemas/Reply"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The type of suggestion event, along with additional type-specific properties.",
@@ -9855,6 +9927,9 @@
         "description": "A single row of tabular data."
       },
       "DataTableCell": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -9876,6 +9951,9 @@
         "properties": {
           "metadata": {
             "$ref": "#/components/schemas/NumberCellMetadata"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "A single tabular data cell.",
@@ -9993,6 +10071,9 @@
         "description": "Cell containing a media collection."
       },
       "DataTableMedia": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -10031,6 +10112,9 @@
           "thumbnail_video_url": {
             "type": "string",
             "description": "The URL of a thumbnail video to display while the video is queued for upload."
+          },
+          "type": {
+            "type": "string"
           }
         },
         "discriminator": {
@@ -10369,6 +10453,9 @@
         }
       },
       "CreateDesignRequest": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -10418,6 +10505,9 @@
             "type": "string",
             "description": "The ID of the brand template used to create a design copy.",
             "example": "EDMzWSwy3BI"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "Body parameters for creating a new design. Use the \u0060type\u0060 discriminator to choose the creation mode:\n\n- Use \u0060type_and_asset\u0060 to create a design by specifying the design type and/or an asset.\n- Use \u0060design\u0060 to create a copy of an existing design (currently a [preview feature](https://www.canva.dev/docs/connect/#preview-apis)).\n- Use \u0060brand_template\u0060 to create a design from a brand template (currently a [preview feature](https://www.canva.dev/docs/connect/#preview-apis)).\n\nNOTE: For backward compatibility, if \u0060type\u0060 isn\u0027t specified in the request,\nthe request type will be assumed to be \u0060type_and_asset\u0060.",
@@ -10584,6 +10674,9 @@
         "description": "Details about the new design."
       },
       "PrintPartnerDesignSource": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -10607,6 +10700,9 @@
             "type": "string",
             "description": "The ID of the partner-defined product.",
             "example": "CVAFDC1091"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The desired source for the design creation.",
@@ -11163,6 +11259,9 @@
         }
       },
       "DataField": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -11175,6 +11274,11 @@
             "$ref": "#/components/schemas/ChartDataField"
           }
         ],
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
         "description": "A named data field that can be autofilled.",
         "discriminator": {
           "propertyName": "type",
@@ -11449,6 +11553,9 @@
         }
       },
       "DesignTypeInput": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -11477,6 +11584,9 @@
             "description": "The height of the design, in pixels.",
             "format": "int32",
             "example": 200
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The desired design type.",
@@ -12121,6 +12231,9 @@
         }
       },
       "ExportFormat": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -12197,6 +12310,9 @@
             "type": "boolean",
             "description": "When \u0060true\u0060, multi-page designs are merged into a single image.\nWhen \u0060false\u0060 (default), each page is exported as a separate image.",
             "default": false
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "Details about the desired export format.",
@@ -12622,6 +12738,9 @@
         }
       },
       "PrintPartnerExportFormat": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -12657,6 +12776,9 @@
             "type": "boolean",
             "description": "Whether the PDF standard should be updated to PDF/X, a printer friendly\nstandard.",
             "default": false
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "Details about the desired export format.",
@@ -13575,6 +13697,9 @@
         "description": "A list of the items in a folder.\nIf the success response contains a continuation token, the folder contains more items\nyou can list. You can use this token as a query parameter and retrieve more\nitems from the list, for example\n\u0060/v1/folders/{folderId}/items?continuation={continuation}\u0060.\n\nTo retrieve all the items in a folder, you might need to make multiple requests."
       },
       "FolderItemSummary": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -13602,6 +13727,9 @@
           },
           "brand_template": {
             "$ref": "#/components/schemas/BrandTemplateSummary"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "Details about the folder item.",
@@ -13865,6 +13993,9 @@
         "description": "Standard Json Web Key specification following https://www.rfc-editor.org/rfc/rfc7517 and\nhttps://www.rfc-editor.org/rfc/rfc7518.html."
       },
       "CreateDesignMergeJobRequest": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -13896,6 +14027,9 @@
             "type": "string",
             "description": "The ID of the design to modify.",
             "example": "DAFVztcvd9z"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "discriminator": {
@@ -13975,6 +14109,9 @@
         "description": "Modifies an existing design by inserting, moving, or deleting pages."
       },
       "DesignMergeOperation": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -14024,6 +14161,9 @@
               "format": "int32"
             },
             "description": "One-based numbers of the pages to delete (evaluated at the time this operation runs). Pages are deleted in reverse order to maintain page numbers."
+          },
+          "type": {
+            "type": "string"
           }
         },
         "discriminator": {
@@ -14116,6 +14256,9 @@
         "description": "Deletes pages from the target design."
       },
       "MergeSourceForInsertPagesOperation": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -14320,6 +14463,9 @@
         "description": "If the merge job fails, this object provides details about the error."
       },
       "ExchangeAccessTokenRequest": {
+        "required": [
+          "grant_type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -14364,6 +14510,9 @@
             "type": "string",
             "description": "Optional scope value when refreshing an access token. Separate multiple [scopes](https://www.canva.dev/docs/connect/appendix/scopes/) with a single space between each scope.\n\nThe requested scope cannot include any permissions not already granted, so this parameter allows you to limit the scope when refreshing a token. If omitted, the scope for the token remains unchanged.\n",
             "example": "design:meta:read"
+          },
+          "grant_type": {
+            "type": "string"
           }
         },
         "discriminator": {
@@ -15101,6 +15250,9 @@
         }
       },
       "NotificationContent": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -15203,6 +15355,9 @@
           },
           "suggestion_event_type": {
             "$ref": "#/components/schemas/SuggestionEventType"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "The notification content object, which contains metadata about the event.",

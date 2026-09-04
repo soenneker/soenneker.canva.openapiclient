@@ -170,8 +170,10 @@ namespace Soenneker.Canva.OpenApiClient.V1.Designs.Item.Comments.Item.Replies
             [QueryParameter("continuation")]
             public string Continuation { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning restore CS1591
         }
     }
 }

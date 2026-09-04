@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "2F89338EFC8C452EE80E6B2C6DAB8E67C704BDAC32CBB77BA7656679DCC59A9D95FC17F56B78B0F1BFCBDDC92AEE63E3FC8B419BA0B807B72907AD0F7DB27311",
+  "descriptionHash": "2A5F6B3C115C570CFCB246EB3B3BC8A4E38C672E1B8B91FB2615B11AB8D51521328DCC92A7AF3D904215B66287ED1012C88A9A20BDDFF111DEEF882C95DD67F3",
   "descriptionLocation": "../../openapi.fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.34.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "CanvaOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Canva.OpenApiClient",

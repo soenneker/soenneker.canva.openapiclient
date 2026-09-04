@@ -116,8 +116,10 @@ namespace Soenneker.Canva.OpenApiClient.V1.Folders.Item.Items
             [QueryParameter("item_types")]
             public global::Soenneker.Canva.OpenApiClient.Models.FolderItemType[] ItemTypes { get; set; }
 #endif
+            #pragma warning disable CS1591
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            #pragma warning restore CS1591
             /// <summary>Filter the folder items by their pinned status.</summary>
             [QueryParameter("pin_status")]
             public global::Soenneker.Canva.OpenApiClient.Models.FolderItemPinStatus? PinStatus { get; set; }

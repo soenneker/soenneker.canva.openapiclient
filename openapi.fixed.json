@@ -6101,55 +6101,55 @@
   },
   "components": {
     "schemas": {
-      "AiCreditQuotaUsageSummary": {
+      "CreditQuotaUsageSummary": {
         "type": "object",
         "properties": {
           "used_percentage": {
             "maximum": 100,
             "minimum": 0,
             "type": "integer",
-            "description": "The percentage of the caller\u0027s AI credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
+            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
             "format": "int32"
           },
           "resets_at": {
             "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the AI credit quota resets for\nthe caller.",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
             "format": "int64"
           },
           "using_bonus_credits": {
             "type": "boolean",
-            "description": "Whether the caller is currently consuming bonus AI credits (credits beyond their base\nplan allocation)."
+            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
           }
         },
-        "description": "A summary of the caller\u0027s AI credit quota usage at the time of the request."
+        "description": "A summary of the caller\u0027s credit quota usage at the time of the request."
       },
-      "AiCreditQuotaSuccessInfo": {
+      "CreditQuotaSuccessInfo": {
         "type": "object",
         "properties": {
           "used_percentage": {
             "maximum": 100,
             "minimum": 0,
             "type": "integer",
-            "description": "The percentage of the caller\u0027s AI credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
+            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
             "format": "int32"
           },
           "resets_at": {
             "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the AI credit quota resets for\nthe caller.",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
             "format": "int64"
           },
           "using_bonus_credits": {
             "type": "boolean",
-            "description": "Whether the caller is currently consuming bonus AI credits (credits beyond their base\nplan allocation)."
+            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
           },
           "usage_review_link": {
             "type": "string",
-            "description": "A URL to the Canva AI credit usage dashboard where the caller can review their\ncurrent AI credit consumption. Not present if unavailable."
+            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
           }
         },
-        "description": "AI credit quota usage information returned on a successful generation request."
+        "description": "Credit quota usage information returned on a successful generation request."
       },
-      "AiCreditQuotaErrorInfo": {
+      "CreditQuotaErrorInfo": {
         "required": [
           "is_admin"
         ],
@@ -6159,17 +6159,17 @@
             "maximum": 100,
             "minimum": 0,
             "type": "integer",
-            "description": "The percentage of the caller\u0027s AI credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
+            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
             "format": "int32"
           },
           "resets_at": {
             "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the AI credit quota resets for\nthe caller.",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
             "format": "int64"
           },
           "using_bonus_credits": {
             "type": "boolean",
-            "description": "Whether the caller is currently consuming bonus AI credits (credits beyond their base\nplan allocation)."
+            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
           },
           "upgrade_url": {
             "type": "string",
@@ -6177,7 +6177,7 @@
           },
           "cooldown_ends_at": {
             "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060ai_credit_quota_cooldown\u0060. Not present for \u0060ai_credit_quota_exceeded\u0060\nerrors.",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060credit_quota_cooldown\u0060. Not present for \u0060credit_quota_exceeded\u0060\nerrors.",
             "format": "int64"
           },
           "is_admin": {
@@ -6189,9 +6189,9 @@
             "description": "True if another generation is currently in flight and consuming quota. Only\nmeaningful for paid users with cooldown enabled. Not present for free users where this\ncannot be determined."
           }
         },
-        "description": "AI credit quota information returned when a request is rejected due to quota exhaustion\nor a cooldown period."
+        "description": "Credit quota information returned when a request is rejected due to quota exhaustion\nor a cooldown period."
       },
-      "AiCreditQuotaError": {
+      "CreditQuotaError": {
         "required": [
           "code",
           "message"
@@ -6206,10 +6206,10 @@
             "description": "A human-readable description of what went wrong."
           },
           "quota_usage": {
-            "$ref": "#/components/schemas/AiCreditQuotaErrorAllOf2QuotaUsage"
+            "$ref": "#/components/schemas/CreditQuotaErrorAllOf2QuotaUsage"
           }
         },
-        "description": "Returned when a request is rejected because the caller has exceeded their AI credit quota\nor is in a cooldown period after heavy usage."
+        "description": "Returned when a request is rejected because the caller has exceeded their credit quota\nor is in a cooldown period after heavy usage."
       },
       "GetDesignAnalyticsResponse": {
         "required": [
@@ -11817,13 +11817,14 @@
           "invalid_basic_header",
           "invalid_file_format",
           "quota_exceeded",
-          "ai_credit_quota_exceeded",
-          "ai_credit_quota_cooldown",
+          "credit_quota_exceeded",
+          "credit_quota_cooldown",
           "unsupported_content_type",
           "request_too_large",
           "folder_not_found",
           "item_in_multiple_folders",
           "asset_not_found",
+          "unsupported_asset",
           "max_limit_reached",
           "permission_not_found",
           "permission_exists",
@@ -11987,12 +11988,12 @@
               "name": "QuotaExceeded"
             },
             {
-              "value": "ai_credit_quota_exceeded",
-              "name": "AiCreditQuotaExceeded"
+              "value": "credit_quota_exceeded",
+              "name": "CreditQuotaExceeded"
             },
             {
-              "value": "ai_credit_quota_cooldown",
-              "name": "AiCreditQuotaCooldown"
+              "value": "credit_quota_cooldown",
+              "name": "CreditQuotaCooldown"
             },
             {
               "value": "unsupported_content_type",
@@ -12013,6 +12014,10 @@
             {
               "value": "asset_not_found",
               "name": "AssetNotFound"
+            },
+            {
+              "value": "unsupported_asset",
+              "name": "UnsupportedAsset"
             },
             {
               "value": "max_limit_reached",
@@ -13138,7 +13143,7 @@
           }
         }
       },
-      "AiCreditQuotaErrorAllOf2QuotaUsage": {
+      "CreditQuotaErrorAllOf2QuotaUsage": {
         "required": [
           "is_admin"
         ],
@@ -13148,17 +13153,17 @@
             "maximum": 100,
             "minimum": 0,
             "type": "integer",
-            "description": "The percentage of the caller\u0027s AI credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
+            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
             "format": "int32"
           },
           "resets_at": {
             "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the AI credit quota resets for\nthe caller.",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
             "format": "int64"
           },
           "using_bonus_credits": {
             "type": "boolean",
-            "description": "Whether the caller is currently consuming bonus AI credits (credits beyond their base\nplan allocation)."
+            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
           },
           "upgrade_url": {
             "type": "string",
@@ -13166,7 +13171,7 @@
           },
           "cooldown_ends_at": {
             "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060ai_credit_quota_cooldown\u0060. Not present for \u0060ai_credit_quota_exceeded\u0060\nerrors.",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060credit_quota_cooldown\u0060. Not present for \u0060credit_quota_exceeded\u0060\nerrors.",
             "format": "int64"
           },
           "is_admin": {
@@ -13178,7 +13183,7 @@
             "description": "True if another generation is currently in flight and consuming quota. Only\nmeaningful for paid users with cooldown enabled. Not present for free users where this\ncannot be determined."
           }
         },
-        "description": "AI credit quota usage at the time of the error. Not present if quota data is unavailable."
+        "description": "Credit quota usage at the time of the error. Not present if quota data is unavailable."
       },
       "Mp4ExportQuality": {
         "enum": [
@@ -14769,11 +14774,11 @@
         },
         "description": "The user details of the viewer. This is omitted for viewers whose identity is not visible."
       },
-      "AiCreditQuotaErrorAllOf2": {
+      "CreditQuotaErrorAllOf2": {
         "type": "object",
         "properties": {
           "quota_usage": {
-            "$ref": "#/components/schemas/AiCreditQuotaErrorAllOf2QuotaUsage"
+            "$ref": "#/components/schemas/CreditQuotaErrorAllOf2QuotaUsage"
           }
         }
       },
@@ -14856,7 +14861,7 @@
           ]
         }
       },
-      "AiCreditQuotaErrorInfoAllOf2": {
+      "CreditQuotaErrorInfoAllOf2": {
         "required": [
           "is_admin"
         ],
@@ -14868,7 +14873,7 @@
           },
           "cooldown_ends_at": {
             "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060ai_credit_quota_cooldown\u0060. Not present for \u0060ai_credit_quota_exceeded\u0060\nerrors.",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060credit_quota_cooldown\u0060. Not present for \u0060credit_quota_exceeded\u0060\nerrors.",
             "format": "int64"
           },
           "is_admin": {
@@ -14881,12 +14886,12 @@
           }
         }
       },
-      "AiCreditQuotaSuccessInfoAllOf2": {
+      "CreditQuotaSuccessInfoAllOf2": {
         "type": "object",
         "properties": {
           "usage_review_link": {
             "type": "string",
-            "description": "A URL to the Canva AI credit usage dashboard where the caller can review their\ncurrent AI credit consumption. Not present if unavailable."
+            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
           }
         }
       },
@@ -17277,19 +17282,19 @@
       }
     },
     "responses": {
-      "CommonAiCreditQuotaError": {
-        "description": "AI Credit Quota Exceeded",
+      "CommonCreditQuotaError": {
+        "description": "Credit Quota Exceeded",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/AiCreditQuotaError"
+              "$ref": "#/components/schemas/CreditQuotaError"
             },
             "examples": {
-              "ai_credit_quota_exceeded": {
-                "$ref": "#/components/examples/AiCreditQuotaExceededError"
+              "credit_quota_exceeded": {
+                "$ref": "#/components/examples/CreditQuotaExceededError"
               },
-              "ai_credit_quota_cooldown": {
-                "$ref": "#/components/examples/AiCreditQuotaCooldownError"
+              "credit_quota_cooldown": {
+                "$ref": "#/components/examples/CreditQuotaCooldownError"
               }
             }
           }
@@ -17621,11 +17626,11 @@
       }
     },
     "examples": {
-      "AiCreditQuotaExceededError": {
-        "summary": "User has reached their AI credit quota limit",
+      "CreditQuotaExceededError": {
+        "summary": "User has reached their credit quota limit",
         "value": {
-          "code": "ai_credit_quota_exceeded",
-          "message": "User has exceeded their AI credit quota",
+          "code": "credit_quota_exceeded",
+          "message": "User has exceeded their credit quota",
           "quota_usage": {
             "used_percentage": 100,
             "resets_at": 1735689600,
@@ -17636,11 +17641,11 @@
           }
         }
       },
-      "AiCreditQuotaCooldownError": {
-        "summary": "User is in a cooldown period after heavy AI credit usage",
+      "CreditQuotaCooldownError": {
+        "summary": "User is in a cooldown period after heavy credit usage",
         "value": {
-          "code": "ai_credit_quota_cooldown",
-          "message": "AI credit quota cooldown is active",
+          "code": "credit_quota_cooldown",
+          "message": "Credit quota cooldown is active",
           "quota_usage": {
             "used_percentage": 100,
             "resets_at": 1735689600,

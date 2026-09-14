@@ -115,13 +115,13 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         QuotaExceeded,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ai_credit_quota_exceeded")]
+        [EnumMember(Value = "credit_quota_exceeded")]
         #pragma warning disable CS1591
-        AiCreditQuotaExceeded,
+        CreditQuotaExceeded,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ai_credit_quota_cooldown")]
+        [EnumMember(Value = "credit_quota_cooldown")]
         #pragma warning disable CS1591
-        AiCreditQuotaCooldown,
+        CreditQuotaCooldown,
         #pragma warning restore CS1591
         [EnumMember(Value = "unsupported_content_type")]
         #pragma warning disable CS1591
@@ -142,6 +142,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         [EnumMember(Value = "asset_not_found")]
         #pragma warning disable CS1591
         AssetNotFound,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "unsupported_asset")]
+        #pragma warning disable CS1591
+        UnsupportedAsset,
         #pragma warning restore CS1591
         [EnumMember(Value = "max_limit_reached")]
         #pragma warning disable CS1591

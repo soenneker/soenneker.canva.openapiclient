@@ -4731,11 +4731,11 @@ paths:
       x-rate-limit-per-client-user: 10
 components:
   examples:
-    AiCreditQuotaExceededError:
-      summary: User has reached their AI credit quota limit
+    CreditQuotaExceededError:
+      summary: User has reached their credit quota limit
       value:
-        code: ai_credit_quota_exceeded
-        message: User has exceeded their AI credit quota
+        code: credit_quota_exceeded
+        message: User has exceeded their credit quota
         quota_usage:
           used_percentage: 100
           resets_at: 1735689600
@@ -4743,11 +4743,11 @@ components:
           upgrade_url: https://www.canva.com/upgrade
           is_admin: false
           generation_pending: false
-    AiCreditQuotaCooldownError:
-      summary: User is in a cooldown period after heavy AI credit usage
+    CreditQuotaCooldownError:
+      summary: User is in a cooldown period after heavy credit usage
       value:
-        code: ai_credit_quota_cooldown
-        message: AI credit quota cooldown is active
+        code: credit_quota_cooldown
+        message: Credit quota cooldown is active
         quota_usage:
           used_percentage: 100
           resets_at: 1735689600
@@ -6231,17 +6231,17 @@ components:
         $ref: '#/components/schemas/Interval'
       style: form
   responses:
-    CommonAiCreditQuotaError:
+    CommonCreditQuotaError:
       content:
         application/json:
           examples:
-            ai_credit_quota_exceeded:
-              $ref: '#/components/examples/AiCreditQuotaExceededError'
-            ai_credit_quota_cooldown:
-              $ref: '#/components/examples/AiCreditQuotaCooldownError'
+            credit_quota_exceeded:
+              $ref: '#/components/examples/CreditQuotaExceededError'
+            credit_quota_cooldown:
+              $ref: '#/components/examples/CreditQuotaCooldownError'
           schema:
-            $ref: '#/components/schemas/AiCreditQuotaError'
-      description: AI Credit Quota Exceeded
+            $ref: '#/components/schemas/CreditQuotaError'
+      description: Credit Quota Exceeded
       x-http-status-code: 429
     CommonBadRequest:
       content:
@@ -6366,13 +6366,13 @@ components:
       description: Too Many Requests
       x-http-status-code: 429
   schemas:
-    AiCreditQuotaUsageSummary:
-      description: A summary of the caller's AI credit quota usage at the time of
-        the request.
+    CreditQuotaUsageSummary:
+      description: A summary of the caller's credit quota usage at the time of the
+        request.
       properties:
         used_percentage:
           description: |-
-            The percentage of the caller's AI credit quota that has been consumed in the current
+            The percentage of the caller's credit quota that has been consumed in the current
             billing interval, from 0 to 100.
           format: int32
           maximum: 100
@@ -6380,31 +6380,31 @@ components:
           type: integer
         resets_at:
           description: |-
-            Unix timestamp (seconds from the Unix epoch) of when the AI credit quota resets for
+            Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for
             the caller.
           format: int64
           type: integer
         using_bonus_credits:
           description: |-
-            Whether the caller is currently consuming bonus AI credits (credits beyond their base
+            Whether the caller is currently consuming bonus credits (credits beyond their base
             plan allocation).
           type: boolean
       type: object
-    AiCreditQuotaSuccessInfo:
+    CreditQuotaSuccessInfo:
       allOf:
-      - $ref: '#/components/schemas/AiCreditQuotaUsageSummary'
+      - $ref: '#/components/schemas/CreditQuotaUsageSummary'
       - properties:
           usage_review_link:
             description: |-
-              A URL to the Canva AI credit usage dashboard where the caller can review their
-              current AI credit consumption. Not present if unavailable.
+              A URL to the Canva credit usage dashboard where the caller can review their
+              current credit consumption. Not present if unavailable.
             type: string
         type: object
-      description: AI credit quota usage information returned on a successful generation
+      description: Credit quota usage information returned on a successful generation
         request.
-    AiCreditQuotaErrorInfo:
+    CreditQuotaErrorInfo:
       allOf:
-      - $ref: '#/components/schemas/AiCreditQuotaUsageSummary'
+      - $ref: '#/components/schemas/CreditQuotaUsageSummary'
       - properties:
           upgrade_url:
             description: |-
@@ -6414,7 +6414,7 @@ components:
           cooldown_ends_at:
             description: |-
               Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only
-              set when `code` is `ai_credit_quota_cooldown`. Not present for `ai_credit_quota_exceeded`
+              set when `code` is `credit_quota_cooldown`. Not present for `credit_quota_exceeded`
               errors.
             format: int64
             type: integer
@@ -6433,20 +6433,20 @@ components:
         - is_admin
         type: object
       description: |-
-        AI credit quota information returned when a request is rejected due to quota exhaustion
+        Credit quota information returned when a request is rejected due to quota exhaustion
         or a cooldown period.
-    AiCreditQuotaError:
+    CreditQuotaError:
       allOf:
       - $ref: '#/components/schemas/Error'
       - properties:
           quota_usage:
             allOf:
-            - $ref: '#/components/schemas/AiCreditQuotaErrorInfo'
-            description: AI credit quota usage at the time of the error. Not present
+            - $ref: '#/components/schemas/CreditQuotaErrorInfo'
+            description: Credit quota usage at the time of the error. Not present
               if quota data is unavailable.
         type: object
       description: |-
-        Returned when a request is rejected because the caller has exceeded their AI credit quota
+        Returned when a request is rejected because the caller has exceeded their credit quota
         or is in a cooldown period after heavy usage.
     GetDesignAnalyticsResponse:
       description: Aggregated analytics metrics for a design.
@@ -10340,13 +10340,14 @@ components:
       - invalid_basic_header
       - invalid_file_format
       - quota_exceeded
-      - ai_credit_quota_exceeded
-      - ai_credit_quota_cooldown
+      - credit_quota_exceeded
+      - credit_quota_cooldown
       - unsupported_content_type
       - request_too_large
       - folder_not_found
       - item_in_multiple_folders
       - asset_not_found
+      - unsupported_asset
       - max_limit_reached
       - permission_not_found
       - permission_exists

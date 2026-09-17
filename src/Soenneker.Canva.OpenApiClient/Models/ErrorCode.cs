@@ -147,6 +147,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         UnsupportedAsset,
         #pragma warning restore CS1591
+        [EnumMember(Value = "asset_not_ready")]
+        #pragma warning disable CS1591
+        AssetNotReady,
+        #pragma warning restore CS1591
         [EnumMember(Value = "max_limit_reached")]
         #pragma warning disable CS1591
         MaxLimitReached,

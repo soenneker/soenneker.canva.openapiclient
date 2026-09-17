@@ -10348,6 +10348,7 @@ components:
       - item_in_multiple_folders
       - asset_not_found
       - unsupported_asset
+      - asset_not_ready
       - max_limit_reached
       - permission_not_found
       - permission_exists

@@ -47,7 +47,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Designs.Item.Comments
         {
         }
         /// <summary>
-        /// &lt;Warning&gt;This API is currently provided as a preview. Be aware of the following:- There might be unannounced breaking changes.- Any breaking changes to preview APIs won&apos;t produce a new [API version](https://www.canva.dev/docs/connect/versions/).- Public integrations that use preview APIs will not pass the review process, and can&apos;t be made available to all Canva users.&lt;/Warning&gt;Creates a new comment thread on a design.For information on comments and how they&apos;re used in the Canva UI, see the[Canva Help Center](https://www.canva.com/help/comments/).
+        /// &lt;Warning&gt;This API is currently provided as a preview. Be aware of the following:- There might be unannounced breaking changes.- Any breaking changes to preview APIs won&apos;t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).- Public apps that use preview APIs will not pass the review process, and can&apos;t be made available to all Canva users.&lt;/Warning&gt;Creates a new comment thread on a design.For information on comments and how they&apos;re used in the Canva UI, see the[Canva Help Center](https://www.canva.com/help/comments/).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateThreadResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -78,7 +78,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Designs.Item.Comments
             return await RequestAdapter.SendAsync<global::Soenneker.Canva.OpenApiClient.Models.CreateThreadResponse>(requestInfo, global::Soenneker.Canva.OpenApiClient.Models.CreateThreadResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &lt;Warning&gt;This API is currently provided as a preview. Be aware of the following:- There might be unannounced breaking changes.- Any breaking changes to preview APIs won&apos;t produce a new [API version](https://www.canva.dev/docs/connect/versions/).- Public integrations that use preview APIs will not pass the review process, and can&apos;t be made available to all Canva users.&lt;/Warning&gt;Creates a new comment thread on a design.For information on comments and how they&apos;re used in the Canva UI, see the[Canva Help Center](https://www.canva.com/help/comments/).
+        /// &lt;Warning&gt;This API is currently provided as a preview. Be aware of the following:- There might be unannounced breaking changes.- Any breaking changes to preview APIs won&apos;t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).- Public apps that use preview APIs will not pass the review process, and can&apos;t be made available to all Canva users.&lt;/Warning&gt;Creates a new comment thread on a design.For information on comments and how they&apos;re used in the Canva UI, see the[Canva Help Center](https://www.canva.com/help/comments/).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

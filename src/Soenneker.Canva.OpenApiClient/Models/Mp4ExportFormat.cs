@@ -25,7 +25,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public List<int?> Pages { get; set; }
 #endif
-        /// <summary>The orientation and resolution of the exported video. Orientation is either `horizontal` or`vertical`, and resolution is one of `480p`, `720p`, `1080p` or `4k`.</summary>
+        /// <summary>The resolution of the exported video, as a target number of pixels. The resolution is one of`480p`, `720p`, `1080p` or `4k`.The exported video always has the same aspect ratio as the design, which matches creating adownload from the Canva editor. The resolution sets how many pixels to target, and thedesign&apos;s aspect ratio decides how they&apos;re split between width and height, so the`horizontal` and `vertical` values of a given resolution produce the same output:- A 2160x3840 portrait design exported as `horizontal_4k` is 2160x3840, not 3840x2160. The  orientation in the value&apos;s name doesn&apos;t rotate or crop the design.- A 1000x2000 design exported as `horizontal_720p` is 678x1357, the 1:2 size closest to the  921,600 pixels of 1280x720. Aspect ratios that don&apos;t match a standard video size aren&apos;t  rounded to one.- A square design exported as `horizontal_4k` or `vertical_4k` is 2880x2880, the square with  the same number of pixels as 3840x2160.</summary>
         public global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportQuality? Quality { get; set; }
         /// <summary>The type property</summary>
         public global::Soenneker.Canva.OpenApiClient.Models.Mp4Type? Type { get; set; }

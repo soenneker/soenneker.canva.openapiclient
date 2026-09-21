@@ -15,7 +15,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Your integration&apos;s unique ID, for authenticating the request.NOTE: We recommend that you use basic access authentication instead of specifying `client_id` and `client_secret` as body parameters.</summary>
+        /// <summary>Your app&apos;s unique ID, for authenticating the request.NOTE: We recommend that you use basic access authentication instead of specifying `client_id` and `client_secret` as body parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ClientId { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public string ClientId { get; set; }
 #endif
-        /// <summary>Your integration&apos;s client secret, for authenticating the request. Begins with `cnvca`.NOTE: We recommend that you use basic access authentication instead of specifying `client_id` and `client_secret` as body parameters.</summary>
+        /// <summary>Your app&apos;s client secret, for authenticating the request. Begins with `cnvca`.NOTE: We recommend that you use basic access authentication instead of specifying `client_id` and `client_secret` as body parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ClientSecret { get; set; }

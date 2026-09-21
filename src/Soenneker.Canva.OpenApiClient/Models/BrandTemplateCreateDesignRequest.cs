@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// &lt;Warning&gt;Creating a copy from a brand template is currently provided as a preview. Be aware of the following:- There might be unannounced breaking changes.- Any breaking changes to preview features won&apos;t produce a new [API version](https://www.canva.dev/docs/connect/versions/).- Public integrations that use preview features will not pass the review process, and can&apos;t be made available to all Canva users.&lt;/Warning&gt;Body parameters for creating a copy from a brand template.
+    /// &lt;Warning&gt;Creating a copy from a brand template is currently provided as a preview. Be aware of the following:- There might be unannounced breaking changes.- Any breaking changes to preview features won&apos;t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).- Public apps that use preview features will not pass the review process, and can&apos;t be made available to all Canva users.&lt;/Warning&gt;Body parameters for creating a copy from a brand template.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BrandTemplateCreateDesignRequest : IAdditionalDataHolder, IParsable

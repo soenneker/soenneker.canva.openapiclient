@@ -15,7 +15,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A temporary editing URL for the design. This URL is only accessible to the user that made the API request, and is designed to support [return navigation](https://www.canva.dev/docs/connect/return-navigation-guide/) workflows.NOTE: This is not a permanent URL, it is only valid for 30 days.</summary>
+        /// <summary>A temporary editing URL for the design. This URL is only accessible to the user that made the API request, and is designed to support [return navigation](https://www.canva.dev/docs/apps/rest-apis/return-navigation-guide/) workflows.NOTE: This is not a permanent URL, it is only valid for 30 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? EditUrl { get; set; }
@@ -23,7 +23,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public string EditUrl { get; set; }
 #endif
-        /// <summary>A temporary viewing URL for the design. This URL is only accessible to the user that made the API request, and is designed to support [return navigation](https://www.canva.dev/docs/connect/return-navigation-guide/) workflows.NOTE: This is not a permanent URL, it is only valid for 30 days.</summary>
+        /// <summary>A temporary viewing URL for the design. This URL is only accessible to the user that made the API request, and is designed to support [return navigation](https://www.canva.dev/docs/apps/rest-apis/return-navigation-guide/) workflows.NOTE: This is not a permanent URL, it is only valid for 30 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ViewUrl { get; set; }

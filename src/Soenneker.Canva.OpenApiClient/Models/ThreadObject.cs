@@ -33,7 +33,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public string DesignId { get; set; }
 #endif
-        /// <summary>The ID of the thread.You can use this ID to create replies to the thread using the [Create reply API](https://www.canva.dev/docs/connect/api-reference/comments/create-reply/).</summary>
+        /// <summary>The ID of the thread.You can use this ID to create replies to the thread using the [Create reply API](https://www.canva.dev/docs/apps/rest-apis/reference/comments/create-reply/).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }

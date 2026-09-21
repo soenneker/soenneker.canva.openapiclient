@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// The dataset definition. It contains the data inputs available for use with the[Create design autofill job API](https://www.canva.dev/docs/connect/api-reference/autofills/create-design-autofill-job/).
+    /// The dataset definition. It contains the data inputs available for use with the[Create design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetDesignDatasetResponseDatasetProperty : IAdditionalDataHolder, IParsable

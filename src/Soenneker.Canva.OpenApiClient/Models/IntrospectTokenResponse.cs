@@ -39,7 +39,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #endif
         /// <summary>The &quot;not before&quot; time of the token, which specifies the time before which the access token most not be accepted, as a [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time) in seconds.</summary>
         public long? Nbf { get; set; }
-        /// <summary>The [scopes](https://www.canva.dev/docs/connect/appendix/scopes/) that the token has been granted.</summary>
+        /// <summary>The [scopes](https://www.canva.dev/docs/apps/rest-apis/scopes/) that the token has been granted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Scope { get; set; }
@@ -47,7 +47,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public string Scope { get; set; }
 #endif
-        /// <summary>The subject of the claim. This is the ID of the Canva user that the access token acts on behalf of.This is an obfuscated value, so a single user has a unique ID for each integration. If the same user authorizes another integration, their ID in that other integration is different.</summary>
+        /// <summary>The subject of the claim. This is the ID of the Canva user that the access token acts on behalf of.This is an obfuscated value, so a single user has a unique ID for each app. If the same user authorizes another app, their ID in that other app is different.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Sub { get; set; }

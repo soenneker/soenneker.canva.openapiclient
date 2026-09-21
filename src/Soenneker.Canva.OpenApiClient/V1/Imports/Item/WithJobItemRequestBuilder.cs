@@ -34,7 +34,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Imports.Item
         {
         }
         /// <summary>
-        /// Gets the result of a design import job created using the [Create design import job API](https://www.canva.dev/docs/connect/api-reference/design-imports/create-design-import-job/).You might need to make multiple requests to this endpoint until you get a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints).
+        /// Gets the result of a design import job created using the [Create design import job API](https://www.canva.dev/docs/apps/rest-apis/reference/design-imports/create-design-import-job/).You might need to make multiple requests to this endpoint until you get a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.GetDesignImportJobResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Imports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Canva.OpenApiClient.Models.GetDesignImportJobResponse>(requestInfo, global::Soenneker.Canva.OpenApiClient.Models.GetDesignImportJobResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Gets the result of a design import job created using the [Create design import job API](https://www.canva.dev/docs/connect/api-reference/design-imports/create-design-import-job/).You might need to make multiple requests to this endpoint until you get a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/connect/api-requests-responses/#asynchronous-job-endpoints).
+        /// Gets the result of a design import job created using the [Create design import job API](https://www.canva.dev/docs/apps/rest-apis/reference/design-imports/create-design-import-job/).You might need to make multiple requests to this endpoint until you get a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

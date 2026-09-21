@@ -23,6 +23,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         ExportPngTransparency,
         #pragma warning restore CS1591
+        [EnumMember(Value = "image_to_design_imports")]
+        #pragma warning disable CS1591
+        ImageToDesignImports,
+        #pragma warning restore CS1591
         [EnumMember(Value = "resize")]
         #pragma warning disable CS1591
         Resize,

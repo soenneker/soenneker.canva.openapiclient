@@ -34,7 +34,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Comments
         {
         }
         /// <summary>
-        /// &lt;Warning&gt;This preview API is deprecated. You should use the [Create thread](https://www.canva.dev/docs/connect/api-reference/comments/create-thread/) API instead.&lt;/Warning&gt;Create a new top-level comment on a design.For information on comments and how they&apos;re used in the Canva UI, see the[Canva Help Center](https://www.canva.com/help/comments/). A design can have a maximumof 1000 comments.
+        /// &lt;Warning&gt;This preview API is deprecated. You should use the [Create thread](https://www.canva.dev/docs/apps/rest-apis/reference/comments/create-thread/) API instead.&lt;/Warning&gt;Create a new top-level comment on a design.For information on comments and how they&apos;re used in the Canva UI, see the[Canva Help Center](https://www.canva.com/help/comments/). A design can have a maximumof 1000 comments.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateCommentResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -66,7 +66,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Comments
             return await RequestAdapter.SendAsync<global::Soenneker.Canva.OpenApiClient.Models.CreateCommentResponse>(requestInfo, global::Soenneker.Canva.OpenApiClient.Models.CreateCommentResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &lt;Warning&gt;This preview API is deprecated. You should use the [Create thread](https://www.canva.dev/docs/connect/api-reference/comments/create-thread/) API instead.&lt;/Warning&gt;Create a new top-level comment on a design.For information on comments and how they&apos;re used in the Canva UI, see the[Canva Help Center](https://www.canva.com/help/comments/). A design can have a maximumof 1000 comments.
+        /// &lt;Warning&gt;This preview API is deprecated. You should use the [Create thread](https://www.canva.dev/docs/apps/rest-apis/reference/comments/create-thread/) API instead.&lt;/Warning&gt;Create a new top-level comment on a design.For information on comments and how they&apos;re used in the Canva UI, see the[Canva Help Center](https://www.canva.com/help/comments/). A design can have a maximumof 1000 comments.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

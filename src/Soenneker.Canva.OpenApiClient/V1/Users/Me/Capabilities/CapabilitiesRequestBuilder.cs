@@ -34,7 +34,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Users.Me.Capabilities
         {
         }
         /// <summary>
-        /// Lists the API capabilities for the user account associated with the provided access token. For more information, see [Capabilities](https://www.canva.dev/docs/connect/capabilities/).
+        /// Lists the API capabilities for the user account associated with the provided access token. For more information, see [Capabilities](https://www.canva.dev/docs/apps/rest-apis/capabilities/).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.GetUserCapabilitiesResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Users.Me.Capabilities
             return await RequestAdapter.SendAsync<global::Soenneker.Canva.OpenApiClient.Models.GetUserCapabilitiesResponse>(requestInfo, global::Soenneker.Canva.OpenApiClient.Models.GetUserCapabilitiesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Lists the API capabilities for the user account associated with the provided access token. For more information, see [Capabilities](https://www.canva.dev/docs/connect/capabilities/).
+        /// Lists the API capabilities for the user account associated with the provided access token. For more information, see [Capabilities](https://www.canva.dev/docs/apps/rest-apis/capabilities/).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

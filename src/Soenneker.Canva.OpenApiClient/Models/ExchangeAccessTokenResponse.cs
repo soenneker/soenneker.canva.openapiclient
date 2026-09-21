@@ -13,7 +13,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExchangeAccessTokenResponse : IAdditionalDataHolder, IParsable
     {
-        /// <summary>The bearer access token to use to authenticate to Canva Connect API endpoints. If requested using a `authorization_code` or `refresh_token`, this allows you to act on behalf of a user.</summary>
+        /// <summary>The bearer access token to use to authenticate to Canva REST API endpoints. If requested using a `authorization_code` or `refresh_token`, this allows you to act on behalf of a user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccessToken { get; set; }
@@ -33,7 +33,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public string RefreshToken { get; set; }
 #endif
-        /// <summary>The [scopes](https://www.canva.dev/docs/connect/appendix/scopes/) that the token has been granted.</summary>
+        /// <summary>The [scopes](https://www.canva.dev/docs/apps/rest-apis/scopes/) that the token has been granted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Scope { get; set; }

@@ -34,7 +34,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Designs.Item.ExportFormats
         {
         }
         /// <summary>
-        /// Lists the available file formats for [exporting a design](https://www.canva.dev/docs/connect/api-reference/exports/create-design-export-job/).&lt;Note&gt;The available export formats depend on the design type and the types of pages in the design.Each format includes the page numbers that support it. If a format is supported by every page in the design, its `page_numbers` are omitted.&lt;/Note&gt;
+        /// Lists the available file formats for [exporting a design](https://www.canva.dev/docs/apps/rest-apis/reference/exports/create-design-export-job/).&lt;Note&gt;The available export formats depend on the design type and the types of pages in the design.Each format includes the page numbers that support it. If a format is supported by every page in the design, its `page_numbers` are omitted.&lt;/Note&gt;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.GetDesignExportFormatsResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Designs.Item.ExportFormats
             return await RequestAdapter.SendAsync<global::Soenneker.Canva.OpenApiClient.Models.GetDesignExportFormatsResponse>(requestInfo, global::Soenneker.Canva.OpenApiClient.Models.GetDesignExportFormatsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Lists the available file formats for [exporting a design](https://www.canva.dev/docs/connect/api-reference/exports/create-design-export-job/).&lt;Note&gt;The available export formats depend on the design type and the types of pages in the design.Each format includes the page numbers that support it. If a format is supported by every page in the design, its `page_numbers` are omitted.&lt;/Note&gt;
+        /// Lists the available file formats for [exporting a design](https://www.canva.dev/docs/apps/rest-apis/reference/exports/create-design-export-job/).&lt;Note&gt;The available export formats depend on the design type and the types of pages in the design.Each format includes the page numbers that support it. If a format is supported by every page in the design, its `page_numbers` are omitted.&lt;/Note&gt;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

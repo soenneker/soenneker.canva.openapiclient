@@ -14,7 +14,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Your integration&apos;s unique ID, for authenticating the request.NOTE: We recommend that you use basic access authentication instead of specifying `client_id` and `client_secret` as body parameters.</summary>
+        /// <summary>Your app&apos;s unique ID, for authenticating the request.NOTE: We recommend that you use basic access authentication instead of specifying `client_id` and `client_secret` as body parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ClientId { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public string ClientId { get; set; }
 #endif
-        /// <summary>Your integration&apos;s client secret, for authenticating the request. Begins with `cnvca`.NOTE: We recommend that you use basic access authentication instead of specifying `client_id` and `client_secret` as body parameters.</summary>
+        /// <summary>Your app&apos;s client secret, for authenticating the request. Begins with `cnvca`.NOTE: We recommend that you use basic access authentication instead of specifying `client_id` and `client_secret` as body parameters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ClientSecret { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public string ClientSecret { get; set; }
 #endif
-        /// <summary>The authorization code you received after the user authorized the integration.</summary>
+        /// <summary>The authorization code you received after the user authorized the app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #endif
         /// <summary>For exchanging an authorization code for an access token.</summary>
         public global::Soenneker.Canva.OpenApiClient.Models.AuthorizationCodeGrantType? GrantType { get; set; }
-        /// <summary>Only required if a redirect URL was supplied when you [created the user authorization URL](https://www.canva.dev/docs/connect/authentication/#create-the-authorization-url).Must be one of those already specified by the client. If not supplied, the first redirect_uri defined for the client will be used by default.</summary>
+        /// <summary>Only required if a redirect URL was supplied when you [created the user authorization URL](https://www.canva.dev/docs/apps/rest-apis/authentication/#create-the-authorization-url).Must be one of those already specified by the client. If not supplied, the first redirect_uri defined for the client will be used by default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RedirectUri { get; set; }

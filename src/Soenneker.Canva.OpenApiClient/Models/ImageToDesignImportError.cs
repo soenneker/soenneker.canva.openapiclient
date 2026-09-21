@@ -8,39 +8,39 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// WARNING: Trials and trial information are a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis).There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.Trial information for non-qualifying users. Non-qualifying users have a limited number ofresize uses. Once the trial is exhausted, users must upgrade to a Canva plan with premiumfeatures (such as Canva Pro) to continue using the Resize API.
+    /// If the import job fails, this object provides details about the error.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TrialInformation : IAdditionalDataHolder, IParsable
+    public partial class ImageToDesignImportError : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The URL for a user to upgrade their Canva account.</summary>
+        /// <summary>A short string about why the import failed. This field can be used to handle errorsprogrammatically.</summary>
+        public global::Soenneker.Canva.OpenApiClient.Models.ImageToDesignImportErrorCode? Code { get; set; }
+        /// <summary>A human-readable description of what went wrong.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UpgradeUrl { get; set; }
+        public string? Message { get; set; }
 #nullable restore
 #else
-        public string UpgradeUrl { get; set; }
+        public string Message { get; set; }
 #endif
-        /// <summary>The number of uses remaining in the free trial.</summary>
-        public int? UsesRemaining { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.TrialInformation"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.ImageToDesignImportError"/> and sets the default values.
         /// </summary>
-        public TrialInformation()
+        public ImageToDesignImportError()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.TrialInformation"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.ImageToDesignImportError"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Canva.OpenApiClient.Models.TrialInformation CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Canva.OpenApiClient.Models.ImageToDesignImportError CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.TrialInformation();
+            return new global::Soenneker.Canva.OpenApiClient.Models.ImageToDesignImportError();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,8 +50,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "upgrade_url", n => { UpgradeUrl = n.GetStringValue(); } },
-                { "uses_remaining", n => { UsesRemaining = n.GetIntValue(); } },
+                { "code", n => { Code = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ImageToDesignImportErrorCode>(); } },
+                { "message", n => { Message = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -61,8 +61,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("upgrade_url", UpgradeUrl);
-            writer.WriteIntValue("uses_remaining", UsesRemaining);
+            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ImageToDesignImportErrorCode>("code", Code);
+            writer.WriteStringValue("message", Message);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

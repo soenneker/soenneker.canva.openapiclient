@@ -43,7 +43,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #endif
         /// <summary>When the comment or reply was created, as a Unix timestamp(in seconds since the Unix Epoch).</summary>
         public long? CreatedAt { get; set; }
-        /// <summary>The ID of the comment.You can use this ID to create replies to the comment using the [Create reply API](https://www.canva.dev/docs/connect/api-reference/comments/create-reply/).</summary>
+        /// <summary>The ID of the comment.You can use this ID to create replies to the comment using the [Create reply API](https://www.canva.dev/docs/apps/rest-apis/reference/comments/create-reply/).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }

@@ -23,7 +23,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary Design { get; set; }
 #endif
-        /// <summary>WARNING: Trials and trial information are a [preview feature](https://www.canva.dev/docs/connect/#preview-apis).There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.Trial information for non-qualifying users. Non-qualifying users have a limited number ofresize uses. Once the trial is exhausted, users must upgrade to a Canva plan with premiumfeatures (such as Canva Pro) to continue using the Resize API.</summary>
+        /// <summary>WARNING: Trials and trial information are a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis).There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.Trial information for non-qualifying users. Non-qualifying users have a limited number ofresize uses. Once the trial is exhausted, users must upgrade to a Canva plan with premiumfeatures (such as Canva Pro) to continue using the Resize API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation? TrialInformation { get; set; }

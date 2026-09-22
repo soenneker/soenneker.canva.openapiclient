@@ -11260,178 +11260,13 @@
         },
         "description": "The design object, which contains metadata about the design."
       },
-      "CreateFromDesignAutofillJobRequestData": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/DatasetValue"
-        },
-        "description": "Data object containing the data fields and values to autofill.",
-        "example": {
-          "cute_pet_image_of_the_day": {
-            "type": "image",
-            "asset_id": "Msd59349ff"
-          },
-          "cute_pet_video_of_the_day": {
-            "type": "video",
-            "asset_id": "VAHCkrNUANI"
-          },
-          "cute_pet_witty_pet_says": {
-            "type": "text",
-            "text": "It was like this when I got here!"
-          },
-          "cute_pet_sales_chart": {
-            "type": "chart",
-            "chart_data": {
-              "column_configs": [
-                {
-                  "name": "Geographic Region",
-                  "type": "string"
-                },
-                {
-                  "name": "Sales (millions AUD)",
-                  "type": "number"
-                },
-                {
-                  "name": "Target (millions AUD)",
-                  "type": "number"
-                },
-                {
-                  "name": "Target met?",
-                  "type": "boolean"
-                },
-                {
-                  "name": "Date met",
-                  "type": "date"
-                }
-              ],
-              "rows": [
-                {
-                  "cells": [
-                    {
-                      "type": "string",
-                      "value": "Asia Pacific"
-                    },
-                    {
-                      "type": "number",
-                      "value": 10.2
-                    },
-                    {
-                      "type": "number",
-                      "value": 10
-                    },
-                    {
-                      "type": "boolean",
-                      "value": true
-                    },
-                    {
-                      "type": "date",
-                      "value": 1721944387
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "type": "string",
-                      "value": "EMEA"
-                    },
-                    {
-                      "type": "number",
-                      "value": 13.8
-                    },
-                    {
-                      "type": "number",
-                      "value": 14
-                    },
-                    {
-                      "type": "boolean",
-                      "value": false
-                    },
-                    {
-                      "type": "date"
-                    }
-                  ]
-                }
-              ]
-            }
-          },
-          "cute_pet_sales_sheet": {
-            "type": "sheet",
-            "sheet_data": {
-              "column_configs": [
-                {
-                  "name": "Geographic Region",
-                  "type": "string"
-                },
-                {
-                  "name": "Sales (millions AUD)",
-                  "type": "number"
-                },
-                {
-                  "name": "Target (millions AUD)",
-                  "type": "number"
-                },
-                {
-                  "name": "Target met?",
-                  "type": "boolean"
-                },
-                {
-                  "name": "Date met",
-                  "type": "date"
-                }
-              ],
-              "rows": [
-                {
-                  "cells": [
-                    {
-                      "type": "string",
-                      "value": "Asia Pacific"
-                    },
-                    {
-                      "type": "number",
-                      "value": 10.2
-                    },
-                    {
-                      "type": "number",
-                      "value": 10
-                    },
-                    {
-                      "type": "boolean",
-                      "value": true
-                    },
-                    {
-                      "type": "date",
-                      "value": 1721944387
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "type": "string",
-                      "value": "EMEA"
-                    },
-                    {
-                      "type": "number",
-                      "value": 13.8
-                    },
-                    {
-                      "type": "number",
-                      "value": 14
-                    },
-                    {
-                      "type": "boolean",
-                      "value": false
-                    },
-                    {
-                      "type": "date"
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        }
+      "PageNumber": {
+        "maximum": 500,
+        "minimum": 1,
+        "type": "integer",
+        "description": "The 1-based page number within the design. The first page in a design has the value \u00601\u0060.",
+        "format": "int32",
+        "example": 1
       },
       "PageDimensions": {
         "required": [
@@ -13477,220 +13312,21 @@
           ]
         }
       },
-      "CreateFromBrandTemplateAutofillJobRequestData": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/DatasetValue"
-        },
-        "description": "Data object containing the data fields and values to autofill.",
-        "example": {
-          "cute_pet_image_of_the_day": {
-            "type": "image",
-            "asset_id": "Msd59349ff"
-          },
-          "cute_pet_video_of_the_day": {
-            "type": "video",
-            "asset_id": "VAHCkrNUANI"
-          },
-          "cute_pet_witty_pet_says": {
-            "type": "text",
-            "text": "It was like this when I got here!"
-          },
-          "cute_pet_sales_chart": {
-            "type": "chart",
-            "chart_data": {
-              "column_configs": [
-                {
-                  "name": "Geographic Region",
-                  "type": "string"
-                },
-                {
-                  "name": "Sales (millions AUD)",
-                  "type": "number"
-                },
-                {
-                  "name": "Target (millions AUD)",
-                  "type": "number"
-                },
-                {
-                  "name": "Target met?",
-                  "type": "boolean"
-                },
-                {
-                  "name": "Date met",
-                  "type": "date"
-                }
-              ],
-              "rows": [
-                {
-                  "cells": [
-                    {
-                      "type": "string",
-                      "value": "Asia Pacific"
-                    },
-                    {
-                      "type": "number",
-                      "value": 10.2
-                    },
-                    {
-                      "type": "number",
-                      "value": 10
-                    },
-                    {
-                      "type": "boolean",
-                      "value": true
-                    },
-                    {
-                      "type": "date",
-                      "value": 1721944387
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "type": "string",
-                      "value": "EMEA"
-                    },
-                    {
-                      "type": "number",
-                      "value": 13.8
-                    },
-                    {
-                      "type": "number",
-                      "value": 14
-                    },
-                    {
-                      "type": "boolean",
-                      "value": false
-                    },
-                    {
-                      "type": "date"
-                    }
-                  ]
-                }
-              ]
-            }
-          },
-          "cute_pet_sales_sheet": {
-            "type": "sheet",
-            "sheet_data": {
-              "column_configs": [
-                {
-                  "name": "Geographic Region",
-                  "type": "string"
-                },
-                {
-                  "name": "Sales (millions AUD)",
-                  "type": "number"
-                },
-                {
-                  "name": "Target (millions AUD)",
-                  "type": "number"
-                },
-                {
-                  "name": "Target met?",
-                  "type": "boolean"
-                },
-                {
-                  "name": "Date met",
-                  "type": "date"
-                }
-              ],
-              "rows": [
-                {
-                  "cells": [
-                    {
-                      "type": "string",
-                      "value": "Asia Pacific"
-                    },
-                    {
-                      "type": "number",
-                      "value": 10.2
-                    },
-                    {
-                      "type": "number",
-                      "value": 10
-                    },
-                    {
-                      "type": "boolean",
-                      "value": true
-                    },
-                    {
-                      "type": "date",
-                      "value": 1721944387
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "type": "string",
-                      "value": "EMEA"
-                    },
-                    {
-                      "type": "number",
-                      "value": 13.8
-                    },
-                    {
-                      "type": "number",
-                      "value": 14
-                    },
-                    {
-                      "type": "boolean",
-                      "value": false
-                    },
-                    {
-                      "type": "date"
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        }
+      "ExportHeight": {
+        "maximum": 25000,
+        "minimum": 40,
+        "type": "integer",
+        "description": "Specify the height in pixels of the exported image. Note the following behavior:\n\n- If no height or width is specified, the image is exported using the dimensions of the design.\n- If only one of height or width is specified, then the image is scaled to match that dimension, respecting the design\u0027s aspect ratio.\n- If both the height and width are specified, but the values don\u0027t match the design\u0027s aspect ratio, the export defaults to the larger dimension.",
+        "format": "int32",
+        "example": 400
       },
-      "CreditQuotaErrorAllOf2QuotaUsage": {
-        "required": [
-          "is_admin"
-        ],
-        "type": "object",
-        "properties": {
-          "used_percentage": {
-            "maximum": 100,
-            "minimum": 0,
-            "type": "integer",
-            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
-            "format": "int32"
-          },
-          "resets_at": {
-            "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
-            "format": "int64"
-          },
-          "using_bonus_credits": {
-            "type": "boolean",
-            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
-          },
-          "upgrade_url": {
-            "type": "string",
-            "description": "URL built from the user\u0027s current plan and eligibility for an AI pass. Not present\nif no upgrade path is available (e.g. already on highest plan or ineligible for AI pass)."
-          },
-          "cooldown_ends_at": {
-            "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060credit_quota_cooldown\u0060. Not present for \u0060credit_quota_exceeded\u0060\nerrors.",
-            "format": "int64"
-          },
-          "is_admin": {
-            "type": "boolean",
-            "description": "Whether the caller is a team admin. Allows clients to tailor error messaging\n(e.g. \u0022contact your admin\u0022 vs \u0022upgrade your plan\u0022)."
-          },
-          "generation_pending": {
-            "type": "boolean",
-            "description": "True if another generation is currently in flight and consuming quota. Only\nmeaningful for paid users with cooldown enabled. Not present for free users where this\ncannot be determined."
-          }
-        },
-        "description": "Credit quota usage at the time of the error. Not present if quota data is unavailable."
+      "ExportWidth": {
+        "maximum": 25000,
+        "minimum": 40,
+        "type": "integer",
+        "description": "Specify the width in pixels of the exported image. Note the following behavior:\n\n- If no width or height is specified, the image is exported using the dimensions of the design.\n- If only one of width or height is specified, then the image is scaled to match that dimension, respecting the design\u0027s aspect ratio.\n- If both the width and height are specified, but the values don\u0027t match the design\u0027s aspect ratio, the export defaults to the larger dimension.",
+        "format": "int32",
+        "example": 400
       },
       "Mp4ExportQuality": {
         "enum": [
@@ -15248,46 +14884,20 @@
         "type": "object",
         "description": "The response on a successful token revocation."
       },
-      "FeatureQuotaExceededErrorAllOf2": {
-        "required": [
-          "upsell_url"
-        ],
-        "type": "object",
-        "properties": {
-          "upsell_url": {
-            "type": "string",
-            "description": "URL to redirect users to upgrade their Canva account and reset their quota."
-          }
-        }
+      "ScopeResponse": {
+        "type": "string",
+        "description": "The [scopes](https://www.canva.dev/docs/apps/rest-apis/scopes/) that the token has been granted.",
+        "example": "asset:read design:meta:read design:permission:read folder:read"
       },
-      "ViewerUser": {
-        "type": "object",
-        "properties": {
-          "user_id": {
-            "type": "string",
-            "description": "The ID of the user.",
-            "example": "auDAbliZ2rQNNOsUl5OLu"
-          },
-          "team_id": {
-            "type": "string",
-            "description": "The ID of the user\u0027s Canva Team.",
-            "example": "Oi2RJILTrKk0KRhRUZozX"
-          },
-          "display_name": {
-            "type": "string",
-            "description": "The name of the user as shown in the Canva UI.",
-            "example": "Jane Doe"
-          }
-        },
-        "description": "The user details of the viewer. This is omitted for viewers whose identity is not visible."
+      "ClientId": {
+        "type": "string",
+        "description": "Your app\u0027s unique ID, for authenticating the request.\n\nNOTE: We recommend that you use basic access authentication instead of specifying \u0060client_id\u0060 and \u0060client_secret\u0060 as body parameters.\n",
+        "example": "OC-FAB12-AbCdEf"
       },
-      "CreditQuotaErrorAllOf2": {
-        "type": "object",
-        "properties": {
-          "quota_usage": {
-            "$ref": "#/components/schemas/CreditQuotaErrorAllOf2QuotaUsage"
-          }
-        }
+      "ClientSecret": {
+        "type": "string",
+        "description": "Your app\u0027s client secret, for authenticating the request. Begins with \u0060cnvca\u0060.\n\nNOTE: We recommend that you use basic access authentication instead of specifying \u0060client_id\u0060 and \u0060client_secret\u0060 as body parameters.\n",
+        "example": "cnvcaAbcdefg12345_hijklm6789"
       },
       "UserInfoResponse": {
         "required": [
@@ -15368,39 +14978,17 @@
           ]
         }
       },
-      "CreditQuotaErrorInfoAllOf2": {
-        "required": [
-          "is_admin"
-        ],
-        "type": "object",
-        "properties": {
-          "upgrade_url": {
-            "type": "string",
-            "description": "URL built from the user\u0027s current plan and eligibility for an AI pass. Not present\nif no upgrade path is available (e.g. already on highest plan or ineligible for AI pass)."
-          },
-          "cooldown_ends_at": {
-            "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060credit_quota_cooldown\u0060. Not present for \u0060credit_quota_exceeded\u0060\nerrors.",
-            "format": "int64"
-          },
-          "is_admin": {
-            "type": "boolean",
-            "description": "Whether the caller is a team admin. Allows clients to tailor error messaging\n(e.g. \u0022contact your admin\u0022 vs \u0022upgrade your plan\u0022)."
-          },
-          "generation_pending": {
-            "type": "boolean",
-            "description": "True if another generation is currently in flight and consuming quota. Only\nmeaningful for paid users with cooldown enabled. Not present for free users where this\ncannot be determined."
-          }
-        }
+      "FeatureId": {
+        "pattern": "^[a-z0-9-]\u002B\\.[a-z0-9-]\u002B$",
+        "type": "string",
+        "description": "Unique identification string for the feature. Need to be in \u0060{application-id}.{feature-name}\u0060 pattern",
+        "example": "ingredient-generation.generate-image"
       },
-      "CreditQuotaSuccessInfoAllOf2": {
-        "type": "object",
-        "properties": {
-          "usage_review_link": {
-            "type": "string",
-            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
-          }
-        }
+      "FeatureQuotaLimit": {
+        "minimum": 1,
+        "type": "integer",
+        "description": "The quota limit set by the caller for this feature. This limit is used to determine if usage exceeds the customer-defined threshold.\nIf not provided, we assume the usage is unlimited.\n",
+        "format": "int32"
       },
       "CreateDesignResizeJobRequest": {
         "required": [
@@ -16276,6 +15864,469 @@
           }
         },
         "description": "Metadata about the design approval response."
+      },
+      "CreditQuotaSuccessInfoAllOf2": {
+        "type": "object",
+        "properties": {
+          "usage_review_link": {
+            "type": "string",
+            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
+          }
+        }
+      },
+      "CreditQuotaErrorInfoAllOf2": {
+        "required": [
+          "is_admin"
+        ],
+        "type": "object",
+        "properties": {
+          "upgrade_url": {
+            "type": "string",
+            "description": "URL built from the user\u0027s current plan and eligibility for an AI pass. Not present\nif no upgrade path is available (e.g. already on highest plan or ineligible for AI pass)."
+          },
+          "cooldown_ends_at": {
+            "type": "integer",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060credit_quota_cooldown\u0060. Not present for \u0060credit_quota_exceeded\u0060\nerrors.",
+            "format": "int64"
+          },
+          "is_admin": {
+            "type": "boolean",
+            "description": "Whether the caller is a team admin. Allows clients to tailor error messaging\n(e.g. \u0022contact your admin\u0022 vs \u0022upgrade your plan\u0022)."
+          },
+          "generation_pending": {
+            "type": "boolean",
+            "description": "True if another generation is currently in flight and consuming quota. Only\nmeaningful for paid users with cooldown enabled. Not present for free users where this\ncannot be determined."
+          }
+        }
+      },
+      "CreditQuotaErrorAllOf2": {
+        "type": "object",
+        "properties": {
+          "quota_usage": {
+            "$ref": "#/components/schemas/CreditQuotaErrorAllOf2QuotaUsage"
+          }
+        }
+      },
+      "ViewerUser": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "The ID of the user.",
+            "example": "auDAbliZ2rQNNOsUl5OLu"
+          },
+          "team_id": {
+            "type": "string",
+            "description": "The ID of the user\u0027s Canva Team.",
+            "example": "Oi2RJILTrKk0KRhRUZozX"
+          },
+          "display_name": {
+            "type": "string",
+            "description": "The name of the user as shown in the Canva UI.",
+            "example": "Jane Doe"
+          }
+        },
+        "description": "The user details of the viewer. This is omitted for viewers whose identity is not visible."
+      },
+      "FeatureQuotaExceededErrorAllOf2": {
+        "required": [
+          "upsell_url"
+        ],
+        "type": "object",
+        "properties": {
+          "upsell_url": {
+            "type": "string",
+            "description": "URL to redirect users to upgrade their Canva account and reset their quota."
+          }
+        }
+      },
+      "CreditQuotaErrorAllOf2QuotaUsage": {
+        "required": [
+          "is_admin"
+        ],
+        "type": "object",
+        "properties": {
+          "used_percentage": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer",
+            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
+            "format": "int32"
+          },
+          "resets_at": {
+            "type": "integer",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
+            "format": "int64"
+          },
+          "using_bonus_credits": {
+            "type": "boolean",
+            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
+          },
+          "upgrade_url": {
+            "type": "string",
+            "description": "URL built from the user\u0027s current plan and eligibility for an AI pass. Not present\nif no upgrade path is available (e.g. already on highest plan or ineligible for AI pass)."
+          },
+          "cooldown_ends_at": {
+            "type": "integer",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Only\nset when \u0060code\u0060 is \u0060credit_quota_cooldown\u0060. Not present for \u0060credit_quota_exceeded\u0060\nerrors.",
+            "format": "int64"
+          },
+          "is_admin": {
+            "type": "boolean",
+            "description": "Whether the caller is a team admin. Allows clients to tailor error messaging\n(e.g. \u0022contact your admin\u0022 vs \u0022upgrade your plan\u0022)."
+          },
+          "generation_pending": {
+            "type": "boolean",
+            "description": "True if another generation is currently in flight and consuming quota. Only\nmeaningful for paid users with cooldown enabled. Not present for free users where this\ncannot be determined."
+          }
+        },
+        "description": "Credit quota usage at the time of the error. Not present if quota data is unavailable."
+      },
+      "CreateFromBrandTemplateAutofillJobRequestData": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/DatasetValue"
+        },
+        "description": "Data object containing the data fields and values to autofill.",
+        "example": {
+          "cute_pet_image_of_the_day": {
+            "type": "image",
+            "asset_id": "Msd59349ff"
+          },
+          "cute_pet_video_of_the_day": {
+            "type": "video",
+            "asset_id": "VAHCkrNUANI"
+          },
+          "cute_pet_witty_pet_says": {
+            "type": "text",
+            "text": "It was like this when I got here!"
+          },
+          "cute_pet_sales_chart": {
+            "type": "chart",
+            "chart_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "cute_pet_sales_sheet": {
+            "type": "sheet",
+            "sheet_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "CreateFromDesignAutofillJobRequestData": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/DatasetValue"
+        },
+        "description": "Data object containing the data fields and values to autofill.",
+        "example": {
+          "cute_pet_image_of_the_day": {
+            "type": "image",
+            "asset_id": "Msd59349ff"
+          },
+          "cute_pet_video_of_the_day": {
+            "type": "video",
+            "asset_id": "VAHCkrNUANI"
+          },
+          "cute_pet_witty_pet_says": {
+            "type": "text",
+            "text": "It was like this when I got here!"
+          },
+          "cute_pet_sales_chart": {
+            "type": "chart",
+            "chart_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "cute_pet_sales_sheet": {
+            "type": "sheet",
+            "sheet_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
       },
       "UpdateDesignAutofillJobRequestData": {
         "type": "object",
@@ -18120,14 +18171,19 @@
         "in": "path",
         "required": true,
         "schema": {
-          "type": "string"
+          "pattern": "^[a-z0-9-]\u002B\\.[a-z0-9-]\u002B$",
+          "type": "string",
+          "description": "Unique identification string for the feature. Need to be in \u0060{application-id}.{feature-name}\u0060 pattern"
         }
       },
       "feature_quota_limit": {
         "name": "feature_quota_limit",
         "in": "query",
         "schema": {
-          "type": "string"
+          "minimum": 1,
+          "type": "integer",
+          "description": "The quota limit set by the caller for this feature. This limit is used to determine if usage exceeds the customer-defined threshold.\nIf not provided, we assume the usage is unlimited.\n",
+          "format": "int32"
         }
       },
       "interval": {

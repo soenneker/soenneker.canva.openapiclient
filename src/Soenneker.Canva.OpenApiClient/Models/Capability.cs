@@ -15,6 +15,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         Autofill,
         #pragma warning restore CS1591
+        [EnumMember(Value = "background_removal")]
+        #pragma warning disable CS1591
+        BackgroundRemoval,
+        #pragma warning restore CS1591
         [EnumMember(Value = "brand_template")]
         #pragma warning disable CS1591
         BrandTemplate,

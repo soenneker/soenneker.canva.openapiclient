@@ -1473,7 +1473,7 @@
         "tags": [
           "autofill"
         ],
-        "description": "\u003CAvailability\u003E\nTo use this API, your app must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.\n\nUsers on Canva paid plans have access to a limited trial while your app is under development. For more information, see [Trial quotas](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#trial-quotas).\n\u003C/Availability\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the \u0060type\u0060 field to choose the source of the design:\n\n- \u0060create_from_brand_template\u0060: autofill a new design from a brand template. If \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/brand-templates/get-brand-template-dataset/).\n- \u0060create_from_design\u0060: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n- \u0060update_design\u0060: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n\nData fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn\u0027t exist, it\u0027s silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.\n\nAvailable data field types to autofill include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nNOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/get-design-autofill-job/).",
+        "description": "\u003CAvailability\u003E\nTo use this API, your app must act on behalf of a user that\u0027s on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\u003C/Availability\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the \u0060type\u0060 field to choose the source of the design:\n\n- \u0060create_from_brand_template\u0060: autofill a new design from a brand template. If \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/brand-templates/get-brand-template-dataset/).\n- \u0060create_from_design\u0060: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n- \u0060update_design\u0060: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n\nData fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn\u0027t exist, it\u0027s silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.\n\nAvailable data field types to autofill include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nNOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/get-design-autofill-job/).",
         "operationId": "CreateDesignAutofillJob",
         "requestBody": {
           "content": {
@@ -1613,7 +1613,7 @@
         "tags": [
           "autofill"
         ],
-        "description": "\u003CAvailability\u003E\nTo use this API, your app must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.\n\nUsers on Canva paid plans have access to a limited trial while your app is under development. For more information, see [Trial quotas](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#trial-quotas).\n\u003C/Availability\u003E\n\nGet the result of a design autofill job that was created using the [Create design autofill job\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).\n\nYou might need to make multiple requests to this endpoint until you get a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).",
+        "description": "\u003CAvailability\u003E\nTo use this API, your app must act on behalf of a user that\u0027s on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\u003C/Availability\u003E\n\nGet the result of a design autofill job that was created using the [Create design autofill job\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).\n\nYou might need to make multiple requests to this endpoint until you get a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).",
         "operationId": "GetDesignAutofillJob",
         "parameters": [
           {
@@ -2018,7 +2018,7 @@
         "tags": [
           "brand_template"
         ],
-        "description": "AVAILABILITY: To use this API, your app must act on behalf of a user that\u0027s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\nGets the dataset definition of a brand template. If the brand\ntemplate contains autofill data fields, this API returns an object with the data field\nnames and the type of data they accept.\n\n\u003CNote\u003E\n\nTo get the dataset definition of a design, use the\n[Get design dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n\n\u003C/Note\u003E\n\nAvailable data field types include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n\nYou can autofill a brand template using the [Create a design autofill job\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).\n\nWARNING: Chart data fields and autofilling a video are [preview features](https://www.canva.dev/docs/apps/rest-apis/#preview-apis). There might be unannounced breaking changes to these features which won\u0027t produce a new API version.",
+        "description": "AVAILABILITY: To use this API, your app must act on behalf of a user that\u0027s on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\nGets the dataset definition of a brand template. If the brand\ntemplate contains autofill data fields, this API returns an object with the data field\nnames and the type of data they accept.\n\n\u003CNote\u003E\n\nTo get the dataset definition of a design, use the\n[Get design dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n\n\u003C/Note\u003E\n\nAvailable data field types include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nYou can autofill a brand template using the [Create a design autofill job\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).\n\nWARNING: Chart data fields and autofilling a video are [preview features](https://www.canva.dev/docs/apps/rest-apis/#preview-apis). There might be unannounced breaking changes to these features which won\u0027t produce a new API version.",
         "operationId": "GetBrandTemplateDataset",
         "parameters": [
           {
@@ -3366,7 +3366,7 @@
         "tags": [
           "design"
         ],
-        "description": "Gets the dataset definition of a design. If the design contains autofill data fields, this API\nreturns an object with the data field names and the type of data they accept.\n\n\u003CNote\u003E\n\nTo get the dataset definition of a brand template, use the\n[Get brand template dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/brand-templates/get-brand-template-dataset/).\n\n\u003C/Note\u003E\n\nAvailable data field types include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n\nUse the returned field names and types to build the \u0060data\u0060 payload for the\n[Create a design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/)\nwith \u0060type: create_from_design\u0060.",
+        "description": "Gets the dataset definition of a design. If the design contains autofill data fields, this API\nreturns an object with the data field names and the type of data they accept.\n\n\u003CNote\u003E\n\nTo get the dataset definition of a brand template, use the\n[Get brand template dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/brand-templates/get-brand-template-dataset/).\n\n\u003C/Note\u003E\n\nAvailable data field types include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nUse the returned field names and types to build the \u0060data\u0060 payload for the\n[Create a design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/)\nwith \u0060type: create_from_design\u0060.",
         "operationId": "GetDesignDataset",
         "parameters": [
           {
@@ -5375,6 +5375,312 @@
           }
         ],
         "x-rate-limit-per-client-user": 20
+      }
+    },
+    "/v1/image-transformations": {
+      "post": {
+        "tags": [
+          "image_transformation"
+        ],
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public apps that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to apply one or more transformations to an image asset. A successful job produces a single new image asset with all of the requested transformations applied. The source asset isn\u0027t modified, and intermediate results aren\u0027t returned.\n\nThe request requires the ID of the source asset and at least one transformation. The source asset must be an image asset, such as one created using the [Asset upload APIs](https://www.canva.dev/docs/apps/rest-apis/reference/assets/).\n\nTransformations are applied in the order provided, with each one stacked on the result of the previous one.\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060429\u0060 error with the \u0060credit_quota_exceeded\u0060 code. Polling for the result of a job using the [Get image transformation job API](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/get-image-transformation-job/) doesn\u0027t consume any of the allowance.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of image transformation jobs created with this API using the [Get image transformation job API](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/get-image-transformation-job/).\n\n\u003C/Note\u003E",
+        "operationId": "CreateImageTransformationJob",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateImageTransformationJobRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateImageTransformationJobResponse"
+                },
+                "examples": {
+                  "in_progress": {
+                    "$ref": "#/components/examples/InProgressImageTransformationJobExample"
+                  },
+                  "success": {
+                    "$ref": "#/components/examples/SuccessImageTransformationJobExample"
+                  },
+                  "failed": {
+                    "$ref": "#/components/examples/FailedImageTransformationJobExample"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "bad_request_field": {
+                    "$ref": "#/components/examples/BadRequestFieldError"
+                  },
+                  "unsupported_content_type": {
+                    "$ref": "#/components/examples/UnsupportedAssetTypeError"
+                  },
+                  "asset_not_ready": {
+                    "$ref": "#/components/examples/AssetNotReadyError"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "InvalidClientError": {
+                    "$ref": "#/components/examples/InvalidClientError"
+                  },
+                  "InvalidAccessToken": {
+                    "$ref": "#/components/examples/InvalidAccessToken"
+                  },
+                  "MissingClientCredentialsOrBodyAuthError": {
+                    "$ref": "#/components/examples/MissingClientCredentialsOrBodyAuthError"
+                  },
+                  "MalformedAuthorizationHeaderComponents": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderComponents"
+                  },
+                  "MalformedAuthorizationHeaderMode": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderMode"
+                  },
+                  "TokenIntrospectionFailed": {
+                    "$ref": "#/components/examples/TokenIntrospectionFailed"
+                  },
+                  "RevokedAccessToken": {
+                    "$ref": "#/components/examples/RevokedAccessToken"
+                  },
+                  "MissingAuthorizationHeader": {
+                    "$ref": "#/components/examples/MissingAuthorizationHeader"
+                  },
+                  "MalformedAuthorizationHeader": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeader"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 401
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "image_transformation_not_enabled": {
+                    "$ref": "#/components/examples/ImageTransformationNotEnabledError"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "asset_not_found": {
+                    "$ref": "#/components/examples/AssetNotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Credit Quota Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditQuotaError"
+                },
+                "examples": {
+                  "credit_quota_exceeded": {
+                    "$ref": "#/components/examples/CreditQuotaExceededError"
+                  },
+                  "credit_quota_cooldown": {
+                    "$ref": "#/components/examples/CreditQuotaCooldownError"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 429
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauthAuthCode": [
+              "asset:read",
+              "asset:write"
+            ]
+          }
+        ],
+        "x-rate-limit-per-client-user": 20
+      }
+    },
+    "/v1/image-transformations/{jobId}": {
+      "get": {
+        "tags": [
+          "image_transformation"
+        ],
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public apps that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGets the result of an image transformation job that was created using the [Create image transformation job API](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/create-image-transformation-job/).\n\nIf the job is successful, the job\u0027s \u0060result\u0060 contains the new image asset produced by the transformations.\n\nYou might need to make multiple requests to this endpoint until you get a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).",
+        "operationId": "GetImageTransformationJob",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "The image transformation job ID.",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetImageTransformationJobResponse"
+                },
+                "examples": {
+                  "in_progress": {
+                    "$ref": "#/components/examples/InProgressImageTransformationJobExample"
+                  },
+                  "success": {
+                    "$ref": "#/components/examples/SuccessImageTransformationJobExample"
+                  },
+                  "failed": {
+                    "$ref": "#/components/examples/FailedImageTransformationJobExample"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "InvalidClientError": {
+                    "$ref": "#/components/examples/InvalidClientError"
+                  },
+                  "InvalidAccessToken": {
+                    "$ref": "#/components/examples/InvalidAccessToken"
+                  },
+                  "MissingClientCredentialsOrBodyAuthError": {
+                    "$ref": "#/components/examples/MissingClientCredentialsOrBodyAuthError"
+                  },
+                  "MalformedAuthorizationHeaderComponents": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderComponents"
+                  },
+                  "MalformedAuthorizationHeaderMode": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderMode"
+                  },
+                  "TokenIntrospectionFailed": {
+                    "$ref": "#/components/examples/TokenIntrospectionFailed"
+                  },
+                  "RevokedAccessToken": {
+                    "$ref": "#/components/examples/RevokedAccessToken"
+                  },
+                  "MissingAuthorizationHeader": {
+                    "$ref": "#/components/examples/MissingAuthorizationHeader"
+                  },
+                  "MalformedAuthorizationHeader": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeader"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 401
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "image_transformation_job_not_found": {
+                    "$ref": "#/components/examples/ImageTransformationJobNotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "TooManyRequestsError": {
+                    "$ref": "#/components/examples/TooManyRequestsError"
+                  },
+                  "ThrottledTooManyRequests": {
+                    "$ref": "#/components/examples/ThrottledTooManyRequests"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 429
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauthAuthCode": [
+              "asset:read"
+            ]
+          }
+        ],
+        "x-rate-limit-per-client-user": 120
       }
     },
     "/v1/merges": {
@@ -8554,6 +8860,7 @@
         "enum": [
           "analytics",
           "autofill",
+          "background_removal",
           "brand_template",
           "export_png_transparency",
           "image_to_design_imports",
@@ -8565,7 +8872,8 @@
         "description": "Some APIs are annotated with required capabilities. These endpoints require the user to\npossess the required capabilities in order to be called successfully.",
         "x-enum-descriptions": [
           "Capability required to call the Design analytics APIs. Users that are members of a [Canva Enterprise](https://www.canva.com/enterprise/) organization have this capability.",
-          "Capability required to call autofill APIs Users that are members of a [Canva Enterprise](https://www.canva.com/enterprise/) organization have this capability.",
+          "Capability required to call autofill APIs. Users on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise) have this capability.",
+          "Capability required to apply the \u0060background_removal\u0060 transformation using the Image transformation APIs. Users on a Canva plan with premium features (such as Canva Pro) have this capability.",
           "Capability required to use brand template APIs. Users on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise) have this capability.",
           "Capability required to export designs in PNG with a transparent background. Users on a paid Canva plan (such as Canva Pro) have this capability.",
           "Capability required to call the Image to Design Import APIs. Users whose [team permission settings](https://www.canva.com/en_au/help/setting-up-team-permissions/) allow \u0022[Magic Layers](https://www.canva.com/magic-layers/)\u0022 have this capability.",
@@ -8583,6 +8891,10 @@
             {
               "value": "autofill",
               "name": "Autofill"
+            },
+            {
+              "value": "background_removal",
+              "name": "BackgroundRemoval"
             },
             {
               "value": "brand_template",
@@ -14089,6 +14401,208 @@
         },
         "description": "Metadata for the Canva Group, consisting of the Group ID,\ndisplay name, and whether it\u0027s an external Canva Group."
       },
+      "CreateImageTransformationJobRequest": {
+        "required": [
+          "asset_id",
+          "transformations"
+        ],
+        "type": "object",
+        "properties": {
+          "asset_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+            "type": "string",
+            "description": "The ID of the source asset to transform. The asset must be an image asset;\nreferencing any other asset type (such as a video) fails with an\n\u0060unsupported_content_type\u0060 error.\n\nThe asset must also have finished uploading. An asset that is still uploading has no\nimage to transform yet and fails with an \u0060asset_not_ready\u0060 error. If you\u0027ve just\ncreated the asset, poll its upload job \u2014 for example with the\n[Get asset upload job](https://www.canva.dev/docs/apps/rest-apis/reference/assets/get-asset-upload-job/)\nendpoint \u2014 until it returns a \u0060success\u0060 status before starting a transformation.",
+            "example": "Msd59349ff"
+          },
+          "name": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "description": "A name for the new image asset that the job produces. Canva doesn\u0027t localize this\nvalue, so provide a name in the user\u0027s language. When omitted, the new asset inherits\nthe name of the source asset.",
+            "example": "My Awesome Upload with the background removed"
+          },
+          "transformations": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageTransformationType"
+            },
+            "description": "The transformations to apply, in order. Must contain at least one transformation.\nEach transformation is stacked on the result of the previous one. The job\u0027s result\nis a single new image asset with all of the transformations applied; intermediate\nresults are not returned."
+          }
+        }
+      },
+      "ImageTransformationType": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/BackgroundRemovalImageTransformation"
+          }
+        ],
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/BackgroundRemovalType"
+          }
+        },
+        "description": "A transformation to apply to the image asset. Each transformation type is identified\nby its \u0060type\u0060 value and declares its own parameters; \u0060background_removal\u0060 takes no\nparameters.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "background_removal": "#/components/schemas/BackgroundRemovalImageTransformation",
+            "BackgroundRemovalImageTransformation": "#/components/schemas/BackgroundRemovalImageTransformation"
+          }
+        }
+      },
+      "BackgroundRemovalImageTransformation": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/BackgroundRemovalType"
+          }
+        },
+        "description": "Removes the background from an image, keeping the foreground subject. The resulting\nimage has a transparent background. This transformation takes no parameters.\n\nThe output image is limited to a maximum of 10 megapixels. If the source image is\nlarger, the output image is scaled down to stay within this limit.\n\nRequires the user to have the \u0060background_removal\u0060 capability. To check this before\ncreating a job, use the\n[Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/)."
+      },
+      "CreateImageTransformationJobResponse": {
+        "required": [
+          "job"
+        ],
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/ImageTransformationJob"
+          }
+        }
+      },
+      "GetImageTransformationJobResponse": {
+        "required": [
+          "job"
+        ],
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/ImageTransformationJob"
+          }
+        }
+      },
+      "ImageTransformationJob": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+            "type": "string",
+            "description": "The image transformation job ID. Only present if the job status is \u0060in_progress\u0060.\nA job that completes immediately returns its \u0060result\u0060 or \u0060error\u0060 directly and has\nno ID to poll."
+          },
+          "status": {
+            "$ref": "#/components/schemas/ImageTransformationJobStatus"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ImageTransformationJobResult"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ImageTransformationError"
+          }
+        },
+        "description": "Details about the image transformation job. If the job status is \u0060success\u0060, the job\u0027s\n\u0060result\u0060 is present."
+      },
+      "ImageTransformationJobStatus": {
+        "enum": [
+          "failed",
+          "in_progress",
+          "success"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The status of the image transformation job. A newly created job will be \u0060in_progress\u0060\nand will eventually become \u0060success\u0060 or \u0060failed\u0060. A job may also complete\nimmediately, returning \u0060success\u0060 or \u0060failed\u0060 from job creation. If the status is\n\u0060success\u0060, the job\u0027s \u0060result\u0060 is present.",
+        "x-ms-enum": {
+          "name": "ImageTransformationJobStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "failed",
+              "name": "Failed"
+            },
+            {
+              "value": "in_progress",
+              "name": "InProgress"
+            },
+            {
+              "value": "success",
+              "name": "Success"
+            }
+          ]
+        }
+      },
+      "ImageTransformationJobResult": {
+        "required": [
+          "asset"
+        ],
+        "type": "object",
+        "properties": {
+          "asset": {
+            "$ref": "#/components/schemas/ImageTransformationJobResultAsset"
+          }
+        },
+        "description": "Result of the image transformation job. Only present if the job status is \u0060success\u0060."
+      },
+      "ImageTransformationErrorCode": {
+        "enum": [
+          "no_foreground_found",
+          "quota_exceeded",
+          "internal_error"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Error code indicating what went wrong with the image transformation.",
+        "x-enum-descriptions": [
+          "No foreground subject was found in the image, so there is no background to remove.",
+          "The user has run out of quota, such as their AI credit quota. The quota isn\u0027t necessarily specific to the requested transformations.",
+          "An unexpected error occurred during the transformation."
+        ],
+        "x-ms-enum": {
+          "name": "ImageTransformationErrorCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "no_foreground_found",
+              "name": "NoForegroundFound"
+            },
+            {
+              "value": "quota_exceeded",
+              "name": "QuotaExceeded"
+            },
+            {
+              "value": "internal_error",
+              "name": "InternalError"
+            }
+          ]
+        }
+      },
+      "ImageTransformationError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ImageTransformationErrorCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of what went wrong."
+          }
+        },
+        "description": "If the image transformation job fails, this object provides details about the error.\nOnly present if the job status is \u0060failed\u0060."
+      },
       "JsonWebKeySet": {
         "required": [
           "keys"
@@ -15940,6 +16454,65 @@
           }
         }
       },
+      "ImageTransformationJobResultAsset": {
+        "required": [
+          "created_at",
+          "id",
+          "name",
+          "owner",
+          "tags",
+          "type",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/AssetType"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the asset.",
+            "example": "Msd59349ff"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the asset.",
+            "example": "My Awesome Upload"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/)."
+          },
+          "import_status": {
+            "$ref": "#/components/schemas/ImportStatus"
+          },
+          "created_at": {
+            "type": "integer",
+            "description": "When the asset was added to Canva, as a Unix timestamp (in seconds since the Unix\nEpoch).",
+            "format": "int64",
+            "example": 1377396000
+          },
+          "updated_at": {
+            "type": "integer",
+            "description": "When the asset was last updated in Canva, as a Unix timestamp (in seconds since the\nUnix Epoch).",
+            "format": "int64",
+            "example": 1692928800
+          },
+          "owner": {
+            "$ref": "#/components/schemas/TeamUserSummary"
+          },
+          "thumbnail": {
+            "$ref": "#/components/schemas/Thumbnail"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/AssetMetadata"
+          }
+        },
+        "description": "The new image asset produced by applying all of the requested transformations."
+      },
       "CreditQuotaErrorAllOf2QuotaUsage": {
         "required": [
           "is_admin"
@@ -17539,6 +18112,25 @@
             {
               "value": "folder",
               "name": "Folder"
+            }
+          ]
+        }
+      },
+      "BackgroundRemovalType": {
+        "enum": [
+          "background_removal"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The type of transformation to apply. Currently, the only supported value is\n\u0060background_removal\u0060.",
+        "example": "background_removal",
+        "x-ms-enum": {
+          "name": "BackgroundRemovalType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "background_removal",
+              "name": "BackgroundRemoval"
             }
           ]
         }
@@ -19740,6 +20332,86 @@
           "message": "Not allowed to access folder item \u0027{itemId}\u0027"
         }
       },
+      "InProgressImageTransformationJobExample": {
+        "summary": "In progress job",
+        "value": {
+          "job": {
+            "id": "450a76e7-f96f-43ae-9c37-0e1ce492ac72",
+            "status": "in_progress"
+          }
+        }
+      },
+      "SuccessImageTransformationJobExample": {
+        "summary": "Successfully completed job",
+        "value": {
+          "job": {
+            "status": "success",
+            "result": {
+              "asset": {
+                "id": "Msd59349ff",
+                "type": "image",
+                "name": "My Awesome Upload with the background removed",
+                "tags": [
+                  "image",
+                  "holiday",
+                  "best day ever"
+                ],
+                "owner": {
+                  "user_id": "oU123456AbCdE",
+                  "team_id": "oB123456AbCdE"
+                },
+                "created_at": 1377396000,
+                "updated_at": 1692928800,
+                "thumbnail": {
+                  "width": 595,
+                  "height": 335,
+                  "url": "https://document-export.canva.com/Vczz9/zF9vzVtdADc/2/thumbnail/0001.png?\u003Cquery-string\u003E"
+                }
+              }
+            }
+          }
+        }
+      },
+      "FailedImageTransformationJobExample": {
+        "summary": "Failed job",
+        "value": {
+          "job": {
+            "status": "failed",
+            "error": {
+              "code": "no_foreground_found",
+              "message": "No foreground subject was found in the image, so there is no background to remove."
+            }
+          }
+        }
+      },
+      "UnsupportedAssetTypeError": {
+        "summary": "The asset is not an image asset",
+        "value": {
+          "code": "unsupported_content_type",
+          "message": "Asset is not an image asset: {assetId}"
+        }
+      },
+      "AssetNotReadyError": {
+        "summary": "The asset is still being uploaded, so it can\u0027t be transformed yet",
+        "value": {
+          "code": "asset_not_ready",
+          "message": "Asset is still being uploaded and has no image to transform yet: {assetId}"
+        }
+      },
+      "ImageTransformationNotEnabledError": {
+        "summary": "Image transformation is not enabled for this client",
+        "value": {
+          "code": "permission_denied",
+          "message": "Image transformation is not enabled"
+        }
+      },
+      "ImageTransformationJobNotFoundError": {
+        "summary": "The image transformation job was not found",
+        "value": {
+          "code": "not_found",
+          "message": "Image transformation job not found: {jobId}"
+        }
+      },
       "InvalidMergeJobTypeError": {
         "summary": "Invalid merge job type",
         "value": {
@@ -20197,6 +20869,9 @@
     },
     {
       "name": "folder"
+    },
+    {
+      "name": "image_transformation"
     },
     {
       "name": "merge"

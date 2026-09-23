@@ -26,6 +26,7 @@ tags:
 - name: design_import
 - name: export
 - name: folder
+- name: image_transformation
 - name: merge
 - name: oauth
 - name: oidc
@@ -1134,9 +1135,7 @@ paths:
     post:
       description: |-
         <Availability>
-        To use this API, your app must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.
-
-        Users on Canva paid plans have access to a limited trial while your app is under development. For more information, see [Trial quotas](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#trial-quotas).
+        To use this API, your app must act on behalf of a user that's on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise).
         </Availability>
 
         Starts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the `type` field to choose the source of the design:
@@ -1242,9 +1241,7 @@ paths:
     get:
       description: |-
         <Availability>
-        To use this API, your app must act on behalf of a user who is a member of a [Canva Enterprise](https://www.canva.com/enterprise/) organization.
-
-        Users on Canva paid plans have access to a limited trial while your app is under development. For more information, see [Trial quotas](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#trial-quotas).
+        To use this API, your app must act on behalf of a user that's on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise).
         </Availability>
 
         Get the result of a design autofill job that was created using the [Create design autofill job
@@ -1579,6 +1576,7 @@ paths:
         - Images (which you can autofill with an image or a video asset)
         - Text
         - Charts
+        - Sheets
 
         You can autofill a brand template using the [Create a design autofill job
         API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).
@@ -2644,6 +2642,7 @@ paths:
         - Images (which you can autofill with an image or a video asset)
         - Text
         - Charts
+        - Sheets
 
         Use the returned field names and types to build the `data` payload for the
         [Create a design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/)
@@ -4125,6 +4124,236 @@ paths:
       tags:
       - folder
       x-rate-limit-per-client-user: 20
+  /v1/image-transformations:
+    post:
+      description: |-
+        <Warning>
+
+        This API is currently provided as a preview. Be aware of the following:
+
+        - There might be unannounced breaking changes.
+        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).
+        - Public apps that use preview APIs will not pass the review process, and can't be made available to all Canva users.
+
+        </Warning>
+
+        Starts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to apply one or more transformations to an image asset. A successful job produces a single new image asset with all of the requested transformations applied. The source asset isn't modified, and intermediate results aren't returned.
+
+        The request requires the ID of the source asset and at least one transformation. The source asset must be an image asset, such as one created using the [Asset upload APIs](https://www.canva.dev/docs/apps/rest-apis/reference/assets/).
+
+        Transformations are applied in the order provided, with each one stacked on the result of the previous one.
+
+        Starting a job consumes the user's [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a `429` error with the `credit_quota_exceeded` code. Polling for the result of a job using the [Get image transformation job API](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/get-image-transformation-job/) doesn't consume any of the allowance.
+
+        <Note>
+
+        For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of image transformation jobs created with this API using the [Get image transformation job API](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/get-image-transformation-job/).
+
+        </Note>
+      operationId: createImageTransformationJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateImageTransformationJobRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                in_progress:
+                  $ref: '#/components/examples/InProgressImageTransformationJobExample'
+                success:
+                  $ref: '#/components/examples/SuccessImageTransformationJobExample'
+                failed:
+                  $ref: '#/components/examples/FailedImageTransformationJobExample'
+              schema:
+                $ref: '#/components/schemas/CreateImageTransformationJobResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                bad_request_field:
+                  $ref: '#/components/examples/BadRequestFieldError'
+                unsupported_content_type:
+                  $ref: '#/components/examples/UnsupportedAssetTypeError'
+                asset_not_ready:
+                  $ref: '#/components/examples/AssetNotReadyError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              examples:
+                InvalidClientError:
+                  $ref: '#/components/examples/InvalidClientError'
+                InvalidAccessToken:
+                  $ref: '#/components/examples/InvalidAccessToken'
+                MissingClientCredentialsOrBodyAuthError:
+                  $ref: '#/components/examples/MissingClientCredentialsOrBodyAuthError'
+                MalformedAuthorizationHeaderComponents:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderComponents'
+                MalformedAuthorizationHeaderMode:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderMode'
+                TokenIntrospectionFailed:
+                  $ref: '#/components/examples/TokenIntrospectionFailed'
+                RevokedAccessToken:
+                  $ref: '#/components/examples/RevokedAccessToken'
+                MissingAuthorizationHeader:
+                  $ref: '#/components/examples/MissingAuthorizationHeader'
+                MalformedAuthorizationHeader:
+                  $ref: '#/components/examples/MalformedAuthorizationHeader'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+          x-http-status-code: 401
+        "403":
+          content:
+            application/json:
+              examples:
+                image_transformation_not_enabled:
+                  $ref: '#/components/examples/ImageTransformationNotEnabledError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              examples:
+                asset_not_found:
+                  $ref: '#/components/examples/AssetNotFoundError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              examples:
+                credit_quota_exceeded:
+                  $ref: '#/components/examples/CreditQuotaExceededError'
+                credit_quota_cooldown:
+                  $ref: '#/components/examples/CreditQuotaCooldownError'
+              schema:
+                $ref: '#/components/schemas/CreditQuotaError'
+          description: Credit Quota Exceeded
+          x-http-status-code: 429
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      security:
+      - oauthAuthCode:
+        - asset:read
+        - asset:write
+      tags:
+      - image_transformation
+      x-rate-limit-per-client-user: 20
+  /v1/image-transformations/{jobId}:
+    get:
+      description: |-
+        <Warning>
+
+        This API is currently provided as a preview. Be aware of the following:
+
+        - There might be unannounced breaking changes.
+        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).
+        - Public apps that use preview APIs will not pass the review process, and can't be made available to all Canva users.
+
+        </Warning>
+
+        Gets the result of an image transformation job that was created using the [Create image transformation job API](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/create-image-transformation-job/).
+
+        If the job is successful, the job's `result` contains the new image asset produced by the transformations.
+
+        You might need to make multiple requests to this endpoint until you get a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).
+      operationId: getImageTransformationJob
+      parameters:
+      - description: The image transformation job ID.
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                in_progress:
+                  $ref: '#/components/examples/InProgressImageTransformationJobExample'
+                success:
+                  $ref: '#/components/examples/SuccessImageTransformationJobExample'
+                failed:
+                  $ref: '#/components/examples/FailedImageTransformationJobExample'
+              schema:
+                $ref: '#/components/schemas/GetImageTransformationJobResponse'
+          description: OK
+        "401":
+          content:
+            application/json:
+              examples:
+                InvalidClientError:
+                  $ref: '#/components/examples/InvalidClientError'
+                InvalidAccessToken:
+                  $ref: '#/components/examples/InvalidAccessToken'
+                MissingClientCredentialsOrBodyAuthError:
+                  $ref: '#/components/examples/MissingClientCredentialsOrBodyAuthError'
+                MalformedAuthorizationHeaderComponents:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderComponents'
+                MalformedAuthorizationHeaderMode:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderMode'
+                TokenIntrospectionFailed:
+                  $ref: '#/components/examples/TokenIntrospectionFailed'
+                RevokedAccessToken:
+                  $ref: '#/components/examples/RevokedAccessToken'
+                MissingAuthorizationHeader:
+                  $ref: '#/components/examples/MissingAuthorizationHeader'
+                MalformedAuthorizationHeader:
+                  $ref: '#/components/examples/MalformedAuthorizationHeader'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+          x-http-status-code: 401
+        "404":
+          content:
+            application/json:
+              examples:
+                image_transformation_job_not_found:
+                  $ref: '#/components/examples/ImageTransformationJobNotFoundError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              examples:
+                TooManyRequestsError:
+                  $ref: '#/components/examples/TooManyRequestsError'
+                ThrottledTooManyRequests:
+                  $ref: '#/components/examples/ThrottledTooManyRequests'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too Many Requests
+          x-http-status-code: 429
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      security:
+      - oauthAuthCode:
+        - asset:read
+      tags:
+      - image_transformation
+      x-rate-limit-per-client-user: 120
   /v1/merges:
     post:
       description: |-
@@ -6055,6 +6284,65 @@ components:
       value:
         code: permission_denied
         message: "Not allowed to access folder item '{itemId}'"
+    InProgressImageTransformationJobExample:
+      summary: In progress job
+      value:
+        job:
+          id: 450a76e7-f96f-43ae-9c37-0e1ce492ac72
+          status: in_progress
+    SuccessImageTransformationJobExample:
+      summary: Successfully completed job
+      value:
+        job:
+          status: success
+          result:
+            asset:
+              id: Msd59349ff
+              type: image
+              name: My Awesome Upload with the background removed
+              tags:
+              - image
+              - holiday
+              - best day ever
+              owner:
+                user_id: oU123456AbCdE
+                team_id: oB123456AbCdE
+              created_at: 1377396000
+              updated_at: 1692928800
+              thumbnail:
+                width: 595
+                height: 335
+                url: https://document-export.canva.com/Vczz9/zF9vzVtdADc/2/thumbnail/0001.png?<query-string>
+    FailedImageTransformationJobExample:
+      summary: Failed job
+      value:
+        job:
+          status: failed
+          error:
+            code: no_foreground_found
+            message: "No foreground subject was found in the image, so there is no\
+              \ background to remove."
+    UnsupportedAssetTypeError:
+      summary: The asset is not an image asset
+      value:
+        code: unsupported_content_type
+        message: "Asset is not an image asset: {assetId}"
+    AssetNotReadyError:
+      summary: "The asset is still being uploaded, so it can't be transformed yet"
+      value:
+        code: asset_not_ready
+        message: "Asset is still being uploaded and has no image to transform yet:\
+          \ {assetId}"
+    ImageTransformationNotEnabledError:
+      summary: Image transformation is not enabled for this client
+      value:
+        code: permission_denied
+        message: Image transformation is not enabled
+    ImageTransformationJobNotFoundError:
+      summary: The image transformation job was not found
+      value:
+        code: not_found
+        message: "Image transformation job not found: {jobId}"
     InvalidMergeJobTypeError:
       summary: Invalid merge job type
       value:
@@ -8332,6 +8620,7 @@ components:
       enum:
       - analytics
       - autofill
+      - background_removal
       - brand_template
       - export_png_transparency
       - image_to_design_imports
@@ -8342,8 +8631,12 @@ components:
       - "Capability required to call the Design analytics APIs. Users that are members\
         \ of a [Canva Enterprise](https://www.canva.com/enterprise/) organization\
         \ have this capability."
-      - "Capability required to call autofill APIs Users that are members of a [Canva\
-        \ Enterprise](https://www.canva.com/enterprise/) organization have this capability."
+      - "Capability required to call autofill APIs. Users on a Canva plan with access\
+        \ to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise) have this\
+        \ capability."
+      - Capability required to apply the `background_removal` transformation using
+        the Image transformation APIs. Users on a Canva plan with premium features
+        (such as Canva Pro) have this capability.
       - "Capability required to use brand template APIs. Users on a Canva plan with\
         \ access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise)\
         \ have this capability."
@@ -11970,6 +12263,165 @@ components:
       required:
       - external
       - id
+      type: object
+    CreateImageTransformationJobRequest:
+      properties:
+        asset_id:
+          description: |-
+            The ID of the source asset to transform. The asset must be an image asset;
+            referencing any other asset type (such as a video) fails with an
+            `unsupported_content_type` error.
+
+            The asset must also have finished uploading. An asset that is still uploading has no
+            image to transform yet and fails with an `asset_not_ready` error. If you've just
+            created the asset, poll its upload job — for example with the
+            [Get asset upload job](https://www.canva.dev/docs/apps/rest-apis/reference/assets/get-asset-upload-job/)
+            endpoint — until it returns a `success` status before starting a transformation.
+          example: Msd59349ff
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        name:
+          description: |-
+            A name for the new image asset that the job produces. Canva doesn't localize this
+            value, so provide a name in the user's language. When omitted, the new asset inherits
+            the name of the source asset.
+          example: My Awesome Upload with the background removed
+          maxLength: 255
+          minLength: 1
+          type: string
+        transformations:
+          description: |-
+            The transformations to apply, in order. Must contain at least one transformation.
+            Each transformation is stacked on the result of the previous one. The job's result
+            is a single new image asset with all of the transformations applied; intermediate
+            results are not returned.
+          items:
+            $ref: '#/components/schemas/ImageTransformationType'
+          maxItems: 20
+          minItems: 1
+          type: array
+      required:
+      - asset_id
+      - transformations
+      type: object
+    ImageTransformationType:
+      description: |-
+        A transformation to apply to the image asset. Each transformation type is identified
+        by its `type` value and declares its own parameters; `background_removal` takes no
+        parameters.
+      discriminator:
+        mapping:
+          background_removal: '#/components/schemas/BackgroundRemovalImageTransformation'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/BackgroundRemovalImageTransformation'
+    BackgroundRemovalImageTransformation:
+      description: |-
+        Removes the background from an image, keeping the foreground subject. The resulting
+        image has a transparent background. This transformation takes no parameters.
+
+        The output image is limited to a maximum of 10 megapixels. If the source image is
+        larger, the output image is scaled down to stay within this limit.
+
+        Requires the user to have the `background_removal` capability. To check this before
+        creating a job, use the
+        [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).
+      properties:
+        type:
+          description: |-
+            The type of transformation to apply. Currently, the only supported value is
+            `background_removal`.
+          enum:
+          - background_removal
+          example: background_removal
+          type: string
+      required:
+      - type
+      type: object
+    CreateImageTransformationJobResponse:
+      properties:
+        job:
+          $ref: '#/components/schemas/ImageTransformationJob'
+      required:
+      - job
+      type: object
+    GetImageTransformationJobResponse:
+      properties:
+        job:
+          $ref: '#/components/schemas/ImageTransformationJob'
+      required:
+      - job
+      type: object
+    ImageTransformationJob:
+      description: |-
+        Details about the image transformation job. If the job status is `success`, the job's
+        `result` is present.
+      properties:
+        id:
+          description: |-
+            The image transformation job ID. Only present if the job status is `in_progress`.
+            A job that completes immediately returns its `result` or `error` directly and has
+            no ID to poll.
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        status:
+          $ref: '#/components/schemas/ImageTransformationJobStatus'
+        result:
+          $ref: '#/components/schemas/ImageTransformationJobResult'
+        error:
+          $ref: '#/components/schemas/ImageTransformationError'
+      required:
+      - status
+      type: object
+    ImageTransformationJobStatus:
+      description: |-
+        The status of the image transformation job. A newly created job will be `in_progress`
+        and will eventually become `success` or `failed`. A job may also complete
+        immediately, returning `success` or `failed` from job creation. If the status is
+        `success`, the job's `result` is present.
+      enum:
+      - failed
+      - in_progress
+      - success
+      type: string
+    ImageTransformationJobResult:
+      description: Result of the image transformation job. Only present if the job
+        status is `success`.
+      properties:
+        asset:
+          allOf:
+          - $ref: '#/components/schemas/Asset'
+          description: The new image asset produced by applying all of the requested
+            transformations.
+      required:
+      - asset
+      type: object
+    ImageTransformationErrorCode:
+      description: Error code indicating what went wrong with the image transformation.
+      enum:
+      - no_foreground_found
+      - quota_exceeded
+      - internal_error
+      type: string
+      x-enum-descriptions:
+      - "No foreground subject was found in the image, so there is no background to\
+        \ remove."
+      - "The user has run out of quota, such as their AI credit quota. The quota isn't\
+        \ necessarily specific to the requested transformations."
+      - An unexpected error occurred during the transformation.
+    ImageTransformationError:
+      description: |-
+        If the image transformation job fails, this object provides details about the error.
+        Only present if the job status is `failed`.
+      properties:
+        code:
+          $ref: '#/components/schemas/ImageTransformationErrorCode'
+        message:
+          description: A human-readable description of what went wrong.
+          type: string
+      required:
+      - code
+      - message
       type: object
     JsonWebKeySet:
       properties:

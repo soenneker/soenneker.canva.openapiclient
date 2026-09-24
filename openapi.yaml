@@ -1580,8 +1580,6 @@ paths:
 
         You can autofill a brand template using the [Create a design autofill job
         API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).
-
-        WARNING: Chart data fields and autofilling a video are [preview features](https://www.canva.dev/docs/apps/rest-apis/#preview-apis). There might be unannounced breaking changes to these features which won't produce a new API version.
       operationId: getBrandTemplateDataset
       parameters:
       - description: The brand template ID.
@@ -5347,7 +5345,7 @@ components:
               updated_at: 1586734043
             trial_information:
               uses_remaining: 2
-              upgrade_url: https://www.canva.com/enterprise/
+              upgrade_url: https://www.canva.com/pro/
     FailedAutofillJobExample:
       summary: Failed job
       value:
@@ -5387,7 +5385,7 @@ components:
       value:
         code: permission_denied
         message: "Access the autofill feature and other powerful design tools by upgrading\
-          \ to Enterprise here: {upgradeUrl}"
+          \ your Canva plan here: {upgradeUrl}"
     DesignTitleInvalidError:
       summary: The design title specified in the request is not valid.
       value:
@@ -8426,9 +8424,10 @@ components:
         WARNING: Trials and trial information are a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis).
         There might be unannounced breaking changes to this feature which won't produce a new API version.
 
-        Trial information for non-enterprise users. Non-enterprise users have a limited number of
-        autofill uses. Once the trial is exhausted, users must upgrade to
-        [Canva Enterprise](https://www.canva.com/enterprise/) to continue using the Autofill API.
+        Trial information for users on a Canva plan that doesn't include autofill access. These
+        users have a limited number of autofill uses. Once the trial is exhausted, users must
+        upgrade their Canva plan (such as to Canva Pro, Canva Teams, or Canva Enterprise) to
+        continue using the Autofill API.
       properties:
         uses_remaining:
           description: The number of uses remaining in the free trial.
@@ -8437,9 +8436,9 @@ components:
           minimum: 0
           type: integer
         upgrade_url:
-          description: The URL for a user to upgrade their Canva account to Canva
-            Enterprise.
-          example: https://www.canva.com/enterprise/
+          description: The URL for a user to upgrade their Canva account to a plan
+            with autofill access.
+          example: https://www.canva.com/pro/
           type: string
       required:
       - upgrade_url

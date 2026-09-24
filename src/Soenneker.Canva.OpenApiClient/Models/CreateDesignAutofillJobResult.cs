@@ -23,7 +23,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary Design { get; set; }
 #endif
-        /// <summary>WARNING: Trials and trial information are a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis).There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.Trial information for non-enterprise users. Non-enterprise users have a limited number ofautofill uses. Once the trial is exhausted, users must upgrade to[Canva Enterprise](https://www.canva.com/enterprise/) to continue using the Autofill API.</summary>
+        /// <summary>WARNING: Trials and trial information are a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis).There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.Trial information for users on a Canva plan that doesn&apos;t include autofill access. Theseusers have a limited number of autofill uses. Once the trial is exhausted, users mustupgrade their Canva plan (such as to Canva Pro, Canva Teams, or Canva Enterprise) tocontinue using the Autofill API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Canva.OpenApiClient.Models.AutofillTrialInformation? TrialInformation { get; set; }

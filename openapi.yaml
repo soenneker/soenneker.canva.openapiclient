@@ -23,6 +23,7 @@ tags:
 - name: comment
 - name: connect
 - name: design
+- name: design_generation
 - name: design_import
 - name: export
 - name: folder
@@ -1273,15 +1274,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetDesignAutofillJobResponse'
           description: OK
-        "404":
-          content:
-            application/json:
-              examples:
-                design_autofill_job_not_found:
-                  $ref: '#/components/examples/DesignAutofillJobNotFoundError'
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Not Found
         "403":
           content:
             application/json:
@@ -1291,6 +1283,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Forbidden
+        "404":
+          content:
+            application/json:
+              examples:
+                design_autofill_job_not_found:
+                  $ref: '#/components/examples/DesignAutofillJobNotFoundError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
         default:
           content:
             application/json:
@@ -2885,6 +2886,267 @@ paths:
       tags:
       - design
       x-rate-limit-per-client-user: 100
+  /v1/generations:
+    post:
+      description: |-
+        <Warning>
+
+        This API is currently provided as a preview. Be aware of the following:
+
+        - There might be unannounced breaking changes.
+        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).
+        - Public integrations that use preview APIs will not pass the review process, and can't be made available to all Canva users.
+
+        </Warning>
+
+        Starts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief and optional images or brand templates. A successful job includes metadata for the generated design, which is saved to the user's Canva account.
+
+        You can generate a document, presentation, or whiteboard. For presentations, you can also provide an outline of the slides to generate. Only image and brand template attachments are supported.
+
+        Requires the `design_generation` capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).
+
+        Starting a job consumes the user's [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a `429` error with the `credit_quota_exceeded` code. Polling for the result of a job doesn't consume any of the allowance.
+
+        <Note>
+
+        For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job-v2/).
+
+        </Note>
+      operationId: createDesignGenerationJobV2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDesignGenerationJobRequestV2'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                accepted:
+                  $ref: '#/components/examples/AcceptedDesignGenerationJobExampleV2'
+              schema:
+                $ref: '#/components/schemas/CreateDesignGenerationJobResponseV2'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                design_generation_invalid_request_v2:
+                  $ref: '#/components/examples/InvalidDesignGenerationRequestErrorV2'
+                design_generation_invalid_attachment_v2:
+                  $ref: '#/components/examples/InvalidDesignGenerationInputErrorV2'
+                design_generation_too_many_inputs_v2:
+                  $ref: '#/components/examples/TooManyDesignGenerationInputsErrorV2'
+                design_generation_unsupported_type_v2:
+                  $ref: '#/components/examples/UnsupportedDesignGenerationTypeErrorV2'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              examples:
+                InvalidClientError:
+                  $ref: '#/components/examples/InvalidClientError'
+                InvalidAccessToken:
+                  $ref: '#/components/examples/InvalidAccessToken'
+                MissingClientCredentialsOrBodyAuthError:
+                  $ref: '#/components/examples/MissingClientCredentialsOrBodyAuthError'
+                MalformedAuthorizationHeaderComponents:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderComponents'
+                MalformedAuthorizationHeaderMode:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderMode'
+                TokenIntrospectionFailed:
+                  $ref: '#/components/examples/TokenIntrospectionFailed'
+                RevokedAccessToken:
+                  $ref: '#/components/examples/RevokedAccessToken'
+                MissingAuthorizationHeader:
+                  $ref: '#/components/examples/MissingAuthorizationHeader'
+                MalformedAuthorizationHeader:
+                  $ref: '#/components/examples/MalformedAuthorizationHeader'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+          x-http-status-code: 401
+        "403":
+          content:
+            application/json:
+              examples:
+                design_generation_generation_not_available_v2:
+                  $ref: '#/components/examples/DesignGenerationNotAvailableErrorV2'
+                design_generation_attachment_forbidden_v2:
+                  $ref: '#/components/examples/DesignGenerationInputForbiddenErrorV2'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              examples:
+                design_generation_attachment_not_found_v2:
+                  $ref: '#/components/examples/DesignGenerationInputNotFoundErrorV2'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              examples:
+                credit_quota_exceeded:
+                  $ref: '#/components/examples/CreditQuotaExceededError'
+                credit_quota_cooldown:
+                  $ref: '#/components/examples/CreditQuotaCooldownError'
+              schema:
+                $ref: '#/components/schemas/CreditQuotaError'
+          description: Credit Quota Exceeded
+          x-http-status-code: 429
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      security:
+      - oauthAuthCode:
+        - design:content:write
+      tags:
+      - design_generation
+      x-rate-limit-per-client-user: 20
+      x-required-capabilities:
+      - design_generation
+  /v1/generations/{jobId}:
+    get:
+      description: |-
+        <Warning>
+
+        This API is currently provided as a preview. Be aware of the following:
+
+        - There might be unannounced breaking changes.
+        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).
+        - Public integrations that use preview APIs will not pass the review process, and can't be made available to all Canva users.
+
+        </Warning>
+
+        Gets the status and result of a design generation job created using the [Create design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job-v2/).
+
+        You might need to make multiple requests until the job has a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).
+
+        Only the user and integration that created the job can retrieve it, and the user must be in the same team. Jobs expire 24 hours after creation.
+
+        Polling doesn't consume the user's [AI credit allowance](https://www.canva.com/help/ai-access/). Reaching the AI allowance limit after job creation doesn't prevent retrieving the result.
+
+        Requires the `design_generation` capability.
+      operationId: getDesignGenerationJobV2
+      parameters:
+      - description: The public design generation job ID.
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          example: f81b26fd-a33d-4c2d-9e8c-4a7aca798b17
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                in_progress:
+                  $ref: '#/components/examples/InProgressDesignGenerationJobExampleV2'
+                success:
+                  $ref: '#/components/examples/SuccessDesignGenerationJobExampleV2'
+                content_not_allowed:
+                  $ref: '#/components/examples/ContentNotAllowedDesignGenerationJobExampleV2'
+                failed:
+                  $ref: '#/components/examples/FailedDesignGenerationJobExampleV2'
+              schema:
+                $ref: '#/components/schemas/GetDesignGenerationJobResponseV2'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                design_generation_invalid_job_id_v2:
+                  $ref: '#/components/examples/InvalidDesignGenerationJobIdErrorV2'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              examples:
+                InvalidClientError:
+                  $ref: '#/components/examples/InvalidClientError'
+                InvalidAccessToken:
+                  $ref: '#/components/examples/InvalidAccessToken'
+                MissingClientCredentialsOrBodyAuthError:
+                  $ref: '#/components/examples/MissingClientCredentialsOrBodyAuthError'
+                MalformedAuthorizationHeaderComponents:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderComponents'
+                MalformedAuthorizationHeaderMode:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderMode'
+                TokenIntrospectionFailed:
+                  $ref: '#/components/examples/TokenIntrospectionFailed'
+                RevokedAccessToken:
+                  $ref: '#/components/examples/RevokedAccessToken'
+                MissingAuthorizationHeader:
+                  $ref: '#/components/examples/MissingAuthorizationHeader'
+                MalformedAuthorizationHeader:
+                  $ref: '#/components/examples/MalformedAuthorizationHeader'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+          x-http-status-code: 401
+        "403":
+          content:
+            application/json:
+              examples:
+                design_generation_generation_not_available_v2:
+                  $ref: '#/components/examples/DesignGenerationNotAvailableErrorV2'
+                design_generation_job_forbidden_v2:
+                  $ref: '#/components/examples/DesignGenerationJobForbiddenErrorV2'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              examples:
+                design_generation_job_not_found_v2:
+                  $ref: '#/components/examples/DesignGenerationJobNotFoundErrorV2'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              examples:
+                TooManyRequestsError:
+                  $ref: '#/components/examples/TooManyRequestsError'
+                ThrottledTooManyRequests:
+                  $ref: '#/components/examples/ThrottledTooManyRequests'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too Many Requests
+          x-http-status-code: 429
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      security:
+      - oauthAuthCode:
+        - design:content:write
+      tags:
+      - design_generation
+      x-rate-limit-per-client-user: 120
+      x-required-capabilities:
+      - design_generation
   /v1/imports:
     post:
       description: |-
@@ -5735,6 +5997,117 @@ components:
       value:
         code: permission_denied
         message: Not allowed to access design
+    InProgressDesignGenerationJobExampleV2:
+      summary: In-progress design generation job
+      value:
+        job:
+          id: f81b26fd-a33d-4c2d-9e8c-4a7aca798b17
+          status: in_progress
+    SuccessDesignGenerationJobExampleV2:
+      summary: Successfully completed design generation job
+      value:
+        job:
+          id: f81b26fd-a33d-4c2d-9e8c-4a7aca798b17
+          status: success
+          result:
+            design:
+              id: DAFVztcvd9z
+              title: SolarNow Seed Pitch
+              urls:
+                edit_url: https://www.canva.com/api/design/example/edit
+                view_url: https://www.canva.com/api/design/example/view
+              thumbnail:
+                width: 800
+                height: 450
+                url: https://document-export.canva.com/example/thumbnail/0001.png?signature=example
+              created_at: 1788768000
+              updated_at: 1788768000
+              page_count: 3
+        quota_usage:
+          used_percentage: 25
+          resets_at: 1789257600
+          using_bonus_credits: false
+    ContentNotAllowedDesignGenerationJobExampleV2:
+      summary: Design generation rejected by content-safety checks
+      value:
+        job:
+          id: f81b26fd-a33d-4c2d-9e8c-4a7aca798b17
+          status: failed
+          error:
+            code: content_not_allowed
+            message: The design couldn't be generated because the request didn't meet
+              Canva's content guidelines.
+    FailedDesignGenerationJobExampleV2:
+      summary: Design generation failed
+      value:
+        job:
+          id: f81b26fd-a33d-4c2d-9e8c-4a7aca798b17
+          status: failed
+          error:
+            code: generation_failed
+            message: The design couldn't be generated. Please try again.
+    InvalidDesignGenerationRequestErrorV2:
+      summary: The request contains an invalid field
+      value:
+        code: invalid_field
+        message: The presentation outline can only be used with the presentation design
+          type.
+    InvalidDesignGenerationInputErrorV2:
+      summary: An attachment is invalid or unsupported
+      value:
+        code: invalid_field
+        message: The specified attachment must identify a supported image or brand
+          template.
+    TooManyDesignGenerationInputsErrorV2:
+      summary: Too many generation inputs
+      value:
+        code: invalid_field
+        message: At most 20 inputs are allowed across images and brand_templates combined.
+    UnsupportedDesignGenerationTypeErrorV2:
+      summary: The design type isn't supported for generation
+      value:
+        code: invalid_field
+        message: "Design generation supports doc, presentation, and whiteboard presets."
+    DesignGenerationNotAvailableErrorV2:
+      summary: Design generation isn't available to the user
+      value:
+        code: permission_denied
+        message: Design generation isn't available for this user.
+    DesignGenerationInputForbiddenErrorV2:
+      summary: The user can't access an attachment
+      value:
+        code: permission_denied
+        message: The user doesn't have access to the specified attachment.
+    DesignGenerationInputNotFoundErrorV2:
+      summary: An attachment wasn't found
+      value:
+        code: not_found
+        message: The specified attachment wasn't found.
+    InvalidDesignGenerationJobIdErrorV2:
+      summary: The job ID is invalid
+      value:
+        code: invalid_field
+        message: The design generation job ID is invalid.
+    DesignGenerationJobForbiddenErrorV2:
+      summary: The caller didn't create this job
+      value:
+        code: permission_denied
+        message: The user doesn't have access to this design generation job.
+    DesignGenerationJobNotFoundErrorV2:
+      summary: The job wasn't found
+      value:
+        code: not_found
+        message: The design generation job wasn't found.
+    AcceptedDesignGenerationJobExampleV2:
+      summary: Accepted job with available credit quota information
+      value:
+        job:
+          id: f81b26fd-a33d-4c2d-9e8c-4a7aca798b17
+          status: in_progress
+        quota_usage:
+          used_percentage: 25
+          resets_at: 1789257600
+          using_bonus_credits: false
     JobIdInvalidError:
       summary: The job ID is invalid
       value:
@@ -8621,6 +8994,7 @@ components:
       - autofill
       - background_removal
       - brand_template
+      - design_generation
       - export_png_transparency
       - image_to_design_imports
       - resize
@@ -8639,6 +9013,8 @@ components:
       - "Capability required to use brand template APIs. Users on a Canva plan with\
         \ access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise)\
         \ have this capability."
+      - Capability required to call the Design Generation APIs. Users whose feature
+        eligibility and team permissions allow design generation have this capability.
       - Capability required to export designs in PNG with a transparent background.
         Users on a paid Canva plan (such as Canva Pro) have this capability.
       - "Capability required to call the Image to Design Import APIs. Users whose\
@@ -10605,6 +10981,179 @@ components:
       required:
       - type
       type: object
+    CreateDesignGenerationJobRequestV2:
+      description: "The brief, design type, and optional images and brand templates\
+        \ for generation."
+      properties:
+        brief:
+          description: |-
+            A description of the design to generate, including its subject, purpose,
+            required wording, tone, and visual direction.
+          example: "A 3-slide pitch deck for a solar-panel startup with an energetic,\
+            \ modern, blue-and-white visual direction."
+          maxLength: 5000
+          minLength: 1
+          type: string
+        design_type:
+          allOf:
+          - $ref: '#/components/schemas/PresetDesignTypeInput'
+          description: |-
+            The preset Canva design type to generate. Supports `doc`, `presentation`, and
+            `whiteboard`. The `email` preset and custom dimensions are not supported.
+        outline:
+          allOf:
+          - $ref: '#/components/schemas/DesignGenerationOutlineV2'
+          description: |-
+            The slide structure to follow. This property is supported only when
+            `design_type.name` is `presentation`.
+        images:
+          description: The ordered list of Canva image asset IDs to use when generating
+            the design. You can provide at most 20 inputs across `images` and `brand_templates`
+            combined.
+          items:
+            example: Msd59349ff
+            pattern: "^[a-zA-Z0-9_-]{1,50}$"
+            type: string
+          maxItems: 20
+          minItems: 1
+          type: array
+        brand_templates:
+          description: The ordered list of Canva brand template IDs to use when generating
+            the design. The user must have access to each brand template. You can
+            provide at most 20 inputs across `images` and `brand_templates` combined.
+          items:
+            example: EDMzWSwy3BI
+            pattern: "^[a-zA-Z0-9_-]{1,50}$"
+            type: string
+          maxItems: 20
+          minItems: 1
+          type: array
+      required:
+      - brief
+      - design_type
+      type: object
+    DesignGenerationOutlineV2:
+      description: The ordered slide structure for a generated presentation.
+      properties:
+        sections:
+          items:
+            $ref: '#/components/schemas/DesignGenerationOutlineSectionV2'
+          maxItems: 100
+          minItems: 1
+          type: array
+      required:
+      - sections
+      type: object
+    DesignGenerationOutlineSectionV2:
+      description: One slide in a presentation outline.
+      properties:
+        title:
+          description: The slide title.
+          example: The problem
+          maxLength: 255
+          minLength: 1
+          type: string
+        description:
+          description: A short description of what the slide should cover.
+          example: Rooftop solar installations still take more than six weeks to quote.
+          maxLength: 2000
+          minLength: 1
+          type: string
+        points:
+          description: Optional individual points the slide should make.
+          items:
+            maxLength: 1000
+            minLength: 1
+            type: string
+          maxItems: 50
+          type: array
+      required:
+      - title
+      type: object
+    CreateDesignGenerationJobResponseV2:
+      properties:
+        job:
+          $ref: '#/components/schemas/DesignGenerationJobV2'
+        quota_usage:
+          allOf:
+          - $ref: '#/components/schemas/CreditQuotaSuccessInfo'
+          description: Credit quota usage after reserving credits for this job. Omitted
+            if unavailable.
+      required:
+      - job
+      type: object
+    GetDesignGenerationJobResponseV2:
+      properties:
+        job:
+          $ref: '#/components/schemas/DesignGenerationJobV2'
+        quota_usage:
+          allOf:
+          - $ref: '#/components/schemas/CreditQuotaSuccessInfo'
+          description: Credit quota snapshot when available. Polling does not reserve
+            or consume credits; omitted if unavailable.
+      required:
+      - job
+      type: object
+    DesignGenerationJobV2:
+      description: The status and result of a public design generation job.
+      properties:
+        id:
+          description: The public design generation job ID.
+          example: f81b26fd-a33d-4c2d-9e8c-4a7aca798b17
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        status:
+          $ref: '#/components/schemas/DesignGenerationJobStatusV2'
+        result:
+          $ref: '#/components/schemas/DesignGenerationJobResultV2'
+        error:
+          $ref: '#/components/schemas/DesignGenerationJobErrorV2'
+      required:
+      - id
+      - status
+      type: object
+    DesignGenerationJobStatusV2:
+      description: |-
+        The public status of the job. `result` is present only for `success`, and
+        `error` is present only for `failed`.
+      enum:
+      - failed
+      - in_progress
+      - success
+      type: string
+      x-enum-descriptions:
+      - The design couldn't be generated.
+      - The design is still being generated.
+      - The design was generated and saved to the user's Canva account.
+    DesignGenerationJobResultV2:
+      description: Present only when the job status is `success`.
+      properties:
+        design:
+          $ref: '#/components/schemas/DesignSummary'
+      required:
+      - design
+      type: object
+    DesignGenerationJobErrorV2:
+      description: Details about a failed design generation job.
+      properties:
+        code:
+          $ref: '#/components/schemas/DesignGenerationJobErrorCodeV2'
+        message:
+          description: A human-readable description of what went wrong.
+          type: string
+      required:
+      - code
+      - message
+      type: object
+    DesignGenerationJobErrorCodeV2:
+      description: The reason the design generation job failed.
+      enum:
+      - content_not_allowed
+      - generation_failed
+      type: string
+      x-enum-descriptions:
+      - The brief or generated content didn't pass Canva's content-safety checks.
+      - Canva couldn't complete the design generation job.
     DesignImportMetadata:
       description: Metadata about the design that you include as a header parameter
         when importing a design.

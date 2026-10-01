@@ -23,6 +23,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         BrandTemplate,
         #pragma warning restore CS1591
+        [EnumMember(Value = "design_generation")]
+        #pragma warning disable CS1591
+        DesignGeneration,
+        #pragma warning restore CS1591
         [EnumMember(Value = "export_png_transparency")]
         #pragma warning disable CS1591
         ExportPngTransparency,

@@ -12,6 +12,7 @@ using Soenneker.Canva.OpenApiClient.V1.Connect;
 using Soenneker.Canva.OpenApiClient.V1.Designs;
 using Soenneker.Canva.OpenApiClient.V1.Exports;
 using Soenneker.Canva.OpenApiClient.V1.Folders;
+using Soenneker.Canva.OpenApiClient.V1.Generations;
 using Soenneker.Canva.OpenApiClient.V1.ImageToDesignImports;
 using Soenneker.Canva.OpenApiClient.V1.ImageTransformations;
 using Soenneker.Canva.OpenApiClient.V1.Imports;
@@ -84,6 +85,11 @@ namespace Soenneker.Canva.OpenApiClient.V1
         public global::Soenneker.Canva.OpenApiClient.V1.Folders.FoldersRequestBuilder Folders
         {
             get => new global::Soenneker.Canva.OpenApiClient.V1.Folders.FoldersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The generations property</summary>
+        public global::Soenneker.Canva.OpenApiClient.V1.Generations.GenerationsRequestBuilder Generations
+        {
+            get => new global::Soenneker.Canva.OpenApiClient.V1.Generations.GenerationsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The imageToDesignImports property</summary>
         public global::Soenneker.Canva.OpenApiClient.V1.ImageToDesignImports.ImageToDesignImportsRequestBuilder ImageToDesignImports

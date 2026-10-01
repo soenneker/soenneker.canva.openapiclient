@@ -1649,21 +1649,6 @@
               }
             }
           },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "examples": {
-                  "design_autofill_job_not_found": {
-                    "$ref": "#/components/examples/DesignAutofillJobNotFoundError"
-                  }
-                }
-              }
-            }
-          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -1674,6 +1659,21 @@
                 "examples": {
                   "design_autofill_job_forbidden": {
                     "$ref": "#/components/examples/DesignAutofillJobForbiddenError"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_autofill_job_not_found": {
+                    "$ref": "#/components/examples/DesignAutofillJobNotFoundError"
                   }
                 }
               }
@@ -3666,6 +3666,355 @@
           }
         ],
         "x-rate-limit-per-client-user": 100
+      }
+    },
+    "/v1/generations": {
+      "post": {
+        "tags": [
+          "design_generation"
+        ],
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief and optional images or brand templates. A successful job includes metadata for the generated design, which is saved to the user\u0027s Canva account.\n\nYou can generate a document, presentation, or whiteboard. For presentations, you can also provide an outline of the slides to generate. Only image and brand template attachments are supported.\n\nRequires the \u0060design_generation\u0060 capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060429\u0060 error with the \u0060credit_quota_exceeded\u0060 code. Polling for the result of a job doesn\u0027t consume any of the allowance.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job-v2/).\n\n\u003C/Note\u003E",
+        "operationId": "CreateDesignGenerationJobV2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDesignGenerationJobRequestV2"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateDesignGenerationJobResponseV2"
+                },
+                "examples": {
+                  "accepted": {
+                    "$ref": "#/components/examples/AcceptedDesignGenerationJobExampleV2"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_generation_invalid_request_v2": {
+                    "$ref": "#/components/examples/InvalidDesignGenerationRequestErrorV2"
+                  },
+                  "design_generation_invalid_attachment_v2": {
+                    "$ref": "#/components/examples/InvalidDesignGenerationInputErrorV2"
+                  },
+                  "design_generation_too_many_inputs_v2": {
+                    "$ref": "#/components/examples/TooManyDesignGenerationInputsErrorV2"
+                  },
+                  "design_generation_unsupported_type_v2": {
+                    "$ref": "#/components/examples/UnsupportedDesignGenerationTypeErrorV2"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "InvalidClientError": {
+                    "$ref": "#/components/examples/InvalidClientError"
+                  },
+                  "InvalidAccessToken": {
+                    "$ref": "#/components/examples/InvalidAccessToken"
+                  },
+                  "MissingClientCredentialsOrBodyAuthError": {
+                    "$ref": "#/components/examples/MissingClientCredentialsOrBodyAuthError"
+                  },
+                  "MalformedAuthorizationHeaderComponents": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderComponents"
+                  },
+                  "MalformedAuthorizationHeaderMode": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderMode"
+                  },
+                  "TokenIntrospectionFailed": {
+                    "$ref": "#/components/examples/TokenIntrospectionFailed"
+                  },
+                  "RevokedAccessToken": {
+                    "$ref": "#/components/examples/RevokedAccessToken"
+                  },
+                  "MissingAuthorizationHeader": {
+                    "$ref": "#/components/examples/MissingAuthorizationHeader"
+                  },
+                  "MalformedAuthorizationHeader": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeader"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 401
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_generation_generation_not_available_v2": {
+                    "$ref": "#/components/examples/DesignGenerationNotAvailableErrorV2"
+                  },
+                  "design_generation_attachment_forbidden_v2": {
+                    "$ref": "#/components/examples/DesignGenerationInputForbiddenErrorV2"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_generation_attachment_not_found_v2": {
+                    "$ref": "#/components/examples/DesignGenerationInputNotFoundErrorV2"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Credit Quota Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditQuotaError"
+                },
+                "examples": {
+                  "credit_quota_exceeded": {
+                    "$ref": "#/components/examples/CreditQuotaExceededError"
+                  },
+                  "credit_quota_cooldown": {
+                    "$ref": "#/components/examples/CreditQuotaCooldownError"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 429
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauthAuthCode": [
+              "design:content:write"
+            ]
+          }
+        ],
+        "x-rate-limit-per-client-user": 20,
+        "x-required-capabilities": [
+          "design_generation"
+        ]
+      }
+    },
+    "/v1/generations/{jobId}": {
+      "get": {
+        "tags": [
+          "design_generation"
+        ],
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGets the status and result of a design generation job created using the [Create design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job-v2/).\n\nYou might need to make multiple requests until the job has a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).\n\nOnly the user and integration that created the job can retrieve it, and the user must be in the same team. Jobs expire 24 hours after creation.\n\nPolling doesn\u0027t consume the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). Reaching the AI allowance limit after job creation doesn\u0027t prevent retrieving the result.\n\nRequires the \u0060design_generation\u0060 capability.",
+        "operationId": "GetDesignGenerationJobV2",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "The public design generation job ID.",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+              "type": "string",
+              "example": "f81b26fd-a33d-4c2d-9e8c-4a7aca798b17"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetDesignGenerationJobResponseV2"
+                },
+                "examples": {
+                  "in_progress": {
+                    "$ref": "#/components/examples/InProgressDesignGenerationJobExampleV2"
+                  },
+                  "success": {
+                    "$ref": "#/components/examples/SuccessDesignGenerationJobExampleV2"
+                  },
+                  "content_not_allowed": {
+                    "$ref": "#/components/examples/ContentNotAllowedDesignGenerationJobExampleV2"
+                  },
+                  "failed": {
+                    "$ref": "#/components/examples/FailedDesignGenerationJobExampleV2"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_generation_invalid_job_id_v2": {
+                    "$ref": "#/components/examples/InvalidDesignGenerationJobIdErrorV2"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "InvalidClientError": {
+                    "$ref": "#/components/examples/InvalidClientError"
+                  },
+                  "InvalidAccessToken": {
+                    "$ref": "#/components/examples/InvalidAccessToken"
+                  },
+                  "MissingClientCredentialsOrBodyAuthError": {
+                    "$ref": "#/components/examples/MissingClientCredentialsOrBodyAuthError"
+                  },
+                  "MalformedAuthorizationHeaderComponents": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderComponents"
+                  },
+                  "MalformedAuthorizationHeaderMode": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderMode"
+                  },
+                  "TokenIntrospectionFailed": {
+                    "$ref": "#/components/examples/TokenIntrospectionFailed"
+                  },
+                  "RevokedAccessToken": {
+                    "$ref": "#/components/examples/RevokedAccessToken"
+                  },
+                  "MissingAuthorizationHeader": {
+                    "$ref": "#/components/examples/MissingAuthorizationHeader"
+                  },
+                  "MalformedAuthorizationHeader": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeader"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 401
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_generation_generation_not_available_v2": {
+                    "$ref": "#/components/examples/DesignGenerationNotAvailableErrorV2"
+                  },
+                  "design_generation_job_forbidden_v2": {
+                    "$ref": "#/components/examples/DesignGenerationJobForbiddenErrorV2"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_generation_job_not_found_v2": {
+                    "$ref": "#/components/examples/DesignGenerationJobNotFoundErrorV2"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "TooManyRequestsError": {
+                    "$ref": "#/components/examples/TooManyRequestsError"
+                  },
+                  "ThrottledTooManyRequests": {
+                    "$ref": "#/components/examples/ThrottledTooManyRequests"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 429
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauthAuthCode": [
+              "design:content:write"
+            ]
+          }
+        ],
+        "x-rate-limit-per-client-user": 120,
+        "x-required-capabilities": [
+          "design_generation"
+        ]
       }
     },
     "/v1/imports": {
@@ -8862,6 +9211,7 @@
           "autofill",
           "background_removal",
           "brand_template",
+          "design_generation",
           "export_png_transparency",
           "image_to_design_imports",
           "resize",
@@ -8875,6 +9225,7 @@
           "Capability required to call autofill APIs. Users on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise) have this capability.",
           "Capability required to apply the \u0060background_removal\u0060 transformation using the Image transformation APIs. Users on a Canva plan with premium features (such as Canva Pro) have this capability.",
           "Capability required to use brand template APIs. Users on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise) have this capability.",
+          "Capability required to call the Design Generation APIs. Users whose feature eligibility and team permissions allow design generation have this capability.",
           "Capability required to export designs in PNG with a transparent background. Users on a paid Canva plan (such as Canva Pro) have this capability.",
           "Capability required to call the Image to Design Import APIs. Users whose [team permission settings](https://www.canva.com/en_au/help/setting-up-team-permissions/) allow \u0022[Magic Layers](https://www.canva.com/magic-layers/)\u0022 have this capability.",
           "Capability required to create design resize jobs. Users on a Canva plan with premium features (such as Canva Pro) have this capability.",
@@ -8899,6 +9250,10 @@
             {
               "value": "brand_template",
               "name": "BrandTemplate"
+            },
+            {
+              "value": "design_generation",
+              "name": "DesignGeneration"
             },
             {
               "value": "export_png_transparency",
@@ -11828,6 +12183,243 @@
           }
         },
         "description": "A sheet data field. You can autofill it with tabular sheet data."
+      },
+      "CreateDesignGenerationJobRequestV2": {
+        "required": [
+          "brief",
+          "design_type"
+        ],
+        "type": "object",
+        "properties": {
+          "brief": {
+            "maxLength": 5000,
+            "minLength": 1,
+            "type": "string",
+            "description": "A description of the design to generate, including its subject, purpose,\nrequired wording, tone, and visual direction.",
+            "example": "A 3-slide pitch deck for a solar-panel startup with an energetic, modern, blue-and-white visual direction."
+          },
+          "design_type": {
+            "$ref": "#/components/schemas/CreateDesignGenerationJobRequestV2DesignType"
+          },
+          "outline": {
+            "$ref": "#/components/schemas/CreateDesignGenerationJobRequestV2Outline"
+          },
+          "images": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+              "type": "string",
+              "example": "Msd59349ff"
+            },
+            "description": "The ordered list of Canva image asset IDs to use when generating the design. You can provide at most 20 inputs across \u0060images\u0060 and \u0060brand_templates\u0060 combined."
+          },
+          "brand_templates": {
+            "maxItems": 20,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+              "type": "string",
+              "example": "EDMzWSwy3BI"
+            },
+            "description": "The ordered list of Canva brand template IDs to use when generating the design. The user must have access to each brand template. You can provide at most 20 inputs across \u0060images\u0060 and \u0060brand_templates\u0060 combined."
+          }
+        },
+        "description": "The brief, design type, and optional images and brand templates for generation."
+      },
+      "DesignGenerationOutlineV2": {
+        "required": [
+          "sections"
+        ],
+        "type": "object",
+        "properties": {
+          "sections": {
+            "maxItems": 100,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DesignGenerationOutlineSectionV2"
+            }
+          }
+        },
+        "description": "The ordered slide structure for a generated presentation."
+      },
+      "DesignGenerationOutlineSectionV2": {
+        "required": [
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "description": "The slide title.",
+            "example": "The problem"
+          },
+          "description": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "type": "string",
+            "description": "A short description of what the slide should cover.",
+            "example": "Rooftop solar installations still take more than six weeks to quote."
+          },
+          "points": {
+            "maxItems": 50,
+            "type": "array",
+            "items": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "type": "string"
+            },
+            "description": "Optional individual points the slide should make."
+          }
+        },
+        "description": "One slide in a presentation outline."
+      },
+      "CreateDesignGenerationJobResponseV2": {
+        "required": [
+          "job"
+        ],
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/DesignGenerationJobV2"
+          },
+          "quota_usage": {
+            "$ref": "#/components/schemas/CreateDesignGenerationJobResponseV2QuotaUsage"
+          }
+        }
+      },
+      "GetDesignGenerationJobResponseV2": {
+        "required": [
+          "job"
+        ],
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/DesignGenerationJobV2"
+          },
+          "quota_usage": {
+            "$ref": "#/components/schemas/GetDesignGenerationJobResponseV2QuotaUsage"
+          }
+        }
+      },
+      "DesignGenerationJobV2": {
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+            "type": "string",
+            "description": "The public design generation job ID.",
+            "example": "f81b26fd-a33d-4c2d-9e8c-4a7aca798b17"
+          },
+          "status": {
+            "$ref": "#/components/schemas/DesignGenerationJobStatusV2"
+          },
+          "result": {
+            "$ref": "#/components/schemas/DesignGenerationJobResultV2"
+          },
+          "error": {
+            "$ref": "#/components/schemas/DesignGenerationJobErrorV2"
+          }
+        },
+        "description": "The status and result of a public design generation job."
+      },
+      "DesignGenerationJobStatusV2": {
+        "enum": [
+          "failed",
+          "in_progress",
+          "success"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The public status of the job. \u0060result\u0060 is present only for \u0060success\u0060, and\n\u0060error\u0060 is present only for \u0060failed\u0060.",
+        "x-enum-descriptions": [
+          "The design couldn\u0027t be generated.",
+          "The design is still being generated.",
+          "The design was generated and saved to the user\u0027s Canva account."
+        ],
+        "x-ms-enum": {
+          "name": "DesignGenerationJobStatusV2",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "failed",
+              "name": "Failed"
+            },
+            {
+              "value": "in_progress",
+              "name": "InProgress"
+            },
+            {
+              "value": "success",
+              "name": "Success"
+            }
+          ]
+        }
+      },
+      "DesignGenerationJobResultV2": {
+        "required": [
+          "design"
+        ],
+        "type": "object",
+        "properties": {
+          "design": {
+            "$ref": "#/components/schemas/DesignSummary"
+          }
+        },
+        "description": "Present only when the job status is \u0060success\u0060."
+      },
+      "DesignGenerationJobErrorV2": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/DesignGenerationJobErrorCodeV2"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of what went wrong."
+          }
+        },
+        "description": "Details about a failed design generation job."
+      },
+      "DesignGenerationJobErrorCodeV2": {
+        "enum": [
+          "content_not_allowed",
+          "generation_failed"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The reason the design generation job failed.",
+        "x-enum-descriptions": [
+          "The brief or generated content didn\u0027t pass Canva\u0027s content-safety checks.",
+          "Canva couldn\u0027t complete the design generation job."
+        ],
+        "x-ms-enum": {
+          "name": "DesignGenerationJobErrorCodeV2",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "content_not_allowed",
+              "name": "ContentNotAllowed"
+            },
+            {
+              "value": "generation_failed",
+              "name": "GenerationFailed"
+            }
+          ]
+        }
       },
       "DesignImportMetadata": {
         "required": [
@@ -16442,6 +17034,91 @@
         },
         "description": "The user details of the viewer. This is omitted for viewers whose identity is not visible."
       },
+      "CreateDesignGenerationJobRequestV2DesignType": {
+        "required": [
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PresetType"
+          },
+          "name": {
+            "$ref": "#/components/schemas/PresetDesignTypeName"
+          }
+        },
+        "description": "The preset Canva design type to generate. Supports \u0060doc\u0060, \u0060presentation\u0060, and\n\u0060whiteboard\u0060. The \u0060email\u0060 preset and custom dimensions are not supported."
+      },
+      "CreateDesignGenerationJobRequestV2Outline": {
+        "required": [
+          "sections"
+        ],
+        "type": "object",
+        "properties": {
+          "sections": {
+            "maxItems": 100,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DesignGenerationOutlineSectionV2"
+            }
+          }
+        },
+        "description": "The slide structure to follow. This property is supported only when\n\u0060design_type.name\u0060 is \u0060presentation\u0060."
+      },
+      "CreateDesignGenerationJobResponseV2QuotaUsage": {
+        "type": "object",
+        "properties": {
+          "used_percentage": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer",
+            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
+            "format": "int32"
+          },
+          "resets_at": {
+            "type": "integer",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
+            "format": "int64"
+          },
+          "using_bonus_credits": {
+            "type": "boolean",
+            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
+          },
+          "usage_review_link": {
+            "type": "string",
+            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
+          }
+        },
+        "description": "Credit quota usage after reserving credits for this job. Omitted if unavailable."
+      },
+      "GetDesignGenerationJobResponseV2QuotaUsage": {
+        "type": "object",
+        "properties": {
+          "used_percentage": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer",
+            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
+            "format": "int32"
+          },
+          "resets_at": {
+            "type": "integer",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
+            "format": "int64"
+          },
+          "using_bonus_credits": {
+            "type": "boolean",
+            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
+          },
+          "usage_review_link": {
+            "type": "string",
+            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
+          }
+        },
+        "description": "Credit quota snapshot when available. Polling does not reserve or consume credits; omitted if unavailable."
+      },
       "FeatureQuotaExceededErrorAllOf2": {
         "required": [
           "upsell_url"
@@ -19570,6 +20247,157 @@
           "message": "Not allowed to access design"
         }
       },
+      "InProgressDesignGenerationJobExampleV2": {
+        "summary": "In-progress design generation job",
+        "value": {
+          "job": {
+            "id": "f81b26fd-a33d-4c2d-9e8c-4a7aca798b17",
+            "status": "in_progress"
+          }
+        }
+      },
+      "SuccessDesignGenerationJobExampleV2": {
+        "summary": "Successfully completed design generation job",
+        "value": {
+          "job": {
+            "id": "f81b26fd-a33d-4c2d-9e8c-4a7aca798b17",
+            "status": "success",
+            "result": {
+              "design": {
+                "id": "DAFVztcvd9z",
+                "title": "SolarNow Seed Pitch",
+                "urls": {
+                  "edit_url": "https://www.canva.com/api/design/example/edit",
+                  "view_url": "https://www.canva.com/api/design/example/view"
+                },
+                "thumbnail": {
+                  "width": 800,
+                  "height": 450,
+                  "url": "https://document-export.canva.com/example/thumbnail/0001.png?signature=example"
+                },
+                "created_at": 1788768000,
+                "updated_at": 1788768000,
+                "page_count": 3
+              }
+            }
+          },
+          "quota_usage": {
+            "used_percentage": 25,
+            "resets_at": 1789257600,
+            "using_bonus_credits": false
+          }
+        }
+      },
+      "ContentNotAllowedDesignGenerationJobExampleV2": {
+        "summary": "Design generation rejected by content-safety checks",
+        "value": {
+          "job": {
+            "id": "f81b26fd-a33d-4c2d-9e8c-4a7aca798b17",
+            "status": "failed",
+            "error": {
+              "code": "content_not_allowed",
+              "message": "The design couldn\u0027t be generated because the request didn\u0027t meet Canva\u0027s content guidelines."
+            }
+          }
+        }
+      },
+      "FailedDesignGenerationJobExampleV2": {
+        "summary": "Design generation failed",
+        "value": {
+          "job": {
+            "id": "f81b26fd-a33d-4c2d-9e8c-4a7aca798b17",
+            "status": "failed",
+            "error": {
+              "code": "generation_failed",
+              "message": "The design couldn\u0027t be generated. Please try again."
+            }
+          }
+        }
+      },
+      "InvalidDesignGenerationRequestErrorV2": {
+        "summary": "The request contains an invalid field",
+        "value": {
+          "code": "invalid_field",
+          "message": "The presentation outline can only be used with the presentation design type."
+        }
+      },
+      "InvalidDesignGenerationInputErrorV2": {
+        "summary": "An attachment is invalid or unsupported",
+        "value": {
+          "code": "invalid_field",
+          "message": "The specified attachment must identify a supported image or brand template."
+        }
+      },
+      "TooManyDesignGenerationInputsErrorV2": {
+        "summary": "Too many generation inputs",
+        "value": {
+          "code": "invalid_field",
+          "message": "At most 20 inputs are allowed across images and brand_templates combined."
+        }
+      },
+      "UnsupportedDesignGenerationTypeErrorV2": {
+        "summary": "The design type isn\u0027t supported for generation",
+        "value": {
+          "code": "invalid_field",
+          "message": "Design generation supports doc, presentation, and whiteboard presets."
+        }
+      },
+      "DesignGenerationNotAvailableErrorV2": {
+        "summary": "Design generation isn\u0027t available to the user",
+        "value": {
+          "code": "permission_denied",
+          "message": "Design generation isn\u0027t available for this user."
+        }
+      },
+      "DesignGenerationInputForbiddenErrorV2": {
+        "summary": "The user can\u0027t access an attachment",
+        "value": {
+          "code": "permission_denied",
+          "message": "The user doesn\u0027t have access to the specified attachment."
+        }
+      },
+      "DesignGenerationInputNotFoundErrorV2": {
+        "summary": "An attachment wasn\u0027t found",
+        "value": {
+          "code": "not_found",
+          "message": "The specified attachment wasn\u0027t found."
+        }
+      },
+      "InvalidDesignGenerationJobIdErrorV2": {
+        "summary": "The job ID is invalid",
+        "value": {
+          "code": "invalid_field",
+          "message": "The design generation job ID is invalid."
+        }
+      },
+      "DesignGenerationJobForbiddenErrorV2": {
+        "summary": "The caller didn\u0027t create this job",
+        "value": {
+          "code": "permission_denied",
+          "message": "The user doesn\u0027t have access to this design generation job."
+        }
+      },
+      "DesignGenerationJobNotFoundErrorV2": {
+        "summary": "The job wasn\u0027t found",
+        "value": {
+          "code": "not_found",
+          "message": "The design generation job wasn\u0027t found."
+        }
+      },
+      "AcceptedDesignGenerationJobExampleV2": {
+        "summary": "Accepted job with available credit quota information",
+        "value": {
+          "job": {
+            "id": "f81b26fd-a33d-4c2d-9e8c-4a7aca798b17",
+            "status": "in_progress"
+          },
+          "quota_usage": {
+            "used_percentage": 25,
+            "resets_at": 1789257600,
+            "using_bonus_credits": false
+          }
+        }
+      },
       "JobIdInvalidError": {
         "summary": "The job ID is invalid",
         "value": {
@@ -20860,6 +21688,9 @@
     },
     {
       "name": "design"
+    },
+    {
+      "name": "design_generation"
     },
     {
       "name": "design_import"

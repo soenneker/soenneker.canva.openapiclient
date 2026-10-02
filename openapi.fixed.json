@@ -3673,7 +3673,7 @@
         "tags": [
           "design_generation"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief and optional images or brand templates. A successful job includes metadata for the generated design, which is saved to the user\u0027s Canva account.\n\nYou can generate a document, presentation, or whiteboard. For presentations, you can also provide an outline of the slides to generate. Only image and brand template attachments are supported.\n\nRequires the \u0060design_generation\u0060 capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060429\u0060 error with the \u0060credit_quota_exceeded\u0060 code. Polling for the result of a job doesn\u0027t consume any of the allowance.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job-v2/).\n\n\u003C/Note\u003E",
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief. A successful job includes metadata for the generated design, which is saved to the user\u0027s Canva account.\n\nYou can generate a document or presentation. For presentations, you can also provide an outline of the slides to generate.\n\nRequires the \u0060design_generation\u0060 capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060429\u0060 error with the \u0060credit_quota_exceeded\u0060 code. Polling for the result of a job doesn\u0027t consume any of the allowance.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job/).\n\n\u003C/Note\u003E",
         "operationId": "CreateDesignGenerationJobV2",
         "requestBody": {
           "content": {
@@ -3846,7 +3846,7 @@
         "tags": [
           "design_generation"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGets the status and result of a design generation job created using the [Create design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job-v2/).\n\nYou might need to make multiple requests until the job has a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).\n\nOnly the user and integration that created the job can retrieve it, and the user must be in the same team. Jobs expire 24 hours after creation.\n\nPolling doesn\u0027t consume the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). Reaching the AI allowance limit after job creation doesn\u0027t prevent retrieving the result.\n\nRequires the \u0060design_generation\u0060 capability.",
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGets the status and result of a design generation job created using the [Create design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job/).\n\nYou might need to make multiple requests until the job has a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).\n\nOnly the user and integration that created the job can retrieve it, and the user must be in the same team. Jobs expire 24 hours after creation.\n\nPolling doesn\u0027t consume the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). Reaching the AI allowance limit after job creation doesn\u0027t prevent retrieving the result.\n\nRequires the \u0060design_generation\u0060 capability.",
         "operationId": "GetDesignGenerationJobV2",
         "parameters": [
           {
@@ -5724,6 +5724,363 @@
           }
         ],
         "x-rate-limit-per-client-user": 20
+      }
+    },
+    "/v1/image-generations": {
+      "post": {
+        "tags": [
+          "image_generation"
+        ],
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public apps that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate an image from a plain-text prompt. When the image is generated, you can download it using the URL provided. The download URL is only valid for 24 hours.\n\nThe request requires a prompt and an idempotency key. Call this API with a user access token that has the \u0060asset:write\u0060 scope.\n\nTo also save the generated image to the user\u0027s Canva account as an image asset, set \u0060asset_upload\u0060 to \u0060type: upload\u0060. The job then returns the asset alongside the download URL. Saving the asset requires a user access token.\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060429\u0060 error with the \u0060credit_quota_exceeded\u0060 code.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of image generation jobs created with this API using the [Get image generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-image-generation-job/).\n\n\u003C/Note\u003E",
+        "operationId": "CreateImageGenerationJob",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateImageGenerationJobRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateImageGenerationJobResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "BadRequestFieldError": {
+                    "$ref": "#/components/examples/BadRequestFieldError"
+                  },
+                  "MissingRequiredHeaderError": {
+                    "$ref": "#/components/examples/MissingRequiredHeaderError"
+                  },
+                  "MissingAccessTokenError": {
+                    "$ref": "#/components/examples/MissingAccessTokenError"
+                  },
+                  "MissingClientCredentialsError": {
+                    "$ref": "#/components/examples/MissingClientCredentialsError"
+                  },
+                  "ContentTypeHeaderValueMissing": {
+                    "$ref": "#/components/examples/ContentTypeHeaderValueMissing"
+                  },
+                  "ContentTypeHeaderValueInvalid": {
+                    "$ref": "#/components/examples/ContentTypeHeaderValueInvalid"
+                  },
+                  "ValidatingClientFailed": {
+                    "$ref": "#/components/examples/ValidatingClientFailed"
+                  },
+                  "ValidatingClientFailedWithCode": {
+                    "$ref": "#/components/examples/ValidatingClientFailedWithCode"
+                  },
+                  "ClientSecretInvalidError": {
+                    "$ref": "#/components/examples/ClientSecretInvalidError"
+                  },
+                  "InvalidClientCredentialsValue": {
+                    "$ref": "#/components/examples/InvalidClientCredentialsValue"
+                  },
+                  "InvalidClientCredentialsBase64Encoding": {
+                    "$ref": "#/components/examples/InvalidClientCredentialsBase64Encoding"
+                  },
+                  "FailedToReadRequestBody": {
+                    "$ref": "#/components/examples/FailedToReadRequestBody"
+                  },
+                  "ExpectedIntegerQueryParam": {
+                    "$ref": "#/components/examples/ExpectedIntegerQueryParam"
+                  },
+                  "ExpectedLongQueryParam": {
+                    "$ref": "#/components/examples/ExpectedLongQueryParam"
+                  },
+                  "ExpectedLongListQueryParam": {
+                    "$ref": "#/components/examples/ExpectedLongListQueryParam"
+                  },
+                  "TooManyQueryParamValues": {
+                    "$ref": "#/components/examples/TooManyQueryParamValues"
+                  },
+                  "MissingRequiredQueryParam": {
+                    "$ref": "#/components/examples/MissingRequiredQueryParam"
+                  },
+                  "ConfidentialClientCorsError": {
+                    "$ref": "#/components/examples/ConfidentialClientCorsError"
+                  },
+                  "InvalidUriError": {
+                    "$ref": "#/components/examples/InvalidUriError"
+                  },
+                  "InvalidOriginError": {
+                    "$ref": "#/components/examples/InvalidOriginError"
+                  },
+                  "InvalidIdsError": {
+                    "$ref": "#/components/examples/InvalidIdsError"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 400
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "InvalidClientError": {
+                    "$ref": "#/components/examples/InvalidClientError"
+                  },
+                  "InvalidAccessToken": {
+                    "$ref": "#/components/examples/InvalidAccessToken"
+                  },
+                  "MissingClientCredentialsOrBodyAuthError": {
+                    "$ref": "#/components/examples/MissingClientCredentialsOrBodyAuthError"
+                  },
+                  "MalformedAuthorizationHeaderComponents": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderComponents"
+                  },
+                  "MalformedAuthorizationHeaderMode": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderMode"
+                  },
+                  "TokenIntrospectionFailed": {
+                    "$ref": "#/components/examples/TokenIntrospectionFailed"
+                  },
+                  "RevokedAccessToken": {
+                    "$ref": "#/components/examples/RevokedAccessToken"
+                  },
+                  "MissingAuthorizationHeader": {
+                    "$ref": "#/components/examples/MissingAuthorizationHeader"
+                  },
+                  "MalformedAuthorizationHeader": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeader"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 401
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "image_generation_not_enabled": {
+                    "$ref": "#/components/examples/ImageGenerationNotEnabledError"
+                  },
+                  "missing_scope": {
+                    "$ref": "#/components/examples/MissingScopeError"
+                  },
+                  "user_role_required": {
+                    "$ref": "#/components/examples/UserRoleRequiredError"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Credit Quota Exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditQuotaError"
+                },
+                "examples": {
+                  "credit_quota_exceeded": {
+                    "$ref": "#/components/examples/CreditQuotaExceededError"
+                  },
+                  "credit_quota_cooldown": {
+                    "$ref": "#/components/examples/CreditQuotaCooldownError"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 429
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauthClientCredentials": []
+          },
+          {
+            "oauthAuthCode": [
+              "asset:write"
+            ]
+          }
+        ],
+        "x-rate-limit-per-client-user": 20
+      }
+    },
+    "/v1/image-generations/{jobId}": {
+      "get": {
+        "tags": [
+          "image_generation"
+        ],
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public apps that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGets the result of an image generation job that was created using the [Create image generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-image-generation-job/). Only the app and user that created the job can get it.\n\nIf the job is successful, the job\u0027s \u0060result\u0060 contains a download URL for the generated image. The download URL is only valid for 24 hours. If the job was created with \u0060asset_upload\u0060 set to \u0060type: upload\u0060, the \u0060result\u0060 also contains the image asset that the image was saved as. These jobs stay \u0060in_progress\u0060 until the asset has finished importing, so the returned asset is ready to use.\n\nYou might need to make multiple requests to this endpoint until you get a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).",
+        "operationId": "GetImageGenerationJob",
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "description": "The image generation job ID.",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetImageGenerationJobResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "InvalidClientError": {
+                    "$ref": "#/components/examples/InvalidClientError"
+                  },
+                  "InvalidAccessToken": {
+                    "$ref": "#/components/examples/InvalidAccessToken"
+                  },
+                  "MissingClientCredentialsOrBodyAuthError": {
+                    "$ref": "#/components/examples/MissingClientCredentialsOrBodyAuthError"
+                  },
+                  "MalformedAuthorizationHeaderComponents": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderComponents"
+                  },
+                  "MalformedAuthorizationHeaderMode": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeaderMode"
+                  },
+                  "TokenIntrospectionFailed": {
+                    "$ref": "#/components/examples/TokenIntrospectionFailed"
+                  },
+                  "RevokedAccessToken": {
+                    "$ref": "#/components/examples/RevokedAccessToken"
+                  },
+                  "MissingAuthorizationHeader": {
+                    "$ref": "#/components/examples/MissingAuthorizationHeader"
+                  },
+                  "MalformedAuthorizationHeader": {
+                    "$ref": "#/components/examples/MalformedAuthorizationHeader"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 401
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "MissingScopeError": {
+                    "$ref": "#/components/examples/MissingScopeError"
+                  },
+                  "UserRoleRequiredError": {
+                    "$ref": "#/components/examples/UserRoleRequiredError"
+                  },
+                  "IntegrationAccessDeniedError": {
+                    "$ref": "#/components/examples/IntegrationAccessDeniedError"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 403
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "image_generation_job_not_found": {
+                    "$ref": "#/components/examples/ImageGenerationJobNotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "TooManyRequestsError": {
+                    "$ref": "#/components/examples/TooManyRequestsError"
+                  },
+                  "ThrottledTooManyRequests": {
+                    "$ref": "#/components/examples/ThrottledTooManyRequests"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 429
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauthClientCredentials": []
+          },
+          {
+            "oauthAuthCode": [
+              "asset:write"
+            ]
+          }
+        ],
+        "x-rate-limit-per-client-user": 120
       }
     },
     "/v1/image-transformations": {
@@ -12203,31 +12560,9 @@
           },
           "outline": {
             "$ref": "#/components/schemas/CreateDesignGenerationJobRequestV2Outline"
-          },
-          "images": {
-            "maxItems": 20,
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-              "type": "string",
-              "example": "Msd59349ff"
-            },
-            "description": "The ordered list of Canva image asset IDs to use when generating the design. You can provide at most 20 inputs across \u0060images\u0060 and \u0060brand_templates\u0060 combined."
-          },
-          "brand_templates": {
-            "maxItems": 20,
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-              "type": "string",
-              "example": "EDMzWSwy3BI"
-            },
-            "description": "The ordered list of Canva brand template IDs to use when generating the design. The user must have access to each brand template. You can provide at most 20 inputs across \u0060images\u0060 and \u0060brand_templates\u0060 combined."
           }
         },
-        "description": "The brief, design type, and optional images and brand templates for generation."
+        "description": "The brief, design type, and optional presentation outline for generation."
       },
       "DesignGenerationOutlineV2": {
         "required": [
@@ -14993,6 +15328,344 @@
         },
         "description": "Metadata for the Canva Group, consisting of the Group ID,\ndisplay name, and whether it\u0027s an external Canva Group."
       },
+      "CreateImageGenerationJobRequest": {
+        "required": [
+          "idempotency_key",
+          "prompt"
+        ],
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "type": "string",
+            "description": "A plain-text description of the image to generate."
+          },
+          "aspect_ratio": {
+            "$ref": "#/components/schemas/ImageGenerationAspectRatio"
+          },
+          "model": {
+            "$ref": "#/components/schemas/ImageGenerationModel"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "A key to make create requests idempotent. Retrying with the same key returns the\noriginal job without creating a duplicate, even if the other request parameters\ndiffer. Keys are held for 24 hours from job creation.",
+            "format": "uuid",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
+          },
+          "asset_upload": {
+            "$ref": "#/components/schemas/ImageGenerationAssetUpload"
+          }
+        }
+      },
+      "ImageGenerationAssetUpload": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/NoneImageGenerationAssetUpload"
+          },
+          {
+            "$ref": "#/components/schemas/UploadImageGenerationAssetUpload"
+          }
+        ],
+        "properties": {
+          "asset_name": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "description": "A name for the image asset. Canva doesn\u0027t localize this value, so provide a name in\nthe user\u0027s language. If omitted, Canva generates a name for the asset.",
+            "example": "Red apple on a wooden table"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "description": "Whether to save the generated image as an image asset in the user\u0027s Canva account.\nOmitting \u0060asset_upload\u0060 (or using \u0060type: none\u0060) returns only a download URL.\n\nSaving the asset (\u0060type: upload\u0060) requires a user access token.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "none": "#/components/schemas/NoneImageGenerationAssetUpload",
+            "upload": "#/components/schemas/UploadImageGenerationAssetUpload",
+            "NoneImageGenerationAssetUpload": "#/components/schemas/NoneImageGenerationAssetUpload",
+            "UploadImageGenerationAssetUpload": "#/components/schemas/UploadImageGenerationAssetUpload"
+          }
+        }
+      },
+      "NoneImageGenerationAssetUpload": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/NoneType"
+          }
+        },
+        "description": "Don\u0027t save the generated image. The result contains only its download URL."
+      },
+      "UploadImageGenerationAssetUpload": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/UploadType"
+          },
+          "asset_name": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "description": "A name for the image asset. Canva doesn\u0027t localize this value, so provide a name in\nthe user\u0027s language. If omitted, Canva generates a name for the asset.",
+            "example": "Red apple on a wooden table"
+          }
+        },
+        "description": "Save the generated image as an image asset in the user\u0027s Canva account. The asset appears\nin the user\u0027s Uploads, and the generated image in the result includes the \u0060asset\u0060\nalongside its download \u0060url\u0060."
+      },
+      "CreateImageGenerationJobResponse": {
+        "required": [
+          "job"
+        ],
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/ImageGenerationJob"
+          },
+          "quota_usage": {
+            "$ref": "#/components/schemas/CreateImageGenerationJobResponseQuotaUsage"
+          }
+        }
+      },
+      "GetImageGenerationJobResponse": {
+        "required": [
+          "job"
+        ],
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/ImageGenerationJob"
+          }
+        }
+      },
+      "ImageGenerationJob": {
+        "required": [
+          "id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+            "type": "string",
+            "description": "The image generation job ID."
+          },
+          "status": {
+            "$ref": "#/components/schemas/ImageGenerationJobStatus"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ImageGenerationJobResult"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ImageGenerationError"
+          }
+        },
+        "description": "Details about the image generation job. If the job status is \u0060success\u0060, the job\u0027s\n\u0060result\u0060 is present."
+      },
+      "ImageGenerationJobResult": {
+        "required": [
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "image": {
+            "$ref": "#/components/schemas/GeneratedImage"
+          }
+        },
+        "description": "Result of the image generation job. Only present if job status is \u0060success\u0060."
+      },
+      "GeneratedImage": {
+        "required": [
+          "height",
+          "url",
+          "width"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "A download URL for the generated image. The download URL is only valid for 24\nhours."
+          },
+          "asset": {
+            "$ref": "#/components/schemas/GeneratedImageAsset"
+          },
+          "width": {
+            "type": "integer",
+            "description": "The width of the generated image in pixels.",
+            "format": "int32",
+            "example": 1024
+          },
+          "height": {
+            "type": "integer",
+            "description": "The height of the generated image in pixels.",
+            "format": "int32",
+            "example": 1024
+          }
+        },
+        "description": "A generated image."
+      },
+      "ImageGenerationJobStatus": {
+        "enum": [
+          "failed",
+          "in_progress",
+          "success"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The status of the image generation job. A newly created job will be \u0060in_progress\u0060 and\nwill eventually become \u0060success\u0060 or \u0060failed\u0060. If the status is \u0060success\u0060, the job\u0027s\n\u0060result\u0060 is present.",
+        "x-ms-enum": {
+          "name": "ImageGenerationJobStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "failed",
+              "name": "Failed"
+            },
+            {
+              "value": "in_progress",
+              "name": "InProgress"
+            },
+            {
+              "value": "success",
+              "name": "Success"
+            }
+          ]
+        }
+      },
+      "ImageGenerationModel": {
+        "enum": [
+          "lucid_origin",
+          "z_image_turbo"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The model to use for image generation. If omitted, Canva selects the best\navailable model for the request. If the requested model can\u0027t serve the request,\nthe job fails. Canva never uses a different model to serve the request.",
+        "x-enum-descriptions": [
+          "The Lucid Origin image generation model.",
+          "The Z Image Turbo image generation model."
+        ],
+        "x-ms-enum": {
+          "name": "ImageGenerationModel",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "lucid_origin",
+              "name": "LucidOrigin"
+            },
+            {
+              "value": "z_image_turbo",
+              "name": "ZImageTurbo"
+            }
+          ]
+        }
+      },
+      "ImageGenerationAspectRatio": {
+        "enum": [
+          "square",
+          "landscape",
+          "portrait"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The aspect ratio of the generated image.",
+        "x-enum-descriptions": [
+          "A square (1:1) image.",
+          "A wide (16:9) image, suitable for landscape-oriented content.",
+          "A tall (9:16) image, suitable for portrait-oriented content."
+        ],
+        "x-ms-enum": {
+          "name": "ImageGenerationAspectRatio",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "square",
+              "name": "Square"
+            },
+            {
+              "value": "landscape",
+              "name": "Landscape"
+            },
+            {
+              "value": "portrait",
+              "name": "Portrait"
+            }
+          ]
+        }
+      },
+      "ImageGenerationErrorCode": {
+        "enum": [
+          "unsafe_input",
+          "timeout",
+          "model_not_available",
+          "model_retired",
+          "internal_error"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Error code indicating what went wrong with the image generation.",
+        "x-enum-descriptions": [
+          "Content safety checks rejected the prompt.",
+          "The generation did not complete in time.",
+          "The requested model can\u0027t currently serve this request, and Canva doesn\u0027t retry the job\nwith another model. This is usually temporary. Retry later, retry without the \u0060model\u0060\nparameter to use automatic model selection, or retry with a different model.",
+          "The requested model has been permanently retired from this version of the API, and you\ncan\u0027t use it again in this version. Use a different model. The API documentation lists\nretired models, which keep their enum value for the lifetime of this API version.",
+          "An unexpected error occurred during generation."
+        ],
+        "x-ms-enum": {
+          "name": "ImageGenerationErrorCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "unsafe_input",
+              "name": "UnsafeInput"
+            },
+            {
+              "value": "timeout",
+              "name": "Timeout"
+            },
+            {
+              "value": "model_not_available",
+              "name": "ModelNotAvailable"
+            },
+            {
+              "value": "model_retired",
+              "name": "ModelRetired"
+            },
+            {
+              "value": "internal_error",
+              "name": "InternalError"
+            }
+          ]
+        }
+      },
+      "ImageGenerationError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ImageGenerationErrorCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of what went wrong."
+          }
+        },
+        "description": "If the image generation job fails, this object provides details about the error. Only present if status is \u0060failed\u0060."
+      },
       "CreateImageTransformationJobRequest": {
         "required": [
           "asset_id",
@@ -17048,7 +17721,7 @@
             "$ref": "#/components/schemas/PresetDesignTypeName"
           }
         },
-        "description": "The preset Canva design type to generate. Supports \u0060doc\u0060, \u0060presentation\u0060, and\n\u0060whiteboard\u0060. The \u0060email\u0060 preset and custom dimensions are not supported."
+        "description": "The preset Canva design type to generate. Supports \u0060doc\u0060 and \u0060presentation\u0060."
       },
       "CreateDesignGenerationJobRequestV2Outline": {
         "required": [
@@ -17130,6 +17803,81 @@
             "description": "URL to redirect users to upgrade their Canva account and reset their quota."
           }
         }
+      },
+      "CreateImageGenerationJobResponseQuotaUsage": {
+        "type": "object",
+        "properties": {
+          "used_percentage": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer",
+            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
+            "format": "int32"
+          },
+          "resets_at": {
+            "type": "integer",
+            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
+            "format": "int64"
+          },
+          "using_bonus_credits": {
+            "type": "boolean",
+            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
+          },
+          "usage_review_link": {
+            "type": "string",
+            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
+          }
+        },
+        "description": "Credit quota usage after reserving credits for this job. Not present if quota data is unavailable."
+      },
+      "GeneratedImageAsset": {
+        "required": [
+          "created_at",
+          "id",
+          "name",
+          "tags",
+          "type",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/AssetType"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the asset.",
+            "example": "Msd59349ff"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the asset.",
+            "example": "My Awesome Upload"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/)."
+          },
+          "created_at": {
+            "type": "integer",
+            "description": "When the asset was added to Canva, as a Unix timestamp (in seconds since the Unix\nEpoch).",
+            "format": "int64",
+            "example": 1377396000
+          },
+          "updated_at": {
+            "type": "integer",
+            "description": "When the asset was last updated in Canva, as a Unix timestamp (in seconds since the\nUnix Epoch).",
+            "format": "int64",
+            "example": 1692928800
+          },
+          "thumbnail": {
+            "$ref": "#/components/schemas/Thumbnail"
+          }
+        },
+        "description": "The image asset the generated image was saved as. Only present if the job was created\nwith \u0060asset_upload\u0060 set to \u0060type: upload\u0060 and the asset still exists (for example, it\u0027s\nabsent if the user has since deleted the asset)."
       },
       "ImageTransformationJobResultAsset": {
         "required": [
@@ -18789,6 +19537,40 @@
             {
               "value": "folder",
               "name": "Folder"
+            }
+          ]
+        }
+      },
+      "NoneType": {
+        "enum": [
+          "none"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "NoneType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "none",
+              "name": "None"
+            }
+          ]
+        }
+      },
+      "UploadType": {
+        "enum": [
+          "upload"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "UploadType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "upload",
+              "name": "Upload"
             }
           ]
         }
@@ -21160,6 +21942,20 @@
           "message": "Not allowed to access folder item \u0027{itemId}\u0027"
         }
       },
+      "ImageGenerationNotEnabledError": {
+        "summary": "Image generation is not enabled for this client",
+        "value": {
+          "code": "permission_denied",
+          "message": "Image generation is not enabled"
+        }
+      },
+      "ImageGenerationJobNotFoundError": {
+        "summary": "The image generation job was not found",
+        "value": {
+          "code": "not_found",
+          "message": "Image generation job not found: {jobId}"
+        }
+      },
       "InProgressImageTransformationJobExample": {
         "summary": "In progress job",
         "value": {
@@ -21629,6 +22425,15 @@
         "type": "http",
         "scheme": "basic"
       },
+      "oauthClientCredentials": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://api.canva.com/auth/v1/oauth/token",
+            "scopes": {}
+          }
+        }
+      },
       "oauthAuthCode": {
         "type": "oauth2",
         "flows": {
@@ -21700,6 +22505,9 @@
     },
     {
       "name": "folder"
+    },
+    {
+      "name": "image_generation"
     },
     {
       "name": "image_transformation"

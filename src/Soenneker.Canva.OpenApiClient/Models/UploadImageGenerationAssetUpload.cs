@@ -8,33 +8,39 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// The preset Canva design type to generate. Supports `doc` and `presentation`.
+    /// Save the generated image as an image asset in the user&apos;s Canva account. The asset appearsin the user&apos;s Uploads, and the generated image in the result includes the `asset`alongside its download `url`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CreateDesignGenerationJobRequestV2DesignType : IAdditionalDataHolder, IParsable
+    public partial class UploadImageGenerationAssetUpload : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The name of the design type.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName? Name { get; set; }
+        /// <summary>A name for the image asset. Canva doesn&apos;t localize this value, so provide a name inthe user&apos;s language. If omitted, Canva generates a name for the asset.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AssetName { get; set; }
+#nullable restore
+#else
+        public string AssetName { get; set; }
+#endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PresetType? Type { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.UploadType? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.UploadImageGenerationAssetUpload"/> and sets the default values.
         /// </summary>
-        public CreateDesignGenerationJobRequestV2DesignType()
+        public UploadImageGenerationAssetUpload()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.UploadImageGenerationAssetUpload"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Canva.OpenApiClient.Models.UploadImageGenerationAssetUpload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType();
+            return new global::Soenneker.Canva.OpenApiClient.Models.UploadImageGenerationAssetUpload();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -44,8 +50,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "name", n => { Name = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetType>(); } },
+                { "asset_name", n => { AssetName = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.UploadType>(); } },
             };
         }
         /// <summary>
@@ -55,8 +61,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName>("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetType>("type", Type);
+            writer.WriteStringValue("asset_name", AssetName);
+            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.UploadType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

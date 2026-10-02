@@ -7,34 +7,37 @@ using System.IO;
 using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
-    /// <summary>
-    /// The preset Canva design type to generate. Supports `doc` and `presentation`.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CreateDesignGenerationJobRequestV2DesignType : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class GetImageGenerationJobResponse : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The name of the design type.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName? Name { get; set; }
-        /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PresetType? Type { get; set; }
+        /// <summary>Details about the image generation job. If the job status is `success`, the job&apos;s`result` is present.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob? Job { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob Job { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.GetImageGenerationJobResponse"/> and sets the default values.
         /// </summary>
-        public CreateDesignGenerationJobRequestV2DesignType()
+        public GetImageGenerationJobResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.GetImageGenerationJobResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Canva.OpenApiClient.Models.GetImageGenerationJobResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType();
+            return new global::Soenneker.Canva.OpenApiClient.Models.GetImageGenerationJobResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -44,8 +47,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "name", n => { Name = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetType>(); } },
+                { "job", n => { Job = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob>(global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -55,8 +57,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName>("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetType>("type", Type);
+            writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob>("job", Job);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

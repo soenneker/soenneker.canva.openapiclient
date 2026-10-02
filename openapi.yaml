@@ -27,6 +27,7 @@ tags:
 - name: design_import
 - name: export
 - name: folder
+- name: image_generation
 - name: image_transformation
 - name: merge
 - name: oauth
@@ -2899,9 +2900,9 @@ paths:
 
         </Warning>
 
-        Starts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief and optional images or brand templates. A successful job includes metadata for the generated design, which is saved to the user's Canva account.
+        Starts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief. A successful job includes metadata for the generated design, which is saved to the user's Canva account.
 
-        You can generate a document, presentation, or whiteboard. For presentations, you can also provide an outline of the slides to generate. Only image and brand template attachments are supported.
+        You can generate a document or presentation. For presentations, you can also provide an outline of the slides to generate.
 
         Requires the `design_generation` capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).
 
@@ -2909,7 +2910,7 @@ paths:
 
         <Note>
 
-        For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job-v2/).
+        For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job/).
 
         </Note>
       operationId: createDesignGenerationJobV2
@@ -3029,7 +3030,7 @@ paths:
 
         </Warning>
 
-        Gets the status and result of a design generation job created using the [Create design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job-v2/).
+        Gets the status and result of a design generation job created using the [Create design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job/).
 
         You might need to make multiple requests until the job has a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).
 
@@ -4384,6 +4385,269 @@ paths:
       tags:
       - folder
       x-rate-limit-per-client-user: 20
+  /v1/image-generations:
+    post:
+      description: |-
+        <Warning>
+
+        This API is currently provided as a preview. Be aware of the following:
+
+        - There might be unannounced breaking changes.
+        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).
+        - Public apps that use preview APIs will not pass the review process, and can't be made available to all Canva users.
+
+        </Warning>
+
+        Starts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate an image from a plain-text prompt. When the image is generated, you can download it using the URL provided. The download URL is only valid for 24 hours.
+
+        The request requires a prompt and an idempotency key. Call this API with a user access token that has the `asset:write` scope.
+
+        To also save the generated image to the user's Canva account as an image asset, set `asset_upload` to `type: upload`. The job then returns the asset alongside the download URL. Saving the asset requires a user access token.
+
+        Starting a job consumes the user's [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a `429` error with the `credit_quota_exceeded` code.
+
+        <Note>
+
+        For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of image generation jobs created with this API using the [Get image generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-image-generation-job/).
+
+        </Note>
+      operationId: createImageGenerationJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateImageGenerationJobRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateImageGenerationJobResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                BadRequestFieldError:
+                  $ref: '#/components/examples/BadRequestFieldError'
+                MissingRequiredHeaderError:
+                  $ref: '#/components/examples/MissingRequiredHeaderError'
+                MissingAccessTokenError:
+                  $ref: '#/components/examples/MissingAccessTokenError'
+                MissingClientCredentialsError:
+                  $ref: '#/components/examples/MissingClientCredentialsError'
+                ContentTypeHeaderValueMissing:
+                  $ref: '#/components/examples/ContentTypeHeaderValueMissing'
+                ContentTypeHeaderValueInvalid:
+                  $ref: '#/components/examples/ContentTypeHeaderValueInvalid'
+                ValidatingClientFailed:
+                  $ref: '#/components/examples/ValidatingClientFailed'
+                ValidatingClientFailedWithCode:
+                  $ref: '#/components/examples/ValidatingClientFailedWithCode'
+                ClientSecretInvalidError:
+                  $ref: '#/components/examples/ClientSecretInvalidError'
+                InvalidClientCredentialsValue:
+                  $ref: '#/components/examples/InvalidClientCredentialsValue'
+                InvalidClientCredentialsBase64Encoding:
+                  $ref: '#/components/examples/InvalidClientCredentialsBase64Encoding'
+                FailedToReadRequestBody:
+                  $ref: '#/components/examples/FailedToReadRequestBody'
+                ExpectedIntegerQueryParam:
+                  $ref: '#/components/examples/ExpectedIntegerQueryParam'
+                ExpectedLongQueryParam:
+                  $ref: '#/components/examples/ExpectedLongQueryParam'
+                ExpectedLongListQueryParam:
+                  $ref: '#/components/examples/ExpectedLongListQueryParam'
+                TooManyQueryParamValues:
+                  $ref: '#/components/examples/TooManyQueryParamValues'
+                MissingRequiredQueryParam:
+                  $ref: '#/components/examples/MissingRequiredQueryParam'
+                ConfidentialClientCorsError:
+                  $ref: '#/components/examples/ConfidentialClientCorsError'
+                InvalidUriError:
+                  $ref: '#/components/examples/InvalidUriError'
+                InvalidOriginError:
+                  $ref: '#/components/examples/InvalidOriginError'
+                InvalidIdsError:
+                  $ref: '#/components/examples/InvalidIdsError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+          x-http-status-code: 400
+        "401":
+          content:
+            application/json:
+              examples:
+                InvalidClientError:
+                  $ref: '#/components/examples/InvalidClientError'
+                InvalidAccessToken:
+                  $ref: '#/components/examples/InvalidAccessToken'
+                MissingClientCredentialsOrBodyAuthError:
+                  $ref: '#/components/examples/MissingClientCredentialsOrBodyAuthError'
+                MalformedAuthorizationHeaderComponents:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderComponents'
+                MalformedAuthorizationHeaderMode:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderMode'
+                TokenIntrospectionFailed:
+                  $ref: '#/components/examples/TokenIntrospectionFailed'
+                RevokedAccessToken:
+                  $ref: '#/components/examples/RevokedAccessToken'
+                MissingAuthorizationHeader:
+                  $ref: '#/components/examples/MissingAuthorizationHeader'
+                MalformedAuthorizationHeader:
+                  $ref: '#/components/examples/MalformedAuthorizationHeader'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+          x-http-status-code: 401
+        "403":
+          content:
+            application/json:
+              examples:
+                image_generation_not_enabled:
+                  $ref: '#/components/examples/ImageGenerationNotEnabledError'
+                missing_scope:
+                  $ref: '#/components/examples/MissingScopeError'
+                user_role_required:
+                  $ref: '#/components/examples/UserRoleRequiredError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              examples:
+                credit_quota_exceeded:
+                  $ref: '#/components/examples/CreditQuotaExceededError'
+                credit_quota_cooldown:
+                  $ref: '#/components/examples/CreditQuotaCooldownError'
+              schema:
+                $ref: '#/components/schemas/CreditQuotaError'
+          description: Credit Quota Exceeded
+          x-http-status-code: 429
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      security:
+      - oauthClientCredentials: []
+      - oauthAuthCode:
+        - asset:write
+      tags:
+      - image_generation
+      x-rate-limit-per-client-user: 20
+  /v1/image-generations/{jobId}:
+    get:
+      description: |-
+        <Warning>
+
+        This API is currently provided as a preview. Be aware of the following:
+
+        - There might be unannounced breaking changes.
+        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).
+        - Public apps that use preview APIs will not pass the review process, and can't be made available to all Canva users.
+
+        </Warning>
+
+        Gets the result of an image generation job that was created using the [Create image generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-image-generation-job/). Only the app and user that created the job can get it.
+
+        If the job is successful, the job's `result` contains a download URL for the generated image. The download URL is only valid for 24 hours. If the job was created with `asset_upload` set to `type: upload`, the `result` also contains the image asset that the image was saved as. These jobs stay `in_progress` until the asset has finished importing, so the returned asset is ready to use.
+
+        You might need to make multiple requests to this endpoint until you get a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).
+      operationId: getImageGenerationJob
+      parameters:
+      - description: The image generation job ID.
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetImageGenerationJobResponse'
+          description: OK
+        "401":
+          content:
+            application/json:
+              examples:
+                InvalidClientError:
+                  $ref: '#/components/examples/InvalidClientError'
+                InvalidAccessToken:
+                  $ref: '#/components/examples/InvalidAccessToken'
+                MissingClientCredentialsOrBodyAuthError:
+                  $ref: '#/components/examples/MissingClientCredentialsOrBodyAuthError'
+                MalformedAuthorizationHeaderComponents:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderComponents'
+                MalformedAuthorizationHeaderMode:
+                  $ref: '#/components/examples/MalformedAuthorizationHeaderMode'
+                TokenIntrospectionFailed:
+                  $ref: '#/components/examples/TokenIntrospectionFailed'
+                RevokedAccessToken:
+                  $ref: '#/components/examples/RevokedAccessToken'
+                MissingAuthorizationHeader:
+                  $ref: '#/components/examples/MissingAuthorizationHeader'
+                MalformedAuthorizationHeader:
+                  $ref: '#/components/examples/MalformedAuthorizationHeader'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+          x-http-status-code: 401
+        "403":
+          content:
+            application/json:
+              examples:
+                MissingScopeError:
+                  $ref: '#/components/examples/MissingScopeError'
+                UserRoleRequiredError:
+                  $ref: '#/components/examples/UserRoleRequiredError'
+                IntegrationAccessDeniedError:
+                  $ref: '#/components/examples/IntegrationAccessDeniedError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+          x-http-status-code: 403
+        "404":
+          content:
+            application/json:
+              examples:
+                image_generation_job_not_found:
+                  $ref: '#/components/examples/ImageGenerationJobNotFoundError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "429":
+          content:
+            application/json:
+              examples:
+                TooManyRequestsError:
+                  $ref: '#/components/examples/TooManyRequestsError'
+                ThrottledTooManyRequests:
+                  $ref: '#/components/examples/ThrottledTooManyRequests'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too Many Requests
+          x-http-status-code: 429
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      security:
+      - oauthClientCredentials: []
+      - oauthAuthCode:
+        - asset:write
+      tags:
+      - image_generation
+      x-rate-limit-per-client-user: 120
   /v1/image-transformations:
     post:
       description: |-
@@ -6655,6 +6919,16 @@ components:
       value:
         code: permission_denied
         message: "Not allowed to access folder item '{itemId}'"
+    ImageGenerationNotEnabledError:
+      summary: Image generation is not enabled for this client
+      value:
+        code: permission_denied
+        message: Image generation is not enabled
+    ImageGenerationJobNotFoundError:
+      summary: The image generation job was not found
+      value:
+        code: not_found
+        message: "Image generation job not found: {jobId}"
     InProgressImageTransformationJobExample:
       summary: In progress job
       value:
@@ -10982,8 +11256,8 @@ components:
       - type
       type: object
     CreateDesignGenerationJobRequestV2:
-      description: "The brief, design type, and optional images and brand templates\
-        \ for generation."
+      description: "The brief, design type, and optional presentation outline for\
+        \ generation."
       properties:
         brief:
           description: |-
@@ -10997,37 +11271,14 @@ components:
         design_type:
           allOf:
           - $ref: '#/components/schemas/PresetDesignTypeInput'
-          description: |-
-            The preset Canva design type to generate. Supports `doc`, `presentation`, and
-            `whiteboard`. The `email` preset and custom dimensions are not supported.
+          description: The preset Canva design type to generate. Supports `doc` and
+            `presentation`.
         outline:
           allOf:
           - $ref: '#/components/schemas/DesignGenerationOutlineV2'
           description: |-
             The slide structure to follow. This property is supported only when
             `design_type.name` is `presentation`.
-        images:
-          description: The ordered list of Canva image asset IDs to use when generating
-            the design. You can provide at most 20 inputs across `images` and `brand_templates`
-            combined.
-          items:
-            example: Msd59349ff
-            pattern: "^[a-zA-Z0-9_-]{1,50}$"
-            type: string
-          maxItems: 20
-          minItems: 1
-          type: array
-        brand_templates:
-          description: The ordered list of Canva brand template IDs to use when generating
-            the design. The user must have access to each brand template. You can
-            provide at most 20 inputs across `images` and `brand_templates` combined.
-          items:
-            example: EDMzWSwy3BI
-            pattern: "^[a-zA-Z0-9_-]{1,50}$"
-            type: string
-          maxItems: 20
-          minItems: 1
-          type: array
       required:
       - brief
       - design_type
@@ -12812,6 +13063,222 @@ components:
       - external
       - id
       type: object
+    CreateImageGenerationJobRequest:
+      properties:
+        prompt:
+          description: A plain-text description of the image to generate.
+          maxLength: 2000
+          minLength: 1
+          type: string
+        aspect_ratio:
+          $ref: '#/components/schemas/ImageGenerationAspectRatio'
+        model:
+          $ref: '#/components/schemas/ImageGenerationModel'
+        idempotency_key:
+          description: |-
+            A key to make create requests idempotent. Retrying with the same key returns the
+            original job without creating a duplicate, even if the other request parameters
+            differ. Keys are held for 24 hours from job creation.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+        asset_upload:
+          $ref: '#/components/schemas/ImageGenerationAssetUpload'
+      required:
+      - idempotency_key
+      - prompt
+      type: object
+    ImageGenerationAssetUpload:
+      description: |-
+        Whether to save the generated image as an image asset in the user's Canva account.
+        Omitting `asset_upload` (or using `type: none`) returns only a download URL.
+
+        Saving the asset (`type: upload`) requires a user access token.
+      discriminator:
+        mapping:
+          none: '#/components/schemas/NoneImageGenerationAssetUpload'
+          upload: '#/components/schemas/UploadImageGenerationAssetUpload'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/NoneImageGenerationAssetUpload'
+      - $ref: '#/components/schemas/UploadImageGenerationAssetUpload'
+    NoneImageGenerationAssetUpload:
+      description: Don't save the generated image. The result contains only its download
+        URL.
+      properties:
+        type:
+          enum:
+          - none
+          type: string
+      required:
+      - type
+      type: object
+    UploadImageGenerationAssetUpload:
+      description: |-
+        Save the generated image as an image asset in the user's Canva account. The asset appears
+        in the user's Uploads, and the generated image in the result includes the `asset`
+        alongside its download `url`.
+      properties:
+        type:
+          enum:
+          - upload
+          type: string
+        asset_name:
+          description: |-
+            A name for the image asset. Canva doesn't localize this value, so provide a name in
+            the user's language. If omitted, Canva generates a name for the asset.
+          example: Red apple on a wooden table
+          maxLength: 255
+          minLength: 1
+          type: string
+      required:
+      - type
+      type: object
+    CreateImageGenerationJobResponse:
+      properties:
+        job:
+          $ref: '#/components/schemas/ImageGenerationJob'
+        quota_usage:
+          allOf:
+          - $ref: '#/components/schemas/CreditQuotaSuccessInfo'
+          description: Credit quota usage after reserving credits for this job. Not
+            present if quota data is unavailable.
+      required:
+      - job
+      type: object
+    GetImageGenerationJobResponse:
+      properties:
+        job:
+          $ref: '#/components/schemas/ImageGenerationJob'
+      required:
+      - job
+      type: object
+    ImageGenerationJob:
+      description: |-
+        Details about the image generation job. If the job status is `success`, the job's
+        `result` is present.
+      properties:
+        id:
+          description: The image generation job ID.
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        status:
+          $ref: '#/components/schemas/ImageGenerationJobStatus'
+        result:
+          $ref: '#/components/schemas/ImageGenerationJobResult'
+        error:
+          $ref: '#/components/schemas/ImageGenerationError'
+      required:
+      - id
+      - status
+      type: object
+    ImageGenerationJobResult:
+      description: Result of the image generation job. Only present if job status
+        is `success`.
+      properties:
+        image:
+          $ref: '#/components/schemas/GeneratedImage'
+      required:
+      - image
+      type: object
+    GeneratedImage:
+      description: A generated image.
+      properties:
+        url:
+          description: |-
+            A download URL for the generated image. The download URL is only valid for 24
+            hours.
+          type: string
+        asset:
+          allOf:
+          - $ref: '#/components/schemas/AssetSummary'
+          description: |-
+            The image asset the generated image was saved as. Only present if the job was created
+            with `asset_upload` set to `type: upload` and the asset still exists (for example, it's
+            absent if the user has since deleted the asset).
+        width:
+          description: The width of the generated image in pixels.
+          example: 1024
+          format: int32
+          type: integer
+        height:
+          description: The height of the generated image in pixels.
+          example: 1024
+          format: int32
+          type: integer
+      required:
+      - height
+      - url
+      - width
+      type: object
+    ImageGenerationJobStatus:
+      description: |-
+        The status of the image generation job. A newly created job will be `in_progress` and
+        will eventually become `success` or `failed`. If the status is `success`, the job's
+        `result` is present.
+      enum:
+      - failed
+      - in_progress
+      - success
+      type: string
+    ImageGenerationModel:
+      description: |-
+        The model to use for image generation. If omitted, Canva selects the best
+        available model for the request. If the requested model can't serve the request,
+        the job fails. Canva never uses a different model to serve the request.
+      enum:
+      - lucid_origin
+      - z_image_turbo
+      type: string
+      x-enum-descriptions:
+      - The Lucid Origin image generation model.
+      - The Z Image Turbo image generation model.
+    ImageGenerationAspectRatio:
+      default: square
+      description: The aspect ratio of the generated image.
+      enum:
+      - square
+      - landscape
+      - portrait
+      type: string
+      x-enum-descriptions:
+      - A square (1:1) image.
+      - "A wide (16:9) image, suitable for landscape-oriented content."
+      - "A tall (9:16) image, suitable for portrait-oriented content."
+    ImageGenerationErrorCode:
+      description: Error code indicating what went wrong with the image generation.
+      enum:
+      - unsafe_input
+      - timeout
+      - model_not_available
+      - model_retired
+      - internal_error
+      type: string
+      x-enum-descriptions:
+      - Content safety checks rejected the prompt.
+      - The generation did not complete in time.
+      - |-
+        The requested model can't currently serve this request, and Canva doesn't retry the job
+        with another model. This is usually temporary. Retry later, retry without the `model`
+        parameter to use automatic model selection, or retry with a different model.
+      - |-
+        The requested model has been permanently retired from this version of the API, and you
+        can't use it again in this version. Use a different model. The API documentation lists
+        retired models, which keep their enum value for the lifetime of this API version.
+      - An unexpected error occurred during generation.
+    ImageGenerationError:
+      description: "If the image generation job fails, this object provides details\
+        \ about the error. Only present if status is `failed`."
+      properties:
+        code:
+          $ref: '#/components/schemas/ImageGenerationErrorCode'
+        message:
+          description: A human-readable description of what went wrong.
+          type: string
+      required:
+      - code
+      - message
+      type: object
     CreateImageTransformationJobRequest:
       properties:
         asset_id:
@@ -14241,6 +14708,12 @@ components:
     basicAuth:
       scheme: basic
       type: http
+    oauthClientCredentials:
+      flows:
+        clientCredentials:
+          scopes: {}
+          tokenUrl: https://api.canva.com/auth/v1/oauth/token
+      type: oauth2
     oauthAuthCode:
       flows:
         authorizationCode:

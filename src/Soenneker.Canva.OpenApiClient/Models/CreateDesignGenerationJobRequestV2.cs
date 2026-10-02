@@ -8,21 +8,13 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// The brief, design type, and optional images and brand templates for generation.
+    /// The brief, design type, and optional presentation outline for generation.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateDesignGenerationJobRequestV2 : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ordered list of Canva brand template IDs to use when generating the design. The user must have access to each brand template. You can provide at most 20 inputs across `images` and `brand_templates` combined.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? BrandTemplates { get; set; }
-#nullable restore
-#else
-        public List<string> BrandTemplates { get; set; }
-#endif
         /// <summary>A description of the design to generate, including its subject, purpose,required wording, tone, and visual direction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,21 +23,13 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public string Brief { get; set; }
 #endif
-        /// <summary>The preset Canva design type to generate. Supports `doc`, `presentation`, and`whiteboard`. The `email` preset and custom dimensions are not supported.</summary>
+        /// <summary>The preset Canva design type to generate. Supports `doc` and `presentation`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType? DesignType { get; set; }
 #nullable restore
 #else
         public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType DesignType { get; set; }
-#endif
-        /// <summary>The ordered list of Canva image asset IDs to use when generating the design. You can provide at most 20 inputs across `images` and `brand_templates` combined.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Images { get; set; }
-#nullable restore
-#else
-        public List<string> Images { get; set; }
 #endif
         /// <summary>The slide structure to follow. This property is supported only when`design_type.name` is `presentation`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -80,10 +64,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "brand_templates", n => { BrandTemplates = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "brief", n => { Brief = n.GetStringValue(); } },
                 { "design_type", n => { DesignType = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType>(global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType.CreateFromDiscriminatorValue); } },
-                { "images", n => { Images = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "outline", n => { Outline = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline>(global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline.CreateFromDiscriminatorValue); } },
             };
         }
@@ -94,10 +76,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("brand_templates", BrandTemplates);
             writer.WriteStringValue("brief", Brief);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType>("design_type", DesignType);
-            writer.WriteCollectionOfPrimitiveValues<string>("images", Images);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline>("outline", Outline);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -1137,7 +1137,7 @@ paths:
     post:
       description: |-
         <Availability>
-        To use this API, your app must act on behalf of a user that's on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise).
+        Autofill for designs and brand templates is available when your app acts on behalf of a user on Canva Pro (including Canva Education and Canva for Nonprofits), Canva Teams, or Canva Enterprise. Usage limits will be introduced in the future.
         </Availability>
 
         Starts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the `type` field to choose the source of the design:
@@ -1243,7 +1243,7 @@ paths:
     get:
       description: |-
         <Availability>
-        To use this API, your app must act on behalf of a user that's on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise).
+        Autofill for designs and brand templates is available when your app acts on behalf of a user on Canva Pro (including Canva Education and Canva for Nonprofits), Canva Teams, or Canva Enterprise. Usage limits will be introduced in the future.
         </Availability>
 
         Get the result of a design autofill job that was created using the [Create design autofill job
@@ -2910,7 +2910,7 @@ paths:
 
         <Note>
 
-        For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job/).
+        For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job/).
 
         </Note>
       operationId: createDesignGenerationJobV2
@@ -3030,7 +3030,7 @@ paths:
 
         </Warning>
 
-        Gets the status and result of a design generation job created using the [Create design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job/).
+        Gets the status and result of a design generation job created using the [Create design generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job/).
 
         You might need to make multiple requests until the job has a `success` or `failed` status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).
 
@@ -11270,7 +11270,7 @@ components:
           type: string
         design_type:
           allOf:
-          - $ref: '#/components/schemas/PresetDesignTypeInput'
+          - $ref: '#/components/schemas/DesignGenerationDesignTypeInputV2'
           description: The preset Canva design type to generate. Supports `doc` and
             `presentation`.
         outline:
@@ -11283,6 +11283,35 @@ components:
       - brief
       - design_type
       type: object
+    DesignGenerationDesignTypeInputV2:
+      description: The preset Canva design type to generate.
+      properties:
+        type:
+          $ref: '#/components/schemas/DesignGenerationDesignTypeV2'
+        name:
+          $ref: '#/components/schemas/DesignGenerationDesignTypeNameV2'
+      required:
+      - name
+      - type
+      type: object
+    DesignGenerationDesignTypeV2:
+      description: The kind of design type to generate.
+      enum:
+      - preset
+      type: string
+      x-enum-descriptions:
+      - A preset Canva design type.
+    DesignGenerationDesignTypeNameV2:
+      description: The name of the design type to generate.
+      enum:
+      - doc
+      - presentation
+      type: string
+      x-enum-descriptions:
+      - "A [Canva doc](https://www.canva.com/docs/); a document for Canva's online\
+        \ text editor."
+      - "A [presentation](https://www.canva.com/presentations/); lets you create and\
+        \ collaborate for presenting to an audience."
     DesignGenerationOutlineV2:
       description: The ordered slide structure for a generated presentation.
       properties:

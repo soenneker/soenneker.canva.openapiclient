@@ -1473,7 +1473,7 @@
         "tags": [
           "autofill"
         ],
-        "description": "\u003CAvailability\u003E\nTo use this API, your app must act on behalf of a user that\u0027s on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\u003C/Availability\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the \u0060type\u0060 field to choose the source of the design:\n\n- \u0060create_from_brand_template\u0060: autofill a new design from a brand template. If \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/brand-templates/get-brand-template-dataset/).\n- \u0060create_from_design\u0060: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n- \u0060update_design\u0060: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n\nData fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn\u0027t exist, it\u0027s silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.\n\nAvailable data field types to autofill include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nNOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/get-design-autofill-job/).",
+        "description": "\u003CAvailability\u003E\nAutofill for designs and brand templates is available when your app acts on behalf of a user on Canva Pro (including Canva Education and Canva for Nonprofits), Canva Teams, or Canva Enterprise. Usage limits will be introduced in the future.\n\u003C/Availability\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to autofill a Canva design using input data. Use the \u0060type\u0060 field to choose the source of the design:\n\n- \u0060create_from_brand_template\u0060: autofill a new design from a brand template. If \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060. To get a list of input data fields for a brand template, use the [Get brand template dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/brand-templates/get-brand-template-dataset/).\n- \u0060create_from_design\u0060: autofill a new design from an existing design that contains autofill data fields. To get the input data fields for an existing design, use the [Get design dataset\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n- \u0060update_design\u0060: autofill an existing design in place, rather than creating a new design. To get the input data fields for the design, use the [Get design dataset API](https://www.canva.dev/docs/apps/rest-apis/reference/designs/get-design-dataset/).\n\nData fields in brand templates or designs might change (for example, they might be renamed or removed). If you provide data for a field name that doesn\u0027t exist, it\u0027s silently skipped. Use the Get dataset APIs to confirm the current fields before creating an autofill job.\n\nAvailable data field types to autofill include:\n\n- Images (which you can autofill with an image or a video asset)\n- Text\n- Charts\n- Sheets\n\nNOTE: For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of autofill jobs created with this API using the [Get design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/get-design-autofill-job/).",
         "operationId": "CreateDesignAutofillJob",
         "requestBody": {
           "content": {
@@ -1613,7 +1613,7 @@
         "tags": [
           "autofill"
         ],
-        "description": "\u003CAvailability\u003E\nTo use this API, your app must act on behalf of a user that\u0027s on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise).\n\u003C/Availability\u003E\n\nGet the result of a design autofill job that was created using the [Create design autofill job\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).\n\nYou might need to make multiple requests to this endpoint until you get a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).",
+        "description": "\u003CAvailability\u003E\nAutofill for designs and brand templates is available when your app acts on behalf of a user on Canva Pro (including Canva Education and Canva for Nonprofits), Canva Teams, or Canva Enterprise. Usage limits will be introduced in the future.\n\u003C/Availability\u003E\n\nGet the result of a design autofill job that was created using the [Create design autofill job\nAPI](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).\n\nYou might need to make multiple requests to this endpoint until you get a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).",
         "operationId": "GetDesignAutofillJob",
         "parameters": [
           {
@@ -3673,7 +3673,7 @@
         "tags": [
           "design_generation"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief. A successful job includes metadata for the generated design, which is saved to the user\u0027s Canva account.\n\nYou can generate a document or presentation. For presentations, you can also provide an outline of the slides to generate.\n\nRequires the \u0060design_generation\u0060 capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060429\u0060 error with the \u0060credit_quota_exceeded\u0060 code. Polling for the result of a job doesn\u0027t consume any of the allowance.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job/).\n\n\u003C/Note\u003E",
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief. A successful job includes metadata for the generated design, which is saved to the user\u0027s Canva account.\n\nYou can generate a document or presentation. For presentations, you can also provide an outline of the slides to generate.\n\nRequires the \u0060design_generation\u0060 capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060429\u0060 error with the \u0060credit_quota_exceeded\u0060 code. Polling for the result of a job doesn\u0027t consume any of the allowance.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job/).\n\n\u003C/Note\u003E",
         "operationId": "CreateDesignGenerationJobV2",
         "requestBody": {
           "content": {
@@ -3846,7 +3846,7 @@
         "tags": [
           "design_generation"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGets the status and result of a design generation job created using the [Create design generation job v2 API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job/).\n\nYou might need to make multiple requests until the job has a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).\n\nOnly the user and integration that created the job can retrieve it, and the user must be in the same team. Jobs expire 24 hours after creation.\n\nPolling doesn\u0027t consume the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). Reaching the AI allowance limit after job creation doesn\u0027t prevent retrieving the result.\n\nRequires the \u0060design_generation\u0060 capability.",
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGets the status and result of a design generation job created using the [Create design generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/create-design-generation-job/).\n\nYou might need to make multiple requests until the job has a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).\n\nOnly the user and integration that created the job can retrieve it, and the user must be in the same team. Jobs expire 24 hours after creation.\n\nPolling doesn\u0027t consume the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). Reaching the AI allowance limit after job creation doesn\u0027t prevent retrieving the result.\n\nRequires the \u0060design_generation\u0060 capability.",
         "operationId": "GetDesignGenerationJobV2",
         "parameters": [
           {
@@ -12564,6 +12564,70 @@
         },
         "description": "The brief, design type, and optional presentation outline for generation."
       },
+      "DesignGenerationDesignTypeInputV2": {
+        "required": [
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/DesignGenerationDesignTypeV2"
+          },
+          "name": {
+            "$ref": "#/components/schemas/DesignGenerationDesignTypeNameV2"
+          }
+        },
+        "description": "The preset Canva design type to generate."
+      },
+      "DesignGenerationDesignTypeV2": {
+        "enum": [
+          "preset"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The kind of design type to generate.",
+        "x-enum-descriptions": [
+          "A preset Canva design type."
+        ],
+        "x-ms-enum": {
+          "name": "DesignGenerationDesignTypeV2",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "preset",
+              "name": "Preset"
+            }
+          ]
+        }
+      },
+      "DesignGenerationDesignTypeNameV2": {
+        "enum": [
+          "doc",
+          "presentation"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The name of the design type to generate.",
+        "x-enum-descriptions": [
+          "A [Canva doc](https://www.canva.com/docs/); a document for Canva\u0027s online text editor.",
+          "A [presentation](https://www.canva.com/presentations/); lets you create and collaborate for presenting to an audience."
+        ],
+        "x-ms-enum": {
+          "name": "DesignGenerationDesignTypeNameV2",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "doc",
+              "name": "Doc"
+            },
+            {
+              "value": "presentation",
+              "name": "Presentation"
+            }
+          ]
+        }
+      },
       "DesignGenerationOutlineV2": {
         "required": [
           "sections"
@@ -17715,10 +17779,10 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/PresetType"
+            "$ref": "#/components/schemas/DesignGenerationDesignTypeV2"
           },
           "name": {
-            "$ref": "#/components/schemas/PresetDesignTypeName"
+            "$ref": "#/components/schemas/DesignGenerationDesignTypeNameV2"
           }
         },
         "description": "The preset Canva design type to generate. Supports \u0060doc\u0060 and \u0060presentation\u0060."

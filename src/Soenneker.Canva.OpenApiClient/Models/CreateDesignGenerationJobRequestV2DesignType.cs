@@ -15,10 +15,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The name of the design type.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName? Name { get; set; }
-        /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PresetType? Type { get; set; }
+        /// <summary>The name of the design type to generate.</summary>
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationDesignTypeNameV2? Name { get; set; }
+        /// <summary>The kind of design type to generate.</summary>
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationDesignTypeV2? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType"/> and sets the default values.
         /// </summary>
@@ -44,8 +44,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "name", n => { Name = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetType>(); } },
+                { "name", n => { Name = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationDesignTypeNameV2>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationDesignTypeV2>(); } },
             };
         }
         /// <summary>
@@ -55,8 +55,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetDesignTypeName>("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PresetType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationDesignTypeNameV2>("name", Name);
+            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationDesignTypeV2>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

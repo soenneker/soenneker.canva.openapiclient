@@ -26,7 +26,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #endif
         /// <summary>A key to make create requests idempotent. Retrying with the same key returns theoriginal job without creating a duplicate, even if the other request parametersdiffer. Keys are held for 24 hours from job creation.</summary>
         public Guid? IdempotencyKey { get; set; }
-        /// <summary>The model to use for image generation. If omitted, Canva selects the bestavailable model for the request. If the requested model can&apos;t serve the request,the job fails. Canva never uses a different model to serve the request.</summary>
+        /// <summary>The model to use for image generation. We recommend omitting this parameter: Canvathen selects the best available model for the request and falls back to anothermodel if one is temporarily unavailable. Set it only if you need a specific model&apos;soutput. If the requested model can&apos;t serve the request, the job fails. Canva neveruses a different model to serve the request.The model strengths below are based on Canva&apos;s evaluations. Results vary byprompt, so test with your own prompts before pinning a model.</summary>
         public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModel? Model { get; set; }
         /// <summary>A plain-text description of the image to generate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

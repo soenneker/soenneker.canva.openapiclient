@@ -13252,16 +13252,25 @@ components:
       type: string
     ImageGenerationModel:
       description: |-
-        The model to use for image generation. If omitted, Canva selects the best
-        available model for the request. If the requested model can't serve the request,
-        the job fails. Canva never uses a different model to serve the request.
+        The model to use for image generation. We recommend omitting this parameter: Canva
+        then selects the best available model for the request and falls back to another
+        model if one is temporarily unavailable. Set it only if you need a specific model's
+        output. If the requested model can't serve the request, the job fails. Canva never
+        uses a different model to serve the request.
+
+        The model strengths below are based on Canva's evaluations. Results vary by
+        prompt, so test with your own prompts before pinning a model.
       enum:
       - lucid_origin
       - z_image_turbo
       type: string
       x-enum-descriptions:
-      - The Lucid Origin image generation model.
-      - The Z Image Turbo image generation model.
+      - |-
+        Lucid Origin. Pick this for architecture, logos, posters, or sci-fi and fantasy
+        scenes.
+      - |-
+        Z Image Turbo. Pick this if the image includes text, or for food, drink, and
+        general-purpose imagery.
     ImageGenerationAspectRatio:
       default: square
       description: The aspect ratio of the generated image.

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
-    /// <summary>The model to use for image generation. If omitted, Canva selects the bestavailable model for the request. If the requested model can&apos;t serve the request,the job fails. Canva never uses a different model to serve the request.</summary>
+    /// <summary>The model to use for image generation. We recommend omitting this parameter: Canvathen selects the best available model for the request and falls back to anothermodel if one is temporarily unavailable. Set it only if you need a specific model&apos;soutput. If the requested model can&apos;t serve the request, the job fails. Canva neveruses a different model to serve the request.The model strengths below are based on Canva&apos;s evaluations. Results vary byprompt, so test with your own prompts before pinning a model.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ImageGenerationModel
     {

@@ -5922,9 +5922,6 @@
         },
         "security": [
           {
-            "oauthClientCredentials": []
-          },
-          {
             "oauthAuthCode": [
               "asset:write"
             ]
@@ -6071,9 +6068,6 @@
           }
         },
         "security": [
-          {
-            "oauthClientCredentials": []
-          },
           {
             "oauthAuthCode": [
               "asset:write"
@@ -13506,6 +13500,7 @@
           "user_not_managed",
           "saml_team_id_conflict",
           "saml_name_id_not_available",
+          "user_linked_to_another_idp",
           "user_email_unverified",
           "user_not_active",
           "user_pending_consent",
@@ -13823,6 +13818,10 @@
             {
               "value": "saml_name_id_not_available",
               "name": "SamlNameIdNotAvailable"
+            },
+            {
+              "value": "user_linked_to_another_idp",
+              "name": "UserLinkedToAnotherIdp"
             },
             {
               "value": "user_email_unverified",
@@ -15400,7 +15399,7 @@
         "type": "object",
         "properties": {
           "prompt": {
-            "maxLength": 2000,
+            "maxLength": 5000,
             "minLength": 1,
             "type": "string",
             "description": "A plain-text description of the image to generate."
@@ -15639,15 +15638,21 @@
         "enum": [
           "square",
           "landscape",
-          "portrait"
+          "portrait",
+          "landscape_3_2",
+          "portrait_2_3",
+          "portrait_4_5"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "The aspect ratio of the generated image.",
+        "description": "The aspect ratio of the generated image. Every aspect ratio is supported by every model\nyou can select with \u0060model\u0060, so the choice of model never limits the aspect ratios you\ncan use. The pixel dimensions of the output depend on the model. The job result reports\nthe actual \u0060width\u0060 and \u0060height\u0060.",
         "x-enum-descriptions": [
           "A square (1:1) image.",
           "A wide (16:9) image, suitable for landscape-oriented content.",
-          "A tall (9:16) image, suitable for portrait-oriented content."
+          "A tall (9:16) image, suitable for portrait-oriented content.",
+          "A wide (3:2) image, suitable for photos and print.",
+          "A tall (2:3) image, suitable for posters and portrait photos.",
+          "A tall (4:5) image, suitable for social media feed posts."
         ],
         "x-ms-enum": {
           "name": "ImageGenerationAspectRatio",
@@ -15664,6 +15669,18 @@
             {
               "value": "portrait",
               "name": "Portrait"
+            },
+            {
+              "value": "landscape_3_2",
+              "name": "Landscape32"
+            },
+            {
+              "value": "portrait_2_3",
+              "name": "Portrait23"
+            },
+            {
+              "value": "portrait_4_5",
+              "name": "Portrait45"
             }
           ]
         }
@@ -22488,15 +22505,6 @@
       "basicAuth": {
         "type": "http",
         "scheme": "basic"
-      },
-      "oauthClientCredentials": {
-        "type": "oauth2",
-        "flows": {
-          "clientCredentials": {
-            "tokenUrl": "https://api.canva.com/auth/v1/oauth/token",
-            "scopes": {}
-          }
-        }
       },
       "oauthAuthCode": {
         "type": "oauth2",

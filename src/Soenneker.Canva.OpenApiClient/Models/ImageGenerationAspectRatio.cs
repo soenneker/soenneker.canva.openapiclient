@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
-    /// <summary>The aspect ratio of the generated image.</summary>
+    /// <summary>The aspect ratio of the generated image. Every aspect ratio is supported by every modelyou can select with `model`, so the choice of model never limits the aspect ratios youcan use. The pixel dimensions of the output depend on the model. The job result reportsthe actual `width` and `height`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ImageGenerationAspectRatio
     {
@@ -18,6 +18,18 @@ namespace Soenneker.Canva.OpenApiClient.Models
         [EnumMember(Value = "portrait")]
         #pragma warning disable CS1591
         Portrait,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "landscape_3_2")]
+        #pragma warning disable CS1591
+        Landscape32,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "portrait_2_3")]
+        #pragma warning disable CS1591
+        Portrait23,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "portrait_4_5")]
+        #pragma warning disable CS1591
+        Portrait45,
         #pragma warning restore CS1591
     }
 }

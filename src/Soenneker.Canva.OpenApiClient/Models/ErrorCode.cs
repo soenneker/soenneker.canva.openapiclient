@@ -311,6 +311,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         SamlNameIdNotAvailable,
         #pragma warning restore CS1591
+        [EnumMember(Value = "user_linked_to_another_idp")]
+        #pragma warning disable CS1591
+        UserLinkedToAnotherIdp,
+        #pragma warning restore CS1591
         [EnumMember(Value = "user_email_unverified")]
         #pragma warning disable CS1591
         UserEmailUnverified,

@@ -14,7 +14,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The aspect ratio of the generated image.</summary>
+        /// <summary>The aspect ratio of the generated image. Every aspect ratio is supported by every modelyou can select with `model`, so the choice of model never limits the aspect ratios youcan use. The pixel dimensions of the output depend on the model. The job result reportsthe actual `width` and `height`.</summary>
         public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAspectRatio? AspectRatio { get; set; }
         /// <summary>Whether to save the generated image as an image asset in the user&apos;s Canva account.Omitting `asset_upload` (or using `type: none`) returns only a download URL.Saving the asset (`type: upload`) requires a user access token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

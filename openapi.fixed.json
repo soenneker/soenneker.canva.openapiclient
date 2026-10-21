@@ -1288,7 +1288,7 @@
         "tags": [
           "asset"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public apps that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to upload an asset from a URL to the user\u0027s content library. Supported file types for assets are listed in the [Assets API overview](https://www.canva.dev/docs/apps/rest-apis/reference/assets/).\n\n\u003CNote\u003E\n Uploading a video asset from a URL is limited to a maximum 100MB file size. For importing larger video files, use the [Create asset upload job API](https://www.canva.dev/docs/apps/rest-apis/reference/assets/create-asset-upload-job/).\n\u003C/Note\u003E\n\n\u003CNote\u003E\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of asset upload jobs created with this API using the [Get asset upload job via URL API](https://www.canva.dev/docs/apps/rest-apis/reference/assets/get-url-asset-upload-job/).\n\u003C/Note\u003E",
+        "description": "Starts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to upload an asset from a URL to the user\u0027s content library. Supported file types for assets are listed in the [Assets API overview](https://www.canva.dev/docs/apps/rest-apis/reference/assets/).\n\n\u003CNote\u003E\n Uploading a video asset from a URL is limited to a maximum 100MB file size. For importing larger video files, use the [Create asset upload job API](https://www.canva.dev/docs/apps/rest-apis/reference/assets/create-asset-upload-job/).\n\u003C/Note\u003E\n\n\u003CNote\u003E\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of asset upload jobs created with this API using the [Get asset upload job via URL API](https://www.canva.dev/docs/apps/rest-apis/reference/assets/get-url-asset-upload-job/).\n\u003C/Note\u003E",
         "operationId": "CreateUrlAssetUploadJob",
         "requestBody": {
           "content": {
@@ -1381,7 +1381,7 @@
         "tags": [
           "asset"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public apps that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nGet the result of an asset upload job that was created using the [Create asset upload job via URL API](https://www.canva.dev/docs/apps/rest-apis/reference/assets/create-url-asset-upload-job/).\n\nYou might need to make multiple requests to this endpoint until you get a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).",
+        "description": "Get the result of an asset upload job that was created using the [Create asset upload job via URL API](https://www.canva.dev/docs/apps/rest-apis/reference/assets/create-url-asset-upload-job/).\n\nYou might need to make multiple requests to this endpoint until you get a \u0060success\u0060 or \u0060failed\u0060 status. For more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints).",
         "operationId": "GetUrlAssetUploadJob",
         "parameters": [
           {
@@ -5927,6 +5927,9 @@
             ]
           }
         ],
+        "x-required-capabilities": [
+          "image_generation"
+        ],
         "x-rate-limit-per-client-user": 20
       }
     },
@@ -6073,6 +6076,9 @@
               "asset:write"
             ]
           }
+        ],
+        "x-required-capabilities": [
+          "image_generation"
         ],
         "x-rate-limit-per-client-user": 120
       }
@@ -9564,6 +9570,7 @@
           "brand_template",
           "design_generation",
           "export_png_transparency",
+          "image_generation",
           "image_to_design_imports",
           "resize",
           "team_restricted_app"
@@ -9576,9 +9583,10 @@
           "Capability required to call autofill APIs. Users on a Canva plan with access to autofill (such as Canva Pro, Canva Teams, or Canva Enterprise) have this capability.",
           "Capability required to apply the \u0060background_removal\u0060 transformation using the Image transformation APIs. Users on a Canva plan with premium features (such as Canva Pro) have this capability.",
           "Capability required to use brand template APIs. Users on a Canva plan with access to brand templates (such as Canva Pro, Canva Teams, or Canva Enterprise) have this capability.",
-          "Capability required to call the Design Generation APIs. Users whose feature eligibility and team permissions allow design generation have this capability.",
+          "Capability required to call the Design Generation APIs. Users whose feature eligibility and [team permission settings](https://www.canva.com/en_au/help/setting-up-team-permissions/) allow both \u0022Canva AI\u0022 and \u0022[Magic Design](https://www.canva.com/magic-design/)\u0022 have this capability.",
           "Capability required to export designs in PNG with a transparent background. Users on a paid Canva plan (such as Canva Pro) have this capability.",
-          "Capability required to call the Image to Design Import APIs. Users whose [team permission settings](https://www.canva.com/en_au/help/setting-up-team-permissions/) allow \u0022[Magic Layers](https://www.canva.com/magic-layers/)\u0022 have this capability.",
+          "Capability required to call the Image Generation APIs. Users whose feature eligibility and [team permission settings](https://www.canva.com/en_au/help/setting-up-team-permissions/) allow both \u0022Canva AI\u0022 and \u0022Magic Media\u0022 have this capability.",
+          "Capability required to call the Image to Design Import APIs. Users whose [team permission settings](https://www.canva.com/en_au/help/setting-up-team-permissions/) allow both \u0022Canva AI\u0022 and \u0022[Magic Layers](https://www.canva.com/magic-layers/)\u0022 have this capability.",
           "Capability required to create design resize jobs. Users on a Canva plan with premium features (such as Canva Pro) have this capability.",
           "Capability required to create a team-restricted app. Users that are members of the [Canva Enterprise](https://www.canva.com/enterprise/) or the [Canva for Education](https://www.canva.com/education/) organization have this capability."
         ],
@@ -9609,6 +9617,10 @@
             {
               "value": "export_png_transparency",
               "name": "ExportPngTransparency"
+            },
+            {
+              "value": "image_generation",
+              "name": "ImageGeneration"
             },
             {
               "value": "image_to_design_imports",

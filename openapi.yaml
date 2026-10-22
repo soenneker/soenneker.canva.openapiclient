@@ -13085,7 +13085,7 @@ components:
       properties:
         prompt:
           description: A plain-text description of the image to generate.
-          maxLength: 5000
+          maxLength: 10000
           minLength: 1
           type: string
         aspect_ratio:
@@ -13250,10 +13250,15 @@ components:
         The model strengths below are based on Canva's evaluations. Results vary by
         prompt, so test with your own prompts before pinning a model.
       enum:
+      - craft_v1_2k
       - lucid_origin
       - z_image_turbo
       type: string
       x-enum-descriptions:
+      - |-
+        CRAFT-1 2K, Canva's first-party image generation model. Pick this model for the best
+        image quality for infographics, posters, slides, people and portraits, abstract art,
+        patterns, landscapes, nature, products, and marketing materials.
       - |-
         Lucid Origin. Pick this for architecture, logos, posters, or sci-fi and fantasy
         scenes.

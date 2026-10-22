@@ -7,6 +7,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ImageGenerationModel
     {
+        [EnumMember(Value = "craft_v1_2k")]
+        #pragma warning disable CS1591
+        CraftV12K,
+        #pragma warning restore CS1591
         [EnumMember(Value = "lucid_origin")]
         #pragma warning disable CS1591
         LucidOrigin,

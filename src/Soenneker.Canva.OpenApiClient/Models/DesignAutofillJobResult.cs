@@ -39,11 +39,11 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.DesignAutofillJobResult();
-            if("CreateDesignAutofillJobResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("create_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateDesignAutofillJobResult = new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignAutofillJobResult();
             }
-            else if("UpdateDesignAutofillJobResult".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("update_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.UpdateDesignAutofillJobResult = new global::Soenneker.Canva.OpenApiClient.Models.UpdateDesignAutofillJobResult();
             }

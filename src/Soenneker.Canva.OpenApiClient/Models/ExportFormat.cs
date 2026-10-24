@@ -103,11 +103,11 @@ namespace Soenneker.Canva.OpenApiClient.Models
             {
                 result.GifExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.GifExportFormat();
             }
-            else if("HtmlBundleExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("html_bundle".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.HtmlBundleExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormat();
             }
-            else if("HtmlStandaloneExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("html_standalone".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.HtmlStandaloneExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormat();
             }

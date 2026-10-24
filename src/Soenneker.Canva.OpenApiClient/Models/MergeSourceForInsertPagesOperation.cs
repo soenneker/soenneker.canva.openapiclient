@@ -31,7 +31,13 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public List<int?> PageNumbers { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignType? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.MergeSourceForInsertPagesOperation"/> and sets the default values.
         /// </summary>
@@ -59,7 +65,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             {
                 { "design_id", n => { DesignId = n.GetStringValue(); } },
                 { "page_numbers", n => { PageNumbers = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignType>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -71,7 +77,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("design_id", DesignId);
             writer.WriteCollectionOfPrimitiveValues<int?>("page_numbers", PageNumbers);
-            writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignType>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

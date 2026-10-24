@@ -47,7 +47,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignRequest();
-            if("BrandTemplateCreateDesignRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("brand_template".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.BrandTemplateCreateDesignRequest = new global::Soenneker.Canva.OpenApiClient.Models.BrandTemplateCreateDesignRequest();
             }
@@ -55,7 +55,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             {
                 result.DesignCreateDesignRequest = new global::Soenneker.Canva.OpenApiClient.Models.DesignCreateDesignRequest();
             }
-            else if("DesignTypeCreateDesignRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("type_and_asset".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.DesignTypeCreateDesignRequest = new global::Soenneker.Canva.OpenApiClient.Models.DesignTypeCreateDesignRequest();
             }

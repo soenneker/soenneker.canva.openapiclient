@@ -10,6 +10,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// <summary>
     /// The Canva users mentioned in the comment.
     /// </summary>
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReplyCommentMentionsProperty : IAdditionalDataHolder, IParsable
     {

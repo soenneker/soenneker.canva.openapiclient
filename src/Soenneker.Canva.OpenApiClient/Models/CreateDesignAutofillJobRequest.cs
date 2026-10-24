@@ -47,15 +47,15 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignAutofillJobRequest();
-            if("CreateFromBrandTemplateAutofillJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("create_from_brand_template".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateFromBrandTemplateAutofillJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.CreateFromBrandTemplateAutofillJobRequest();
             }
-            else if("CreateFromDesignAutofillJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("create_from_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateFromDesignAutofillJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.CreateFromDesignAutofillJobRequest();
             }
-            else if("UpdateDesignAutofillJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("update_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.UpdateDesignAutofillJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.UpdateDesignAutofillJobRequest();
             }

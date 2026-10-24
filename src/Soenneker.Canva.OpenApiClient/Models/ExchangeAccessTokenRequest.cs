@@ -43,7 +43,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             {
                 result.ExchangeAuthCodeRequest = new global::Soenneker.Canva.OpenApiClient.Models.ExchangeAuthCodeRequest();
             }
-            else if("ExchangeRefreshTokenRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("refresh_token".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExchangeRefreshTokenRequest = new global::Soenneker.Canva.OpenApiClient.Models.ExchangeRefreshTokenRequest();
             }

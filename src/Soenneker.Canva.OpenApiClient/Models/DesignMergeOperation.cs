@@ -47,15 +47,15 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.DesignMergeOperation();
-            if("DeletePagesDesignMergeOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("delete_pages".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.DeletePagesDesignMergeOperation = new global::Soenneker.Canva.OpenApiClient.Models.DeletePagesDesignMergeOperation();
             }
-            else if("InsertPagesDesignMergeOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("insert_pages".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.InsertPagesDesignMergeOperation = new global::Soenneker.Canva.OpenApiClient.Models.InsertPagesDesignMergeOperation();
             }
-            else if("MovePagesDesignMergeOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("move_pages".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.MovePagesDesignMergeOperation = new global::Soenneker.Canva.OpenApiClient.Models.MovePagesDesignMergeOperation();
             }

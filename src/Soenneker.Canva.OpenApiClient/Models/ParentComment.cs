@@ -52,6 +52,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The Canva users mentioned in the comment.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Canva.OpenApiClient.Models.ParentCommentMentionsProperty? Mentions { get; set; }

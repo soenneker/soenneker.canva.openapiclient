@@ -39,7 +39,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignMergeJobRequest();
-            if("ModifyDesignCreateDesignMergeJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("modify_existing_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ModifyDesignCreateDesignMergeJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.ModifyDesignCreateDesignMergeJobRequest();
             }

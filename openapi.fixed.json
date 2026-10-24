@@ -1123,8 +1123,12 @@
             "name": "Asset-Upload-Metadata",
             "in": "header",
             "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/AssetUploadMetadata"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetUploadMetadata"
+                }
+              }
             }
           }
         ],
@@ -4029,8 +4033,12 @@
             "name": "Import-Metadata",
             "in": "header",
             "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/DesignImportMetadata"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DesignImportMetadata"
+                }
+              }
             }
           }
         ],
@@ -7685,7 +7693,6 @@
           "viewer"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "How the viewer accessed the design.",
         "x-enum-descriptions": [
           "The viewer accessed the design with edit access.",
@@ -7720,7 +7727,6 @@
           "deleted"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "How this viewer should be presented to the caller.",
         "x-enum-descriptions": [
           "The viewer\u0027s identity is visible, and their user details are included.",
@@ -7762,7 +7768,6 @@
           "large"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The device form factor used to view the design.",
         "x-enum-descriptions": [
           "A small device, such as a phone.",
@@ -7840,7 +7845,11 @@
               "type": "string",
               "example": "PBBKfZml7MRHRQVw"
             },
-            "description": "The design page IDs to retrieve view duration data for."
+            "description": "The design page IDs to retrieve view duration data for.",
+            "example": [
+              "PBBKfZml7MRHRQVw",
+              "PBBKfZml7Mghjsdg"
+            ]
           },
           "limit": {
             "maximum": 100,
@@ -7879,16 +7888,6 @@
           }
         ],
         "properties": {
-          "link_id": {
-            "type": "string",
-            "description": "Filters to viewer traffic from a specific trackable link. Omit this field to target viewer traffic that did not come from a trackable link.",
-            "example": "hddb98a3716"
-          },
-          "viewer_id": {
-            "type": "string",
-            "description": "The viewer ID to filter by.",
-            "example": "b2d44753-f996-46ff-8f01-d4143911550f"
-          },
           "type": {
             "type": "string"
           }
@@ -7899,10 +7898,7 @@
           "mapping": {
             "by_viewer": "#/components/schemas/PageViewFilterByViewer",
             "for_editor": "#/components/schemas/PageViewFilterForEditor",
-            "by_link": "#/components/schemas/PageViewFilterByLink",
-            "PageViewFilterByViewer": "#/components/schemas/PageViewFilterByViewer",
-            "PageViewFilterForEditor": "#/components/schemas/PageViewFilterForEditor",
-            "PageViewFilterByLink": "#/components/schemas/PageViewFilterByLink"
+            "by_link": "#/components/schemas/PageViewFilterByLink"
           }
         }
       },
@@ -8166,7 +8162,12 @@
               "maxLength": 50,
               "type": "string"
             },
-            "description": "The replacement tags for the asset.\nWhen this field is undefined, nothing is updated."
+            "description": "The replacement tags for the asset.\nWhen this field is undefined, nothing is updated.",
+            "example": [
+              "image",
+              "holiday",
+              "best day ever"
+            ]
           }
         }
       },
@@ -8211,7 +8212,12 @@
             "items": {
               "type": "string"
             },
-            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/)."
+            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/).",
+            "example": [
+              "image",
+              "holiday",
+              "best day ever"
+            ]
           },
           "import_status": {
             "$ref": "#/components/schemas/ImportStatus"
@@ -8254,32 +8260,6 @@
           }
         ],
         "properties": {
-          "width": {
-            "type": "integer",
-            "description": "The width of the image in pixels.",
-            "format": "int32",
-            "example": 1920
-          },
-          "height": {
-            "type": "integer",
-            "description": "The height of the image in pixels.",
-            "format": "int32",
-            "example": 1080
-          },
-          "smart_tags": {
-            "type": "array",
-            "items": {
-              "maxLength": 50,
-              "type": "string"
-            },
-            "description": "AI-generated tags for the image."
-          },
-          "duration": {
-            "type": "integer",
-            "description": "The duration of the video in seconds.",
-            "format": "int32",
-            "example": 60
-          },
           "type": {
             "type": "string"
           }
@@ -8289,9 +8269,7 @@
           "propertyName": "type",
           "mapping": {
             "image": "#/components/schemas/ImageMetadata",
-            "video": "#/components/schemas/VideoMetadata",
-            "ImageMetadata": "#/components/schemas/ImageMetadata",
-            "VideoMetadata": "#/components/schemas/VideoMetadata"
+            "video": "#/components/schemas/VideoMetadata"
           }
         }
       },
@@ -8322,7 +8300,13 @@
               "maxLength": 50,
               "type": "string"
             },
-            "description": "AI-generated tags for the image."
+            "description": "AI-generated tags for the image.",
+            "example": [
+              "landscape",
+              "sunset",
+              "mountains",
+              "nature"
+            ]
           }
         }
       },
@@ -8386,7 +8370,12 @@
             "items": {
               "type": "string"
             },
-            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/)."
+            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/).",
+            "example": [
+              "image",
+              "holiday",
+              "best day ever"
+            ]
           },
           "created_at": {
             "type": "integer",
@@ -8412,7 +8401,6 @@
           "video"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Type of an asset.",
         "example": "image",
         "x-ms-enum": {
@@ -8453,7 +8441,6 @@
           "success"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "State of the import job for an uploaded asset.",
         "example": "success",
         "deprecated": true,
@@ -8500,7 +8487,6 @@
           "import_failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "A short string indicating why the upload failed. This field can be used to handle errors programmatically.\n",
         "deprecated": true,
         "x-ms-enum": {
@@ -8596,7 +8582,6 @@
           "success"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Status of the asset upload job.",
         "example": "success",
         "x-ms-enum": {
@@ -8643,7 +8628,6 @@
           "fetch_failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "A short string indicating why the upload failed. This field can be used to handle errors\nprogrammatically.",
         "example": "file_too_big",
         "x-ms-enum": {
@@ -8684,7 +8668,6 @@
         "required": [
           "type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/CreateFromBrandTemplateAutofillJobRequest"
@@ -8697,24 +8680,6 @@
           }
         ],
         "properties": {
-          "brand_template_id": {
-            "type": "string",
-            "description": "ID of the input brand template.",
-            "example": "DAFVztcvd9z"
-          },
-          "title": {
-            "maxLength": 255,
-            "minLength": 1,
-            "type": "string",
-            "description": "Title to use for the autofilled design.\n\nIf no design title is provided, the autofilled design will have the same title as the brand template.",
-            "example": "My autofilled design"
-          },
-          "design_id": {
-            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-            "type": "string",
-            "description": "ID of the design to use as the autofill source.",
-            "example": "DAFVztcvd9z"
-          },
           "type": {
             "type": "string"
           }
@@ -8725,10 +8690,7 @@
           "mapping": {
             "create_from_brand_template": "#/components/schemas/CreateFromBrandTemplateAutofillJobRequest",
             "create_from_design": "#/components/schemas/CreateFromDesignAutofillJobRequest",
-            "update_design": "#/components/schemas/UpdateDesignAutofillJobRequest",
-            "CreateFromBrandTemplateAutofillJobRequest": "#/components/schemas/CreateFromBrandTemplateAutofillJobRequest",
-            "CreateFromDesignAutofillJobRequest": "#/components/schemas/CreateFromDesignAutofillJobRequest",
-            "UpdateDesignAutofillJobRequest": "#/components/schemas/UpdateDesignAutofillJobRequest"
+            "update_design": "#/components/schemas/UpdateDesignAutofillJobRequest"
           }
         }
       },
@@ -8848,22 +8810,6 @@
           }
         ],
         "properties": {
-          "asset_id": {
-            "type": "string",
-            "description": "\u0060asset_id\u0060 of the image to insert into the template element.",
-            "example": "Msd59349ff"
-          },
-          "text": {
-            "type": "string",
-            "description": "Text to insert into the template element.",
-            "example": "It was like this when I got here!"
-          },
-          "chart_data": {
-            "$ref": "#/components/schemas/DataTable"
-          },
-          "sheet_data": {
-            "$ref": "#/components/schemas/DataTable"
-          },
           "type": {
             "type": "string"
           }
@@ -8876,12 +8822,7 @@
             "video": "#/components/schemas/DatasetVideoValue",
             "text": "#/components/schemas/DatasetTextValue",
             "chart": "#/components/schemas/DatasetChartValue",
-            "sheet": "#/components/schemas/DatasetSheetValue",
-            "DatasetImageValue": "#/components/schemas/DatasetImageValue",
-            "DatasetVideoValue": "#/components/schemas/DatasetVideoValue",
-            "DatasetTextValue": "#/components/schemas/DatasetTextValue",
-            "DatasetChartValue": "#/components/schemas/DatasetChartValue",
-            "DatasetSheetValue": "#/components/schemas/DatasetSheetValue"
+            "sheet": "#/components/schemas/DatasetSheetValue"
           }
         }
       },
@@ -9194,12 +9135,6 @@
           }
         ],
         "properties": {
-          "design": {
-            "$ref": "#/components/schemas/DesignSummary"
-          },
-          "trial_information": {
-            "$ref": "#/components/schemas/AutofillTrialInformation"
-          },
           "type": {
             "type": "string"
           }
@@ -9209,9 +9144,7 @@
           "propertyName": "type",
           "mapping": {
             "create_design": "#/components/schemas/CreateDesignAutofillJobResult",
-            "update_design": "#/components/schemas/UpdateDesignAutofillJobResult",
-            "CreateDesignAutofillJobResult": "#/components/schemas/CreateDesignAutofillJobResult",
-            "UpdateDesignAutofillJobResult": "#/components/schemas/UpdateDesignAutofillJobResult"
+            "update_design": "#/components/schemas/UpdateDesignAutofillJobResult"
           }
         }
       },
@@ -9257,7 +9190,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Status of the design autofill job.",
         "example": "success",
         "x-ms-enum": {
@@ -9289,7 +9221,6 @@
           "design_update_error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-enum-descriptions": [
           "The service encountered an error when autofilling your brand template.",
           "The service encountered an error when generating a thumbnail for the autofilled design.",
@@ -9374,7 +9305,6 @@
           "non_empty"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-enum-descriptions": [
           "Brand templates with and without dataset definitions.",
           "Brand templates with one or more data fields defined."
@@ -9576,7 +9506,6 @@
           "team_restricted_app"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Some APIs are annotated with required capabilities. These endpoints require the user to\npossess the required capabilities in order to be called successfully.",
         "x-enum-descriptions": [
           "Capability required to call the Design analytics APIs. Users that are members of a [Canva Enterprise](https://www.canva.com/enterprise/) organization have this capability.",
@@ -9767,45 +9696,6 @@
           }
         ],
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "The ID of the comment.\n\nYou can use this ID to create replies to the comment using the [Create reply API](https://www.canva.dev/docs/apps/rest-apis/reference/comments/create-reply/).",
-            "example": "KeAbiEAjZEj"
-          },
-          "attached_to": {
-            "$ref": "#/components/schemas/CommentObject"
-          },
-          "message": {
-            "type": "string",
-            "description": "The comment message. This is the comment body shown in the Canva UI.\nUser mentions are shown here in the format \u0060[user_id:team_id]\u0060.",
-            "example": "Great work [oUnPjZ2k2yuhftbWF7873o:oBpVhLW22VrqtwKgaayRbP]!"
-          },
-          "author": {
-            "$ref": "#/components/schemas/User"
-          },
-          "created_at": {
-            "type": "integer",
-            "description": "When the comment or reply was created, as a Unix timestamp\n(in seconds since the Unix Epoch).",
-            "format": "int64",
-            "example": 1692928800
-          },
-          "updated_at": {
-            "type": "integer",
-            "description": "When the comment or reply was last updated, as a Unix timestamp\n(in seconds since the Unix Epoch).",
-            "format": "int64",
-            "example": 1692928900
-          },
-          "assignee": {
-            "$ref": "#/components/schemas/User"
-          },
-          "resolver": {
-            "$ref": "#/components/schemas/User"
-          },
-          "thread_id": {
-            "type": "string",
-            "description": "The ID of the comment thread this reply is in. This ID is the same as the \u0060id\u0060 of the\nparent comment.",
-            "example": "KeAbiEAjZEj"
-          },
           "type": {
             "type": "string"
           }
@@ -9815,9 +9705,7 @@
           "propertyName": "type",
           "mapping": {
             "parent": "#/components/schemas/ParentComment",
-            "reply": "#/components/schemas/ReplyComment",
-            "ParentComment": "#/components/schemas/ParentComment",
-            "ReplyComment": "#/components/schemas/ReplyComment"
+            "reply": "#/components/schemas/ReplyComment"
           }
         },
         "deprecated": true
@@ -9942,20 +9830,14 @@
         ],
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/DesignType"
-          },
-          "design_id": {
-            "type": "string",
-            "description": "The ID of the design this comment is attached to.",
-            "example": "DAFVztcvd9z"
+            "type": "string"
           }
         },
         "description": "Identifying information about the object (such as a design) that the comment is attached to.",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "design": "#/components/schemas/DesignCommentObject",
-            "DesignCommentObject": "#/components/schemas/DesignCommentObject"
+            "design": "#/components/schemas/DesignCommentObject"
           }
         },
         "example": {
@@ -9995,20 +9877,14 @@
         ],
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/DesignType"
-          },
-          "design_id": {
-            "type": "string",
-            "description": "The ID of the design you want to attach this comment to.",
-            "example": "DAFVztcvd9z"
+            "type": "string"
           }
         },
         "description": "An object containing identifying information for the design or other object you want to\nattach the comment to.",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "design": "#/components/schemas/DesignCommentObjectInput",
-            "DesignCommentObjectInput": "#/components/schemas/DesignCommentObjectInput"
+            "design": "#/components/schemas/DesignCommentObjectInput"
           }
         },
         "example": {
@@ -10075,7 +9951,6 @@
           "resolve"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of comment event.",
         "deprecated": true,
         "x-ms-enum": {
@@ -10128,25 +10003,6 @@
           }
         ],
         "properties": {
-          "comment_url": {
-            "type": "string",
-            "description": "A URL to the design, focused on the comment thread.",
-            "example": "https://www.canva.com/design/3WCduQdjayTcPVM/z128cqanFu7E3/edit?ui=OdllGgZ4Snnq3MD8uI10bfA"
-          },
-          "comment": {
-            "$ref": "#/components/schemas/Thread"
-          },
-          "reply_url": {
-            "type": "string",
-            "description": "A URL to the design, focused on the comment reply.",
-            "example": "https://www.canva.com/design/3WCduQdjayTcPVM/z128cqanFu7E3/edit?ui=OdllGgZ4Snnq3MD8uI10bfA"
-          },
-          "reply": {
-            "$ref": "#/components/schemas/Reply"
-          },
-          "content": {
-            "$ref": "#/components/schemas/MentionEventContent"
-          },
           "type": {
             "type": "string"
           }
@@ -10159,12 +10015,7 @@
             "assigned": "#/components/schemas/AssignedCommentEvent",
             "resolved": "#/components/schemas/ResolvedCommentEvent",
             "reply": "#/components/schemas/ReplyCommentEvent",
-            "mention": "#/components/schemas/MentionCommentEvent",
-            "NewCommentEvent": "#/components/schemas/NewCommentEvent",
-            "AssignedCommentEvent": "#/components/schemas/AssignedCommentEvent",
-            "ResolvedCommentEvent": "#/components/schemas/ResolvedCommentEvent",
-            "ReplyCommentEvent": "#/components/schemas/ReplyCommentEvent",
-            "MentionCommentEvent": "#/components/schemas/MentionCommentEvent"
+            "mention": "#/components/schemas/MentionCommentEvent"
           }
         }
       },
@@ -10286,22 +10137,6 @@
           }
         ],
         "properties": {
-          "comment_url": {
-            "type": "string",
-            "description": "A URL to the design, focused on the comment thread.",
-            "example": "https://www.canva.com/design/3WCduQdjayTcPVM/z128cqanFu7E3/edit?ui=OdllGgZ4Snnq3MD8uI10bfA"
-          },
-          "comment": {
-            "$ref": "#/components/schemas/Thread"
-          },
-          "reply_url": {
-            "type": "string",
-            "description": "A URL to the design, focused on the comment reply.",
-            "example": "https://www.canva.com/design/3WCduQdjayTcPVM/z128cqanFu7E3/edit?ui=OdllGgZ4Snnq3MD8uI10bfA"
-          },
-          "reply": {
-            "$ref": "#/components/schemas/Reply"
-          },
           "type": {
             "type": "string"
           }
@@ -10311,9 +10146,7 @@
           "propertyName": "type",
           "mapping": {
             "thread": "#/components/schemas/ThreadMentionEventContent",
-            "reply": "#/components/schemas/ReplyMentionEventContent",
-            "ThreadMentionEventContent": "#/components/schemas/ThreadMentionEventContent",
-            "ReplyMentionEventContent": "#/components/schemas/ReplyMentionEventContent"
+            "reply": "#/components/schemas/ReplyMentionEventContent"
           }
         }
       },
@@ -10436,28 +10269,6 @@
           }
         ],
         "properties": {
-          "content": {
-            "$ref": "#/components/schemas/CommentContent"
-          },
-          "mentions": {
-            "$ref": "#/components/schemas/CommentThreadTypeMentionsProperty"
-          },
-          "assignee": {
-            "$ref": "#/components/schemas/User"
-          },
-          "resolver": {
-            "$ref": "#/components/schemas/User"
-          },
-          "suggested_edits": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SuggestedEdit"
-            }
-          },
-          "status": {
-            "$ref": "#/components/schemas/SuggestionStatus"
-          },
           "type": {
             "type": "string"
           }
@@ -10467,9 +10278,7 @@
           "propertyName": "type",
           "mapping": {
             "comment": "#/components/schemas/CommentThreadType",
-            "suggestion": "#/components/schemas/SuggestionThreadType",
-            "CommentThreadType": "#/components/schemas/CommentThreadType",
-            "SuggestionThreadType": "#/components/schemas/SuggestionThreadType"
+            "suggestion": "#/components/schemas/SuggestionThreadType"
           }
         }
       },
@@ -10540,13 +10349,6 @@
           }
         ],
         "properties": {
-          "text": {
-            "type": "string",
-            "example": "fantastic"
-          },
-          "format": {
-            "$ref": "#/components/schemas/SuggestionFormat"
-          },
           "type": {
             "type": "string"
           }
@@ -10557,10 +10359,7 @@
           "mapping": {
             "add": "#/components/schemas/AddSuggestedEdit",
             "delete": "#/components/schemas/DeleteSuggestedEdit",
-            "format": "#/components/schemas/FormatSuggestedEdit",
-            "AddSuggestedEdit": "#/components/schemas/AddSuggestedEdit",
-            "DeleteSuggestedEdit": "#/components/schemas/DeleteSuggestedEdit",
-            "FormatSuggestedEdit": "#/components/schemas/FormatSuggestedEdit"
+            "format": "#/components/schemas/FormatSuggestedEdit"
           }
         }
       },
@@ -10621,7 +10420,6 @@
           "rejected"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The current status of the suggestion.",
         "x-enum-descriptions": [
           "A suggestion was made, but it hasn\u0027t been accepted or rejected yet.",
@@ -10670,7 +10468,6 @@
           "vertical_align"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The suggested format change.",
         "example": "font_style",
         "x-ms-enum": {
@@ -10849,22 +10646,6 @@
           }
         ],
         "properties": {
-          "suggestion_url": {
-            "type": "string",
-            "description": "A URL to the design, focused on the suggestion.",
-            "example": "https://www.canva.com/design/3WCduQdjayTcPVM/z128cqanFu7E3/edit?ui=OdllGgZ4Snnq3MD8uI10bfA"
-          },
-          "suggestion": {
-            "$ref": "#/components/schemas/Thread"
-          },
-          "reply_url": {
-            "type": "string",
-            "description": "A URL to the design, focused on the suggestion reply.",
-            "example": "https://www.canva.com/design/3WCduQdjayTcPVM/z128cqanFu7E3/edit?ui=OdllGgZ4Snnq3MD8uI10bfA"
-          },
-          "reply": {
-            "$ref": "#/components/schemas/Reply"
-          },
           "type": {
             "type": "string"
           }
@@ -10877,12 +10658,7 @@
             "accepted": "#/components/schemas/AcceptedSuggestionEventType",
             "rejected": "#/components/schemas/RejectedSuggestionEventType",
             "reply": "#/components/schemas/ReplySuggestionEventType",
-            "mention": "#/components/schemas/MentionSuggestionEventType",
-            "NewSuggestionEventType": "#/components/schemas/NewSuggestionEventType",
-            "AcceptedSuggestionEventType": "#/components/schemas/AcceptedSuggestionEventType",
-            "RejectedSuggestionEventType": "#/components/schemas/RejectedSuggestionEventType",
-            "ReplySuggestionEventType": "#/components/schemas/ReplySuggestionEventType",
-            "MentionSuggestionEventType": "#/components/schemas/MentionSuggestionEventType"
+            "mention": "#/components/schemas/MentionSuggestionEventType"
           }
         }
       },
@@ -11042,7 +10818,21 @@
             "items": {
               "$ref": "#/components/schemas/EdDsaJwk"
             },
-            "description": "A Json Web Key Set (JWKS) with public keys used for signing webhooks. You can use this JWKS\nto verify that a webhook was sent from Canva."
+            "description": "A Json Web Key Set (JWKS) with public keys used for signing webhooks. You can use this JWKS\nto verify that a webhook was sent from Canva.",
+            "example": [
+              {
+                "kid": "a418dc7d-ecc5-5c4b-85ce-e1104a8addbe",
+                "kty": "OKP",
+                "crv": "Ed25519",
+                "x": "aIQtqd0nDfB-ug0DrzZbwTum-1ITdXvKxGFak_1VB2j"
+              },
+              {
+                "kid": "c8de5bec1-1b88-4ddaae04acc-ce415-5d7",
+                "kty": "OKP",
+                "crv": "Ed25519",
+                "x": "m2d1FT-gfBXxIzKwdQVTra0D-aBq_ubZ1jI0GuvkDtn"
+              }
+            ]
           }
         }
       },
@@ -11236,7 +11026,6 @@
           "variant"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Expected data type for cells in this column.",
         "x-enum-descriptions": [
           "String data",
@@ -11316,9 +11105,6 @@
           }
         ],
         "properties": {
-          "metadata": {
-            "$ref": "#/components/schemas/NumberCellMetadata"
-          },
           "type": {
             "type": "string"
           }
@@ -11331,12 +11117,7 @@
             "number": "#/components/schemas/NumberDataTableCell",
             "boolean": "#/components/schemas/BooleanDataTableCell",
             "date": "#/components/schemas/DateDataTableCell",
-            "media": "#/components/schemas/MediaCollectionDataTableCell",
-            "StringDataTableCell": "#/components/schemas/StringDataTableCell",
-            "NumberDataTableCell": "#/components/schemas/NumberDataTableCell",
-            "BooleanDataTableCell": "#/components/schemas/BooleanDataTableCell",
-            "DateDataTableCell": "#/components/schemas/DateDataTableCell",
-            "MediaCollectionDataTableCell": "#/components/schemas/MediaCollectionDataTableCell"
+            "media": "#/components/schemas/MediaCollectionDataTableCell"
           }
         }
       },
@@ -11441,7 +11222,6 @@
         "required": [
           "type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/DataTableImageUpload"
@@ -11451,35 +11231,6 @@
           }
         ],
         "properties": {
-          "url": {
-            "type": "string",
-            "description": "The URL of the image file to upload.\nThis can be an external URL or a data URL."
-          },
-          "thumbnail_url": {
-            "type": "string",
-            "description": "The URL of a thumbnail image to display while the image is queued for upload.\nThis can be an external URL or a data URL."
-          },
-          "width": {
-            "type": "integer",
-            "description": "The width of the image in pixels.",
-            "format": "int32"
-          },
-          "height": {
-            "type": "integer",
-            "description": "The height of the image in pixels.",
-            "format": "int32"
-          },
-          "ai_disclosure": {
-            "$ref": "#/components/schemas/DataTableAiDisclosure"
-          },
-          "thumbnail_image_url": {
-            "type": "string",
-            "description": "The URL of a thumbnail image to use as a fallback if thumbnailVideoUrl isn\u0027t provided.\nThis can be an external URL or a data URL."
-          },
-          "thumbnail_video_url": {
-            "type": "string",
-            "description": "The URL of a thumbnail video to display while the video is queued for upload."
-          },
           "type": {
             "type": "string"
           }
@@ -11488,9 +11239,7 @@
           "propertyName": "type",
           "mapping": {
             "image_upload": "#/components/schemas/DataTableImageUpload",
-            "video_upload": "#/components/schemas/DataTableVideoUpload",
-            "DataTableImageUpload": "#/components/schemas/DataTableImageUpload",
-            "DataTableVideoUpload": "#/components/schemas/DataTableVideoUpload"
+            "video_upload": "#/components/schemas/DataTableVideoUpload"
           }
         }
       },
@@ -11588,7 +11337,6 @@
           "image/tiff"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The MIME type of an image file that\u0027s supported by Canva\u0027s backend.",
         "x-ms-enum": {
           "name": "DataTableImageMimeType",
@@ -11635,7 +11383,6 @@
           "application/json"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The MIME type of a video file that\u0027s supported by Canva\u0027s backend.",
         "x-enum-descriptions": [
           "",
@@ -11702,7 +11449,6 @@
           "none"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "A disclosure identifying if the app generated this media asset using AI.",
         "x-enum-descriptions": [
           "App creates or significantly alters content using AI",
@@ -11732,7 +11478,6 @@
           "title_ascending"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-enum-descriptions": [
           "Sort results using a relevance algorithm.",
           "Sort results by the date last modified in descending order.",
@@ -11774,7 +11519,6 @@
           "shared"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-enum-descriptions": [
           "Owned by and shared with the user.",
           "Owned by the user.",
@@ -11836,43 +11580,6 @@
           }
         ],
         "properties": {
-          "design_type": {
-            "$ref": "#/components/schemas/DesignTypeInput"
-          },
-          "asset_id": {
-            "type": "string",
-            "description": "The ID of an asset to insert into the created design. Currently, this only supports image assets.",
-            "example": "Msd59349ff"
-          },
-          "title": {
-            "maxLength": 255,
-            "minLength": 1,
-            "type": "string",
-            "description": "The name of the design.",
-            "example": "My Holiday Presentation"
-          },
-          "design_id": {
-            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-            "type": "string",
-            "description": "The ID of the design to copy.",
-            "example": "DAFVztcvetc"
-          },
-          "page_numbers": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "minimum": 1,
-              "type": "integer",
-              "format": "int32"
-            },
-            "description": "The pages to copy from the source design. If not specified, all pages are copied.\nPages are indexed using one-based numbering."
-          },
-          "brand_template_id": {
-            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-            "type": "string",
-            "description": "The ID of the brand template used to create a design copy.",
-            "example": "EDMzWSwy3BI"
-          },
           "type": {
             "type": "string"
           }
@@ -11883,10 +11590,7 @@
           "mapping": {
             "type_and_asset": "#/components/schemas/DesignTypeCreateDesignRequest",
             "design": "#/components/schemas/DesignCreateDesignRequest",
-            "brand_template": "#/components/schemas/BrandTemplateCreateDesignRequest",
-            "DesignTypeCreateDesignRequest": "#/components/schemas/DesignTypeCreateDesignRequest",
-            "DesignCreateDesignRequest": "#/components/schemas/DesignCreateDesignRequest",
-            "BrandTemplateCreateDesignRequest": "#/components/schemas/BrandTemplateCreateDesignRequest"
+            "brand_template": "#/components/schemas/BrandTemplateCreateDesignRequest"
           }
         }
       },
@@ -12054,20 +11758,6 @@
           }
         ],
         "properties": {
-          "dimensions": {
-            "$ref": "#/components/schemas/PrintPartnerDesignDimensions"
-          },
-          "product_type": {
-            "type": "string",
-            "description": "The product type is used alongside your dimensions to find a matching product in Canva Print\u0027s product catalogue, and templates for that product are recommended. If no match is found, only dimensions are used, so templates may include unrelated product types.",
-            "example": "tshirt"
-          },
-          "partner_product_id": {
-            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-            "type": "string",
-            "description": "The ID of the partner-defined product.",
-            "example": "CVAFDC1091"
-          },
           "type": {
             "type": "string"
           }
@@ -12077,9 +11767,7 @@
           "propertyName": "type",
           "mapping": {
             "dimensions": "#/components/schemas/PrintPartnerDimensionsDesignSource",
-            "partner_product_id": "#/components/schemas/PrintPartnerProductIdDesignSource",
-            "PrintPartnerDimensionsDesignSource": "#/components/schemas/PrintPartnerDimensionsDesignSource",
-            "PrintPartnerProductIdDesignSource": "#/components/schemas/PrintPartnerProductIdDesignSource"
+            "partner_product_id": "#/components/schemas/PrintPartnerProductIdDesignSource"
           }
         }
       },
@@ -12158,7 +11846,6 @@
           "mm"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The units of the dimensions.",
         "x-ms-enum": {
           "name": "PrintPartnerDesignDimensionsUnits",
@@ -12285,7 +11972,10 @@
             "items": {
               "$ref": "#/components/schemas/DesignTypeOutputName"
             },
-            "description": "The type of content a design or page contains. The list of design types may grow over time. The \u0060unknown\u0060 value represents design types that haven\u0027t been added to the list."
+            "description": "The type of content a design or page contains. The list of design types may grow over time. The \u0060unknown\u0060 value represents design types that haven\u0027t been added to the list.",
+            "example": [
+              "presentation"
+            ]
           }
         },
         "description": "The design object, which contains metadata about the design."
@@ -12491,11 +12181,7 @@
             "image": "#/components/schemas/ImageDataField",
             "text": "#/components/schemas/TextDataField",
             "chart": "#/components/schemas/ChartDataField",
-            "sheet": "#/components/schemas/SheetDataField",
-            "ImageDataField": "#/components/schemas/ImageDataField",
-            "TextDataField": "#/components/schemas/TextDataField",
-            "ChartDataField": "#/components/schemas/ChartDataField",
-            "SheetDataField": "#/components/schemas/SheetDataField"
+            "sheet": "#/components/schemas/SheetDataField"
           }
         }
       },
@@ -12591,7 +12277,6 @@
           "preset"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The kind of design type to generate.",
         "x-enum-descriptions": [
           "A preset Canva design type."
@@ -12613,7 +12298,6 @@
           "presentation"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The name of the design type to generate.",
         "x-enum-descriptions": [
           "A [Canva doc](https://www.canva.com/docs/); a document for Canva\u0027s online text editor.",
@@ -12744,7 +12428,6 @@
           "success"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The public status of the job. \u0060result\u0060 is present only for \u0060success\u0060, and\n\u0060error\u0060 is present only for \u0060failed\u0060.",
         "x-enum-descriptions": [
           "The design couldn\u0027t be generated.",
@@ -12805,7 +12488,6 @@
           "generation_failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The reason the design generation job failed.",
         "x-enum-descriptions": [
           "The brief or generated content didn\u0027t pass Canva\u0027s content-safety checks.",
@@ -12889,7 +12571,6 @@
           "success"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the design import job.",
         "example": "success",
         "x-ms-enum": {
@@ -12939,7 +12620,6 @@
           "fetch_failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "A short string about why the import failed. This field can be used to handle errors\nprogrammatically.",
         "example": "design_creation_throttled",
         "x-ms-enum": {
@@ -13168,7 +12848,6 @@
           "internal_error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "A short string about why the import failed. This field can be used to handle errors\nprogrammatically.",
         "example": "bad_input",
         "x-ms-enum": {
@@ -13212,25 +12891,6 @@
           }
         ],
         "properties": {
-          "name": {
-            "$ref": "#/components/schemas/PresetDesignTypeName"
-          },
-          "width": {
-            "maximum": 8000,
-            "minimum": 40,
-            "type": "integer",
-            "description": "The width of the design, in pixels.",
-            "format": "int32",
-            "example": 320
-          },
-          "height": {
-            "maximum": 8000,
-            "minimum": 40,
-            "type": "integer",
-            "description": "The height of the design, in pixels.",
-            "format": "int32",
-            "example": 200
-          },
           "type": {
             "type": "string"
           }
@@ -13240,9 +12900,7 @@
           "propertyName": "type",
           "mapping": {
             "preset": "#/components/schemas/PresetDesignTypeInput",
-            "custom": "#/components/schemas/CustomDesignTypeInput",
-            "PresetDesignTypeInput": "#/components/schemas/PresetDesignTypeInput",
-            "CustomDesignTypeInput": "#/components/schemas/CustomDesignTypeInput"
+            "custom": "#/components/schemas/CustomDesignTypeInput"
           }
         }
       },
@@ -13270,7 +12928,6 @@
           "whiteboard"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The name of the design type.",
         "x-enum-descriptions": [
           "A [Canva doc](https://www.canva.com/docs/); a document for Canva\u0027s online text editor.",
@@ -13342,7 +12999,6 @@
           "unknown"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of content a design or page contains. The list of design types may grow over time. The \u0060unknown\u0060 value represents design types that haven\u0027t been added to the list.",
         "example": "presentation",
         "x-ms-enum": {
@@ -13521,7 +13177,6 @@
           "user_already_member"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "A short string indicating what failed. This field can be used to handle errors programmatically.\n",
         "x-ms-enum": {
           "name": "ErrorCode",
@@ -13926,52 +13581,6 @@
           }
         ],
         "properties": {
-          "export_quality": {
-            "$ref": "#/components/schemas/ExportQuality"
-          },
-          "size": {
-            "$ref": "#/components/schemas/ExportPageSize"
-          },
-          "pages": {
-            "type": "array",
-            "items": {
-              "minimum": 1,
-              "type": "integer",
-              "format": "int32"
-            },
-            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
-          },
-          "height": {
-            "maximum": 25000,
-            "minimum": 40,
-            "type": "integer",
-            "description": "Specify the height in pixels of the exported image. Note the following behavior:\n\n- If no height or width is specified, the image is exported using the dimensions of the design.\n- If only one of height or width is specified, then the image is scaled to match that dimension, respecting the design\u0027s aspect ratio.\n- If both the height and width are specified, but the values don\u0027t match the design\u0027s aspect ratio, the export defaults to the larger dimension.",
-            "format": "int32",
-            "example": 400
-          },
-          "width": {
-            "maximum": 25000,
-            "minimum": 40,
-            "type": "integer",
-            "description": "Specify the width in pixels of the exported image. Note the following behavior:\n\n- If no width or height is specified, the image is exported using the dimensions of the design.\n- If only one of width or height is specified, then the image is scaled to match that dimension, respecting the design\u0027s aspect ratio.\n- If both the width and height are specified, but the values don\u0027t match the design\u0027s aspect ratio, the export defaults to the larger dimension.",
-            "format": "int32",
-            "example": 400
-          },
-          "lossless": {
-            "type": "boolean",
-            "description": "If set to \u0060true\u0060 (default), the PNG is exported without compression.\n\nIf set to \u0060false\u0060, the PNG is compressed using a lossy compression algorithm.\n\nAVAILABILITY: Lossy PNG compression is only available to users on a Canva plan that has premium features, such as Canva Pro. If the user is on the Canva Free plan and this parameter is set to \u0060false\u0060, the export operation will fail.",
-            "default": true
-          },
-          "transparent_background": {
-            "type": "boolean",
-            "description": "If set to \u0060true\u0060, the PNG is exported with a transparent background.\n\nAVAILABILITY: This option is only available to users on a Canva plan that has premium features, such as Canva Pro. If the user is on the Canva Free plan and this parameter is set to \u0060true\u0060, the export operation will fail.",
-            "default": false
-          },
-          "as_single_image": {
-            "type": "boolean",
-            "description": "When \u0060true\u0060, multi-page designs are merged into a single image.\nWhen \u0060false\u0060 (default), each page is exported as a separate image.",
-            "default": false
-          },
           "type": {
             "type": "string"
           }
@@ -13988,16 +13597,7 @@
             "mp4": "#/components/schemas/Mp4ExportFormat",
             "html_bundle": "#/components/schemas/HtmlBundleExportFormat",
             "html_standalone": "#/components/schemas/HtmlStandaloneExportFormat",
-            "csv": "#/components/schemas/CsvExportFormat",
-            "PdfExportFormat": "#/components/schemas/PdfExportFormat",
-            "JpgExportFormat": "#/components/schemas/JpgExportFormat",
-            "PngExportFormat": "#/components/schemas/PngExportFormat",
-            "PptxExportFormat": "#/components/schemas/PptxExportFormat",
-            "GifExportFormat": "#/components/schemas/GifExportFormat",
-            "Mp4ExportFormat": "#/components/schemas/Mp4ExportFormat",
-            "HtmlBundleExportFormat": "#/components/schemas/HtmlBundleExportFormat",
-            "HtmlStandaloneExportFormat": "#/components/schemas/HtmlStandaloneExportFormat",
-            "CsvExportFormat": "#/components/schemas/CsvExportFormat"
+            "csv": "#/components/schemas/CsvExportFormat"
           }
         }
       },
@@ -14023,7 +13623,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
+            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported.",
+            "example": [
+              2,
+              3,
+              4
+            ]
           }
         },
         "description": "Export the design as a PDF. Providing a paper size is optional."
@@ -14063,7 +13668,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
+            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported.",
+            "example": [
+              2,
+              3,
+              4
+            ]
           }
         },
         "description": "Export the design as a GIF. Height or width (or both) may be specified, otherwise the file\nwill be exported at it\u0027s default size. Large designs will be scaled down, and aspect ratio\nwill always be maintained."
@@ -14112,7 +13722,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
+            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported.",
+            "example": [
+              2,
+              3,
+              4
+            ]
           }
         },
         "description": "Export the design as a JPEG. Compression quality must be provided. Height or width (or both)\nmay be specified, otherwise the file will be exported at it\u0027s default size.\n\nIf the user is on the Canva Free plan, the export height and width for a fixed-dimension design can\u0027t be upscaled by more than a factor of \u00601.125\u0060."
@@ -14167,7 +13782,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
+            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported.",
+            "example": [
+              2,
+              3,
+              4
+            ]
           }
         },
         "description": "Export the design as a PNG. Height or width (or both) may be specified, otherwise\nthe file will be exported at it\u0027s default size. You may also specify whether to export the\nfile losslessly, and whether to export a multi-page design as a single image.\n\nIf the user is on the Canva Free plan, the export height and width for a fixed-dimension design can\u0027t be upscaled by more than a factor of \u00601.125\u0060."
@@ -14188,7 +13808,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
+            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported.",
+            "example": [
+              2,
+              3,
+              4
+            ]
           }
         },
         "description": "Export the design as a PPTX."
@@ -14216,7 +13841,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
+            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported.",
+            "example": [
+              2,
+              3,
+              4
+            ]
           }
         },
         "description": "Export the design as an MP4. You must specify the quality of the exported video."
@@ -14239,7 +13869,10 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The pages of the design to export. Currently only a single page can be exported. If not provided,\nthe first page of the design is used."
+            "description": "The pages of the design to export. Currently only a single page can be exported. If not provided,\nthe first page of the design is used.",
+            "example": [
+              1
+            ]
           }
         },
         "description": "Export the email design as an HTML bundle. An HTML bundle is a zip file that contains an HTML file and the associated assets."
@@ -14262,7 +13895,10 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The pages of the design to export. Currently only a single page can be exported. If not provided,\nthe first page of the design is used."
+            "description": "The pages of the design to export. Currently only a single page can be exported. If not provided,\nthe first page of the design is used.",
+            "example": [
+              1
+            ]
           }
         },
         "description": "Export the email design as a standalone HTML file with hosted assets."
@@ -14283,7 +13919,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
+            "description": "To specify which pages to export in a multi-page design, provide the page numbers as\nan array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported.",
+            "example": [
+              2,
+              3,
+              4
+            ]
           }
         },
         "description": "Export the design as a CSV file. CSV export is only available for designs that contain\ntabular data, such as Canva Sheets."
@@ -14323,7 +13964,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "To specify which pages to export in a multi-page design, provide the page\nnumbers as an array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported."
+            "description": "To specify which pages to export in a multi-page design, provide the page\nnumbers as an array. The first page in a design is page \u00601\u0060.\nIf \u0060pages\u0060 isn\u0027t specified, all the pages are exported.",
+            "example": [
+              2,
+              3,
+              4
+            ]
           }
         },
         "description": "Body parameters for starting a Print Partner export job for a design.\nIt must include a design ID. Canva Docs are not supported for export.",
@@ -14373,7 +14019,6 @@
           "mm"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The units of the dimensions. If no units are specified, pixels are used.",
         "x-ms-enum": {
           "name": "PrintPartnerExportDimensionsUnits",
@@ -14415,29 +14060,6 @@
           }
         ],
         "properties": {
-          "bleed": {
-            "maximum": 150000,
-            "minimum": 0,
-            "type": "integer",
-            "description": "The size of the bleed that should be added to the design. The units of the bleed must be microns. This should match the bleed value used when creating the design with the [Create print partner design API](https://www.canva.dev/docs/apps/rest-apis/reference/print-partner/create-print-partner-design/). Use 0 for no bleed. If bleed is not specified, a default of 3000 microns is used.",
-            "format": "int32",
-            "default": 3000
-          },
-          "crop_marks": {
-            "type": "boolean",
-            "description": "Whether crop marks should be added to the image.",
-            "default": false
-          },
-          "cmyk": {
-            "type": "boolean",
-            "description": "Whether the PDF color space should be converted to CMYK.",
-            "default": false
-          },
-          "pdfx": {
-            "type": "boolean",
-            "description": "Whether the PDF standard should be updated to PDF/X, a printer friendly\nstandard.",
-            "default": false
-          },
           "type": {
             "type": "string"
           }
@@ -14448,10 +14070,7 @@
           "mapping": {
             "pdf": "#/components/schemas/PrintPartnerPdfExportFormat",
             "jpg": "#/components/schemas/PrintPartnerJpgExportFormat",
-            "png": "#/components/schemas/PrintPartnerPngExportFormat",
-            "PrintPartnerPdfExportFormat": "#/components/schemas/PrintPartnerPdfExportFormat",
-            "PrintPartnerJpgExportFormat": "#/components/schemas/PrintPartnerJpgExportFormat",
-            "PrintPartnerPngExportFormat": "#/components/schemas/PrintPartnerPngExportFormat"
+            "png": "#/components/schemas/PrintPartnerPngExportFormat"
           }
         }
       },
@@ -14556,7 +14175,10 @@
             "items": {
               "type": "string"
             },
-            "description": "Download URL(s) for the completed export job. These URLs expire after 24 hours.\n\nDepending on the design type and export format, there is a download URL for each page in the design. The list is sorted by page order."
+            "description": "Download URL(s) for the completed export job. These URLs expire after 24 hours.\n\nDepending on the design type and export format, there is a download URL for each page in the design. The list is sorted by page order.",
+            "example": [
+              "https://export-download.canva.com/..."
+            ]
           },
           "error": {
             "$ref": "#/components/schemas/ExportError"
@@ -14572,7 +14194,6 @@
           "legal"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The paper size of the export PDF file. The \u0060size\u0060 attribute is only supported for Documents (Canva Docs).",
         "example": "a4",
         "x-ms-enum": {
@@ -14605,7 +14226,6 @@
           "success"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The export status of the job. A newly created job will be \u0060in_progress\u0060 and will eventually\nbecome \u0060success\u0060 or \u0060failed\u0060.",
         "x-ms-enum": {
           "name": "DesignExportStatus",
@@ -14654,7 +14274,6 @@
           "vertical_4k"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The resolution of the exported video, as a target number of pixels. The resolution is one of\n\u0060480p\u0060, \u0060720p\u0060, \u00601080p\u0060 or \u00604k\u0060.\n\nThe exported video always has the same aspect ratio as the design, which matches creating a\ndownload from the Canva editor. The resolution sets how many pixels to target, and the\ndesign\u0027s aspect ratio decides how they\u0027re split between width and height, so the\n\u0060horizontal\u0060 and \u0060vertical\u0060 values of a given resolution produce the same output:\n\n- A 2160x3840 portrait design exported as \u0060horizontal_4k\u0060 is 2160x3840, not 3840x2160. The\n  orientation in the value\u0027s name doesn\u0027t rotate or crop the design.\n- A 1000x2000 design exported as \u0060horizontal_720p\u0060 is 678x1357, the 1:2 size closest to the\n  921,600 pixels of 1280x720. Aspect ratios that don\u0027t match a standard video size aren\u0027t\n  rounded to one.\n- A square design exported as \u0060horizontal_4k\u0060 or \u0060vertical_4k\u0060 is 2880x2880, the square with\n  the same number of pixels as 3840x2160.",
         "x-ms-enum": {
           "name": "Mp4ExportQuality",
@@ -14741,7 +14360,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as a PDF."
@@ -14756,7 +14380,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as a GIF."
@@ -14771,7 +14400,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as a JPEG."
@@ -14786,7 +14420,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as a PNG."
@@ -14801,7 +14440,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as an SVG."
@@ -14816,7 +14460,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as a PPTX."
@@ -14831,7 +14480,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as an MP4."
@@ -14846,7 +14500,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as an HTML bundle."
@@ -14861,7 +14520,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as an standalone HTML file."
@@ -14876,7 +14540,12 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design."
+            "description": "The page numbers in the design that support this export format, in ascending order. The first page in a design is page \u00601\u0060. If omitted, the format is supported by all pages in the design.",
+            "example": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "description": "Whether the design can be exported as a CSV file."
@@ -14905,7 +14574,6 @@
           "internal_failure"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "If the export failed, this specifies the reason why it failed.",
         "x-enum-descriptions": [
           "The design contains [premium elements](https://www.canva.com/help/premium-elements/) that haven\u0027t been purchased. You can either buy the elements or upgrade to a Canva plan (such as Canva Pro) that has premium features, then try again. Alternatively, you can set \u0060export_quality\u0060 to \u0060regular\u0060 to export your document in regular quality.",
@@ -14937,7 +14605,6 @@
           "pro"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Specifies the export quality of the design.",
         "x-enum-descriptions": [
           "Regular quality export.",
@@ -14968,7 +14635,6 @@
           "title_descending"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-enum-descriptions": [
           "Sort results by creation date, in ascending order.",
           "Sort results by creation date, in descending order.",
@@ -15016,7 +14682,6 @@
           "brand_template"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "FolderItemType",
           "modelAsString": false,
@@ -15046,7 +14711,6 @@
           "pinned"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Filter folder items by their pinned status.",
         "x-enum-descriptions": [
           "Return all items regardless of pinned status (default).",
@@ -15178,18 +14842,6 @@
           }
         ],
         "properties": {
-          "folder": {
-            "$ref": "#/components/schemas/Folder"
-          },
-          "design": {
-            "$ref": "#/components/schemas/DesignSummary"
-          },
-          "image": {
-            "$ref": "#/components/schemas/AssetSummary"
-          },
-          "brand_template": {
-            "$ref": "#/components/schemas/BrandTemplateSummary"
-          },
           "type": {
             "type": "string"
           }
@@ -15201,11 +14853,7 @@
             "folder": "#/components/schemas/FolderItem",
             "design": "#/components/schemas/DesignItem",
             "image": "#/components/schemas/ImageItem",
-            "brand_template": "#/components/schemas/BrandTemplateItem",
-            "FolderItem": "#/components/schemas/FolderItem",
-            "DesignItem": "#/components/schemas/DesignItem",
-            "ImageItem": "#/components/schemas/ImageItem",
-            "BrandTemplateItem": "#/components/schemas/BrandTemplateItem"
+            "brand_template": "#/components/schemas/BrandTemplateItem"
           }
         }
       },
@@ -15437,7 +15085,6 @@
         "required": [
           "type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/NoneImageGenerationAssetUpload"
@@ -15447,13 +15094,6 @@
           }
         ],
         "properties": {
-          "asset_name": {
-            "maxLength": 255,
-            "minLength": 1,
-            "type": "string",
-            "description": "A name for the image asset. Canva doesn\u0027t localize this value, so provide a name in\nthe user\u0027s language. If omitted, Canva generates a name for the asset.",
-            "example": "Red apple on a wooden table"
-          },
           "type": {
             "type": "string"
           }
@@ -15463,9 +15103,7 @@
           "propertyName": "type",
           "mapping": {
             "none": "#/components/schemas/NoneImageGenerationAssetUpload",
-            "upload": "#/components/schemas/UploadImageGenerationAssetUpload",
-            "NoneImageGenerationAssetUpload": "#/components/schemas/NoneImageGenerationAssetUpload",
-            "UploadImageGenerationAssetUpload": "#/components/schemas/UploadImageGenerationAssetUpload"
+            "upload": "#/components/schemas/UploadImageGenerationAssetUpload"
           }
         }
       },
@@ -15598,7 +15236,6 @@
           "success"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the image generation job. A newly created job will be \u0060in_progress\u0060 and\nwill eventually become \u0060success\u0060 or \u0060failed\u0060. If the status is \u0060success\u0060, the job\u0027s\n\u0060result\u0060 is present.",
         "x-ms-enum": {
           "name": "ImageGenerationJobStatus",
@@ -15626,7 +15263,6 @@
           "z_image_turbo"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The model to use for image generation. We recommend omitting this parameter: Canva\nthen selects the best available model for the request and falls back to another\nmodel if one is temporarily unavailable. Set it only if you need a specific model\u0027s\noutput. If the requested model can\u0027t serve the request, the job fails. Canva never\nuses a different model to serve the request.\n\nThe model strengths below are based on Canva\u0027s evaluations. Results vary by\nprompt, so test with your own prompts before pinning a model.",
         "x-enum-descriptions": [
           "CRAFT-1 2K, Canva\u0027s first-party image generation model. Pick this model for the best\nimage quality for infographics, posters, slides, people and portraits, abstract art,\npatterns, landscapes, nature, products, and marketing materials.",
@@ -15662,7 +15298,6 @@
           "portrait_4_5"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The aspect ratio of the generated image. Every aspect ratio is supported by every model\nyou can select with \u0060model\u0060, so the choice of model never limits the aspect ratios you\ncan use. The pixel dimensions of the output depend on the model. The job result reports\nthe actual \u0060width\u0060 and \u0060height\u0060.",
         "x-enum-descriptions": [
           "A square (1:1) image.",
@@ -15712,7 +15347,6 @@
           "internal_error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Error code indicating what went wrong with the image generation.",
         "x-enum-descriptions": [
           "Content safety checks rejected the prompt.",
@@ -15800,7 +15434,6 @@
         "required": [
           "type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/BackgroundRemovalImageTransformation"
@@ -15808,15 +15441,14 @@
         ],
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/BackgroundRemovalType"
+            "type": "string"
           }
         },
         "description": "A transformation to apply to the image asset. Each transformation type is identified\nby its \u0060type\u0060 value and declares its own parameters; \u0060background_removal\u0060 takes no\nparameters.",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "background_removal": "#/components/schemas/BackgroundRemovalImageTransformation",
-            "BackgroundRemovalImageTransformation": "#/components/schemas/BackgroundRemovalImageTransformation"
+            "background_removal": "#/components/schemas/BackgroundRemovalImageTransformation"
           }
         }
       },
@@ -15884,7 +15516,6 @@
           "success"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the image transformation job. A newly created job will be \u0060in_progress\u0060\nand will eventually become \u0060success\u0060 or \u0060failed\u0060. A job may also complete\nimmediately, returning \u0060success\u0060 or \u0060failed\u0060 from job creation. If the status is\n\u0060success\u0060, the job\u0027s \u0060result\u0060 is present.",
         "x-ms-enum": {
           "name": "ImageTransformationJobStatus",
@@ -15924,7 +15555,6 @@
           "internal_error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Error code indicating what went wrong with the image transformation.",
         "x-enum-descriptions": [
           "No foreground subject was found in the image, so there is no background to remove.",
@@ -16022,7 +15652,6 @@
         "required": [
           "type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/NewDesignCreateDesignMergeJobRequest"
@@ -16032,28 +15661,6 @@
           }
         ],
         "properties": {
-          "operations": {
-            "maxItems": 500,
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DesignMergeOperation"
-            },
-            "description": "For this job type, only insert operations are supported."
-          },
-          "title": {
-            "maxLength": 255,
-            "minLength": 1,
-            "type": "string",
-            "description": "Title for the new design.",
-            "example": "My merged design"
-          },
-          "design_id": {
-            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-            "type": "string",
-            "description": "The ID of the design to modify.",
-            "example": "DAFVztcvd9z"
-          },
           "type": {
             "type": "string"
           }
@@ -16062,9 +15669,7 @@
           "propertyName": "type",
           "mapping": {
             "create_new_design": "#/components/schemas/NewDesignCreateDesignMergeJobRequest",
-            "modify_existing_design": "#/components/schemas/ModifyDesignCreateDesignMergeJobRequest",
-            "NewDesignCreateDesignMergeJobRequest": "#/components/schemas/NewDesignCreateDesignMergeJobRequest",
-            "ModifyDesignCreateDesignMergeJobRequest": "#/components/schemas/ModifyDesignCreateDesignMergeJobRequest"
+            "modify_existing_design": "#/components/schemas/ModifyDesignCreateDesignMergeJobRequest"
           }
         }
       },
@@ -16138,7 +15743,6 @@
         "required": [
           "type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/InsertPagesDesignMergeOperation"
@@ -16151,43 +15755,6 @@
           }
         ],
         "properties": {
-          "source": {
-            "$ref": "#/components/schemas/MergeSourceForInsertPagesOperation"
-          },
-          "after_page_number": {
-            "minimum": 0,
-            "type": "integer",
-            "description": "Insert after this one-based page number in the evolving target layout. Use 0 to insert at the beginning, and the default is inserting at the end (append).\n",
-            "format": "int32",
-            "example": 2
-          },
-          "from_page_numbers": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "minimum": 1,
-              "type": "integer",
-              "format": "int32"
-            },
-            "description": "One-based number of the pages to move (evaluated at the time this operation runs). Pages are moved in order."
-          },
-          "to_after_page_number": {
-            "minimum": 0,
-            "type": "integer",
-            "description": "Destination position: insert the moved pages after this one-based page number. Use 0 to move to the beginning.\n",
-            "format": "int32",
-            "example": 2
-          },
-          "page_numbers": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "minimum": 1,
-              "type": "integer",
-              "format": "int32"
-            },
-            "description": "One-based numbers of the pages to delete (evaluated at the time this operation runs). Pages are deleted in reverse order to maintain page numbers."
-          },
           "type": {
             "type": "string"
           }
@@ -16197,10 +15764,7 @@
           "mapping": {
             "insert_pages": "#/components/schemas/InsertPagesDesignMergeOperation",
             "move_pages": "#/components/schemas/MovePagesDesignMergeOperation",
-            "delete_pages": "#/components/schemas/DeletePagesDesignMergeOperation",
-            "InsertPagesDesignMergeOperation": "#/components/schemas/InsertPagesDesignMergeOperation",
-            "MovePagesDesignMergeOperation": "#/components/schemas/MovePagesDesignMergeOperation",
-            "DeletePagesDesignMergeOperation": "#/components/schemas/DeletePagesDesignMergeOperation"
+            "delete_pages": "#/components/schemas/DeletePagesDesignMergeOperation"
           }
         }
       },
@@ -16246,7 +15810,11 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "One-based number of the pages to move (evaluated at the time this operation runs). Pages are moved in order."
+            "description": "One-based number of the pages to move (evaluated at the time this operation runs). Pages are moved in order.",
+            "example": [
+              1,
+              3
+            ]
           },
           "to_after_page_number": {
             "minimum": 0,
@@ -16276,7 +15844,11 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "One-based numbers of the pages to delete (evaluated at the time this operation runs). Pages are deleted in reverse order to maintain page numbers."
+            "description": "One-based numbers of the pages to delete (evaluated at the time this operation runs). Pages are deleted in reverse order to maintain page numbers.",
+            "example": [
+              2,
+              4
+            ]
           }
         },
         "description": "Deletes pages from the target design."
@@ -16285,7 +15857,6 @@
         "required": [
           "type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/DesignMergeSourceForInsertPagesOperation"
@@ -16293,30 +15864,13 @@
         ],
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/DesignType"
-          },
-          "design_id": {
-            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
-            "type": "string",
-            "description": "The ID of the source design.",
-            "example": "DAFVztcvd9z"
-          },
-          "page_numbers": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "minimum": 1,
-              "type": "integer",
-              "format": "int32"
-            },
-            "description": "One-based page numbers to insert from the source design. If omitted, all pages from the design are inserted."
+            "type": "string"
           }
         },
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "design": "#/components/schemas/DesignMergeSourceForInsertPagesOperation",
-            "DesignMergeSourceForInsertPagesOperation": "#/components/schemas/DesignMergeSourceForInsertPagesOperation"
+            "design": "#/components/schemas/DesignMergeSourceForInsertPagesOperation"
           }
         }
       },
@@ -16344,7 +15898,11 @@
               "type": "integer",
               "format": "int32"
             },
-            "description": "One-based page numbers to insert from the source design. If omitted, all pages from the design are inserted."
+            "description": "One-based page numbers to insert from the source design. If omitted, all pages from the design are inserted.",
+            "example": [
+              1,
+              2
+            ]
           }
         },
         "description": "A design source from which pages are inserted."
@@ -16402,7 +15960,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-enum-descriptions": [
           "The merge job is still running.",
           "The merge job completed successfully.",
@@ -16446,7 +16003,6 @@
           "modify_design_error"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "DesignMergeErrorCode",
           "modelAsString": false,
@@ -16502,41 +16058,6 @@
           }
         ],
         "properties": {
-          "code_verifier": {
-            "type": "string",
-            "description": "The \u0060code_verifier\u0060 value that you generated when creating the user authorization URL.",
-            "example": "i541qdcfkb4htnork0w92lnu43en99ls5a48ittv6udqgiflqon8vusojojakbq4"
-          },
-          "code": {
-            "type": "string",
-            "description": "The authorization code you received after the user authorized the app.",
-            "example": "kp8nnroja7qnx00.opyc1p76rcbyflsxbycjqfp3ub8vzsvltpzwafy9q5l45dn5fxzhe7i7a6mg1i2t8jpsa6sebdeumkzzhicskabgevrxsssec4dvjwfvhq4gs3ugghguar0voiqpfb7axsapiojoter8v3w2s5s3st84jpv2l06h667iw241xngy9c8=vu1tnjp7sz"
-          },
-          "client_id": {
-            "type": "string",
-            "description": "Your app\u0027s unique ID, for authenticating the request.\n\nNOTE: We recommend that you use basic access authentication instead of specifying \u0060client_id\u0060 and \u0060client_secret\u0060 as body parameters.\n",
-            "example": "OC-FAB12-AbCdEf"
-          },
-          "client_secret": {
-            "type": "string",
-            "description": "Your app\u0027s client secret, for authenticating the request. Begins with \u0060cnvca\u0060.\n\nNOTE: We recommend that you use basic access authentication instead of specifying \u0060client_id\u0060 and \u0060client_secret\u0060 as body parameters.\n",
-            "example": "cnvcaAbcdefg12345_hijklm6789"
-          },
-          "redirect_uri": {
-            "type": "string",
-            "description": "Only required if a redirect URL was supplied when you [created the user authorization URL](https://www.canva.dev/docs/apps/rest-apis/authentication/#create-the-authorization-url).\n\nMust be one of those already specified by the client. If not supplied, the first redirect_uri defined for the client will be used by default.\n",
-            "example": "https://example.com/process-auth"
-          },
-          "refresh_token": {
-            "type": "string",
-            "description": "The refresh token to be exchanged. You can copy this value from the successful response received when generating an access token.",
-            "example": "JABix5nolsk9k8n2r0f8nq1gw4zjo40ht6sb4i573wgdzmkwdmiy6muh897hp0bxyab276wtgqkvtob2mg9aidt5d6rcltcbcgs101"
-          },
-          "scope": {
-            "type": "string",
-            "description": "Optional scope value when refreshing an access token. Separate multiple [scopes](https://www.canva.dev/docs/apps/rest-apis/scopes/) with a single space between each scope.\n\nThe requested scope cannot include any permissions not already granted, so this parameter allows you to limit the scope when refreshing a token. If omitted, the scope for the token remains unchanged.\n",
-            "example": "design:meta:read"
-          },
           "grant_type": {
             "type": "string"
           }
@@ -16545,9 +16066,7 @@
           "propertyName": "grant_type",
           "mapping": {
             "authorization_code": "#/components/schemas/ExchangeAuthCodeRequest",
-            "refresh_token": "#/components/schemas/ExchangeRefreshTokenRequest",
-            "ExchangeAuthCodeRequest": "#/components/schemas/ExchangeAuthCodeRequest",
-            "ExchangeRefreshTokenRequest": "#/components/schemas/ExchangeRefreshTokenRequest"
+            "refresh_token": "#/components/schemas/ExchangeRefreshTokenRequest"
           }
         }
       },
@@ -16827,7 +16346,6 @@
           "never"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The interval at which the usage resets. \u0027never\u0027 means lifetime quota that never resets.",
         "x-ms-enum": {
           "name": "Interval",
@@ -16953,7 +16471,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Status of the design resize job.",
         "example": "success",
         "x-ms-enum": {
@@ -16983,7 +16500,6 @@
           "trial_quota_exceeded"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "DesignResizeErrorCode",
           "modelAsString": false,
@@ -17268,72 +16784,6 @@
           }
         ],
         "properties": {
-          "design": {
-            "$ref": "#/components/schemas/DesignSummary"
-          },
-          "share_url": {
-            "type": "string",
-            "description": "A URL that the user who receives the notification can use to access the shared design.",
-            "example": "https://www.canva.com/api/action?token=zWiz3GqRaWVkolwSgfBa9sKbsKgfHAoxv_mjs-mlX2M"
-          },
-          "share": {
-            "$ref": "#/components/schemas/ShareAction"
-          },
-          "folder": {
-            "$ref": "#/components/schemas/FolderSummary"
-          },
-          "comment_url": {
-            "type": "string",
-            "description": "A URL to the design, focused on the new comment.\n\nThe \u0060comment_url\u0060 property is deprecated.\nFor details of the comment event, use the \u0060comment_event\u0060 property instead.",
-            "example": "https://www.canva.com/design/3WCduQdjayTcPVM/z128cqanFu7E3/edit?ui=OdllGgZ4Snnq3MD8uI10bfA",
-            "deprecated": true
-          },
-          "comment": {
-            "$ref": "#/components/schemas/CommentEventDeprecated"
-          },
-          "comment_event": {
-            "$ref": "#/components/schemas/CommentEvent"
-          },
-          "grant_access_url": {
-            "type": "string",
-            "description": "A URL, which is scoped only to the user that can grant the requested access to the\ndesign, that approves the requested access.",
-            "example": "https://www.canva.com/api/action?token=OosRN8M_eO2-QbLpUmP5JCwTMSXWfadtQYWuj9WKzoE"
-          },
-          "initial_requesting_user": {
-            "$ref": "#/components/schemas/TeamUser"
-          },
-          "requested_groups": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Group"
-            }
-          },
-          "approve_url": {
-            "type": "string",
-            "description": "A URL, which is scoped only to the user requested to review the design, that links to\nthe design with the approval UI opened.",
-            "example": "https://canva.com/api/action?token=HZb0lLHaEhNkT1qQrAwoe0-8SqyXUgJ4vnHGvN2rLZ0"
-          },
-          "approval_request": {
-            "$ref": "#/components/schemas/ApprovalRequestAction"
-          },
-          "responding_groups": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Group"
-            }
-          },
-          "approval_response": {
-            "$ref": "#/components/schemas/ApprovalResponseAction"
-          },
-          "receiving_user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "inviting_team": {
-            "$ref": "#/components/schemas/Team"
-          },
-          "suggestion_event_type": {
-            "$ref": "#/components/schemas/SuggestionEventType"
-          },
           "type": {
             "type": "string"
           }
@@ -17352,18 +16802,7 @@
             "design_mention": "#/components/schemas/DesignMentionNotificationContent",
             "team_invite": "#/components/schemas/TeamInviteNotificationContent",
             "folder_access_requested": "#/components/schemas/FolderAccessRequestedNotificationContent",
-            "suggestion": "#/components/schemas/SuggestionNotificationContent",
-            "ShareDesignNotificationContent": "#/components/schemas/ShareDesignNotificationContent",
-            "ShareFolderNotificationContent": "#/components/schemas/ShareFolderNotificationContent",
-            "CommentNotificationContent": "#/components/schemas/CommentNotificationContent",
-            "DesignAccessRequestedNotificationContent": "#/components/schemas/DesignAccessRequestedNotificationContent",
-            "DesignApprovalRequestedNotificationContent": "#/components/schemas/DesignApprovalRequestedNotificationContent",
-            "DesignApprovalResponseNotificationContent": "#/components/schemas/DesignApprovalResponseNotificationContent",
-            "DesignApprovalReviewerInvalidatedNotificationContent": "#/components/schemas/DesignApprovalReviewerInvalidatedNotificationContent",
-            "DesignMentionNotificationContent": "#/components/schemas/DesignMentionNotificationContent",
-            "TeamInviteNotificationContent": "#/components/schemas/TeamInviteNotificationContent",
-            "FolderAccessRequestedNotificationContent": "#/components/schemas/FolderAccessRequestedNotificationContent",
-            "SuggestionNotificationContent": "#/components/schemas/SuggestionNotificationContent"
+            "suggestion": "#/components/schemas/SuggestionNotificationContent"
           }
         }
       },
@@ -17958,7 +17397,12 @@
             "items": {
               "type": "string"
             },
-            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/)."
+            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/).",
+            "example": [
+              "image",
+              "holiday",
+              "best day ever"
+            ]
           },
           "created_at": {
             "type": "integer",
@@ -18008,7 +17452,12 @@
             "items": {
               "type": "string"
             },
-            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/)."
+            "description": "The user-facing tags attached to the asset.\nUsers can add these tags to their uploaded assets, and they can search their uploaded\nassets in the Canva UI by searching for these tags. For information on how users use\ntags, see the\n[Canva Help Center page on asset tags](https://www.canva.com/help/add-edit-tags/).",
+            "example": [
+              "image",
+              "holiday",
+              "best day ever"
+            ]
           },
           "import_status": {
             "$ref": "#/components/schemas/ImportStatus"
@@ -18727,70 +18176,625 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/DatasetValue"
         },
-        "description": "Data object containing the data fields and values to autofill."
+        "description": "Data object containing the data fields and values to autofill.",
+        "example": {
+          "cute_pet_image_of_the_day": {
+            "type": "image",
+            "asset_id": "Msd59349ff"
+          },
+          "cute_pet_video_of_the_day": {
+            "type": "video",
+            "asset_id": "VAHCkrNUANI"
+          },
+          "cute_pet_witty_pet_says": {
+            "type": "text",
+            "text": "It was like this when I got here!"
+          },
+          "cute_pet_sales_chart": {
+            "type": "chart",
+            "chart_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "cute_pet_sales_sheet": {
+            "type": "sheet",
+            "sheet_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
       },
       "CreateFromDesignAutofillJobRequestDataProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/DatasetValue"
         },
-        "description": "Data object containing the data fields and values to autofill."
+        "description": "Data object containing the data fields and values to autofill.",
+        "example": {
+          "cute_pet_image_of_the_day": {
+            "type": "image",
+            "asset_id": "Msd59349ff"
+          },
+          "cute_pet_video_of_the_day": {
+            "type": "video",
+            "asset_id": "VAHCkrNUANI"
+          },
+          "cute_pet_witty_pet_says": {
+            "type": "text",
+            "text": "It was like this when I got here!"
+          },
+          "cute_pet_sales_chart": {
+            "type": "chart",
+            "chart_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "cute_pet_sales_sheet": {
+            "type": "sheet",
+            "sheet_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
       },
       "UpdateDesignAutofillJobRequestDataProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/DatasetValue"
         },
-        "description": "Data object containing the data fields and values to autofill."
+        "description": "Data object containing the data fields and values to autofill.",
+        "example": {
+          "cute_pet_image_of_the_day": {
+            "type": "image",
+            "asset_id": "Msd59349ff"
+          },
+          "cute_pet_video_of_the_day": {
+            "type": "video",
+            "asset_id": "VAHCkrNUANI"
+          },
+          "cute_pet_witty_pet_says": {
+            "type": "text",
+            "text": "It was like this when I got here!"
+          },
+          "cute_pet_sales_chart": {
+            "type": "chart",
+            "chart_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "cute_pet_sales_sheet": {
+            "type": "sheet",
+            "sheet_data": {
+              "column_configs": [
+                {
+                  "name": "Geographic Region",
+                  "type": "string"
+                },
+                {
+                  "name": "Sales (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target (millions AUD)",
+                  "type": "number"
+                },
+                {
+                  "name": "Target met?",
+                  "type": "boolean"
+                },
+                {
+                  "name": "Date met",
+                  "type": "date"
+                }
+              ],
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "Asia Pacific"
+                    },
+                    {
+                      "type": "number",
+                      "value": 10.2
+                    },
+                    {
+                      "type": "number",
+                      "value": 10
+                    },
+                    {
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "type": "date",
+                      "value": 1721944387
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "type": "string",
+                      "value": "EMEA"
+                    },
+                    {
+                      "type": "number",
+                      "value": 13.8
+                    },
+                    {
+                      "type": "number",
+                      "value": 14
+                    },
+                    {
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "type": "date"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
       },
       "GetBrandTemplateDatasetResponseDatasetProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/DataField"
         },
-        "description": "The dataset definition. It contains the data inputs available for use with the\n[Create design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/)."
+        "description": "The dataset definition. It contains the data inputs available for use with the\n[Create design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).",
+        "example": {
+          "cute_pet_image_of_the_day": {
+            "type": "image"
+          },
+          "cute_pet_witty_pet_says": {
+            "type": "text"
+          },
+          "cute_pet_sales_chart": {
+            "type": "chart"
+          }
+        }
       },
       "ParentCommentMentionsProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/TeamUser"
         },
-        "description": "The Canva users mentioned in the comment."
+        "description": "The Canva users mentioned in the comment.",
+        "example": {
+          "oUnPjZ2k2yuhftbWF7873o:oBpVhLW22VrqtwKgaayRbP": {
+            "user_id": "oUnPjZ2k2yuhftbWF7873o",
+            "team_id": "oBpVhLW22VrqtwKgaayRbP",
+            "display_name": "John Doe"
+          }
+        },
+        "deprecated": true
       },
       "ReplyCommentMentionsProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/TeamUser"
         },
-        "description": "The Canva users mentioned in the comment."
+        "description": "The Canva users mentioned in the comment.",
+        "example": {
+          "oUnPjZ2k2yuhftbWF7873o:oBpVhLW22VrqtwKgaayRbP": {
+            "user_id": "oUnPjZ2k2yuhftbWF7873o",
+            "team_id": "oBpVhLW22VrqtwKgaayRbP",
+            "display_name": "John Doe"
+          }
+        },
+        "deprecated": true
       },
       "CommentThreadTypeMentionsProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/UserMention"
         },
-        "description": "The Canva users mentioned in the comment thread or reply."
+        "description": "The Canva users mentioned in the comment thread or reply.",
+        "example": {
+          "oUnPjZ2k2yuhftbWF7873o:oBpVhLW22VrqtwKgaayRbP": {
+            "tag": "oUnPjZ2k2yuhftbWF7873o:oBpVhLW22VrqtwKgaayRbP",
+            "user": {
+              "user_id": "oUnPjZ2k2yuhftbWF7873o",
+              "team_id": "oBpVhLW22VrqtwKgaayRbP",
+              "display_name": "John Doe"
+            }
+          }
+        }
       },
       "ReplyMentionsProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/UserMention"
         },
-        "description": "The Canva users mentioned in the comment thread or reply."
+        "description": "The Canva users mentioned in the comment thread or reply.",
+        "example": {
+          "oUnPjZ2k2yuhftbWF7873o:oBpVhLW22VrqtwKgaayRbP": {
+            "tag": "oUnPjZ2k2yuhftbWF7873o:oBpVhLW22VrqtwKgaayRbP",
+            "user": {
+              "user_id": "oUnPjZ2k2yuhftbWF7873o",
+              "team_id": "oBpVhLW22VrqtwKgaayRbP",
+              "display_name": "John Doe"
+            }
+          }
+        }
       },
       "GetDesignDatasetResponseDatasetProperty": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/DataField"
         },
-        "description": "The dataset definition. It contains the data inputs available for use with the\n[Create design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/)."
+        "description": "The dataset definition. It contains the data inputs available for use with the\n[Create design autofill job API](https://www.canva.dev/docs/apps/rest-apis/reference/autofills/create-design-autofill-job/).",
+        "example": {
+          "cute_pet_image_of_the_day": {
+            "type": "image"
+          },
+          "cute_pet_witty_pet_says": {
+            "type": "text"
+          },
+          "cute_pet_sales_chart": {
+            "type": "chart"
+          }
+        }
       },
       "ByViewerType": {
         "enum": [
           "by_viewer"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "by_viewer",
         "x-ms-enum": {
           "name": "ByViewerType",
@@ -18808,7 +18812,6 @@
           "for_editor"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "for_editor",
         "x-ms-enum": {
           "name": "ForEditorType",
@@ -18826,7 +18829,6 @@
           "by_link"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "by_link",
         "x-ms-enum": {
           "name": "ByLinkType",
@@ -18844,7 +18846,6 @@
           "image"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ImageType",
           "modelAsString": false,
@@ -18861,7 +18862,6 @@
           "video"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "VideoType",
           "modelAsString": false,
@@ -18878,7 +18878,6 @@
           "create_from_brand_template"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "For backward compatibility, if \u0060type\u0060 isn\u0027t specified in the request, the request type is assumed to be \u0060create_from_brand_template\u0060.",
         "x-ms-enum": {
           "name": "CreateFromBrandTemplateType",
@@ -18896,7 +18895,6 @@
           "create_from_design"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateFromDesignType",
           "modelAsString": false,
@@ -18913,7 +18911,6 @@
           "update_design"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateDesignType",
           "modelAsString": false,
@@ -18930,7 +18927,6 @@
           "text"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "TextType",
           "modelAsString": false,
@@ -18947,7 +18943,6 @@
           "chart"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ChartType",
           "modelAsString": false,
@@ -18964,7 +18959,6 @@
           "sheet"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SheetType",
           "modelAsString": false,
@@ -18981,7 +18975,6 @@
           "create_design"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateDesignType",
           "modelAsString": false,
@@ -18998,7 +18991,6 @@
           "parent"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ParentType",
           "modelAsString": false,
@@ -19015,7 +19007,6 @@
           "reply"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ReplyType",
           "modelAsString": false,
@@ -19032,7 +19023,6 @@
           "design"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "DesignType",
           "modelAsString": false,
@@ -19049,7 +19039,6 @@
           "new"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "NewValueType",
           "modelAsString": false,
@@ -19066,7 +19055,6 @@
           "assigned"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "AssignedType",
           "modelAsString": false,
@@ -19083,7 +19071,6 @@
           "resolved"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ResolvedType",
           "modelAsString": false,
@@ -19100,7 +19087,6 @@
           "mention"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "MentionType",
           "modelAsString": false,
@@ -19117,7 +19103,6 @@
           "thread"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ThreadMentionEventContentType",
           "modelAsString": false,
@@ -19134,7 +19119,6 @@
           "comment"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CommentType",
           "modelAsString": false,
@@ -19151,7 +19135,6 @@
           "suggestion"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SuggestionType",
           "modelAsString": false,
@@ -19168,7 +19151,6 @@
           "add"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "AddType",
           "modelAsString": false,
@@ -19185,7 +19167,6 @@
           "delete"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "DeleteType",
           "modelAsString": false,
@@ -19202,7 +19183,6 @@
           "format"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "FormatType",
           "modelAsString": false,
@@ -19219,7 +19199,6 @@
           "accepted"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "AcceptedType",
           "modelAsString": false,
@@ -19236,7 +19215,6 @@
           "rejected"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "RejectedType",
           "modelAsString": false,
@@ -19253,7 +19231,6 @@
           "string"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "StringValueType",
           "modelAsString": false,
@@ -19270,7 +19247,6 @@
           "number"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "NumberType",
           "modelAsString": false,
@@ -19287,7 +19263,6 @@
           "boolean"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BooleanType",
           "modelAsString": false,
@@ -19304,7 +19279,6 @@
           "date"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "DateType",
           "modelAsString": false,
@@ -19321,7 +19295,6 @@
           "media"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "MediaType",
           "modelAsString": false,
@@ -19338,7 +19311,6 @@
           "image_upload"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ImageUploadType",
           "modelAsString": false,
@@ -19355,7 +19327,6 @@
           "video_upload"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "VideoUploadType",
           "modelAsString": false,
@@ -19372,7 +19343,6 @@
           "type_and_asset"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "For backward compatibility, if \u0060type\u0060 isn\u0027t specified in the request, the request type will be assumed to be \u0060type_and_asset\u0060.",
         "x-ms-enum": {
           "name": "TypeAndAssetType",
@@ -19390,7 +19360,6 @@
           "brand_template"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BrandTemplateType",
           "modelAsString": false,
@@ -19407,7 +19376,6 @@
           "partner_product_id"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PartnerProductIdType",
           "modelAsString": false,
@@ -19424,7 +19392,6 @@
           "dimensions"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "DimensionsType",
           "modelAsString": false,
@@ -19441,7 +19408,6 @@
           "preset"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PresetType",
           "modelAsString": false,
@@ -19458,7 +19424,6 @@
           "custom"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CustomType",
           "modelAsString": false,
@@ -19475,7 +19440,6 @@
           "pdf"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PdfType",
           "modelAsString": false,
@@ -19492,7 +19456,6 @@
           "gif"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "GifType",
           "modelAsString": false,
@@ -19509,7 +19472,6 @@
           "jpg"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "JpgType",
           "modelAsString": false,
@@ -19526,7 +19488,6 @@
           "png"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PngType",
           "modelAsString": false,
@@ -19543,7 +19504,6 @@
           "pptx"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PptxType",
           "modelAsString": false,
@@ -19560,7 +19520,6 @@
           "mp4"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "Mp4Type",
           "modelAsString": false,
@@ -19577,7 +19536,6 @@
           "html_bundle"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "HtmlBundleType",
           "modelAsString": false,
@@ -19594,7 +19552,6 @@
           "html_standalone"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "HtmlStandaloneType",
           "modelAsString": false,
@@ -19611,7 +19568,6 @@
           "csv"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CsvType",
           "modelAsString": false,
@@ -19628,7 +19584,6 @@
           "folder"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "FolderType",
           "modelAsString": false,
@@ -19645,7 +19600,6 @@
           "none"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "NoneType",
           "modelAsString": false,
@@ -19662,7 +19616,6 @@
           "upload"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UploadType",
           "modelAsString": false,
@@ -19679,7 +19632,6 @@
           "background_removal"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of transformation to apply. Currently, the only supported value is\n\u0060background_removal\u0060.",
         "example": "background_removal",
         "x-ms-enum": {
@@ -19698,7 +19650,6 @@
           "create_new_design"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of merge job to create.",
         "example": "create_new_design",
         "x-ms-enum": {
@@ -19717,7 +19668,6 @@
           "modify_existing_design"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of merge job to create.",
         "example": "modify_existing_design",
         "x-ms-enum": {
@@ -19736,7 +19686,6 @@
           "insert_pages"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of merge operation.",
         "example": "insert_pages",
         "x-ms-enum": {
@@ -19755,7 +19704,6 @@
           "move_pages"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of merge operation.",
         "example": "move_pages",
         "x-ms-enum": {
@@ -19774,7 +19722,6 @@
           "delete_pages"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of merge operation.",
         "example": "delete_pages",
         "x-ms-enum": {
@@ -19793,7 +19740,6 @@
           "authorization_code"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "For exchanging an authorization code for an access token.",
         "example": "authorization_code",
         "x-ms-enum": {
@@ -19812,7 +19758,6 @@
           "refresh_token"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "For generating an access token using a refresh token.",
         "example": "refresh_token",
         "x-ms-enum": {
@@ -19831,7 +19776,6 @@
           "share_design"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "share_design",
         "x-ms-enum": {
           "name": "ShareDesignType",
@@ -19849,7 +19793,6 @@
           "share_folder"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "share_folder",
         "x-ms-enum": {
           "name": "ShareFolderType",
@@ -19867,7 +19810,6 @@
           "design_access_requested"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "design_access_requested",
         "x-ms-enum": {
           "name": "DesignAccessRequestedType",
@@ -19885,7 +19827,6 @@
           "design_approval_requested"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "design_approval_requested",
         "x-ms-enum": {
           "name": "DesignApprovalRequestedType",
@@ -19903,7 +19844,6 @@
           "design_approval_response"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "design_approval_response",
         "x-ms-enum": {
           "name": "DesignApprovalResponseType",
@@ -19921,7 +19861,6 @@
           "design_approval_reviewer_invalidated"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "design_approval_reviewer_invalidated",
         "x-ms-enum": {
           "name": "DesignApprovalReviewerInvalidatedType",
@@ -19939,7 +19878,6 @@
           "design_mention"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "design_mention",
         "x-ms-enum": {
           "name": "DesignMentionType",
@@ -19957,7 +19895,6 @@
           "team_invite"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "team_invite",
         "x-ms-enum": {
           "name": "TeamInviteType",
@@ -19975,7 +19912,6 @@
           "folder_access_requested"
         ],
         "type": "string",
-        "additionalProperties": false,
         "example": "folder_access_requested",
         "x-ms-enum": {
           "name": "FolderAccessRequestedType",
@@ -20323,7 +20259,8 @@
         "schema": {
           "pattern": "^[a-z0-9-]\u002B\\.[a-z0-9-]\u002B$",
           "type": "string",
-          "description": "Unique identification string for the feature. Need to be in \u0060{application-id}.{feature-name}\u0060 pattern"
+          "description": "Unique identification string for the feature. Need to be in \u0060{application-id}.{feature-name}\u0060 pattern",
+          "example": "ingredient-generation.generate-image"
         }
       },
       "feature_quota_limit": {

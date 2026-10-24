@@ -55,7 +55,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.FolderItemSummary();
-            if("BrandTemplateItem".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("brand_template".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.BrandTemplateItem = new global::Soenneker.Canva.OpenApiClient.Models.BrandTemplateItem();
             }

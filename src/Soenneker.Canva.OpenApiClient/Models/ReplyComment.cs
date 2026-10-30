@@ -13,65 +13,96 @@ namespace Soenneker.Canva.OpenApiClient.Models
     [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ReplyComment : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("attached_to") is { } nullNodeAttachedTo && nullNodeAttachedTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttachedTo = null;
+            if (parseNode.GetChildNode("author") is { } nullNodeAuthor && nullNodeAuthor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Author = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("mentions") is { } nullNodeMentions && nullNodeMentions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mentions = null;
+            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("thread_id") is { } nullNodeThreadId && nullNodeThreadId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThreadId = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("updated_at") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifying information about the object (such as a design) that the comment is attached to.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CommentObject? AttachedTo { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignCommentObject? AttachedTo { get => _explicitNullValueAttachedTo; set { _explicitNullValueAttachedTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached_to"); else _explicitNullProperties?.Remove("attached_to"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignCommentObject? _explicitNullValueAttachedTo = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.CommentObject AttachedTo { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignCommentObject AttachedTo { get => _explicitNullValueAttachedTo; set { _explicitNullValueAttachedTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached_to"); else _explicitNullProperties?.Remove("attached_to"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignCommentObject _explicitNullValueAttachedTo = default!;
 #endif
         /// <summary>Metadata for the user, consisting of the User ID and display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.User? Author { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.User? Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.User? _explicitNullValueAuthor = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.User Author { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.User Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.User _explicitNullValueAuthor = default!;
 #endif
         /// <summary>When the comment or reply was created, as a Unix timestamp(in seconds since the Unix Epoch).</summary>
-        public long? CreatedAt { get; set; }
+        public long? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private long? _explicitNullValueCreatedAt = default!;
         /// <summary>The ID of the comment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The Canva users mentioned in the comment.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.ReplyCommentMentionsProperty? Mentions { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.ReplyCommentMentionsProperty? Mentions { get => _explicitNullValueMentions; set { _explicitNullValueMentions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentions"); else _explicitNullProperties?.Remove("mentions"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ReplyCommentMentionsProperty? _explicitNullValueMentions = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.ReplyCommentMentionsProperty Mentions { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.ReplyCommentMentionsProperty Mentions { get => _explicitNullValueMentions; set { _explicitNullValueMentions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentions"); else _explicitNullProperties?.Remove("mentions"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ReplyCommentMentionsProperty _explicitNullValueMentions = default!;
 #endif
         /// <summary>The comment message. This is the comment body shown in the Canva UI.User mentions are shown here in the format `[user_id:team_id]`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>The ID of the comment thread this reply is in. This ID is the same as the `id` of theparent comment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThreadId { get; set; }
+        public string? ThreadId { get => _explicitNullValueThreadId; set { _explicitNullValueThreadId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread_id"); else _explicitNullProperties?.Remove("thread_id"); } }
+        private string? _explicitNullValueThreadId = default!;
 #nullable restore
 #else
-        public string ThreadId { get; set; }
+        public string ThreadId { get => _explicitNullValueThreadId; set { _explicitNullValueThreadId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread_id"); else _explicitNullProperties?.Remove("thread_id"); } }
+        private string _explicitNullValueThreadId = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.ReplyType? Type { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.ReplyType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ReplyType? _explicitNullValueType = default!;
         /// <summary>When the comment or reply was last updated, as a Unix timestamp(in seconds since the Unix Epoch).</summary>
-        public long? UpdatedAt { get; set; }
+        public long? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
+        private long? _explicitNullValueUpdatedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.ReplyComment"/> and sets the default values.
         /// </summary>
@@ -87,7 +118,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.ReplyComment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.ReplyComment();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.ReplyComment(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -97,7 +128,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attached_to", n => { AttachedTo = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CommentObject>(global::Soenneker.Canva.OpenApiClient.Models.CommentObject.CreateFromDiscriminatorValue); } },
+                { "attached_to", n => { AttachedTo = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.DesignCommentObject>(global::Soenneker.Canva.OpenApiClient.Models.DesignCommentObject.CreateFromDiscriminatorValue); } },
                 { "author", n => { Author = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.User>(global::Soenneker.Canva.OpenApiClient.Models.User.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetLongValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -115,7 +146,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CommentObject>("attached_to", AttachedTo);
+            writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.DesignCommentObject>("attached_to", AttachedTo);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.User>("author", Author);
             writer.WriteLongValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
@@ -124,6 +155,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteStringValue("thread_id", ThreadId);
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ReplyType>("type", Type);
             writer.WriteLongValue("updated_at", UpdatedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,17 +12,32 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetDesignAnalyticsResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("average_view_duration_seconds") is { } nullNodeAverageViewDurationSeconds && nullNodeAverageViewDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageViewDurationSeconds = null;
+            if (parseNode.GetChildNode("total_view_count") is { } nullNodeTotalViewCount && nullNodeTotalViewCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalViewCount = null;
+            if (parseNode.GetChildNode("total_view_duration_seconds") is { } nullNodeTotalViewDurationSeconds && nullNodeTotalViewDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalViewDurationSeconds = null;
+            if (parseNode.GetChildNode("unique_view_count") is { } nullNodeUniqueViewCount && nullNodeUniqueViewCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueViewCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The average view duration in seconds.</summary>
-        public long? AverageViewDurationSeconds { get; set; }
+        public long? AverageViewDurationSeconds { get => _explicitNullValueAverageViewDurationSeconds; set { _explicitNullValueAverageViewDurationSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_view_duration_seconds"); else _explicitNullProperties?.Remove("average_view_duration_seconds"); } }
+        private long? _explicitNullValueAverageViewDurationSeconds = default!;
         /// <summary>The total number of views.</summary>
-        public long? TotalViewCount { get; set; }
+        public long? TotalViewCount { get => _explicitNullValueTotalViewCount; set { _explicitNullValueTotalViewCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_view_count"); else _explicitNullProperties?.Remove("total_view_count"); } }
+        private long? _explicitNullValueTotalViewCount = default!;
         /// <summary>The total view duration in seconds.</summary>
-        public long? TotalViewDurationSeconds { get; set; }
+        public long? TotalViewDurationSeconds { get => _explicitNullValueTotalViewDurationSeconds; set { _explicitNullValueTotalViewDurationSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_view_duration_seconds"); else _explicitNullProperties?.Remove("total_view_duration_seconds"); } }
+        private long? _explicitNullValueTotalViewDurationSeconds = default!;
         /// <summary>The number of unique viewers.</summary>
-        public long? UniqueViewCount { get; set; }
+        public long? UniqueViewCount { get => _explicitNullValueUniqueViewCount; set { _explicitNullValueUniqueViewCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_view_count"); else _explicitNullProperties?.Remove("unique_view_count"); } }
+        private long? _explicitNullValueUniqueViewCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.GetDesignAnalyticsResponse"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.GetDesignAnalyticsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.GetDesignAnalyticsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.GetDesignAnalyticsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteLongValue("total_view_count", TotalViewCount);
             writer.WriteLongValue("total_view_duration_seconds", TotalViewDurationSeconds);
             writer.WriteLongValue("unique_view_count", UniqueViewCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

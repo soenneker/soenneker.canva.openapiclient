@@ -12,21 +12,35 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InsertPagesDesignMergeOperation : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("after_page_number") is { } nullNodeAfterPageNumber && nullNodeAfterPageNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AfterPageNumber = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Insert after this one-based page number in the evolving target layout. Use 0 to insert at the beginning, and the default is inserting at the end (append).</summary>
-        public int? AfterPageNumber { get; set; }
-        /// <summary>The source property</summary>
+        public int? AfterPageNumber { get => _explicitNullValueAfterPageNumber; set { _explicitNullValueAfterPageNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after_page_number"); else _explicitNullProperties?.Remove("after_page_number"); } }
+        private int? _explicitNullValueAfterPageNumber = default!;
+        /// <summary>A design source from which pages are inserted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.MergeSourceForInsertPagesOperation? Source { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.MergeSourceForInsertPagesOperation? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.MergeSourceForInsertPagesOperation? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.MergeSourceForInsertPagesOperation Source { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.MergeSourceForInsertPagesOperation Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.MergeSourceForInsertPagesOperation _explicitNullValueSource = default!;
 #endif
         /// <summary>The type of merge operation.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.InsertPagesType? Type { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.InsertPagesType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.InsertPagesType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.InsertPagesDesignMergeOperation"/> and sets the default values.
         /// </summary>
@@ -42,7 +56,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.InsertPagesDesignMergeOperation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.InsertPagesDesignMergeOperation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.InsertPagesDesignMergeOperation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteIntValue("after_page_number", AfterPageNumber);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.MergeSourceForInsertPagesOperation>("source", Source);
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.InsertPagesType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

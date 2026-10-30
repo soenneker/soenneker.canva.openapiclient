@@ -12,24 +12,37 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DesignResizeJobResult : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("design") is { } nullNodeDesign && nullNodeDesign.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Design = null;
+            if (parseNode.GetChildNode("trial_information") is { } nullNodeTrialInformation && nullNodeTrialInformation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrialInformation = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Basic details about the design, such as the design&apos;s ID, title, and URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary? Design { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary? Design { get => _explicitNullValueDesign; set { _explicitNullValueDesign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design"); else _explicitNullProperties?.Remove("design"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignSummary? _explicitNullValueDesign = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary Design { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary Design { get => _explicitNullValueDesign; set { _explicitNullValueDesign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design"); else _explicitNullProperties?.Remove("design"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignSummary _explicitNullValueDesign = default!;
 #endif
         /// <summary>WARNING: Trials and trial information are a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis).There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.Trial information for non-qualifying users. Non-qualifying users have a limited number ofresize uses. Once the trial is exhausted, users must upgrade to a Canva plan with premiumfeatures (such as Canva Pro) to continue using the Resize API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation? TrialInformation { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation? TrialInformation { get => _explicitNullValueTrialInformation; set { _explicitNullValueTrialInformation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_information"); else _explicitNullProperties?.Remove("trial_information"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.TrialInformation? _explicitNullValueTrialInformation = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation TrialInformation { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation TrialInformation { get => _explicitNullValueTrialInformation; set { _explicitNullValueTrialInformation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_information"); else _explicitNullProperties?.Remove("trial_information"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.TrialInformation _explicitNullValueTrialInformation = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.DesignResizeJobResult"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.DesignResizeJobResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.DesignResizeJobResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.DesignResizeJobResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.DesignSummary>("design", Design);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.TrialInformation>("trial_information", TrialInformation);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

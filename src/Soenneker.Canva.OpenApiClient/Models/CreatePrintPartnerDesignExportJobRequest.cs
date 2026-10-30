@@ -12,40 +12,59 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreatePrintPartnerDesignExportJobRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("design_id") is { } nullNodeDesignId && nullNodeDesignId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesignId = null;
+            if (parseNode.GetChildNode("dimensions") is { } nullNodeDimensions && nullNodeDimensions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dimensions = null;
+            if (parseNode.GetChildNode("format") is { } nullNodeFormat && nullNodeFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Format = null;
+            if (parseNode.GetChildNode("pages") is { } nullNodePages && nullNodePages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pages = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The design ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DesignId { get; set; }
+        public string? DesignId { get => _explicitNullValueDesignId; set { _explicitNullValueDesignId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_id"); else _explicitNullProperties?.Remove("design_id"); } }
+        private string? _explicitNullValueDesignId = default!;
 #nullable restore
 #else
-        public string DesignId { get; set; }
+        public string DesignId { get => _explicitNullValueDesignId; set { _explicitNullValueDesignId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_id"); else _explicitNullProperties?.Remove("design_id"); } }
+        private string _explicitNullValueDesignId = default!;
 #endif
         /// <summary>Dimensions of the export in the specified units. The design dimensions must bewithin a scale factor of 0.3 and 3 of the requested export dimensions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportDimensions? Dimensions { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportDimensions? Dimensions { get => _explicitNullValueDimensions; set { _explicitNullValueDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimensions"); else _explicitNullProperties?.Remove("dimensions"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportDimensions? _explicitNullValueDimensions = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportDimensions Dimensions { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportDimensions Dimensions { get => _explicitNullValueDimensions; set { _explicitNullValueDimensions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimensions"); else _explicitNullProperties?.Remove("dimensions"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportDimensions _explicitNullValueDimensions = default!;
 #endif
         /// <summary>Details about the desired export format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat? Format { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat? Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat? _explicitNullValueFormat = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat Format { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat _explicitNullValueFormat = default!;
 #endif
         /// <summary>To specify which pages to export in a multi-page design, provide the pagenumbers as an array. The first page in a design is page `1`.If `pages` isn&apos;t specified, all the pages are exported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Pages { get; set; }
+        public List<int?>? Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
+        private List<int?>? _explicitNullValuePages = default!;
 #nullable restore
 #else
-        public List<int?> Pages { get; set; }
+        public List<int?> Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
+        private List<int?> _explicitNullValuePages = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreatePrintPartnerDesignExportJobRequest"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.CreatePrintPartnerDesignExportJobRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.CreatePrintPartnerDesignExportJobRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.CreatePrintPartnerDesignExportJobRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportDimensions>("dimensions", Dimensions);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat>("format", Format);
             writer.WriteCollectionOfPrimitiveValues<int?>("pages", Pages);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

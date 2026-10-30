@@ -12,7 +12,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateDesignAutofillJobRequest : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateFromBrandTemplateAutofillJobRequest"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +50,30 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.CreateDesignAutofillJobRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignAutofillJobRequest();
-            if("create_from_brand_template".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("CreateFromBrandTemplateAutofillJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CreateFromBrandTemplateAutofillJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.CreateFromBrandTemplateAutofillJobRequest();
+                
             }
-            else if("create_from_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("CreateFromDesignAutofillJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CreateFromDesignAutofillJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.CreateFromDesignAutofillJobRequest();
+                
             }
-            else if("update_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("UpdateDesignAutofillJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.UpdateDesignAutofillJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.UpdateDesignAutofillJobRequest();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("brand_template_id") != null && parseNode.GetChildNode("data") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("create_from_brand_template".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("data") != null && parseNode.GetChildNode("design_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("create_from_design".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("data") != null && parseNode.GetChildNode("design_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("update_design".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.CreateFromBrandTemplateAutofillJobRequest == null && result.CreateFromDesignAutofillJobRequest == null && result.UpdateDesignAutofillJobRequest == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.CreateFromBrandTemplateAutofillJobRequest = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.CreateFromBrandTemplateAutofillJobRequest(), parseNode);
+            if (result.CreateFromBrandTemplateAutofillJobRequest == null && result.CreateFromDesignAutofillJobRequest == null && result.UpdateDesignAutofillJobRequest == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.CreateFromDesignAutofillJobRequest = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.CreateFromDesignAutofillJobRequest(), parseNode);
+            if (result.CreateFromBrandTemplateAutofillJobRequest == null && result.CreateFromDesignAutofillJobRequest == null && result.UpdateDesignAutofillJobRequest == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.UpdateDesignAutofillJobRequest = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.UpdateDesignAutofillJobRequest(), parseNode);
+            if (result.CreateFromBrandTemplateAutofillJobRequest == null && result.CreateFromDesignAutofillJobRequest == null && result.UpdateDesignAutofillJobRequest == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (CreateFromBrandTemplateAutofillJobRequest == null && CreateFromDesignAutofillJobRequest == null && UpdateDesignAutofillJobRequest == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (CreateFromBrandTemplateAutofillJobRequest != null && CreateFromDesignAutofillJobRequest == null && UpdateDesignAutofillJobRequest == null) { if (CreateFromBrandTemplateAutofillJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateFromBrandTemplateAutofillJobRequest); return; }
+            if (CreateFromDesignAutofillJobRequest != null && CreateFromBrandTemplateAutofillJobRequest == null && UpdateDesignAutofillJobRequest == null) { if (CreateFromDesignAutofillJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateFromDesignAutofillJobRequest); return; }
+            if (UpdateDesignAutofillJobRequest != null && CreateFromBrandTemplateAutofillJobRequest == null && CreateFromDesignAutofillJobRequest == null) { if (UpdateDesignAutofillJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateDesignAutofillJobRequest); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(CreateFromBrandTemplateAutofillJobRequest != null)
             {
+                if (CreateFromBrandTemplateAutofillJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateFromBrandTemplateAutofillJobRequest>(null, CreateFromBrandTemplateAutofillJobRequest);
             }
             else if(CreateFromDesignAutofillJobRequest != null)
             {
+                if (CreateFromDesignAutofillJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateFromDesignAutofillJobRequest>(null, CreateFromDesignAutofillJobRequest);
             }
             else if(UpdateDesignAutofillJobRequest != null)
             {
+                if (UpdateDesignAutofillJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.UpdateDesignAutofillJobRequest>(null, UpdateDesignAutofillJobRequest);
             }
         }

@@ -12,43 +12,64 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CommentThreadType : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assignee") is { } nullNodeAssignee && nullNodeAssignee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assignee = null;
+            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("mentions") is { } nullNodeMentions && nullNodeMentions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mentions = null;
+            if (parseNode.GetChildNode("resolver") is { } nullNodeResolver && nullNodeResolver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Resolver = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Metadata for the user, consisting of the User ID and display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.User? Assignee { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.User? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.User? _explicitNullValueAssignee = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.User Assignee { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.User Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.User _explicitNullValueAssignee = default!;
 #endif
         /// <summary>The content of a comment thread or reply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CommentContent? Content { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.CommentContent? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.CommentContent? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.CommentContent Content { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.CommentContent Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.CommentContent _explicitNullValueContent = default!;
 #endif
         /// <summary>The Canva users mentioned in the comment thread or reply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CommentThreadTypeMentionsProperty? Mentions { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.CommentThreadTypeMentionsProperty? Mentions { get => _explicitNullValueMentions; set { _explicitNullValueMentions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentions"); else _explicitNullProperties?.Remove("mentions"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.CommentThreadTypeMentionsProperty? _explicitNullValueMentions = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.CommentThreadTypeMentionsProperty Mentions { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.CommentThreadTypeMentionsProperty Mentions { get => _explicitNullValueMentions; set { _explicitNullValueMentions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentions"); else _explicitNullProperties?.Remove("mentions"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.CommentThreadTypeMentionsProperty _explicitNullValueMentions = default!;
 #endif
         /// <summary>Metadata for the user, consisting of the User ID and display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.User? Resolver { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.User? Resolver { get => _explicitNullValueResolver; set { _explicitNullValueResolver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolver"); else _explicitNullProperties?.Remove("resolver"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.User? _explicitNullValueResolver = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.User Resolver { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.User Resolver { get => _explicitNullValueResolver; set { _explicitNullValueResolver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolver"); else _explicitNullProperties?.Remove("resolver"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.User _explicitNullValueResolver = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.CommentType? Type { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.CommentType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.CommentType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CommentThreadType"/> and sets the default values.
         /// </summary>
@@ -64,7 +85,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.CommentThreadType CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.CommentThreadType();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.CommentThreadType(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,6 +114,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CommentThreadTypeMentionsProperty>("mentions", Mentions);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.User>("resolver", Resolver);
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.CommentType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

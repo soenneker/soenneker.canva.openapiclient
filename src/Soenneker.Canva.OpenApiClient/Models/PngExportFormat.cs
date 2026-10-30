@@ -12,31 +12,55 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PngExportFormat : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("as_single_image") is { } nullNodeAsSingleImage && nullNodeAsSingleImage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AsSingleImage = null;
+            if (parseNode.GetChildNode("export_quality") is { } nullNodeExportQuality && nullNodeExportQuality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportQuality = null;
+            if (parseNode.GetChildNode("height") is { } nullNodeHeight && nullNodeHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Height = null;
+            if (parseNode.GetChildNode("lossless") is { } nullNodeLossless && nullNodeLossless.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lossless = null;
+            if (parseNode.GetChildNode("pages") is { } nullNodePages && nullNodePages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pages = null;
+            if (parseNode.GetChildNode("transparent_background") is { } nullNodeTransparentBackground && nullNodeTransparentBackground.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransparentBackground = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("width") is { } nullNodeWidth && nullNodeWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Width = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When `true`, multi-page designs are merged into a single image.When `false` (default), each page is exported as a separate image.</summary>
-        public bool? AsSingleImage { get; set; }
+        public bool? AsSingleImage { get => _explicitNullValueAsSingleImage; set { _explicitNullValueAsSingleImage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("as_single_image"); else _explicitNullProperties?.Remove("as_single_image"); } }
+        private bool? _explicitNullValueAsSingleImage = default!;
         /// <summary>Specifies the export quality of the design.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.ExportQuality? ExportQuality { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.ExportQuality? ExportQuality { get => _explicitNullValueExportQuality; set { _explicitNullValueExportQuality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_quality"); else _explicitNullProperties?.Remove("export_quality"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ExportQuality? _explicitNullValueExportQuality = default!;
         /// <summary>Specify the height in pixels of the exported image. Note the following behavior:- If no height or width is specified, the image is exported using the dimensions of the design.- If only one of height or width is specified, then the image is scaled to match that dimension, respecting the design&apos;s aspect ratio.- If both the height and width are specified, but the values don&apos;t match the design&apos;s aspect ratio, the export defaults to the larger dimension.</summary>
-        public int? Height { get; set; }
+        public int? Height { get => _explicitNullValueHeight; set { _explicitNullValueHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("height"); else _explicitNullProperties?.Remove("height"); } }
+        private int? _explicitNullValueHeight = default!;
         /// <summary>If set to `true` (default), the PNG is exported without compression.If set to `false`, the PNG is compressed using a lossy compression algorithm.AVAILABILITY: Lossy PNG compression is only available to users on a Canva plan that has premium features, such as Canva Pro. If the user is on the Canva Free plan and this parameter is set to `false`, the export operation will fail.</summary>
-        public bool? Lossless { get; set; }
+        public bool? Lossless { get => _explicitNullValueLossless; set { _explicitNullValueLossless = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lossless"); else _explicitNullProperties?.Remove("lossless"); } }
+        private bool? _explicitNullValueLossless = default!;
         /// <summary>To specify which pages to export in a multi-page design, provide the page numbers asan array. The first page in a design is page `1`.If `pages` isn&apos;t specified, all the pages are exported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Pages { get; set; }
+        public List<int?>? Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
+        private List<int?>? _explicitNullValuePages = default!;
 #nullable restore
 #else
-        public List<int?> Pages { get; set; }
+        public List<int?> Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
+        private List<int?> _explicitNullValuePages = default!;
 #endif
         /// <summary>If set to `true`, the PNG is exported with a transparent background.AVAILABILITY: This option is only available to users on a Canva plan that has premium features, such as Canva Pro. If the user is on the Canva Free plan and this parameter is set to `true`, the export operation will fail.</summary>
-        public bool? TransparentBackground { get; set; }
+        public bool? TransparentBackground { get => _explicitNullValueTransparentBackground; set { _explicitNullValueTransparentBackground = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transparent_background"); else _explicitNullProperties?.Remove("transparent_background"); } }
+        private bool? _explicitNullValueTransparentBackground = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PngType? Type { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.PngType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.PngType? _explicitNullValueType = default!;
         /// <summary>Specify the width in pixels of the exported image. Note the following behavior:- If no width or height is specified, the image is exported using the dimensions of the design.- If only one of width or height is specified, then the image is scaled to match that dimension, respecting the design&apos;s aspect ratio.- If both the width and height are specified, but the values don&apos;t match the design&apos;s aspect ratio, the export defaults to the larger dimension.</summary>
-        public int? Width { get; set; }
+        public int? Width { get => _explicitNullValueWidth; set { _explicitNullValueWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("width"); else _explicitNullProperties?.Remove("width"); } }
+        private int? _explicitNullValueWidth = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.PngExportFormat"/> and sets the default values.
         /// </summary>
@@ -55,7 +79,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.PngExportFormat CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.PngExportFormat();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PngExportFormat(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,6 +114,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteBoolValue("transparent_background", TransparentBackground);
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PngType>("type", Type);
             writer.WriteIntValue("width", Width);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

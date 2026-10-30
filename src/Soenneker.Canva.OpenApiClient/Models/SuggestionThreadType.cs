@@ -12,21 +12,35 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SuggestionThreadType : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("suggested_edits") is { } nullNodeSuggestedEdits && nullNodeSuggestedEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedEdits = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The current status of the suggestion.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus? Status { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus? _explicitNullValueStatus = default!;
         /// <summary>The suggested_edits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit>? SuggestedEdits { get; set; }
+        public List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit>? SuggestedEdits { get => _explicitNullValueSuggestedEdits; set { _explicitNullValueSuggestedEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_edits"); else _explicitNullProperties?.Remove("suggested_edits"); } }
+        private List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit>? _explicitNullValueSuggestedEdits = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit> SuggestedEdits { get; set; }
+        public List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit> SuggestedEdits { get => _explicitNullValueSuggestedEdits; set { _explicitNullValueSuggestedEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_edits"); else _explicitNullProperties?.Remove("suggested_edits"); } }
+        private List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit> _explicitNullValueSuggestedEdits = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.SuggestionType? Type { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.SuggestionType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.SuggestionType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.SuggestionThreadType"/> and sets the default values.
         /// </summary>
@@ -42,7 +56,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.SuggestionThreadType CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.SuggestionThreadType();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.SuggestionThreadType(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit>("suggested_edits", SuggestedEdits);
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.SuggestionType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,7 +12,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExportFormat : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormat"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,45 +98,66 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.ExportFormat CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.ExportFormat();
-            if("csv".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("CsvExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CsvExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormat();
+                
             }
-            else if("gif".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("GifExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.GifExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.GifExportFormat();
+                
             }
-            else if("html_bundle".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("HtmlBundleExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.HtmlBundleExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormat();
+                
             }
-            else if("html_standalone".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("HtmlStandaloneExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.HtmlStandaloneExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormat();
+                
             }
-            else if("jpg".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("JpgExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.JpgExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormat();
+                
             }
-            else if("mp4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("Mp4ExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.Mp4ExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormat();
+                
             }
-            else if("pdf".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PdfExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PdfExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormat();
+                
             }
-            else if("png".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PngExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PngExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PngExportFormat();
+                
             }
-            else if("pptx".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PptxExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PptxExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormat();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("pdf".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && (parseNode.GetChildNode("export_quality") == null || (parseNode.GetChildNode("export_quality")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("regular".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal) || "pro".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("size") == null || (parseNode.GetChildNode("size")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag3 && ("a4".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal) || "a3".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal) || "letter".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal) || "legal".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("quality") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("jpg".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && (parseNode.GetChildNode("export_quality") == null || (parseNode.GetChildNode("export_quality")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag3 && ("regular".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal) || "pro".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("png".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && (parseNode.GetChildNode("export_quality") == null || (parseNode.GetChildNode("export_quality")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("regular".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal) || "pro".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("pptx".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("gif".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && (parseNode.GetChildNode("export_quality") == null || (parseNode.GetChildNode("export_quality")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("regular".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal) || "pro".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("quality") != null && (parseNode.GetChildNode("quality")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("horizontal_480p".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "horizontal_720p".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "horizontal_1080p".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "horizontal_4k".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "vertical_480p".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "vertical_720p".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "vertical_1080p".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "vertical_4k".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("mp4".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal))) && (parseNode.GetChildNode("export_quality") == null || (parseNode.GetChildNode("export_quality")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag4 && ("regular".Equals(optionalTag4.GetValue(), global::System.StringComparison.Ordinal) || "pro".Equals(optionalTag4.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch6 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("html_bundle".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch7 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("html_standalone".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch8 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("csv".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8) result.PdfExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8) result.JpgExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8) result.PngExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PngExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8) result.PptxExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8) result.GifExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.GifExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8) result.Mp4ExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch6 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch7 && !matchesUnionBranch8) result.HtmlBundleExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch7 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch8) result.HtmlStandaloneExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null && matchesUnionBranch8 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.CsvExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormat(), parseNode);
+            if (result.CsvExportFormat == null && result.GifExportFormat == null && result.HtmlBundleExportFormat == null && result.HtmlStandaloneExportFormat == null && result.JpgExportFormat == null && result.Mp4ExportFormat == null && result.PdfExportFormat == null && result.PngExportFormat == null && result.PptxExportFormat == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -183,41 +209,62 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (CsvExportFormat == null && GifExportFormat == null && HtmlBundleExportFormat == null && HtmlStandaloneExportFormat == null && JpgExportFormat == null && Mp4ExportFormat == null && PdfExportFormat == null && PngExportFormat == null && PptxExportFormat == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (CsvExportFormat != null && GifExportFormat == null && HtmlBundleExportFormat == null && HtmlStandaloneExportFormat == null && JpgExportFormat == null && Mp4ExportFormat == null && PdfExportFormat == null && PngExportFormat == null && PptxExportFormat == null) { if (CsvExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CsvExportFormat); return; }
+            if (GifExportFormat != null && CsvExportFormat == null && HtmlBundleExportFormat == null && HtmlStandaloneExportFormat == null && JpgExportFormat == null && Mp4ExportFormat == null && PdfExportFormat == null && PngExportFormat == null && PptxExportFormat == null) { if (GifExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, GifExportFormat); return; }
+            if (HtmlBundleExportFormat != null && CsvExportFormat == null && GifExportFormat == null && HtmlStandaloneExportFormat == null && JpgExportFormat == null && Mp4ExportFormat == null && PdfExportFormat == null && PngExportFormat == null && PptxExportFormat == null) { if (HtmlBundleExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, HtmlBundleExportFormat); return; }
+            if (HtmlStandaloneExportFormat != null && CsvExportFormat == null && GifExportFormat == null && HtmlBundleExportFormat == null && JpgExportFormat == null && Mp4ExportFormat == null && PdfExportFormat == null && PngExportFormat == null && PptxExportFormat == null) { if (HtmlStandaloneExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, HtmlStandaloneExportFormat); return; }
+            if (JpgExportFormat != null && CsvExportFormat == null && GifExportFormat == null && HtmlBundleExportFormat == null && HtmlStandaloneExportFormat == null && Mp4ExportFormat == null && PdfExportFormat == null && PngExportFormat == null && PptxExportFormat == null) { if (JpgExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, JpgExportFormat); return; }
+            if (Mp4ExportFormat != null && CsvExportFormat == null && GifExportFormat == null && HtmlBundleExportFormat == null && HtmlStandaloneExportFormat == null && JpgExportFormat == null && PdfExportFormat == null && PngExportFormat == null && PptxExportFormat == null) { if (Mp4ExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, Mp4ExportFormat); return; }
+            if (PdfExportFormat != null && CsvExportFormat == null && GifExportFormat == null && HtmlBundleExportFormat == null && HtmlStandaloneExportFormat == null && JpgExportFormat == null && Mp4ExportFormat == null && PngExportFormat == null && PptxExportFormat == null) { if (PdfExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PdfExportFormat); return; }
+            if (PngExportFormat != null && CsvExportFormat == null && GifExportFormat == null && HtmlBundleExportFormat == null && HtmlStandaloneExportFormat == null && JpgExportFormat == null && Mp4ExportFormat == null && PdfExportFormat == null && PptxExportFormat == null) { if (PngExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PngExportFormat); return; }
+            if (PptxExportFormat != null && CsvExportFormat == null && GifExportFormat == null && HtmlBundleExportFormat == null && HtmlStandaloneExportFormat == null && JpgExportFormat == null && Mp4ExportFormat == null && PdfExportFormat == null && PngExportFormat == null) { if (PptxExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PptxExportFormat); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(CsvExportFormat != null)
             {
+                if (CsvExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormat>(null, CsvExportFormat);
             }
             else if(GifExportFormat != null)
             {
+                if (GifExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.GifExportFormat>(null, GifExportFormat);
             }
             else if(HtmlBundleExportFormat != null)
             {
+                if (HtmlBundleExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormat>(null, HtmlBundleExportFormat);
             }
             else if(HtmlStandaloneExportFormat != null)
             {
+                if (HtmlStandaloneExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormat>(null, HtmlStandaloneExportFormat);
             }
             else if(JpgExportFormat != null)
             {
+                if (JpgExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormat>(null, JpgExportFormat);
             }
             else if(Mp4ExportFormat != null)
             {
+                if (Mp4ExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormat>(null, Mp4ExportFormat);
             }
             else if(PdfExportFormat != null)
             {
+                if (PdfExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormat>(null, PdfExportFormat);
             }
             else if(PngExportFormat != null)
             {
+                if (PngExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PngExportFormat>(null, PngExportFormat);
             }
             else if(PptxExportFormat != null)
             {
+                if (PptxExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormat>(null, PptxExportFormat);
             }
         }

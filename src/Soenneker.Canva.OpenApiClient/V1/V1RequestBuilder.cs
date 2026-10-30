@@ -63,6 +63,7 @@ namespace Soenneker.Canva.OpenApiClient.V1
             get => new global::Soenneker.Canva.OpenApiClient.V1.BrandTemplates.BrandTemplatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The comments property</summary>
+        [Obsolete("")]
         public global::Soenneker.Canva.OpenApiClient.V1.Comments.CommentsRequestBuilder Comments
         {
             get => new global::Soenneker.Canva.OpenApiClient.V1.Comments.CommentsRequestBuilder(PathParameters, RequestAdapter);

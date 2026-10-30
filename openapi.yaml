@@ -5661,6 +5661,16 @@ paths:
       x-rate-limit-per-client-user: 10
 components:
   examples:
+    UserPaymentRequiredError:
+      summary: User has reached their credit quota limit
+      value:
+        code: credit_quota_exceeded
+        message: User has exceeded their credit quota
+    AppPaymentRequiredError:
+      summary: App has reached its credit quota limit
+      value:
+        code: app_credit_quota_exceeded
+        message: App has exceeded its credit quota
     CreditQuotaExceededError:
       summary: User has reached their credit quota limit
       value:
@@ -7409,6 +7419,18 @@ components:
             $ref: '#/components/schemas/CreditQuotaError'
       description: Credit Quota Exceeded
       x-http-status-code: 429
+    CommonPaymentRequiredError:
+      content:
+        application/json:
+          examples:
+            user_payment_required:
+              $ref: '#/components/examples/UserPaymentRequiredError'
+            app_payment_required:
+              $ref: '#/components/examples/AppPaymentRequiredError'
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Payment Required
+      x-http-status-code: 402
     CommonBadRequest:
       content:
         application/json:
@@ -11814,6 +11836,7 @@ components:
       - quota_exceeded
       - credit_quota_exceeded
       - credit_quota_cooldown
+      - app_credit_quota_exceeded
       - unsupported_content_type
       - request_too_large
       - folder_not_found

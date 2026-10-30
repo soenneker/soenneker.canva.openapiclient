@@ -12,7 +12,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateDesignMergeJobRequest : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.ModifyDesignCreateDesignMergeJobRequest"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,17 +42,24 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.CreateDesignMergeJobRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignMergeJobRequest();
-            if("modify_existing_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("ModifyDesignCreateDesignMergeJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ModifyDesignCreateDesignMergeJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.ModifyDesignCreateDesignMergeJobRequest();
+                
             }
-            else if("create_new_design".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("NewDesignCreateDesignMergeJobRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.NewDesignCreateDesignMergeJobRequest = new global::Soenneker.Canva.OpenApiClient.Models.NewDesignCreateDesignMergeJobRequest();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("operations") != null && parseNode.GetChildNode("title") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("create_new_design".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("design_id") != null && parseNode.GetChildNode("operations") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("modify_existing_design".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.ModifyDesignCreateDesignMergeJobRequest == null && result.NewDesignCreateDesignMergeJobRequest == null && matchesUnionBranch0 && !matchesUnionBranch1) result.NewDesignCreateDesignMergeJobRequest = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.NewDesignCreateDesignMergeJobRequest(), parseNode);
+            if (result.ModifyDesignCreateDesignMergeJobRequest == null && result.NewDesignCreateDesignMergeJobRequest == null && matchesUnionBranch1 && !matchesUnionBranch0) result.ModifyDesignCreateDesignMergeJobRequest = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.ModifyDesignCreateDesignMergeJobRequest(), parseNode);
+            if (result.ModifyDesignCreateDesignMergeJobRequest == null && result.NewDesignCreateDesignMergeJobRequest == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,13 +83,20 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ModifyDesignCreateDesignMergeJobRequest == null && NewDesignCreateDesignMergeJobRequest == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ModifyDesignCreateDesignMergeJobRequest != null && NewDesignCreateDesignMergeJobRequest == null) { if (ModifyDesignCreateDesignMergeJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ModifyDesignCreateDesignMergeJobRequest); return; }
+            if (NewDesignCreateDesignMergeJobRequest != null && ModifyDesignCreateDesignMergeJobRequest == null) { if (NewDesignCreateDesignMergeJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, NewDesignCreateDesignMergeJobRequest); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ModifyDesignCreateDesignMergeJobRequest != null)
             {
+                if (ModifyDesignCreateDesignMergeJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ModifyDesignCreateDesignMergeJobRequest>(null, ModifyDesignCreateDesignMergeJobRequest);
             }
             else if(NewDesignCreateDesignMergeJobRequest != null)
             {
+                if (NewDesignCreateDesignMergeJobRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.NewDesignCreateDesignMergeJobRequest>(null, NewDesignCreateDesignMergeJobRequest);
             }
         }

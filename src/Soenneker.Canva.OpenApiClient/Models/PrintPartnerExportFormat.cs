@@ -12,7 +12,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PrintPartnerExportFormat : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +50,30 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerExportFormat();
-            if("jpg".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("PrintPartnerJpgExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PrintPartnerJpgExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat();
+                
             }
-            else if("pdf".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PrintPartnerPdfExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PrintPartnerPdfExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat();
+                
             }
-            else if("png".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PrintPartnerPngExportFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PrintPartnerPngExportFormat = new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("pdf".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("jpg".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("png".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.PrintPartnerJpgExportFormat == null && result.PrintPartnerPdfExportFormat == null && result.PrintPartnerPngExportFormat == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.PrintPartnerPdfExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat(), parseNode);
+            if (result.PrintPartnerJpgExportFormat == null && result.PrintPartnerPdfExportFormat == null && result.PrintPartnerPngExportFormat == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.PrintPartnerJpgExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat(), parseNode);
+            if (result.PrintPartnerJpgExportFormat == null && result.PrintPartnerPdfExportFormat == null && result.PrintPartnerPngExportFormat == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.PrintPartnerPngExportFormat = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat(), parseNode);
+            if (result.PrintPartnerJpgExportFormat == null && result.PrintPartnerPdfExportFormat == null && result.PrintPartnerPngExportFormat == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (PrintPartnerJpgExportFormat == null && PrintPartnerPdfExportFormat == null && PrintPartnerPngExportFormat == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (PrintPartnerJpgExportFormat != null && PrintPartnerPdfExportFormat == null && PrintPartnerPngExportFormat == null) { if (PrintPartnerJpgExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PrintPartnerJpgExportFormat); return; }
+            if (PrintPartnerPdfExportFormat != null && PrintPartnerJpgExportFormat == null && PrintPartnerPngExportFormat == null) { if (PrintPartnerPdfExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PrintPartnerPdfExportFormat); return; }
+            if (PrintPartnerPngExportFormat != null && PrintPartnerJpgExportFormat == null && PrintPartnerPdfExportFormat == null) { if (PrintPartnerPngExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PrintPartnerPngExportFormat); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(PrintPartnerJpgExportFormat != null)
             {
+                if (PrintPartnerJpgExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerJpgExportFormat>(null, PrintPartnerJpgExportFormat);
             }
             else if(PrintPartnerPdfExportFormat != null)
             {
+                if (PrintPartnerPdfExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPdfExportFormat>(null, PrintPartnerPdfExportFormat);
             }
             else if(PrintPartnerPngExportFormat != null)
             {
+                if (PrintPartnerPngExportFormat is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerPngExportFormat>(null, PrintPartnerPngExportFormat);
             }
         }

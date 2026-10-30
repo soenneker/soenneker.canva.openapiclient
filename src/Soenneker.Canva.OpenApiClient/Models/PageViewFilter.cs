@@ -12,7 +12,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PageViewFilter : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByLink"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +50,30 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.PageViewFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilter();
-            if("by_link".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("PageViewFilterByLink".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PageViewFilterByLink = new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByLink();
+                
             }
-            else if("by_viewer".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PageViewFilterByViewer".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PageViewFilterByViewer = new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByViewer();
+                
             }
-            else if("for_editor".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PageViewFilterForEditor".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PageViewFilterForEditor = new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterForEditor();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("by_viewer".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("viewer_id") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("for_editor".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("link_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("by_link".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.PageViewFilterByLink == null && result.PageViewFilterByViewer == null && result.PageViewFilterForEditor == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.PageViewFilterByViewer = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByViewer(), parseNode);
+            if (result.PageViewFilterByLink == null && result.PageViewFilterByViewer == null && result.PageViewFilterForEditor == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.PageViewFilterForEditor = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterForEditor(), parseNode);
+            if (result.PageViewFilterByLink == null && result.PageViewFilterByViewer == null && result.PageViewFilterForEditor == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.PageViewFilterByLink = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByLink(), parseNode);
+            if (result.PageViewFilterByLink == null && result.PageViewFilterByViewer == null && result.PageViewFilterForEditor == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (PageViewFilterByLink == null && PageViewFilterByViewer == null && PageViewFilterForEditor == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (PageViewFilterByLink != null && PageViewFilterByViewer == null && PageViewFilterForEditor == null) { if (PageViewFilterByLink is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PageViewFilterByLink); return; }
+            if (PageViewFilterByViewer != null && PageViewFilterByLink == null && PageViewFilterForEditor == null) { if (PageViewFilterByViewer is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PageViewFilterByViewer); return; }
+            if (PageViewFilterForEditor != null && PageViewFilterByLink == null && PageViewFilterByViewer == null) { if (PageViewFilterForEditor is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PageViewFilterForEditor); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(PageViewFilterByLink != null)
             {
+                if (PageViewFilterByLink is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByLink>(null, PageViewFilterByLink);
             }
             else if(PageViewFilterByViewer != null)
             {
+                if (PageViewFilterByViewer is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByViewer>(null, PageViewFilterByViewer);
             }
             else if(PageViewFilterForEditor != null)
             {
+                if (PageViewFilterForEditor is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterForEditor>(null, PageViewFilterForEditor);
             }
         }

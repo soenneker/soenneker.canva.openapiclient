@@ -123,6 +123,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         CreditQuotaCooldown,
         #pragma warning restore CS1591
+        [EnumMember(Value = "app_credit_quota_exceeded")]
+        #pragma warning disable CS1591
+        AppCreditQuotaExceeded,
+        #pragma warning restore CS1591
         [EnumMember(Value = "unsupported_content_type")]
         #pragma warning disable CS1591
         UnsupportedContentType,

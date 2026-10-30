@@ -11,24 +11,37 @@ namespace Soenneker.Canva.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateDesignGenerationJobResponseV2 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("job") is { } nullNodeJob && nullNodeJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Job = null;
+            if (parseNode.GetChildNode("quota_usage") is { } nullNodeQuotaUsage && nullNodeQuotaUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaUsage = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The status and result of a public design generation job.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationJobV2? Job { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationJobV2? Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationJobV2? _explicitNullValueJob = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationJobV2 Job { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationJobV2 Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationJobV2 _explicitNullValueJob = default!;
 #endif
         /// <summary>Credit quota usage after reserving credits for this job. Omitted if unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2QuotaUsage? QuotaUsage { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2QuotaUsage? QuotaUsage { get => _explicitNullValueQuotaUsage; set { _explicitNullValueQuotaUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_usage"); else _explicitNullProperties?.Remove("quota_usage"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2QuotaUsage? _explicitNullValueQuotaUsage = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2QuotaUsage QuotaUsage { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2QuotaUsage QuotaUsage { get => _explicitNullValueQuotaUsage; set { _explicitNullValueQuotaUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_usage"); else _explicitNullProperties?.Remove("quota_usage"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2QuotaUsage _explicitNullValueQuotaUsage = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.DesignGenerationJobV2>("job", Job);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobResponseV2QuotaUsage>("quota_usage", QuotaUsage);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,29 +12,51 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreditQuotaErrorAllOf2QuotaUsage : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cooldown_ends_at") is { } nullNodeCooldownEndsAt && nullNodeCooldownEndsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CooldownEndsAt = null;
+            if (parseNode.GetChildNode("generation_pending") is { } nullNodeGenerationPending && nullNodeGenerationPending.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationPending = null;
+            if (parseNode.GetChildNode("is_admin") is { } nullNodeIsAdmin && nullNodeIsAdmin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsAdmin = null;
+            if (parseNode.GetChildNode("resets_at") is { } nullNodeResetsAt && nullNodeResetsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetsAt = null;
+            if (parseNode.GetChildNode("upgrade_url") is { } nullNodeUpgradeUrl && nullNodeUpgradeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpgradeUrl = null;
+            if (parseNode.GetChildNode("used_percentage") is { } nullNodeUsedPercentage && nullNodeUsedPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedPercentage = null;
+            if (parseNode.GetChildNode("using_bonus_credits") is { } nullNodeUsingBonusCredits && nullNodeUsingBonusCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsingBonusCredits = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Unix timestamp (seconds from the Unix epoch) of when the cooldown period ends. Onlyset when `code` is `credit_quota_cooldown`. Not present for `credit_quota_exceeded`errors.</summary>
-        public long? CooldownEndsAt { get; set; }
+        public long? CooldownEndsAt { get => _explicitNullValueCooldownEndsAt; set { _explicitNullValueCooldownEndsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cooldown_ends_at"); else _explicitNullProperties?.Remove("cooldown_ends_at"); } }
+        private long? _explicitNullValueCooldownEndsAt = default!;
         /// <summary>True if another generation is currently in flight and consuming quota. Onlymeaningful for paid users with cooldown enabled. Not present for free users where thiscannot be determined.</summary>
-        public bool? GenerationPending { get; set; }
+        public bool? GenerationPending { get => _explicitNullValueGenerationPending; set { _explicitNullValueGenerationPending = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_pending"); else _explicitNullProperties?.Remove("generation_pending"); } }
+        private bool? _explicitNullValueGenerationPending = default!;
         /// <summary>Whether the caller is a team admin. Allows clients to tailor error messaging(e.g. &quot;contact your admin&quot; vs &quot;upgrade your plan&quot;).</summary>
-        public bool? IsAdmin { get; set; }
+        public bool? IsAdmin { get => _explicitNullValueIsAdmin; set { _explicitNullValueIsAdmin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_admin"); else _explicitNullProperties?.Remove("is_admin"); } }
+        private bool? _explicitNullValueIsAdmin = default!;
         /// <summary>Unix timestamp (seconds from the Unix epoch) of when the credit quota resets forthe caller.</summary>
-        public long? ResetsAt { get; set; }
+        public long? ResetsAt { get => _explicitNullValueResetsAt; set { _explicitNullValueResetsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resets_at"); else _explicitNullProperties?.Remove("resets_at"); } }
+        private long? _explicitNullValueResetsAt = default!;
         /// <summary>URL built from the user&apos;s current plan and eligibility for an AI pass. Not presentif no upgrade path is available (e.g. already on highest plan or ineligible for AI pass).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UpgradeUrl { get; set; }
+        public string? UpgradeUrl { get => _explicitNullValueUpgradeUrl; set { _explicitNullValueUpgradeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upgrade_url"); else _explicitNullProperties?.Remove("upgrade_url"); } }
+        private string? _explicitNullValueUpgradeUrl = default!;
 #nullable restore
 #else
-        public string UpgradeUrl { get; set; }
+        public string UpgradeUrl { get => _explicitNullValueUpgradeUrl; set { _explicitNullValueUpgradeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upgrade_url"); else _explicitNullProperties?.Remove("upgrade_url"); } }
+        private string _explicitNullValueUpgradeUrl = default!;
 #endif
         /// <summary>The percentage of the caller&apos;s credit quota that has been consumed in the currentbilling interval, from 0 to 100.</summary>
-        public int? UsedPercentage { get; set; }
+        public int? UsedPercentage { get => _explicitNullValueUsedPercentage; set { _explicitNullValueUsedPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_percentage"); else _explicitNullProperties?.Remove("used_percentage"); } }
+        private int? _explicitNullValueUsedPercentage = default!;
         /// <summary>Whether the caller is currently consuming bonus credits (credits beyond their baseplan allocation).</summary>
-        public bool? UsingBonusCredits { get; set; }
+        public bool? UsingBonusCredits { get => _explicitNullValueUsingBonusCredits; set { _explicitNullValueUsingBonusCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("using_bonus_credits"); else _explicitNullProperties?.Remove("using_bonus_credits"); } }
+        private bool? _explicitNullValueUsingBonusCredits = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreditQuotaErrorAllOf2QuotaUsage"/> and sets the default values.
         /// </summary>
@@ -50,7 +72,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.CreditQuotaErrorAllOf2QuotaUsage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.CreditQuotaErrorAllOf2QuotaUsage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.CreditQuotaErrorAllOf2QuotaUsage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +105,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteStringValue("upgrade_url", UpgradeUrl);
             writer.WriteIntValue("used_percentage", UsedPercentage);
             writer.WriteBoolValue("using_bonus_credits", UsingBonusCredits);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

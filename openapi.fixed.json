@@ -7872,10 +7872,6 @@
         "description": "Filters and pagination controls for page-level analytics."
       },
       "PageViewFilter": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PageViewFilterByViewer"
@@ -7887,13 +7883,8 @@
             "$ref": "#/components/schemas/PageViewFilterByLink"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A filter for page view data.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "by_viewer": "#/components/schemas/PageViewFilterByViewer",
@@ -8247,10 +8238,6 @@
         "description": "The asset object, which contains metadata about the asset."
       },
       "AssetMetadata": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/ImageMetadata"
@@ -8259,13 +8246,8 @@
             "$ref": "#/components/schemas/VideoMetadata"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Type-specific metadata for the asset.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "image": "#/components/schemas/ImageMetadata",
@@ -8665,9 +8647,6 @@
         "description": "Metadata for the asset being uploaded."
       },
       "CreateDesignAutofillJobRequest": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/CreateFromBrandTemplateAutofillJobRequest"
@@ -8679,13 +8658,8 @@
             "$ref": "#/components/schemas/UpdateDesignAutofillJobRequest"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Body parameters for creating a new autofill job. Use the \u0060type\u0060 discriminator to choose\nthe autofill mode:\n\n- Use \u0060create_from_brand_template\u0060 to create a new design from a brand template.\n\nNOTE: For backward compatibility, if \u0060type\u0060 isn\u0027t specified in the request,\nthe request type is assumed to be \u0060create_from_brand_template\u0060.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "create_from_brand_template": "#/components/schemas/CreateFromBrandTemplateAutofillJobRequest",
@@ -8788,10 +8762,6 @@
         }
       },
       "DatasetValue": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/DatasetImageValue"
@@ -8809,13 +8779,8 @@
             "$ref": "#/components/schemas/DatasetSheetValue"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The data field to autofill.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "image": "#/components/schemas/DatasetImageValue",
@@ -9122,10 +9087,6 @@
         "description": "Details about the autofill job."
       },
       "DesignAutofillJobResult": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/CreateDesignAutofillJobResult"
@@ -9134,13 +9095,8 @@
             "$ref": "#/components/schemas/UpdateDesignAutofillJobResult"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Result of the design autofill job. Only present if job status is \u0060success\u0060.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "create_design": "#/components/schemas/CreateDesignAutofillJobResult",
@@ -9683,10 +9639,6 @@
         "description": "Successful response from a \u0060getReply\u0060 request."
       },
       "Comment": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/ParentComment"
@@ -9695,20 +9647,15 @@
             "$ref": "#/components/schemas/ReplyComment"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The comment object, which contains metadata about the comment.\nDeprecated in favor of the new \u0060thread\u0060 object.",
-        "discriminator": {
+        "deprecated": true,
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "parent": "#/components/schemas/ParentComment",
             "reply": "#/components/schemas/ReplyComment"
           }
-        },
-        "deprecated": true
+        }
       },
       "ParentComment": {
         "required": [
@@ -9819,32 +9766,23 @@
         "deprecated": true
       },
       "CommentObject": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/DesignCommentObject"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Identifying information about the object (such as a design) that the comment is attached to.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "design": "#/components/schemas/DesignCommentObject"
-          }
-        },
         "example": {
           "design_id": "DAFVztcvd9z",
           "type": "design"
         },
-        "deprecated": true
+        "deprecated": true,
+        "x-client-original-discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "design": "#/components/schemas/DesignCommentObject"
+          }
+        }
       },
       "DesignCommentObject": {
         "required": [
@@ -9866,30 +9804,21 @@
         "deprecated": true
       },
       "CommentObjectInput": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/DesignCommentObjectInput"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "An object containing identifying information for the design or other object you want to\nattach the comment to.",
-        "discriminator": {
+        "example": {
+          "design_id": "DAFVztcvd9z",
+          "type": "design"
+        },
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "design": "#/components/schemas/DesignCommentObjectInput"
           }
-        },
-        "example": {
-          "design_id": "DAFVztcvd9z",
-          "type": "design"
         }
       },
       "DesignCommentObjectInput": {
@@ -9981,10 +9910,6 @@
         }
       },
       "CommentEvent": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/NewCommentEvent"
@@ -10002,13 +9927,8 @@
             "$ref": "#/components/schemas/MentionCommentEvent"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The type of comment event, including additional type-specific properties.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "new": "#/components/schemas/NewCommentEvent",
@@ -10124,10 +10044,6 @@
         "description": "Event type for a mention in a comment thread or reply."
       },
       "MentionEventContent": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/ThreadMentionEventContent"
@@ -10136,13 +10052,8 @@
             "$ref": "#/components/schemas/ReplyMentionEventContent"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The type of mention event content, along with additional type-specific properties.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "thread": "#/components/schemas/ThreadMentionEventContent",
@@ -10256,10 +10167,6 @@
         "description": "A discussion thread on a design.\n\nThe \u0060type\u0060 of the thread can be found in the \u0060thread_type\u0060 object, along with additional type-specific properties.\nThe \u0060author\u0060 of the thread might be missing if that user account no longer exists."
       },
       "ThreadType": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/CommentThreadType"
@@ -10268,13 +10175,8 @@
             "$ref": "#/components/schemas/SuggestionThreadType"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The type of the discussion thread, along with additional type-specific properties.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "comment": "#/components/schemas/CommentThreadType",
@@ -10333,10 +10235,6 @@
         "description": "A suggestion thread."
       },
       "SuggestedEdit": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/AddSuggestedEdit"
@@ -10348,13 +10246,8 @@
             "$ref": "#/components/schemas/FormatSuggestedEdit"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The type of the suggested edit, along with additional type-specific properties.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "add": "#/components/schemas/AddSuggestedEdit",
@@ -10624,10 +10517,6 @@
         "description": "The content of a comment thread or reply."
       },
       "SuggestionEventType": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/NewSuggestionEventType"
@@ -10645,13 +10534,8 @@
             "$ref": "#/components/schemas/MentionSuggestionEventType"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The type of suggestion event, along with additional type-specific properties.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "new": "#/components/schemas/NewSuggestionEventType",
@@ -11083,10 +10967,6 @@
         "description": "A single row of tabular data."
       },
       "DataTableCell": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/StringDataTableCell"
@@ -11104,13 +10984,8 @@
             "$ref": "#/components/schemas/MediaCollectionDataTableCell"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A single tabular data cell.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "string": "#/components/schemas/StringDataTableCell",
@@ -11219,9 +11094,6 @@
         "description": "Cell containing a media collection."
       },
       "DataTableMedia": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/DataTableImageUpload"
@@ -11230,12 +11102,7 @@
             "$ref": "#/components/schemas/DataTableVideoUpload"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "image_upload": "#/components/schemas/DataTableImageUpload",
@@ -11564,10 +11431,6 @@
         }
       },
       "CreateDesignRequest": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/DesignTypeCreateDesignRequest"
@@ -11579,13 +11442,8 @@
             "$ref": "#/components/schemas/BrandTemplateCreateDesignRequest"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Body parameters for creating a new design. Use the \u0060type\u0060 discriminator to choose the creation mode:\n\n- Use \u0060type_and_asset\u0060 to create a design by specifying the design type and/or an asset.\n- Use \u0060design\u0060 to create a copy of an existing design (currently a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis)).\n- Use \u0060brand_template\u0060 to create a design from a brand template (currently a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis)).\n\nNOTE: For backward compatibility, if \u0060type\u0060 isn\u0027t specified in the request,\nthe request type will be assumed to be \u0060type_and_asset\u0060.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "type_and_asset": "#/components/schemas/DesignTypeCreateDesignRequest",
@@ -11745,10 +11603,6 @@
         "description": "Details about the new design."
       },
       "PrintPartnerDesignSource": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PrintPartnerDimensionsDesignSource"
@@ -11757,13 +11611,8 @@
             "$ref": "#/components/schemas/PrintPartnerProductIdDesignSource"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The desired source for the design creation.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "dimensions": "#/components/schemas/PrintPartnerDimensionsDesignSource",
@@ -12151,10 +12000,6 @@
         }
       },
       "DataField": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/ImageDataField"
@@ -12169,13 +12014,8 @@
             "$ref": "#/components/schemas/SheetDataField"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A named data field that can be autofilled.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "image": "#/components/schemas/ImageDataField",
@@ -12878,10 +12718,6 @@
         }
       },
       "DesignTypeInput": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PresetDesignTypeInput"
@@ -12890,13 +12726,8 @@
             "$ref": "#/components/schemas/CustomDesignTypeInput"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The desired design type.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "preset": "#/components/schemas/PresetDesignTypeInput",
@@ -13121,6 +12952,7 @@
           "quota_exceeded",
           "credit_quota_exceeded",
           "credit_quota_cooldown",
+          "app_credit_quota_exceeded",
           "unsupported_content_type",
           "request_too_large",
           "folder_not_found",
@@ -13297,6 +13129,10 @@
             {
               "value": "credit_quota_cooldown",
               "name": "CreditQuotaCooldown"
+            },
+            {
+              "value": "app_credit_quota_exceeded",
+              "name": "AppCreditQuotaExceeded"
             },
             {
               "value": "unsupported_content_type",
@@ -13547,10 +13383,6 @@
         }
       },
       "ExportFormat": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PdfExportFormat"
@@ -13580,13 +13412,8 @@
             "$ref": "#/components/schemas/CsvExportFormat"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Details about the desired export format.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "pdf": "#/components/schemas/PdfExportFormat",
@@ -14044,10 +13871,6 @@
         }
       },
       "PrintPartnerExportFormat": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PrintPartnerPdfExportFormat"
@@ -14059,13 +13882,8 @@
             "$ref": "#/components/schemas/PrintPartnerPngExportFormat"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Details about the desired export format.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "pdf": "#/components/schemas/PrintPartnerPdfExportFormat",
@@ -14823,10 +14641,6 @@
         "description": "A list of the items in a folder.\nIf the success response contains a continuation token, the folder contains more items\nyou can list. You can use this token as a query parameter and retrieve more\nitems from the list, for example\n\u0060/v1/folders/{folderId}/items?continuation={continuation}\u0060.\n\nTo retrieve all the items in a folder, you might need to make multiple requests."
       },
       "FolderItemSummary": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/FolderItem"
@@ -14841,13 +14655,8 @@
             "$ref": "#/components/schemas/BrandTemplateItem"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Details about the folder item.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "folder": "#/components/schemas/FolderItem",
@@ -15082,9 +14891,6 @@
         }
       },
       "ImageGenerationAssetUpload": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/NoneImageGenerationAssetUpload"
@@ -15093,13 +14899,8 @@
             "$ref": "#/components/schemas/UploadImageGenerationAssetUpload"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Whether to save the generated image as an image asset in the user\u0027s Canva account.\nOmitting \u0060asset_upload\u0060 (or using \u0060type: none\u0060) returns only a download URL.\n\nSaving the asset (\u0060type: upload\u0060) requires a user access token.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "none": "#/components/schemas/NoneImageGenerationAssetUpload",
@@ -15434,18 +15235,14 @@
         "required": [
           "type"
         ],
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/BackgroundRemovalImageTransformation"
-          }
-        ],
+        "type": "object",
         "properties": {
           "type": {
-            "type": "string"
+            "$ref": "#/components/schemas/BackgroundRemovalType"
           }
         },
         "description": "A transformation to apply to the image asset. Each transformation type is identified\nby its \u0060type\u0060 value and declares its own parameters; \u0060background_removal\u0060 takes no\nparameters.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "background_removal": "#/components/schemas/BackgroundRemovalImageTransformation"
@@ -15649,9 +15446,6 @@
         "description": "Standard Json Web Key specification following https://www.rfc-editor.org/rfc/rfc7517 and\nhttps://www.rfc-editor.org/rfc/rfc7518.html."
       },
       "CreateDesignMergeJobRequest": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/NewDesignCreateDesignMergeJobRequest"
@@ -15660,12 +15454,7 @@
             "$ref": "#/components/schemas/ModifyDesignCreateDesignMergeJobRequest"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "create_new_design": "#/components/schemas/NewDesignCreateDesignMergeJobRequest",
@@ -15740,9 +15529,6 @@
         "description": "Modifies an existing design by inserting, moving, or deleting pages."
       },
       "DesignMergeOperation": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/InsertPagesDesignMergeOperation"
@@ -15754,12 +15540,7 @@
             "$ref": "#/components/schemas/DeletePagesDesignMergeOperation"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "insert_pages": "#/components/schemas/InsertPagesDesignMergeOperation",
@@ -15855,19 +15636,37 @@
       },
       "MergeSourceForInsertPagesOperation": {
         "required": [
+          "design_id",
           "type"
         ],
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/DesignMergeSourceForInsertPagesOperation"
-          }
-        ],
+        "type": "object",
         "properties": {
           "type": {
-            "type": "string"
+            "$ref": "#/components/schemas/DesignType"
+          },
+          "design_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+            "type": "string",
+            "description": "The ID of the source design.",
+            "example": "DAFVztcvd9z"
+          },
+          "page_numbers": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": "One-based page numbers to insert from the source design. If omitted, all pages from the design are inserted.",
+            "example": [
+              1,
+              2
+            ]
           }
         },
-        "discriminator": {
+        "description": "A design source from which pages are inserted.",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "design": "#/components/schemas/DesignMergeSourceForInsertPagesOperation"
@@ -16045,10 +15844,6 @@
         "description": "If the merge job fails, this object provides details about the error."
       },
       "ExchangeAccessTokenRequest": {
-        "required": [
-          "grant_type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/ExchangeAuthCodeRequest"
@@ -16057,12 +15852,7 @@
             "$ref": "#/components/schemas/ExchangeRefreshTokenRequest"
           }
         ],
-        "properties": {
-          "grant_type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "grant_type",
           "mapping": {
             "authorization_code": "#/components/schemas/ExchangeAuthCodeRequest",
@@ -16744,10 +16534,6 @@
         }
       },
       "NotificationContent": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/ShareDesignNotificationContent"
@@ -16783,13 +16569,8 @@
             "$ref": "#/components/schemas/SuggestionNotificationContent"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "The notification content object, which contains metadata about the event.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "share_design": "#/components/schemas/ShareDesignNotificationContent",
@@ -19945,6 +19726,25 @@
         },
         "x-http-status-code": 429
       },
+      "CommonPaymentRequiredError": {
+        "description": "Payment Required",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "user_payment_required": {
+                "$ref": "#/components/examples/UserPaymentRequiredError"
+              },
+              "app_payment_required": {
+                "$ref": "#/components/examples/AppPaymentRequiredError"
+              }
+            }
+          }
+        },
+        "x-http-status-code": 402
+      },
       "CommonBadRequest": {
         "description": "Bad Request",
         "content": {
@@ -20283,6 +20083,20 @@
       }
     },
     "examples": {
+      "UserPaymentRequiredError": {
+        "summary": "User has reached their credit quota limit",
+        "value": {
+          "code": "credit_quota_exceeded",
+          "message": "User has exceeded their credit quota"
+        }
+      },
+      "AppPaymentRequiredError": {
+        "summary": "App has reached its credit quota limit",
+        "value": {
+          "code": "app_credit_quota_exceeded",
+          "message": "App has exceeded its credit quota"
+        }
+      },
       "CreditQuotaExceededError": {
         "summary": "User has reached their credit quota limit",
         "value": {

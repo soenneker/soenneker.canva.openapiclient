@@ -12,25 +12,38 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetThreadResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("comment") is { } nullNodeComment && nullNodeComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Comment = null;
+            if (parseNode.GetChildNode("thread") is { } nullNodeThread && nullNodeThread.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Thread = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The comment object, which contains metadata about the comment.Deprecated in favor of the new `thread` object.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.Comment? Comment { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.Comment? Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.Comment? _explicitNullValueComment = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.Comment Comment { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.Comment Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.Comment _explicitNullValueComment = default!;
 #endif
         /// <summary>A discussion thread on a design.The `type` of the thread can be found in the `thread_type` object, along with additional type-specific properties.The `author` of the thread might be missing if that user account no longer exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.ThreadObject? Thread { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.ThreadObject? Thread { get => _explicitNullValueThread; set { _explicitNullValueThread = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread"); else _explicitNullProperties?.Remove("thread"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ThreadObject? _explicitNullValueThread = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.ThreadObject Thread { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.ThreadObject Thread { get => _explicitNullValueThread; set { _explicitNullValueThread = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread"); else _explicitNullProperties?.Remove("thread"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ThreadObject _explicitNullValueThread = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.GetThreadResponse"/> and sets the default values.
@@ -47,7 +60,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.GetThreadResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.GetThreadResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.GetThreadResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +83,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.Comment>("comment", Comment);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ThreadObject>("thread", Thread);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

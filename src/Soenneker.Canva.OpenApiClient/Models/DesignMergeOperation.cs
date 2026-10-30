@@ -12,7 +12,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DesignMergeOperation : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Canva.OpenApiClient.Models.DeletePagesDesignMergeOperation"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -45,21 +50,30 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.DesignMergeOperation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Canva.OpenApiClient.Models.DesignMergeOperation();
-            if("delete_pages".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("DeletePagesDesignMergeOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.DeletePagesDesignMergeOperation = new global::Soenneker.Canva.OpenApiClient.Models.DeletePagesDesignMergeOperation();
+                
             }
-            else if("insert_pages".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("InsertPagesDesignMergeOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.InsertPagesDesignMergeOperation = new global::Soenneker.Canva.OpenApiClient.Models.InsertPagesDesignMergeOperation();
+                
             }
-            else if("move_pages".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("MovePagesDesignMergeOperation".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MovePagesDesignMergeOperation = new global::Soenneker.Canva.OpenApiClient.Models.MovePagesDesignMergeOperation();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("insert_pages".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("from_page_numbers") != null && parseNode.GetChildNode("to_after_page_number") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("move_pages".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("page_numbers") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("delete_pages".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.DeletePagesDesignMergeOperation == null && result.InsertPagesDesignMergeOperation == null && result.MovePagesDesignMergeOperation == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.InsertPagesDesignMergeOperation = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.InsertPagesDesignMergeOperation(), parseNode);
+            if (result.DeletePagesDesignMergeOperation == null && result.InsertPagesDesignMergeOperation == null && result.MovePagesDesignMergeOperation == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.MovePagesDesignMergeOperation = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.MovePagesDesignMergeOperation(), parseNode);
+            if (result.DeletePagesDesignMergeOperation == null && result.InsertPagesDesignMergeOperation == null && result.MovePagesDesignMergeOperation == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.DeletePagesDesignMergeOperation = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.DeletePagesDesignMergeOperation(), parseNode);
+            if (result.DeletePagesDesignMergeOperation == null && result.InsertPagesDesignMergeOperation == null && result.MovePagesDesignMergeOperation == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +101,26 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (DeletePagesDesignMergeOperation == null && InsertPagesDesignMergeOperation == null && MovePagesDesignMergeOperation == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (DeletePagesDesignMergeOperation != null && InsertPagesDesignMergeOperation == null && MovePagesDesignMergeOperation == null) { if (DeletePagesDesignMergeOperation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DeletePagesDesignMergeOperation); return; }
+            if (InsertPagesDesignMergeOperation != null && DeletePagesDesignMergeOperation == null && MovePagesDesignMergeOperation == null) { if (InsertPagesDesignMergeOperation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsertPagesDesignMergeOperation); return; }
+            if (MovePagesDesignMergeOperation != null && DeletePagesDesignMergeOperation == null && InsertPagesDesignMergeOperation == null) { if (MovePagesDesignMergeOperation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MovePagesDesignMergeOperation); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(DeletePagesDesignMergeOperation != null)
             {
+                if (DeletePagesDesignMergeOperation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.DeletePagesDesignMergeOperation>(null, DeletePagesDesignMergeOperation);
             }
             else if(InsertPagesDesignMergeOperation != null)
             {
+                if (InsertPagesDesignMergeOperation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.InsertPagesDesignMergeOperation>(null, InsertPagesDesignMergeOperation);
             }
             else if(MovePagesDesignMergeOperation != null)
             {
+                if (MovePagesDesignMergeOperation is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.MovePagesDesignMergeOperation>(null, MovePagesDesignMergeOperation);
             }
         }

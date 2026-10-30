@@ -12,57 +12,92 @@ namespace Soenneker.Canva.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Viewer : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("city_country") is { } nullNodeCityCountry && nullNodeCityCountry.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CityCountry = null;
+            if (parseNode.GetChildNode("device_operating_system") is { } nullNodeDeviceOperatingSystem && nullNodeDeviceOperatingSystem.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceOperatingSystem = null;
+            if (parseNode.GetChildNode("first_viewed_at") is { } nullNodeFirstViewedAt && nullNodeFirstViewedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstViewedAt = null;
+            if (parseNode.GetChildNode("form_factor") is { } nullNodeFormFactor && nullNodeFormFactor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FormFactor = null;
+            if (parseNode.GetChildNode("last_viewed_at") is { } nullNodeLastViewedAt && nullNodeLastViewedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastViewedAt = null;
+            if (parseNode.GetChildNode("pages_viewed") is { } nullNodePagesViewed && nullNodePagesViewed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PagesViewed = null;
+            if (parseNode.GetChildNode("total_view_count") is { } nullNodeTotalViewCount && nullNodeTotalViewCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalViewCount = null;
+            if (parseNode.GetChildNode("total_view_duration_seconds") is { } nullNodeTotalViewDurationSeconds && nullNodeTotalViewDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalViewDurationSeconds = null;
+            if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+            if (parseNode.GetChildNode("viewer_id") is { } nullNodeViewerId && nullNodeViewerId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewerId = null;
+            if (parseNode.GetChildNode("viewer_type") is { } nullNodeViewerType && nullNodeViewerType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewerType = null;
+            if (parseNode.GetChildNode("visibility") is { } nullNodeVisibility && nullNodeVisibility.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visibility = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The viewer location as city and country. This is only returned for anonymous viewers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CityCountry { get; set; }
+        public string? CityCountry { get => _explicitNullValueCityCountry; set { _explicitNullValueCityCountry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("city_country"); else _explicitNullProperties?.Remove("city_country"); } }
+        private string? _explicitNullValueCityCountry = default!;
 #nullable restore
 #else
-        public string CityCountry { get; set; }
+        public string CityCountry { get => _explicitNullValueCityCountry; set { _explicitNullValueCityCountry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("city_country"); else _explicitNullProperties?.Remove("city_country"); } }
+        private string _explicitNullValueCityCountry = default!;
 #endif
         /// <summary>The simplified operating system name for the viewer&apos;s device.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DeviceOperatingSystem { get; set; }
+        public string? DeviceOperatingSystem { get => _explicitNullValueDeviceOperatingSystem; set { _explicitNullValueDeviceOperatingSystem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_operating_system"); else _explicitNullProperties?.Remove("device_operating_system"); } }
+        private string? _explicitNullValueDeviceOperatingSystem = default!;
 #nullable restore
 #else
-        public string DeviceOperatingSystem { get; set; }
+        public string DeviceOperatingSystem { get => _explicitNullValueDeviceOperatingSystem; set { _explicitNullValueDeviceOperatingSystem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_operating_system"); else _explicitNullProperties?.Remove("device_operating_system"); } }
+        private string _explicitNullValueDeviceOperatingSystem = default!;
 #endif
         /// <summary>When the viewer first viewed the design, as a Unix timestamp (in seconds since the Unix Epoch).</summary>
-        public long? FirstViewedAt { get; set; }
+        public long? FirstViewedAt { get => _explicitNullValueFirstViewedAt; set { _explicitNullValueFirstViewedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_viewed_at"); else _explicitNullProperties?.Remove("first_viewed_at"); } }
+        private long? _explicitNullValueFirstViewedAt = default!;
         /// <summary>The device form factor used to view the design.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerFormFactor? FormFactor { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerFormFactor? FormFactor { get => _explicitNullValueFormFactor; set { _explicitNullValueFormFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("form_factor"); else _explicitNullProperties?.Remove("form_factor"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerFormFactor? _explicitNullValueFormFactor = default!;
         /// <summary>When the viewer most recently opened the design, as a Unix timestamp (in seconds since the Unix Epoch).</summary>
-        public long? LastViewedAt { get; set; }
+        public long? LastViewedAt { get => _explicitNullValueLastViewedAt; set { _explicitNullValueLastViewedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_viewed_at"); else _explicitNullProperties?.Remove("last_viewed_at"); } }
+        private long? _explicitNullValueLastViewedAt = default!;
         /// <summary>The number of pages this viewer viewed for more than one second.</summary>
-        public long? PagesViewed { get; set; }
+        public long? PagesViewed { get => _explicitNullValuePagesViewed; set { _explicitNullValuePagesViewed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages_viewed"); else _explicitNullProperties?.Remove("pages_viewed"); } }
+        private long? _explicitNullValuePagesViewed = default!;
         /// <summary>The number of times this viewer opened the design.</summary>
-        public long? TotalViewCount { get; set; }
+        public long? TotalViewCount { get => _explicitNullValueTotalViewCount; set { _explicitNullValueTotalViewCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_view_count"); else _explicitNullProperties?.Remove("total_view_count"); } }
+        private long? _explicitNullValueTotalViewCount = default!;
         /// <summary>The total time this viewer has spent viewing the design, in seconds.</summary>
-        public long? TotalViewDurationSeconds { get; set; }
+        public long? TotalViewDurationSeconds { get => _explicitNullValueTotalViewDurationSeconds; set { _explicitNullValueTotalViewDurationSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_view_duration_seconds"); else _explicitNullProperties?.Remove("total_view_duration_seconds"); } }
+        private long? _explicitNullValueTotalViewDurationSeconds = default!;
         /// <summary>The user details of the viewer. This is omitted for viewers whose identity is not visible.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.ViewerUser? User { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.ViewerUser? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ViewerUser? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.ViewerUser User { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.ViewerUser User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ViewerUser _explicitNullValueUser = default!;
 #endif
         /// <summary>An opaque identifier for the viewer. Use this value when filtering page view results by viewer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ViewerId { get; set; }
+        public string? ViewerId { get => _explicitNullValueViewerId; set { _explicitNullValueViewerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewer_id"); else _explicitNullProperties?.Remove("viewer_id"); } }
+        private string? _explicitNullValueViewerId = default!;
 #nullable restore
 #else
-        public string ViewerId { get; set; }
+        public string ViewerId { get => _explicitNullValueViewerId; set { _explicitNullValueViewerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewer_id"); else _explicitNullProperties?.Remove("viewer_id"); } }
+        private string _explicitNullValueViewerId = default!;
 #endif
         /// <summary>How the viewer accessed the design.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerType? ViewerType { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerType? ViewerType { get => _explicitNullValueViewerType; set { _explicitNullValueViewerType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewer_type"); else _explicitNullProperties?.Remove("viewer_type"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerType? _explicitNullValueViewerType = default!;
         /// <summary>How this viewer should be presented to the caller.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerVisibility? Visibility { get; set; }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerVisibility? Visibility { get => _explicitNullValueVisibility; set { _explicitNullValueVisibility = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visibility"); else _explicitNullProperties?.Remove("visibility"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerVisibility? _explicitNullValueVisibility = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.Viewer"/> and sets the default values.
         /// </summary>
@@ -78,7 +113,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public static global::Soenneker.Canva.OpenApiClient.Models.Viewer CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Canva.OpenApiClient.Models.Viewer();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.Viewer(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -121,6 +156,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteStringValue("viewer_id", ViewerId);
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerType>("viewer_type", ViewerType);
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignAnalyticsViewerVisibility>("visibility", Visibility);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

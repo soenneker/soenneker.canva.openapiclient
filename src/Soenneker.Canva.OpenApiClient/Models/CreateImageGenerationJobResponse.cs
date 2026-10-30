@@ -17,8 +17,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("job") is { } nullNodeJob && nullNodeJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Job = null;
-            if (parseNode.GetChildNode("quota_usage") is { } nullNodeQuotaUsage && nullNodeQuotaUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaUsage = null;
+            if (parseNode.GetChildNode("job") is null) { _explicitNullValueJob = default!; _explicitNullProperties?.Remove("job"); }
+            else if (parseNode.GetChildNode("job") is { } nullNodeJob && nullNodeJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Job = null;
+            if (parseNode.GetChildNode("quota_usage") is null) { _explicitNullValueQuotaUsage = default!; _explicitNullProperties?.Remove("quota_usage"); }
+            else if (parseNode.GetChildNode("quota_usage") is { } nullNodeQuotaUsage && nullNodeQuotaUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaUsage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>Details about the image generation job. If the job status is `success`, the job&apos;s`result` is present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob? Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob? Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; AdditionalData?.Remove("job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob? _explicitNullValueJob = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; AdditionalData?.Remove("job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob _explicitNullValueJob = default!;
 #endif
         /// <summary>Credit quota usage after reserving credits for this job. Not present if quota data is unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage? QuotaUsage { get => _explicitNullValueQuotaUsage; set { _explicitNullValueQuotaUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_usage"); else _explicitNullProperties?.Remove("quota_usage"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage? QuotaUsage { get => _explicitNullValueQuotaUsage; set { _explicitNullValueQuotaUsage = value; AdditionalData?.Remove("quota_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_usage"); else _explicitNullProperties?.Remove("quota_usage"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage? _explicitNullValueQuotaUsage = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage QuotaUsage { get => _explicitNullValueQuotaUsage; set { _explicitNullValueQuotaUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_usage"); else _explicitNullProperties?.Remove("quota_usage"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage QuotaUsage { get => _explicitNullValueQuotaUsage; set { _explicitNullValueQuotaUsage = value; AdditionalData?.Remove("quota_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_usage"); else _explicitNullProperties?.Remove("quota_usage"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage _explicitNullValueQuotaUsage = default!;
 #endif
         /// <summary>

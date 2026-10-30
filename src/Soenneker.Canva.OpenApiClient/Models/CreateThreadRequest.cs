@@ -17,8 +17,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("assignee_id") is { } nullNodeAssigneeId && nullNodeAssigneeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeId = null;
-            if (parseNode.GetChildNode("message_plaintext") is { } nullNodeMessagePlaintext && nullNodeMessagePlaintext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagePlaintext = null;
+            if (parseNode.GetChildNode("assignee_id") is null) { _explicitNullValueAssigneeId = default!; _explicitNullProperties?.Remove("assignee_id"); }
+            else if (parseNode.GetChildNode("assignee_id") is { } nullNodeAssigneeId && nullNodeAssigneeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeId = null;
+            if (parseNode.GetChildNode("message_plaintext") is null) { _explicitNullValueMessagePlaintext = default!; _explicitNullProperties?.Remove("message_plaintext"); }
+            else if (parseNode.GetChildNode("message_plaintext") is { } nullNodeMessagePlaintext && nullNodeMessagePlaintext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessagePlaintext = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>Lets you assign the comment to a Canva user using their User ID. You _must_ mention theassigned user in the `message`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssigneeId { get => _explicitNullValueAssigneeId; set { _explicitNullValueAssigneeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_id"); else _explicitNullProperties?.Remove("assignee_id"); } }
+        public string? AssigneeId { get => _explicitNullValueAssigneeId; set { _explicitNullValueAssigneeId = value; AdditionalData?.Remove("assignee_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_id"); else _explicitNullProperties?.Remove("assignee_id"); } }
         private string? _explicitNullValueAssigneeId = default!;
 #nullable restore
 #else
-        public string AssigneeId { get => _explicitNullValueAssigneeId; set { _explicitNullValueAssigneeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_id"); else _explicitNullProperties?.Remove("assignee_id"); } }
+        public string AssigneeId { get => _explicitNullValueAssigneeId; set { _explicitNullValueAssigneeId = value; AdditionalData?.Remove("assignee_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_id"); else _explicitNullProperties?.Remove("assignee_id"); } }
         private string _explicitNullValueAssigneeId = default!;
 #endif
         /// <summary>The comment message in plaintext. This is the comment body shown in the Canva UI.You can also mention users in your message by specifying their User ID and Team IDusing the format `[user_id:team_id]`. If the `assignee_id` parameter is specified, youmust mention the assignee in the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MessagePlaintext { get => _explicitNullValueMessagePlaintext; set { _explicitNullValueMessagePlaintext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_plaintext"); else _explicitNullProperties?.Remove("message_plaintext"); } }
+        public string? MessagePlaintext { get => _explicitNullValueMessagePlaintext; set { _explicitNullValueMessagePlaintext = value; AdditionalData?.Remove("message_plaintext"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_plaintext"); else _explicitNullProperties?.Remove("message_plaintext"); } }
         private string? _explicitNullValueMessagePlaintext = default!;
 #nullable restore
 #else
-        public string MessagePlaintext { get => _explicitNullValueMessagePlaintext; set { _explicitNullValueMessagePlaintext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_plaintext"); else _explicitNullProperties?.Remove("message_plaintext"); } }
+        public string MessagePlaintext { get => _explicitNullValueMessagePlaintext; set { _explicitNullValueMessagePlaintext = value; AdditionalData?.Remove("message_plaintext"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_plaintext"); else _explicitNullProperties?.Remove("message_plaintext"); } }
         private string _explicitNullValueMessagePlaintext = default!;
 #endif
         /// <summary>

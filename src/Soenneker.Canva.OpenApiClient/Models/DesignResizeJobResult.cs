@@ -18,8 +18,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("design") is { } nullNodeDesign && nullNodeDesign.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Design = null;
-            if (parseNode.GetChildNode("trial_information") is { } nullNodeTrialInformation && nullNodeTrialInformation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrialInformation = null;
+            if (parseNode.GetChildNode("design") is null) { _explicitNullValueDesign = default!; _explicitNullProperties?.Remove("design"); }
+            else if (parseNode.GetChildNode("design") is { } nullNodeDesign && nullNodeDesign.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Design = null;
+            if (parseNode.GetChildNode("trial_information") is null) { _explicitNullValueTrialInformation = default!; _explicitNullProperties?.Remove("trial_information"); }
+            else if (parseNode.GetChildNode("trial_information") is { } nullNodeTrialInformation && nullNodeTrialInformation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrialInformation = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>Basic details about the design, such as the design&apos;s ID, title, and URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary? Design { get => _explicitNullValueDesign; set { _explicitNullValueDesign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design"); else _explicitNullProperties?.Remove("design"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary? Design { get => _explicitNullValueDesign; set { _explicitNullValueDesign = value; AdditionalData?.Remove("design"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design"); else _explicitNullProperties?.Remove("design"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.DesignSummary? _explicitNullValueDesign = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary Design { get => _explicitNullValueDesign; set { _explicitNullValueDesign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design"); else _explicitNullProperties?.Remove("design"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.DesignSummary Design { get => _explicitNullValueDesign; set { _explicitNullValueDesign = value; AdditionalData?.Remove("design"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design"); else _explicitNullProperties?.Remove("design"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.DesignSummary _explicitNullValueDesign = default!;
 #endif
         /// <summary>WARNING: Trials and trial information are a [preview feature](https://www.canva.dev/docs/apps/rest-apis/#preview-apis).There might be unannounced breaking changes to this feature which won&apos;t produce a new API version.Trial information for non-qualifying users. Non-qualifying users have a limited number ofresize uses. Once the trial is exhausted, users must upgrade to a Canva plan with premiumfeatures (such as Canva Pro) to continue using the Resize API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation? TrialInformation { get => _explicitNullValueTrialInformation; set { _explicitNullValueTrialInformation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_information"); else _explicitNullProperties?.Remove("trial_information"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation? TrialInformation { get => _explicitNullValueTrialInformation; set { _explicitNullValueTrialInformation = value; AdditionalData?.Remove("trial_information"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_information"); else _explicitNullProperties?.Remove("trial_information"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.TrialInformation? _explicitNullValueTrialInformation = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation TrialInformation { get => _explicitNullValueTrialInformation; set { _explicitNullValueTrialInformation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_information"); else _explicitNullProperties?.Remove("trial_information"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.TrialInformation TrialInformation { get => _explicitNullValueTrialInformation; set { _explicitNullValueTrialInformation = value; AdditionalData?.Remove("trial_information"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_information"); else _explicitNullProperties?.Remove("trial_information"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.TrialInformation _explicitNullValueTrialInformation = default!;
 #endif
         /// <summary>

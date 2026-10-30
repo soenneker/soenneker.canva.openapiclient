@@ -18,9 +18,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("brief") is { } nullNodeBrief && nullNodeBrief.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Brief = null;
-            if (parseNode.GetChildNode("design_type") is { } nullNodeDesignType && nullNodeDesignType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesignType = null;
-            if (parseNode.GetChildNode("outline") is { } nullNodeOutline && nullNodeOutline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Outline = null;
+            if (parseNode.GetChildNode("brief") is null) { _explicitNullValueBrief = default!; _explicitNullProperties?.Remove("brief"); }
+            else if (parseNode.GetChildNode("brief") is { } nullNodeBrief && nullNodeBrief.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Brief = null;
+            if (parseNode.GetChildNode("design_type") is null) { _explicitNullValueDesignType = default!; _explicitNullProperties?.Remove("design_type"); }
+            else if (parseNode.GetChildNode("design_type") is { } nullNodeDesignType && nullNodeDesignType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesignType = null;
+            if (parseNode.GetChildNode("outline") is null) { _explicitNullValueOutline = default!; _explicitNullProperties?.Remove("outline"); }
+            else if (parseNode.GetChildNode("outline") is { } nullNodeOutline && nullNodeOutline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Outline = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,31 +31,31 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>A description of the design to generate, including its subject, purpose,required wording, tone, and visual direction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Brief { get => _explicitNullValueBrief; set { _explicitNullValueBrief = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brief"); else _explicitNullProperties?.Remove("brief"); } }
+        public string? Brief { get => _explicitNullValueBrief; set { _explicitNullValueBrief = value; AdditionalData?.Remove("brief"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brief"); else _explicitNullProperties?.Remove("brief"); } }
         private string? _explicitNullValueBrief = default!;
 #nullable restore
 #else
-        public string Brief { get => _explicitNullValueBrief; set { _explicitNullValueBrief = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brief"); else _explicitNullProperties?.Remove("brief"); } }
+        public string Brief { get => _explicitNullValueBrief; set { _explicitNullValueBrief = value; AdditionalData?.Remove("brief"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brief"); else _explicitNullProperties?.Remove("brief"); } }
         private string _explicitNullValueBrief = default!;
 #endif
         /// <summary>The preset Canva design type to generate. Supports `doc` and `presentation`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType? DesignType { get => _explicitNullValueDesignType; set { _explicitNullValueDesignType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_type"); else _explicitNullProperties?.Remove("design_type"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType? DesignType { get => _explicitNullValueDesignType; set { _explicitNullValueDesignType = value; AdditionalData?.Remove("design_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_type"); else _explicitNullProperties?.Remove("design_type"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType? _explicitNullValueDesignType = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType DesignType { get => _explicitNullValueDesignType; set { _explicitNullValueDesignType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_type"); else _explicitNullProperties?.Remove("design_type"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType DesignType { get => _explicitNullValueDesignType; set { _explicitNullValueDesignType = value; AdditionalData?.Remove("design_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_type"); else _explicitNullProperties?.Remove("design_type"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2DesignType _explicitNullValueDesignType = default!;
 #endif
         /// <summary>The slide structure to follow. This property is supported only when`design_type.name` is `presentation`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline? Outline { get => _explicitNullValueOutline; set { _explicitNullValueOutline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outline"); else _explicitNullProperties?.Remove("outline"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline? Outline { get => _explicitNullValueOutline; set { _explicitNullValueOutline = value; AdditionalData?.Remove("outline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outline"); else _explicitNullProperties?.Remove("outline"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline? _explicitNullValueOutline = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline Outline { get => _explicitNullValueOutline; set { _explicitNullValueOutline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outline"); else _explicitNullProperties?.Remove("outline"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline Outline { get => _explicitNullValueOutline; set { _explicitNullValueOutline = value; AdditionalData?.Remove("outline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outline"); else _explicitNullProperties?.Remove("outline"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.CreateDesignGenerationJobRequestV2Outline _explicitNullValueOutline = default!;
 #endif
         /// <summary>

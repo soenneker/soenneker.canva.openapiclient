@@ -18,32 +18,36 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("resets_at") is { } nullNodeResetsAt && nullNodeResetsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetsAt = null;
-            if (parseNode.GetChildNode("usage_review_link") is { } nullNodeUsageReviewLink && nullNodeUsageReviewLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageReviewLink = null;
-            if (parseNode.GetChildNode("used_percentage") is { } nullNodeUsedPercentage && nullNodeUsedPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedPercentage = null;
-            if (parseNode.GetChildNode("using_bonus_credits") is { } nullNodeUsingBonusCredits && nullNodeUsingBonusCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsingBonusCredits = null;
+            if (parseNode.GetChildNode("resets_at") is null) { _explicitNullValueResetsAt = default!; _explicitNullProperties?.Remove("resets_at"); }
+            else if (parseNode.GetChildNode("resets_at") is { } nullNodeResetsAt && nullNodeResetsAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResetsAt = null;
+            if (parseNode.GetChildNode("usage_review_link") is null) { _explicitNullValueUsageReviewLink = default!; _explicitNullProperties?.Remove("usage_review_link"); }
+            else if (parseNode.GetChildNode("usage_review_link") is { } nullNodeUsageReviewLink && nullNodeUsageReviewLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageReviewLink = null;
+            if (parseNode.GetChildNode("used_percentage") is null) { _explicitNullValueUsedPercentage = default!; _explicitNullProperties?.Remove("used_percentage"); }
+            else if (parseNode.GetChildNode("used_percentage") is { } nullNodeUsedPercentage && nullNodeUsedPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedPercentage = null;
+            if (parseNode.GetChildNode("using_bonus_credits") is null) { _explicitNullValueUsingBonusCredits = default!; _explicitNullProperties?.Remove("using_bonus_credits"); }
+            else if (parseNode.GetChildNode("using_bonus_credits") is { } nullNodeUsingBonusCredits && nullNodeUsingBonusCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsingBonusCredits = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Unix timestamp (seconds from the Unix epoch) of when the credit quota resets forthe caller.</summary>
-        public long? ResetsAt { get => _explicitNullValueResetsAt; set { _explicitNullValueResetsAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resets_at"); else _explicitNullProperties?.Remove("resets_at"); } }
+        public long? ResetsAt { get => _explicitNullValueResetsAt; set { _explicitNullValueResetsAt = value; AdditionalData?.Remove("resets_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resets_at"); else _explicitNullProperties?.Remove("resets_at"); } }
         private long? _explicitNullValueResetsAt = default!;
         /// <summary>A URL to the Canva credit usage dashboard where the caller can review theircurrent credit consumption. Not present if unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsageReviewLink { get => _explicitNullValueUsageReviewLink; set { _explicitNullValueUsageReviewLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_review_link"); else _explicitNullProperties?.Remove("usage_review_link"); } }
+        public string? UsageReviewLink { get => _explicitNullValueUsageReviewLink; set { _explicitNullValueUsageReviewLink = value; AdditionalData?.Remove("usage_review_link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_review_link"); else _explicitNullProperties?.Remove("usage_review_link"); } }
         private string? _explicitNullValueUsageReviewLink = default!;
 #nullable restore
 #else
-        public string UsageReviewLink { get => _explicitNullValueUsageReviewLink; set { _explicitNullValueUsageReviewLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_review_link"); else _explicitNullProperties?.Remove("usage_review_link"); } }
+        public string UsageReviewLink { get => _explicitNullValueUsageReviewLink; set { _explicitNullValueUsageReviewLink = value; AdditionalData?.Remove("usage_review_link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_review_link"); else _explicitNullProperties?.Remove("usage_review_link"); } }
         private string _explicitNullValueUsageReviewLink = default!;
 #endif
         /// <summary>The percentage of the caller&apos;s credit quota that has been consumed in the currentbilling interval, from 0 to 100.</summary>
-        public int? UsedPercentage { get => _explicitNullValueUsedPercentage; set { _explicitNullValueUsedPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_percentage"); else _explicitNullProperties?.Remove("used_percentage"); } }
+        public int? UsedPercentage { get => _explicitNullValueUsedPercentage; set { _explicitNullValueUsedPercentage = value; AdditionalData?.Remove("used_percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_percentage"); else _explicitNullProperties?.Remove("used_percentage"); } }
         private int? _explicitNullValueUsedPercentage = default!;
         /// <summary>Whether the caller is currently consuming bonus credits (credits beyond their baseplan allocation).</summary>
-        public bool? UsingBonusCredits { get => _explicitNullValueUsingBonusCredits; set { _explicitNullValueUsingBonusCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("using_bonus_credits"); else _explicitNullProperties?.Remove("using_bonus_credits"); } }
+        public bool? UsingBonusCredits { get => _explicitNullValueUsingBonusCredits; set { _explicitNullValueUsingBonusCredits = value; AdditionalData?.Remove("using_bonus_credits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("using_bonus_credits"); else _explicitNullProperties?.Remove("using_bonus_credits"); } }
         private bool? _explicitNullValueUsingBonusCredits = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage"/> and sets the default values.

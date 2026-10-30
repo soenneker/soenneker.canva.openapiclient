@@ -18,16 +18,26 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("csv") is { } nullNodeCsv && nullNodeCsv.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Csv = null;
-            if (parseNode.GetChildNode("gif") is { } nullNodeGif && nullNodeGif.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gif = null;
-            if (parseNode.GetChildNode("html_bundle") is { } nullNodeHtmlBundle && nullNodeHtmlBundle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HtmlBundle = null;
-            if (parseNode.GetChildNode("html_standalone") is { } nullNodeHtmlStandalone && nullNodeHtmlStandalone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HtmlStandalone = null;
-            if (parseNode.GetChildNode("jpg") is { } nullNodeJpg && nullNodeJpg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Jpg = null;
-            if (parseNode.GetChildNode("mp4") is { } nullNodeMp4 && nullNodeMp4.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mp4 = null;
-            if (parseNode.GetChildNode("pdf") is { } nullNodePdf && nullNodePdf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pdf = null;
-            if (parseNode.GetChildNode("png") is { } nullNodePng && nullNodePng.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Png = null;
-            if (parseNode.GetChildNode("pptx") is { } nullNodePptx && nullNodePptx.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pptx = null;
-            if (parseNode.GetChildNode("svg") is { } nullNodeSvg && nullNodeSvg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Svg = null;
+            if (parseNode.GetChildNode("csv") is null) { _explicitNullValueCsv = default!; _explicitNullProperties?.Remove("csv"); }
+            else if (parseNode.GetChildNode("csv") is { } nullNodeCsv && nullNodeCsv.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Csv = null;
+            if (parseNode.GetChildNode("gif") is null) { _explicitNullValueGif = default!; _explicitNullProperties?.Remove("gif"); }
+            else if (parseNode.GetChildNode("gif") is { } nullNodeGif && nullNodeGif.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gif = null;
+            if (parseNode.GetChildNode("html_bundle") is null) { _explicitNullValueHtmlBundle = default!; _explicitNullProperties?.Remove("html_bundle"); }
+            else if (parseNode.GetChildNode("html_bundle") is { } nullNodeHtmlBundle && nullNodeHtmlBundle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HtmlBundle = null;
+            if (parseNode.GetChildNode("html_standalone") is null) { _explicitNullValueHtmlStandalone = default!; _explicitNullProperties?.Remove("html_standalone"); }
+            else if (parseNode.GetChildNode("html_standalone") is { } nullNodeHtmlStandalone && nullNodeHtmlStandalone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HtmlStandalone = null;
+            if (parseNode.GetChildNode("jpg") is null) { _explicitNullValueJpg = default!; _explicitNullProperties?.Remove("jpg"); }
+            else if (parseNode.GetChildNode("jpg") is { } nullNodeJpg && nullNodeJpg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Jpg = null;
+            if (parseNode.GetChildNode("mp4") is null) { _explicitNullValueMp4 = default!; _explicitNullProperties?.Remove("mp4"); }
+            else if (parseNode.GetChildNode("mp4") is { } nullNodeMp4 && nullNodeMp4.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mp4 = null;
+            if (parseNode.GetChildNode("pdf") is null) { _explicitNullValuePdf = default!; _explicitNullProperties?.Remove("pdf"); }
+            else if (parseNode.GetChildNode("pdf") is { } nullNodePdf && nullNodePdf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pdf = null;
+            if (parseNode.GetChildNode("png") is null) { _explicitNullValuePng = default!; _explicitNullProperties?.Remove("png"); }
+            else if (parseNode.GetChildNode("png") is { } nullNodePng && nullNodePng.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Png = null;
+            if (parseNode.GetChildNode("pptx") is null) { _explicitNullValuePptx = default!; _explicitNullProperties?.Remove("pptx"); }
+            else if (parseNode.GetChildNode("pptx") is { } nullNodePptx && nullNodePptx.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pptx = null;
+            if (parseNode.GetChildNode("svg") is null) { _explicitNullValueSvg = default!; _explicitNullProperties?.Remove("svg"); }
+            else if (parseNode.GetChildNode("svg") is { } nullNodeSvg && nullNodeSvg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Svg = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -35,101 +45,101 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>Whether the design can be exported as a CSV file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormatOption? Csv { get => _explicitNullValueCsv; set { _explicitNullValueCsv = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("csv"); else _explicitNullProperties?.Remove("csv"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormatOption? Csv { get => _explicitNullValueCsv; set { _explicitNullValueCsv = value; AdditionalData?.Remove("csv"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("csv"); else _explicitNullProperties?.Remove("csv"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormatOption? _explicitNullValueCsv = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormatOption Csv { get => _explicitNullValueCsv; set { _explicitNullValueCsv = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("csv"); else _explicitNullProperties?.Remove("csv"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormatOption Csv { get => _explicitNullValueCsv; set { _explicitNullValueCsv = value; AdditionalData?.Remove("csv"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("csv"); else _explicitNullProperties?.Remove("csv"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormatOption _explicitNullValueCsv = default!;
 #endif
         /// <summary>Whether the design can be exported as a GIF.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.GifExportFormatOption? Gif { get => _explicitNullValueGif; set { _explicitNullValueGif = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gif"); else _explicitNullProperties?.Remove("gif"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.GifExportFormatOption? Gif { get => _explicitNullValueGif; set { _explicitNullValueGif = value; AdditionalData?.Remove("gif"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gif"); else _explicitNullProperties?.Remove("gif"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.GifExportFormatOption? _explicitNullValueGif = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.GifExportFormatOption Gif { get => _explicitNullValueGif; set { _explicitNullValueGif = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gif"); else _explicitNullProperties?.Remove("gif"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.GifExportFormatOption Gif { get => _explicitNullValueGif; set { _explicitNullValueGif = value; AdditionalData?.Remove("gif"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gif"); else _explicitNullProperties?.Remove("gif"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.GifExportFormatOption _explicitNullValueGif = default!;
 #endif
         /// <summary>Whether the design can be exported as an HTML bundle.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormatOption? HtmlBundle { get => _explicitNullValueHtmlBundle; set { _explicitNullValueHtmlBundle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_bundle"); else _explicitNullProperties?.Remove("html_bundle"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormatOption? HtmlBundle { get => _explicitNullValueHtmlBundle; set { _explicitNullValueHtmlBundle = value; AdditionalData?.Remove("html_bundle"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_bundle"); else _explicitNullProperties?.Remove("html_bundle"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormatOption? _explicitNullValueHtmlBundle = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormatOption HtmlBundle { get => _explicitNullValueHtmlBundle; set { _explicitNullValueHtmlBundle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_bundle"); else _explicitNullProperties?.Remove("html_bundle"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormatOption HtmlBundle { get => _explicitNullValueHtmlBundle; set { _explicitNullValueHtmlBundle = value; AdditionalData?.Remove("html_bundle"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_bundle"); else _explicitNullProperties?.Remove("html_bundle"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.HtmlBundleExportFormatOption _explicitNullValueHtmlBundle = default!;
 #endif
         /// <summary>Whether the design can be exported as an standalone HTML file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormatOption? HtmlStandalone { get => _explicitNullValueHtmlStandalone; set { _explicitNullValueHtmlStandalone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_standalone"); else _explicitNullProperties?.Remove("html_standalone"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormatOption? HtmlStandalone { get => _explicitNullValueHtmlStandalone; set { _explicitNullValueHtmlStandalone = value; AdditionalData?.Remove("html_standalone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_standalone"); else _explicitNullProperties?.Remove("html_standalone"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormatOption? _explicitNullValueHtmlStandalone = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormatOption HtmlStandalone { get => _explicitNullValueHtmlStandalone; set { _explicitNullValueHtmlStandalone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_standalone"); else _explicitNullProperties?.Remove("html_standalone"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormatOption HtmlStandalone { get => _explicitNullValueHtmlStandalone; set { _explicitNullValueHtmlStandalone = value; AdditionalData?.Remove("html_standalone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("html_standalone"); else _explicitNullProperties?.Remove("html_standalone"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.HtmlStandaloneExportFormatOption _explicitNullValueHtmlStandalone = default!;
 #endif
         /// <summary>Whether the design can be exported as a JPEG.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormatOption? Jpg { get => _explicitNullValueJpg; set { _explicitNullValueJpg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jpg"); else _explicitNullProperties?.Remove("jpg"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormatOption? Jpg { get => _explicitNullValueJpg; set { _explicitNullValueJpg = value; AdditionalData?.Remove("jpg"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jpg"); else _explicitNullProperties?.Remove("jpg"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormatOption? _explicitNullValueJpg = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormatOption Jpg { get => _explicitNullValueJpg; set { _explicitNullValueJpg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jpg"); else _explicitNullProperties?.Remove("jpg"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormatOption Jpg { get => _explicitNullValueJpg; set { _explicitNullValueJpg = value; AdditionalData?.Remove("jpg"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jpg"); else _explicitNullProperties?.Remove("jpg"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.JpgExportFormatOption _explicitNullValueJpg = default!;
 #endif
         /// <summary>Whether the design can be exported as an MP4.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormatOption? Mp4 { get => _explicitNullValueMp4; set { _explicitNullValueMp4 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mp4"); else _explicitNullProperties?.Remove("mp4"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormatOption? Mp4 { get => _explicitNullValueMp4; set { _explicitNullValueMp4 = value; AdditionalData?.Remove("mp4"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mp4"); else _explicitNullProperties?.Remove("mp4"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormatOption? _explicitNullValueMp4 = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormatOption Mp4 { get => _explicitNullValueMp4; set { _explicitNullValueMp4 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mp4"); else _explicitNullProperties?.Remove("mp4"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormatOption Mp4 { get => _explicitNullValueMp4; set { _explicitNullValueMp4 = value; AdditionalData?.Remove("mp4"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mp4"); else _explicitNullProperties?.Remove("mp4"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormatOption _explicitNullValueMp4 = default!;
 #endif
         /// <summary>Whether the design can be exported as a PDF.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormatOption? Pdf { get => _explicitNullValuePdf; set { _explicitNullValuePdf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pdf"); else _explicitNullProperties?.Remove("pdf"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormatOption? Pdf { get => _explicitNullValuePdf; set { _explicitNullValuePdf = value; AdditionalData?.Remove("pdf"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pdf"); else _explicitNullProperties?.Remove("pdf"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormatOption? _explicitNullValuePdf = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormatOption Pdf { get => _explicitNullValuePdf; set { _explicitNullValuePdf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pdf"); else _explicitNullProperties?.Remove("pdf"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormatOption Pdf { get => _explicitNullValuePdf; set { _explicitNullValuePdf = value; AdditionalData?.Remove("pdf"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pdf"); else _explicitNullProperties?.Remove("pdf"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PdfExportFormatOption _explicitNullValuePdf = default!;
 #endif
         /// <summary>Whether the design can be exported as a PNG.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.PngExportFormatOption? Png { get => _explicitNullValuePng; set { _explicitNullValuePng = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("png"); else _explicitNullProperties?.Remove("png"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PngExportFormatOption? Png { get => _explicitNullValuePng; set { _explicitNullValuePng = value; AdditionalData?.Remove("png"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("png"); else _explicitNullProperties?.Remove("png"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PngExportFormatOption? _explicitNullValuePng = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.PngExportFormatOption Png { get => _explicitNullValuePng; set { _explicitNullValuePng = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("png"); else _explicitNullProperties?.Remove("png"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PngExportFormatOption Png { get => _explicitNullValuePng; set { _explicitNullValuePng = value; AdditionalData?.Remove("png"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("png"); else _explicitNullProperties?.Remove("png"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PngExportFormatOption _explicitNullValuePng = default!;
 #endif
         /// <summary>Whether the design can be exported as a PPTX.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormatOption? Pptx { get => _explicitNullValuePptx; set { _explicitNullValuePptx = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pptx"); else _explicitNullProperties?.Remove("pptx"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormatOption? Pptx { get => _explicitNullValuePptx; set { _explicitNullValuePptx = value; AdditionalData?.Remove("pptx"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pptx"); else _explicitNullProperties?.Remove("pptx"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormatOption? _explicitNullValuePptx = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormatOption Pptx { get => _explicitNullValuePptx; set { _explicitNullValuePptx = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pptx"); else _explicitNullProperties?.Remove("pptx"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormatOption Pptx { get => _explicitNullValuePptx; set { _explicitNullValuePptx = value; AdditionalData?.Remove("pptx"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pptx"); else _explicitNullProperties?.Remove("pptx"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PptxExportFormatOption _explicitNullValuePptx = default!;
 #endif
         /// <summary>Whether the design can be exported as an SVG.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.SvgExportFormatOption? Svg { get => _explicitNullValueSvg; set { _explicitNullValueSvg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svg"); else _explicitNullProperties?.Remove("svg"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.SvgExportFormatOption? Svg { get => _explicitNullValueSvg; set { _explicitNullValueSvg = value; AdditionalData?.Remove("svg"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svg"); else _explicitNullProperties?.Remove("svg"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.SvgExportFormatOption? _explicitNullValueSvg = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.SvgExportFormatOption Svg { get => _explicitNullValueSvg; set { _explicitNullValueSvg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svg"); else _explicitNullProperties?.Remove("svg"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.SvgExportFormatOption Svg { get => _explicitNullValueSvg; set { _explicitNullValueSvg = value; AdditionalData?.Remove("svg"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("svg"); else _explicitNullProperties?.Remove("svg"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.SvgExportFormatOption _explicitNullValueSvg = default!;
 #endif
         /// <summary>

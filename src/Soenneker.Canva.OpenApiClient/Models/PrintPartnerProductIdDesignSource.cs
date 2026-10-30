@@ -18,8 +18,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("partner_product_id") is { } nullNodePartnerProductId && nullNodePartnerProductId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PartnerProductId = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("partner_product_id") is null) { _explicitNullValuePartnerProductId = default!; _explicitNullProperties?.Remove("partner_product_id"); }
+            else if (parseNode.GetChildNode("partner_product_id") is { } nullNodePartnerProductId && nullNodePartnerProductId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PartnerProductId = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>The ID of the partner-defined product.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PartnerProductId { get => _explicitNullValuePartnerProductId; set { _explicitNullValuePartnerProductId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner_product_id"); else _explicitNullProperties?.Remove("partner_product_id"); } }
+        public string? PartnerProductId { get => _explicitNullValuePartnerProductId; set { _explicitNullValuePartnerProductId = value; AdditionalData?.Remove("partner_product_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner_product_id"); else _explicitNullProperties?.Remove("partner_product_id"); } }
         private string? _explicitNullValuePartnerProductId = default!;
 #nullable restore
 #else
-        public string PartnerProductId { get => _explicitNullValuePartnerProductId; set { _explicitNullValuePartnerProductId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner_product_id"); else _explicitNullProperties?.Remove("partner_product_id"); } }
+        public string PartnerProductId { get => _explicitNullValuePartnerProductId; set { _explicitNullValuePartnerProductId = value; AdditionalData?.Remove("partner_product_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner_product_id"); else _explicitNullProperties?.Remove("partner_product_id"); } }
         private string _explicitNullValuePartnerProductId = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.PartnerProductIdType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PartnerProductIdType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PartnerProductIdType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerProductIdDesignSource"/> and sets the default values.
@@ -63,7 +65,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "partner_product_id", n => { PartnerProductId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PartnerProductIdType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.PartnerProductIdType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

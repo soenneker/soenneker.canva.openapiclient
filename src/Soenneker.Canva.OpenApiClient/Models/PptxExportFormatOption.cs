@@ -18,7 +18,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("page_numbers") is { } nullNodePageNumbers && nullNodePageNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PageNumbers = null;
+            if (parseNode.GetChildNode("page_numbers") is null) { _explicitNullValuePageNumbers = default!; _explicitNullProperties?.Remove("page_numbers"); }
+            else if (parseNode.GetChildNode("page_numbers") is { } nullNodePageNumbers && nullNodePageNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PageNumbers = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>The page numbers in the design that support this export format, in ascending order. The first page in a design is page `1`. If omitted, the format is supported by all pages in the design.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? PageNumbers { get => _explicitNullValuePageNumbers; set { _explicitNullValuePageNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page_numbers"); else _explicitNullProperties?.Remove("page_numbers"); } }
+        public List<int?>? PageNumbers { get => _explicitNullValuePageNumbers; set { _explicitNullValuePageNumbers = value; AdditionalData?.Remove("page_numbers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page_numbers"); else _explicitNullProperties?.Remove("page_numbers"); } }
         private List<int?>? _explicitNullValuePageNumbers = default!;
 #nullable restore
 #else
-        public List<int?> PageNumbers { get => _explicitNullValuePageNumbers; set { _explicitNullValuePageNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page_numbers"); else _explicitNullProperties?.Remove("page_numbers"); } }
+        public List<int?> PageNumbers { get => _explicitNullValuePageNumbers; set { _explicitNullValuePageNumbers = value; AdditionalData?.Remove("page_numbers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("page_numbers"); else _explicitNullProperties?.Remove("page_numbers"); } }
         private List<int?> _explicitNullValuePageNumbers = default!;
 #endif
         /// <summary>

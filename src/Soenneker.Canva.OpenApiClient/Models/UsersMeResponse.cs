@@ -17,7 +17,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("team_user") is { } nullNodeTeamUser && nullNodeTeamUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamUser = null;
+            if (parseNode.GetChildNode("team_user") is null) { _explicitNullValueTeamUser = default!; _explicitNullProperties?.Remove("team_user"); }
+            else if (parseNode.GetChildNode("team_user") is { } nullNodeTeamUser && nullNodeTeamUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamUser = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>Metadata for the user, consisting of the User ID and Team ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.TeamUserSummary? TeamUser { get => _explicitNullValueTeamUser; set { _explicitNullValueTeamUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_user"); else _explicitNullProperties?.Remove("team_user"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.TeamUserSummary? TeamUser { get => _explicitNullValueTeamUser; set { _explicitNullValueTeamUser = value; AdditionalData?.Remove("team_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_user"); else _explicitNullProperties?.Remove("team_user"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.TeamUserSummary? _explicitNullValueTeamUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.TeamUserSummary TeamUser { get => _explicitNullValueTeamUser; set { _explicitNullValueTeamUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_user"); else _explicitNullProperties?.Remove("team_user"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.TeamUserSummary TeamUser { get => _explicitNullValueTeamUser; set { _explicitNullValueTeamUser = value; AdditionalData?.Remove("team_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_user"); else _explicitNullProperties?.Remove("team_user"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.TeamUserSummary _explicitNullValueTeamUser = default!;
 #endif
         /// <summary>

@@ -18,32 +18,36 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("export_quality") is { } nullNodeExportQuality && nullNodeExportQuality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportQuality = null;
-            if (parseNode.GetChildNode("pages") is { } nullNodePages && nullNodePages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pages = null;
-            if (parseNode.GetChildNode("quality") is { } nullNodeQuality && nullNodeQuality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quality = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("export_quality") is null) { _explicitNullValueExportQuality = default!; _explicitNullProperties?.Remove("export_quality"); }
+            else if (parseNode.GetChildNode("export_quality") is { } nullNodeExportQuality && nullNodeExportQuality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportQuality = null;
+            if (parseNode.GetChildNode("pages") is null) { _explicitNullValuePages = default!; _explicitNullProperties?.Remove("pages"); }
+            else if (parseNode.GetChildNode("pages") is { } nullNodePages && nullNodePages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pages = null;
+            if (parseNode.GetChildNode("quality") is null) { _explicitNullValueQuality = default!; _explicitNullProperties?.Remove("quality"); }
+            else if (parseNode.GetChildNode("quality") is { } nullNodeQuality && nullNodeQuality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quality = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Specifies the export quality of the design.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.ExportQuality? ExportQuality { get => _explicitNullValueExportQuality; set { _explicitNullValueExportQuality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_quality"); else _explicitNullProperties?.Remove("export_quality"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.ExportQuality? ExportQuality { get => _explicitNullValueExportQuality; set { _explicitNullValueExportQuality = value; AdditionalData?.Remove("export_quality"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_quality"); else _explicitNullProperties?.Remove("export_quality"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.ExportQuality? _explicitNullValueExportQuality = default!;
         /// <summary>To specify which pages to export in a multi-page design, provide the page numbers asan array. The first page in a design is page `1`.If `pages` isn&apos;t specified, all the pages are exported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
+        public List<int?>? Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; AdditionalData?.Remove("pages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
         private List<int?>? _explicitNullValuePages = default!;
 #nullable restore
 #else
-        public List<int?> Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
+        public List<int?> Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; AdditionalData?.Remove("pages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
         private List<int?> _explicitNullValuePages = default!;
 #endif
         /// <summary>The resolution of the exported video, as a target number of pixels. The resolution is one of`480p`, `720p`, `1080p` or `4k`.The exported video always has the same aspect ratio as the design, which matches creating adownload from the Canva editor. The resolution sets how many pixels to target, and thedesign&apos;s aspect ratio decides how they&apos;re split between width and height, so the`horizontal` and `vertical` values of a given resolution produce the same output:- A 2160x3840 portrait design exported as `horizontal_4k` is 2160x3840, not 3840x2160. The  orientation in the value&apos;s name doesn&apos;t rotate or crop the design.- A 1000x2000 design exported as `horizontal_720p` is 678x1357, the 1:2 size closest to the  921,600 pixels of 1280x720. Aspect ratios that don&apos;t match a standard video size aren&apos;t  rounded to one.- A square design exported as `horizontal_4k` or `vertical_4k` is 2880x2880, the square with  the same number of pixels as 3840x2160.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportQuality? Quality { get => _explicitNullValueQuality; set { _explicitNullValueQuality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality"); else _explicitNullProperties?.Remove("quality"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportQuality? Quality { get => _explicitNullValueQuality; set { _explicitNullValueQuality = value; AdditionalData?.Remove("quality"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quality"); else _explicitNullProperties?.Remove("quality"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportQuality? _explicitNullValueQuality = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.Mp4Type? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.Mp4Type? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.Mp4Type? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportFormat"/> and sets the default values.
@@ -70,10 +74,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "export_quality", n => { ExportQuality = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ExportQuality>(); } },
+                { "export_quality", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ExportQuality>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueExportQuality = default; _explicitNullProperties?.Remove("export_quality"); AdditionalData["export_quality"] = unknown; } else { ExportQuality = parsed; AdditionalData.Remove("export_quality"); } } },
                 { "pages", n => { Pages = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "quality", n => { Quality = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportQuality>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.Mp4Type>(); } },
+                { "quality", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.Mp4ExportQuality>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueQuality = default; _explicitNullProperties?.Remove("quality"); AdditionalData["quality"] = unknown; } else { Quality = parsed; AdditionalData.Remove("quality"); } } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.Mp4Type>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

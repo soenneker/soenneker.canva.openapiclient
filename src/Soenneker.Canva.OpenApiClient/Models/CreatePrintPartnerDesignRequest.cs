@@ -18,42 +18,47 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("bleed") is { } nullNodeBleed && nullNodeBleed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bleed = null;
-            if (parseNode.GetChildNode("design_source") is { } nullNodeDesignSource && nullNodeDesignSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesignSource = null;
-            if (parseNode.GetChildNode("max_pages") is { } nullNodeMaxPages && nullNodeMaxPages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPages = null;
-            if (parseNode.GetChildNode("min_pages") is { } nullNodeMinPages && nullNodeMinPages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinPages = null;
-            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("bleed") is null) { _explicitNullValueBleed = default!; _explicitNullProperties?.Remove("bleed"); }
+            else if (parseNode.GetChildNode("bleed") is { } nullNodeBleed && nullNodeBleed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bleed = null;
+            if (parseNode.GetChildNode("design_source") is null) { _explicitNullValueDesignSource = default!; _explicitNullProperties?.Remove("design_source"); }
+            else if (parseNode.GetChildNode("design_source") is { } nullNodeDesignSource && nullNodeDesignSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DesignSource = null;
+            if (parseNode.GetChildNode("max_pages") is null) { _explicitNullValueMaxPages = default!; _explicitNullProperties?.Remove("max_pages"); }
+            else if (parseNode.GetChildNode("max_pages") is { } nullNodeMaxPages && nullNodeMaxPages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxPages = null;
+            if (parseNode.GetChildNode("min_pages") is null) { _explicitNullValueMinPages = default!; _explicitNullProperties?.Remove("min_pages"); }
+            else if (parseNode.GetChildNode("min_pages") is { } nullNodeMinPages && nullNodeMinPages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinPages = null;
+            if (parseNode.GetChildNode("title") is null) { _explicitNullValueTitle = default!; _explicitNullProperties?.Remove("title"); }
+            else if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bleed in microns to apply around the design in the editor. Bleed is the areaoutside the trim line used to avoid white edges after cutting. Use 0 for no bleed. If bleed is notspecified, a default of 3000 microns is used.</summary>
-        public int? Bleed { get => _explicitNullValueBleed; set { _explicitNullValueBleed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bleed"); else _explicitNullProperties?.Remove("bleed"); } }
+        public int? Bleed { get => _explicitNullValueBleed; set { _explicitNullValueBleed = value; AdditionalData?.Remove("bleed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bleed"); else _explicitNullProperties?.Remove("bleed"); } }
         private int? _explicitNullValueBleed = default!;
         /// <summary>The desired source for the design creation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerDesignSource? DesignSource { get => _explicitNullValueDesignSource; set { _explicitNullValueDesignSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_source"); else _explicitNullProperties?.Remove("design_source"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerDesignSource? DesignSource { get => _explicitNullValueDesignSource; set { _explicitNullValueDesignSource = value; AdditionalData?.Remove("design_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_source"); else _explicitNullProperties?.Remove("design_source"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerDesignSource? _explicitNullValueDesignSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerDesignSource DesignSource { get => _explicitNullValueDesignSource; set { _explicitNullValueDesignSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_source"); else _explicitNullProperties?.Remove("design_source"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerDesignSource DesignSource { get => _explicitNullValueDesignSource; set { _explicitNullValueDesignSource = value; AdditionalData?.Remove("design_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("design_source"); else _explicitNullProperties?.Remove("design_source"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.PrintPartnerDesignSource _explicitNullValueDesignSource = default!;
 #endif
         /// <summary>Maximum number of pages the design can have in the editor. The user cannotadd pages beyond this value. If both min_pages and max_pages are provided,min_pages must be less than or equal to max_pages.</summary>
-        public int? MaxPages { get => _explicitNullValueMaxPages; set { _explicitNullValueMaxPages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_pages"); else _explicitNullProperties?.Remove("max_pages"); } }
+        public int? MaxPages { get => _explicitNullValueMaxPages; set { _explicitNullValueMaxPages = value; AdditionalData?.Remove("max_pages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_pages"); else _explicitNullProperties?.Remove("max_pages"); } }
         private int? _explicitNullValueMaxPages = default!;
         /// <summary>Minimum number of pages the design must have in the editor. The user cannotreduce the page count below this value. If both min_pages and max_pages areprovided, min_pages must be less than or equal to max_pages.</summary>
-        public int? MinPages { get => _explicitNullValueMinPages; set { _explicitNullValueMinPages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_pages"); else _explicitNullProperties?.Remove("min_pages"); } }
+        public int? MinPages { get => _explicitNullValueMinPages; set { _explicitNullValueMinPages = value; AdditionalData?.Remove("min_pages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_pages"); else _explicitNullProperties?.Remove("min_pages"); } }
         private int? _explicitNullValueMinPages = default!;
         /// <summary>The name of the design.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>

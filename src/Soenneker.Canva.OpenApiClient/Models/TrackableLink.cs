@@ -18,51 +18,58 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("average_view_duration_seconds") is { } nullNodeAverageViewDurationSeconds && nullNodeAverageViewDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageViewDurationSeconds = null;
-            if (parseNode.GetChildNode("last_viewed_at") is { } nullNodeLastViewedAt && nullNodeLastViewedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastViewedAt = null;
-            if (parseNode.GetChildNode("link_id") is { } nullNodeLinkId && nullNodeLinkId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinkId = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("total_view_count") is { } nullNodeTotalViewCount && nullNodeTotalViewCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalViewCount = null;
-            if (parseNode.GetChildNode("total_view_duration_seconds") is { } nullNodeTotalViewDurationSeconds && nullNodeTotalViewDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalViewDurationSeconds = null;
-            if (parseNode.GetChildNode("unique_view_count") is { } nullNodeUniqueViewCount && nullNodeUniqueViewCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueViewCount = null;
+            if (parseNode.GetChildNode("average_view_duration_seconds") is null) { _explicitNullValueAverageViewDurationSeconds = default!; _explicitNullProperties?.Remove("average_view_duration_seconds"); }
+            else if (parseNode.GetChildNode("average_view_duration_seconds") is { } nullNodeAverageViewDurationSeconds && nullNodeAverageViewDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageViewDurationSeconds = null;
+            if (parseNode.GetChildNode("last_viewed_at") is null) { _explicitNullValueLastViewedAt = default!; _explicitNullProperties?.Remove("last_viewed_at"); }
+            else if (parseNode.GetChildNode("last_viewed_at") is { } nullNodeLastViewedAt && nullNodeLastViewedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastViewedAt = null;
+            if (parseNode.GetChildNode("link_id") is null) { _explicitNullValueLinkId = default!; _explicitNullProperties?.Remove("link_id"); }
+            else if (parseNode.GetChildNode("link_id") is { } nullNodeLinkId && nullNodeLinkId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinkId = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("total_view_count") is null) { _explicitNullValueTotalViewCount = default!; _explicitNullProperties?.Remove("total_view_count"); }
+            else if (parseNode.GetChildNode("total_view_count") is { } nullNodeTotalViewCount && nullNodeTotalViewCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalViewCount = null;
+            if (parseNode.GetChildNode("total_view_duration_seconds") is null) { _explicitNullValueTotalViewDurationSeconds = default!; _explicitNullProperties?.Remove("total_view_duration_seconds"); }
+            else if (parseNode.GetChildNode("total_view_duration_seconds") is { } nullNodeTotalViewDurationSeconds && nullNodeTotalViewDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalViewDurationSeconds = null;
+            if (parseNode.GetChildNode("unique_view_count") is null) { _explicitNullValueUniqueViewCount = default!; _explicitNullProperties?.Remove("unique_view_count"); }
+            else if (parseNode.GetChildNode("unique_view_count") is { } nullNodeUniqueViewCount && nullNodeUniqueViewCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueViewCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The average time this link has been viewed, in seconds.</summary>
-        public long? AverageViewDurationSeconds { get => _explicitNullValueAverageViewDurationSeconds; set { _explicitNullValueAverageViewDurationSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_view_duration_seconds"); else _explicitNullProperties?.Remove("average_view_duration_seconds"); } }
+        public long? AverageViewDurationSeconds { get => _explicitNullValueAverageViewDurationSeconds; set { _explicitNullValueAverageViewDurationSeconds = value; AdditionalData?.Remove("average_view_duration_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_view_duration_seconds"); else _explicitNullProperties?.Remove("average_view_duration_seconds"); } }
         private long? _explicitNullValueAverageViewDurationSeconds = default!;
         /// <summary>When this link was most recently viewed, as a Unix timestamp (in seconds since the Unix Epoch).</summary>
-        public long? LastViewedAt { get => _explicitNullValueLastViewedAt; set { _explicitNullValueLastViewedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_viewed_at"); else _explicitNullProperties?.Remove("last_viewed_at"); } }
+        public long? LastViewedAt { get => _explicitNullValueLastViewedAt; set { _explicitNullValueLastViewedAt = value; AdditionalData?.Remove("last_viewed_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_viewed_at"); else _explicitNullProperties?.Remove("last_viewed_at"); } }
         private long? _explicitNullValueLastViewedAt = default!;
         /// <summary>The ID of the trackable link.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LinkId { get => _explicitNullValueLinkId; set { _explicitNullValueLinkId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link_id"); else _explicitNullProperties?.Remove("link_id"); } }
+        public string? LinkId { get => _explicitNullValueLinkId; set { _explicitNullValueLinkId = value; AdditionalData?.Remove("link_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link_id"); else _explicitNullProperties?.Remove("link_id"); } }
         private string? _explicitNullValueLinkId = default!;
 #nullable restore
 #else
-        public string LinkId { get => _explicitNullValueLinkId; set { _explicitNullValueLinkId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link_id"); else _explicitNullProperties?.Remove("link_id"); } }
+        public string LinkId { get => _explicitNullValueLinkId; set { _explicitNullValueLinkId = value; AdditionalData?.Remove("link_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link_id"); else _explicitNullProperties?.Remove("link_id"); } }
         private string _explicitNullValueLinkId = default!;
 #endif
         /// <summary>The user-visible name of the trackable link.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The total number of views for this link.</summary>
-        public long? TotalViewCount { get => _explicitNullValueTotalViewCount; set { _explicitNullValueTotalViewCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_view_count"); else _explicitNullProperties?.Remove("total_view_count"); } }
+        public long? TotalViewCount { get => _explicitNullValueTotalViewCount; set { _explicitNullValueTotalViewCount = value; AdditionalData?.Remove("total_view_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_view_count"); else _explicitNullProperties?.Remove("total_view_count"); } }
         private long? _explicitNullValueTotalViewCount = default!;
         /// <summary>The total time this link has been viewed, in seconds.</summary>
-        public long? TotalViewDurationSeconds { get => _explicitNullValueTotalViewDurationSeconds; set { _explicitNullValueTotalViewDurationSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_view_duration_seconds"); else _explicitNullProperties?.Remove("total_view_duration_seconds"); } }
+        public long? TotalViewDurationSeconds { get => _explicitNullValueTotalViewDurationSeconds; set { _explicitNullValueTotalViewDurationSeconds = value; AdditionalData?.Remove("total_view_duration_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_view_duration_seconds"); else _explicitNullProperties?.Remove("total_view_duration_seconds"); } }
         private long? _explicitNullValueTotalViewDurationSeconds = default!;
         /// <summary>The number of unique viewers for this link.</summary>
-        public long? UniqueViewCount { get => _explicitNullValueUniqueViewCount; set { _explicitNullValueUniqueViewCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_view_count"); else _explicitNullProperties?.Remove("unique_view_count"); } }
+        public long? UniqueViewCount { get => _explicitNullValueUniqueViewCount; set { _explicitNullValueUniqueViewCount = value; AdditionalData?.Remove("unique_view_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_view_count"); else _explicitNullProperties?.Remove("unique_view_count"); } }
         private long? _explicitNullValueUniqueViewCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.TrackableLink"/> and sets the default values.

@@ -18,8 +18,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("continuation") is { } nullNodeContinuation && nullNodeContinuation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Continuation = null;
-            if (parseNode.GetChildNode("items") is { } nullNodeItems && nullNodeItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Items = null;
+            if (parseNode.GetChildNode("continuation") is null) { _explicitNullValueContinuation = default!; _explicitNullProperties?.Remove("continuation"); }
+            else if (parseNode.GetChildNode("continuation") is { } nullNodeContinuation && nullNodeContinuation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Continuation = null;
+            if (parseNode.GetChildNode("items") is null) { _explicitNullValueItems = default!; _explicitNullProperties?.Remove("items"); }
+            else if (parseNode.GetChildNode("items") is { } nullNodeItems && nullNodeItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Items = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>If the success response contains a continuation token, the folder contains more itemsyou can list. You can use this token as a query parameter and retrieve moreitems from the list, for example`/v1/folders/{folderId}/items?continuation={continuation}`.To retrieve all the items in a folder, you might need to make multiple requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Continuation { get => _explicitNullValueContinuation; set { _explicitNullValueContinuation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("continuation"); else _explicitNullProperties?.Remove("continuation"); } }
+        public string? Continuation { get => _explicitNullValueContinuation; set { _explicitNullValueContinuation = value; AdditionalData?.Remove("continuation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("continuation"); else _explicitNullProperties?.Remove("continuation"); } }
         private string? _explicitNullValueContinuation = default!;
 #nullable restore
 #else
-        public string Continuation { get => _explicitNullValueContinuation; set { _explicitNullValueContinuation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("continuation"); else _explicitNullProperties?.Remove("continuation"); } }
+        public string Continuation { get => _explicitNullValueContinuation; set { _explicitNullValueContinuation = value; AdditionalData?.Remove("continuation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("continuation"); else _explicitNullProperties?.Remove("continuation"); } }
         private string _explicitNullValueContinuation = default!;
 #endif
         /// <summary>An array of items in the folder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Canva.OpenApiClient.Models.FolderItemSummary>? Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
+        public List<global::Soenneker.Canva.OpenApiClient.Models.FolderItemSummary>? Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; AdditionalData?.Remove("items"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
         private List<global::Soenneker.Canva.OpenApiClient.Models.FolderItemSummary>? _explicitNullValueItems = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Canva.OpenApiClient.Models.FolderItemSummary> Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
+        public List<global::Soenneker.Canva.OpenApiClient.Models.FolderItemSummary> Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; AdditionalData?.Remove("items"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
         private List<global::Soenneker.Canva.OpenApiClient.Models.FolderItemSummary> _explicitNullValueItems = default!;
 #endif
         /// <summary>

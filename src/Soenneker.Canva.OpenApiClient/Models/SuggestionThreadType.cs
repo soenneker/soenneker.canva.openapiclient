@@ -18,28 +18,31 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("suggested_edits") is { } nullNodeSuggestedEdits && nullNodeSuggestedEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedEdits = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("suggested_edits") is null) { _explicitNullValueSuggestedEdits = default!; _explicitNullProperties?.Remove("suggested_edits"); }
+            else if (parseNode.GetChildNode("suggested_edits") is { } nullNodeSuggestedEdits && nullNodeSuggestedEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedEdits = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The current status of the suggestion.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus? _explicitNullValueStatus = default!;
         /// <summary>The suggested_edits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit>? SuggestedEdits { get => _explicitNullValueSuggestedEdits; set { _explicitNullValueSuggestedEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_edits"); else _explicitNullProperties?.Remove("suggested_edits"); } }
+        public List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit>? SuggestedEdits { get => _explicitNullValueSuggestedEdits; set { _explicitNullValueSuggestedEdits = value; AdditionalData?.Remove("suggested_edits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_edits"); else _explicitNullProperties?.Remove("suggested_edits"); } }
         private List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit>? _explicitNullValueSuggestedEdits = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit> SuggestedEdits { get => _explicitNullValueSuggestedEdits; set { _explicitNullValueSuggestedEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_edits"); else _explicitNullProperties?.Remove("suggested_edits"); } }
+        public List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit> SuggestedEdits { get => _explicitNullValueSuggestedEdits; set { _explicitNullValueSuggestedEdits = value; AdditionalData?.Remove("suggested_edits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_edits"); else _explicitNullProperties?.Remove("suggested_edits"); } }
         private List<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit> _explicitNullValueSuggestedEdits = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.SuggestionType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.SuggestionType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.SuggestionType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.SuggestionThreadType"/> and sets the default values.
@@ -66,9 +69,9 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus>(); } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.SuggestionStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "suggested_edits", n => { SuggestedEdits = n.GetCollectionOfObjectValues<global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit>(global::Soenneker.Canva.OpenApiClient.Models.SuggestedEdit.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.SuggestionType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.SuggestionType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

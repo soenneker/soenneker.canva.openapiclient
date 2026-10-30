@@ -17,7 +17,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("designs") is { } nullNodeDesigns && nullNodeDesigns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Designs = null;
+            if (parseNode.GetChildNode("designs") is null) { _explicitNullValueDesigns = default!; _explicitNullProperties?.Remove("designs"); }
+            else if (parseNode.GetChildNode("designs") is { } nullNodeDesigns && nullNodeDesigns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Designs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>A list of designs imported from the external file. It usually contains one item.Imports with a large number of pages or assets are split into multiple designs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Canva.OpenApiClient.Models.DesignSummary>? Designs { get => _explicitNullValueDesigns; set { _explicitNullValueDesigns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("designs"); else _explicitNullProperties?.Remove("designs"); } }
+        public List<global::Soenneker.Canva.OpenApiClient.Models.DesignSummary>? Designs { get => _explicitNullValueDesigns; set { _explicitNullValueDesigns = value; AdditionalData?.Remove("designs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("designs"); else _explicitNullProperties?.Remove("designs"); } }
         private List<global::Soenneker.Canva.OpenApiClient.Models.DesignSummary>? _explicitNullValueDesigns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Canva.OpenApiClient.Models.DesignSummary> Designs { get => _explicitNullValueDesigns; set { _explicitNullValueDesigns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("designs"); else _explicitNullProperties?.Remove("designs"); } }
+        public List<global::Soenneker.Canva.OpenApiClient.Models.DesignSummary> Designs { get => _explicitNullValueDesigns; set { _explicitNullValueDesigns = value; AdditionalData?.Remove("designs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("designs"); else _explicitNullProperties?.Remove("designs"); } }
         private List<global::Soenneker.Canva.OpenApiClient.Models.DesignSummary> _explicitNullValueDesigns = default!;
 #endif
         /// <summary>

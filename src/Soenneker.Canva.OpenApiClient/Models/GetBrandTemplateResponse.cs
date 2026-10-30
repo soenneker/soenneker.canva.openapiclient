@@ -18,7 +18,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("brand_template") is { } nullNodeBrandTemplate && nullNodeBrandTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandTemplate = null;
+            if (parseNode.GetChildNode("brand_template") is null) { _explicitNullValueBrandTemplate = default!; _explicitNullProperties?.Remove("brand_template"); }
+            else if (parseNode.GetChildNode("brand_template") is { } nullNodeBrandTemplate && nullNodeBrandTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandTemplate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>An object representing a brand template with associated metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.BrandTemplate? BrandTemplate { get => _explicitNullValueBrandTemplate; set { _explicitNullValueBrandTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_template"); else _explicitNullProperties?.Remove("brand_template"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.BrandTemplate? BrandTemplate { get => _explicitNullValueBrandTemplate; set { _explicitNullValueBrandTemplate = value; AdditionalData?.Remove("brand_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_template"); else _explicitNullProperties?.Remove("brand_template"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.BrandTemplate? _explicitNullValueBrandTemplate = default!;
 #nullable restore
 #else
-        public global::Soenneker.Canva.OpenApiClient.Models.BrandTemplate BrandTemplate { get => _explicitNullValueBrandTemplate; set { _explicitNullValueBrandTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_template"); else _explicitNullProperties?.Remove("brand_template"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.BrandTemplate BrandTemplate { get => _explicitNullValueBrandTemplate; set { _explicitNullValueBrandTemplate = value; AdditionalData?.Remove("brand_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_template"); else _explicitNullProperties?.Remove("brand_template"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.BrandTemplate _explicitNullValueBrandTemplate = default!;
 #endif
         /// <summary>

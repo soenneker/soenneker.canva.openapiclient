@@ -18,9 +18,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("from_page_numbers") is { } nullNodeFromPageNumbers && nullNodeFromPageNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromPageNumbers = null;
-            if (parseNode.GetChildNode("to_after_page_number") is { } nullNodeToAfterPageNumber && nullNodeToAfterPageNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToAfterPageNumber = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("from_page_numbers") is null) { _explicitNullValueFromPageNumbers = default!; _explicitNullProperties?.Remove("from_page_numbers"); }
+            else if (parseNode.GetChildNode("from_page_numbers") is { } nullNodeFromPageNumbers && nullNodeFromPageNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromPageNumbers = null;
+            if (parseNode.GetChildNode("to_after_page_number") is null) { _explicitNullValueToAfterPageNumber = default!; _explicitNullProperties?.Remove("to_after_page_number"); }
+            else if (parseNode.GetChildNode("to_after_page_number") is { } nullNodeToAfterPageNumber && nullNodeToAfterPageNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToAfterPageNumber = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,18 +31,18 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>One-based number of the pages to move (evaluated at the time this operation runs). Pages are moved in order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? FromPageNumbers { get => _explicitNullValueFromPageNumbers; set { _explicitNullValueFromPageNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_page_numbers"); else _explicitNullProperties?.Remove("from_page_numbers"); } }
+        public List<int?>? FromPageNumbers { get => _explicitNullValueFromPageNumbers; set { _explicitNullValueFromPageNumbers = value; AdditionalData?.Remove("from_page_numbers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_page_numbers"); else _explicitNullProperties?.Remove("from_page_numbers"); } }
         private List<int?>? _explicitNullValueFromPageNumbers = default!;
 #nullable restore
 #else
-        public List<int?> FromPageNumbers { get => _explicitNullValueFromPageNumbers; set { _explicitNullValueFromPageNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_page_numbers"); else _explicitNullProperties?.Remove("from_page_numbers"); } }
+        public List<int?> FromPageNumbers { get => _explicitNullValueFromPageNumbers; set { _explicitNullValueFromPageNumbers = value; AdditionalData?.Remove("from_page_numbers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_page_numbers"); else _explicitNullProperties?.Remove("from_page_numbers"); } }
         private List<int?> _explicitNullValueFromPageNumbers = default!;
 #endif
         /// <summary>Destination position: insert the moved pages after this one-based page number. Use 0 to move to the beginning.</summary>
-        public int? ToAfterPageNumber { get => _explicitNullValueToAfterPageNumber; set { _explicitNullValueToAfterPageNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_after_page_number"); else _explicitNullProperties?.Remove("to_after_page_number"); } }
+        public int? ToAfterPageNumber { get => _explicitNullValueToAfterPageNumber; set { _explicitNullValueToAfterPageNumber = value; AdditionalData?.Remove("to_after_page_number"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_after_page_number"); else _explicitNullProperties?.Remove("to_after_page_number"); } }
         private int? _explicitNullValueToAfterPageNumber = default!;
         /// <summary>The type of merge operation.</summary>
-        public global::Soenneker.Canva.OpenApiClient.Models.MovePagesType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Canva.OpenApiClient.Models.MovePagesType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.MovePagesType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.MovePagesDesignMergeOperation"/> and sets the default values.
@@ -68,7 +71,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             {
                 { "from_page_numbers", n => { FromPageNumbers = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "to_after_page_number", n => { ToAfterPageNumber = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.MovePagesType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.MovePagesType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

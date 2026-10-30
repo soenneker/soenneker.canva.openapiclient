@@ -18,8 +18,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("upgrade_url") is { } nullNodeUpgradeUrl && nullNodeUpgradeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpgradeUrl = null;
-            if (parseNode.GetChildNode("uses_remaining") is { } nullNodeUsesRemaining && nullNodeUsesRemaining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsesRemaining = null;
+            if (parseNode.GetChildNode("upgrade_url") is null) { _explicitNullValueUpgradeUrl = default!; _explicitNullProperties?.Remove("upgrade_url"); }
+            else if (parseNode.GetChildNode("upgrade_url") is { } nullNodeUpgradeUrl && nullNodeUpgradeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpgradeUrl = null;
+            if (parseNode.GetChildNode("uses_remaining") is null) { _explicitNullValueUsesRemaining = default!; _explicitNullProperties?.Remove("uses_remaining"); }
+            else if (parseNode.GetChildNode("uses_remaining") is { } nullNodeUsesRemaining && nullNodeUsesRemaining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsesRemaining = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>The URL for a user to upgrade their Canva account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UpgradeUrl { get => _explicitNullValueUpgradeUrl; set { _explicitNullValueUpgradeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upgrade_url"); else _explicitNullProperties?.Remove("upgrade_url"); } }
+        public string? UpgradeUrl { get => _explicitNullValueUpgradeUrl; set { _explicitNullValueUpgradeUrl = value; AdditionalData?.Remove("upgrade_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upgrade_url"); else _explicitNullProperties?.Remove("upgrade_url"); } }
         private string? _explicitNullValueUpgradeUrl = default!;
 #nullable restore
 #else
-        public string UpgradeUrl { get => _explicitNullValueUpgradeUrl; set { _explicitNullValueUpgradeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upgrade_url"); else _explicitNullProperties?.Remove("upgrade_url"); } }
+        public string UpgradeUrl { get => _explicitNullValueUpgradeUrl; set { _explicitNullValueUpgradeUrl = value; AdditionalData?.Remove("upgrade_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upgrade_url"); else _explicitNullProperties?.Remove("upgrade_url"); } }
         private string _explicitNullValueUpgradeUrl = default!;
 #endif
         /// <summary>The number of uses remaining in the free trial.</summary>
-        public int? UsesRemaining { get => _explicitNullValueUsesRemaining; set { _explicitNullValueUsesRemaining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uses_remaining"); else _explicitNullProperties?.Remove("uses_remaining"); } }
+        public int? UsesRemaining { get => _explicitNullValueUsesRemaining; set { _explicitNullValueUsesRemaining = value; AdditionalData?.Remove("uses_remaining"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uses_remaining"); else _explicitNullProperties?.Remove("uses_remaining"); } }
         private int? _explicitNullValueUsesRemaining = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.TrialInformation"/> and sets the default values.

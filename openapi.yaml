@@ -2886,7 +2886,7 @@ paths:
 
         Requires the `design_generation` capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).
 
-        Starting a job consumes the user's [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a `429` error with the `credit_quota_exceeded` code. Polling for the result of a job doesn't consume any of the allowance.
+        Starting a job consumes the user's [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a `402` error with the `credit_quota_exceeded` code. Polling for the result of a job doesn't consume any of the allowance.
 
         <Note>
 
@@ -2951,6 +2951,18 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Unauthorized
           x-http-status-code: 401
+        "402":
+          content:
+            application/json:
+              examples:
+                user_payment_required:
+                  $ref: '#/components/examples/UserPaymentRequiredError'
+                app_payment_required:
+                  $ref: '#/components/examples/AppPaymentRequiredError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Payment Required
+          x-http-status-code: 402
         "403":
           content:
             application/json:
@@ -2971,18 +2983,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Not Found
-        "429":
-          content:
-            application/json:
-              examples:
-                credit_quota_exceeded:
-                  $ref: '#/components/examples/CreditQuotaExceededError'
-                credit_quota_cooldown:
-                  $ref: '#/components/examples/CreditQuotaCooldownError'
-              schema:
-                $ref: '#/components/schemas/CreditQuotaError'
-          description: Credit Quota Exceeded
-          x-http-status-code: 429
         default:
           content:
             application/json:
@@ -6279,10 +6279,6 @@ components:
               created_at: 1788768000
               updated_at: 1788768000
               page_count: 3
-        quota_usage:
-          used_percentage: 25
-          resets_at: 1789257600
-          using_bonus_credits: false
     ContentNotAllowedDesignGenerationJobExampleV2:
       summary: Design generation rejected by content-safety checks
       value:
@@ -6355,15 +6351,11 @@ components:
         code: not_found
         message: The design generation job wasn't found.
     AcceptedDesignGenerationJobExampleV2:
-      summary: Accepted job with available credit quota information
+      summary: Accepted job
       value:
         job:
           id: f81b26fd-a33d-4c2d-9e8c-4a7aca798b17
           status: in_progress
-        quota_usage:
-          used_percentage: 25
-          resets_at: 1789257600
-          using_bonus_credits: false
     JobIdInvalidError:
       summary: The job ID is invalid
       value:
@@ -11364,11 +11356,6 @@ components:
       properties:
         job:
           $ref: '#/components/schemas/DesignGenerationJobV2'
-        quota_usage:
-          allOf:
-          - $ref: '#/components/schemas/CreditQuotaSuccessInfo'
-          description: Credit quota usage after reserving credits for this job. Omitted
-            if unavailable.
       required:
       - job
       type: object
@@ -11376,11 +11363,6 @@ components:
       properties:
         job:
           $ref: '#/components/schemas/DesignGenerationJobV2'
-        quota_usage:
-          allOf:
-          - $ref: '#/components/schemas/CreditQuotaSuccessInfo'
-          description: Credit quota snapshot when available. Polling does not reserve
-            or consume credits; omitted if unavailable.
       required:
       - job
       type: object

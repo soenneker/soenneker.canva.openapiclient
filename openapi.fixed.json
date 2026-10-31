@@ -3677,7 +3677,7 @@
         "tags": [
           "design_generation"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief. A successful job includes metadata for the generated design, which is saved to the user\u0027s Canva account.\n\nYou can generate a document or presentation. For presentations, you can also provide an outline of the slides to generate.\n\nRequires the \u0060design_generation\u0060 capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060429\u0060 error with the \u0060credit_quota_exceeded\u0060 code. Polling for the result of a job doesn\u0027t consume any of the allowance.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job/).\n\n\u003C/Note\u003E",
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate a Canva design from a text brief. A successful job includes metadata for the generated design, which is saved to the user\u0027s Canva account.\n\nYou can generate a document or presentation. For presentations, you can also provide an outline of the slides to generate.\n\nRequires the \u0060design_generation\u0060 capability. You can check whether the user has this capability using the [Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/).\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060402\u0060 error with the \u0060credit_quota_exceeded\u0060 code. Polling for the result of a job doesn\u0027t consume any of the allowance.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of jobs created with this API using the [Get design generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-design-generation-job/).\n\n\u003C/Note\u003E",
         "operationId": "CreateDesignGenerationJobV2",
         "requestBody": {
           "content": {
@@ -3769,6 +3769,25 @@
             },
             "x-http-status-code": 401
           },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "user_payment_required": {
+                    "$ref": "#/components/examples/UserPaymentRequiredError"
+                  },
+                  "app_payment_required": {
+                    "$ref": "#/components/examples/AppPaymentRequiredError"
+                  }
+                }
+              }
+            },
+            "x-http-status-code": 402
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -3801,25 +3820,6 @@
                 }
               }
             }
-          },
-          "429": {
-            "description": "Credit Quota Exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreditQuotaError"
-                },
-                "examples": {
-                  "credit_quota_exceeded": {
-                    "$ref": "#/components/examples/CreditQuotaExceededError"
-                  },
-                  "credit_quota_cooldown": {
-                    "$ref": "#/components/examples/CreditQuotaCooldownError"
-                  }
-                }
-              }
-            },
-            "x-http-status-code": 429
           },
           "default": {
             "description": "Error Response",
@@ -12216,9 +12216,6 @@
         "properties": {
           "job": {
             "$ref": "#/components/schemas/DesignGenerationJobV2"
-          },
-          "quota_usage": {
-            "$ref": "#/components/schemas/CreateDesignGenerationJobResponseV2QuotaUsage"
           }
         }
       },
@@ -12230,9 +12227,6 @@
         "properties": {
           "job": {
             "$ref": "#/components/schemas/DesignGenerationJobV2"
-          },
-          "quota_usage": {
-            "$ref": "#/components/schemas/GetDesignGenerationJobResponseV2QuotaUsage"
           }
         }
       },
@@ -17059,58 +17053,6 @@
         },
         "description": "The slide structure to follow. This property is supported only when\n\u0060design_type.name\u0060 is \u0060presentation\u0060."
       },
-      "CreateDesignGenerationJobResponseV2QuotaUsage": {
-        "type": "object",
-        "properties": {
-          "used_percentage": {
-            "maximum": 100,
-            "minimum": 0,
-            "type": "integer",
-            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
-            "format": "int32"
-          },
-          "resets_at": {
-            "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
-            "format": "int64"
-          },
-          "using_bonus_credits": {
-            "type": "boolean",
-            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
-          },
-          "usage_review_link": {
-            "type": "string",
-            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
-          }
-        },
-        "description": "Credit quota usage after reserving credits for this job. Omitted if unavailable."
-      },
-      "GetDesignGenerationJobResponseV2QuotaUsage": {
-        "type": "object",
-        "properties": {
-          "used_percentage": {
-            "maximum": 100,
-            "minimum": 0,
-            "type": "integer",
-            "description": "The percentage of the caller\u0027s credit quota that has been consumed in the current\nbilling interval, from 0 to 100.",
-            "format": "int32"
-          },
-          "resets_at": {
-            "type": "integer",
-            "description": "Unix timestamp (seconds from the Unix epoch) of when the credit quota resets for\nthe caller.",
-            "format": "int64"
-          },
-          "using_bonus_credits": {
-            "type": "boolean",
-            "description": "Whether the caller is currently consuming bonus credits (credits beyond their base\nplan allocation)."
-          },
-          "usage_review_link": {
-            "type": "string",
-            "description": "A URL to the Canva credit usage dashboard where the caller can review their\ncurrent credit consumption. Not present if unavailable."
-          }
-        },
-        "description": "Credit quota snapshot when available. Polling does not reserve or consume credits; omitted if unavailable."
-      },
       "FeatureQuotaExceededErrorAllOf2": {
         "required": [
           "upsell_url"
@@ -20912,11 +20854,6 @@
                 "page_count": 3
               }
             }
-          },
-          "quota_usage": {
-            "used_percentage": 25,
-            "resets_at": 1789257600,
-            "using_bonus_credits": false
           }
         }
       },
@@ -21017,16 +20954,11 @@
         }
       },
       "AcceptedDesignGenerationJobExampleV2": {
-        "summary": "Accepted job with available credit quota information",
+        "summary": "Accepted job",
         "value": {
           "job": {
             "id": "f81b26fd-a33d-4c2d-9e8c-4a7aca798b17",
             "status": "in_progress"
-          },
-          "quota_usage": {
-            "used_percentage": 25,
-            "resets_at": 1789257600,
-            "using_bonus_credits": false
           }
         }
       },

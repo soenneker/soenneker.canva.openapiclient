@@ -31,5 +31,25 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         Portrait45,
         #pragma warning restore CS1591
+        [EnumMember(Value = "landscape_4_3")]
+        #pragma warning disable CS1591
+        Landscape43,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "portrait_3_4")]
+        #pragma warning disable CS1591
+        Portrait34,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "landscape_5_4")]
+        #pragma warning disable CS1591
+        Landscape54,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "landscape_2_1")]
+        #pragma warning disable CS1591
+        Landscape21,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "portrait_1_2")]
+        #pragma warning disable CS1591
+        Portrait12,
+        #pragma warning restore CS1591
     }
 }

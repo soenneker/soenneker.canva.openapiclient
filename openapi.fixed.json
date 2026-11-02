@@ -15090,7 +15090,12 @@
           "portrait",
           "landscape_3_2",
           "portrait_2_3",
-          "portrait_4_5"
+          "portrait_4_5",
+          "landscape_4_3",
+          "portrait_3_4",
+          "landscape_5_4",
+          "landscape_2_1",
+          "portrait_1_2"
         ],
         "type": "string",
         "description": "The aspect ratio of the generated image. Every aspect ratio is supported by every model\nyou can select with \u0060model\u0060, so the choice of model never limits the aspect ratios you\ncan use. The pixel dimensions of the output depend on the model. The job result reports\nthe actual \u0060width\u0060 and \u0060height\u0060.",
@@ -15100,7 +15105,12 @@
           "A tall (9:16) image, suitable for portrait-oriented content.",
           "A wide (3:2) image, suitable for photos and print.",
           "A tall (2:3) image, suitable for posters and portrait photos.",
-          "A tall (4:5) image, suitable for social media feed posts."
+          "A tall (4:5) image, suitable for social media feed posts.",
+          "A wide (4:3) image, suitable for presentations and classic photos.",
+          "A tall (3:4) image, suitable for portrait prints and social media.",
+          "A wide (5:4) image, suitable for prints and framed photos.",
+          "A wide (2:1) image, suitable for banners and panoramic headers.",
+          "A tall (1:2) image, suitable for tall banners and pins."
         ],
         "x-ms-enum": {
           "name": "ImageGenerationAspectRatio",
@@ -15129,6 +15139,26 @@
             {
               "value": "portrait_4_5",
               "name": "Portrait45"
+            },
+            {
+              "value": "landscape_4_3",
+              "name": "Landscape43"
+            },
+            {
+              "value": "portrait_3_4",
+              "name": "Portrait34"
+            },
+            {
+              "value": "landscape_5_4",
+              "name": "Landscape54"
+            },
+            {
+              "value": "landscape_2_1",
+              "name": "Landscape21"
+            },
+            {
+              "value": "portrait_1_2",
+              "name": "Portrait12"
             }
           ]
         }
@@ -15253,7 +15283,7 @@
             "$ref": "#/components/schemas/BackgroundRemovalType"
           }
         },
-        "description": "Removes the background from an image, keeping the foreground subject. The resulting\nimage has a transparent background. This transformation takes no parameters.\n\nThe output image is limited to a maximum of 10 megapixels. If the source image is\nlarger, the output image is scaled down to stay within this limit.\n\nRequires the user to have the \u0060background_removal\u0060 capability. To check this before\ncreating a job, use the\n[Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/)."
+        "description": "Removes the background from an image, keeping the foreground subject. The resulting\nimage has a transparent background. This transformation takes no parameters.\n\nThe output image is limited to a maximum of 25 megapixels. If the source image is\nlarger, the output image is scaled down to stay within this limit.\n\nRequires the user to have the \u0060background_removal\u0060 capability. To check this before\ncreating a job, use the\n[Get user capabilities API](https://www.canva.dev/docs/apps/rest-apis/reference/users/get-user-capabilities/)."
       },
       "CreateImageTransformationJobResponse": {
         "required": [

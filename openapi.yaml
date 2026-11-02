@@ -13284,6 +13284,11 @@ components:
       - landscape_3_2
       - portrait_2_3
       - portrait_4_5
+      - landscape_4_3
+      - portrait_3_4
+      - landscape_5_4
+      - landscape_2_1
+      - portrait_1_2
       type: string
       x-enum-descriptions:
       - A square (1:1) image.
@@ -13292,6 +13297,11 @@ components:
       - "A wide (3:2) image, suitable for photos and print."
       - "A tall (2:3) image, suitable for posters and portrait photos."
       - "A tall (4:5) image, suitable for social media feed posts."
+      - "A wide (4:3) image, suitable for presentations and classic photos."
+      - "A tall (3:4) image, suitable for portrait prints and social media."
+      - "A wide (5:4) image, suitable for prints and framed photos."
+      - "A wide (2:1) image, suitable for banners and panoramic headers."
+      - "A tall (1:2) image, suitable for tall banners and pins."
     ImageGenerationErrorCode:
       description: Error code indicating what went wrong with the image generation.
       enum:
@@ -13382,7 +13392,7 @@ components:
         Removes the background from an image, keeping the foreground subject. The resulting
         image has a transparent background. This transformation takes no parameters.
 
-        The output image is limited to a maximum of 10 megapixels. If the source image is
+        The output image is limited to a maximum of 25 megapixels. If the source image is
         larger, the output image is scaled down to stay within this limit.
 
         Requires the user to have the `background_removal` capability. To check this before

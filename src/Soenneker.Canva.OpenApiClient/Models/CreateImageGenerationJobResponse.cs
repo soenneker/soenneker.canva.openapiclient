@@ -19,8 +19,6 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("job") is null) { _explicitNullValueJob = default!; _explicitNullProperties?.Remove("job"); }
             else if (parseNode.GetChildNode("job") is { } nullNodeJob && nullNodeJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Job = null;
-            if (parseNode.GetChildNode("quota_usage") is null) { _explicitNullValueQuotaUsage = default!; _explicitNullProperties?.Remove("quota_usage"); }
-            else if (parseNode.GetChildNode("quota_usage") is { } nullNodeQuotaUsage && nullNodeQuotaUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaUsage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,16 +32,6 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; AdditionalData?.Remove("job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob _explicitNullValueJob = default!;
-#endif
-        /// <summary>Credit quota usage after reserving credits for this job. Not present if quota data is unavailable.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage? QuotaUsage { get => _explicitNullValueQuotaUsage; set { _explicitNullValueQuotaUsage = value; AdditionalData?.Remove("quota_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_usage"); else _explicitNullProperties?.Remove("quota_usage"); } }
-        private global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage? _explicitNullValueQuotaUsage = default!;
-#nullable restore
-#else
-        public global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage QuotaUsage { get => _explicitNullValueQuotaUsage; set { _explicitNullValueQuotaUsage = value; AdditionalData?.Remove("quota_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_usage"); else _explicitNullProperties?.Remove("quota_usage"); } }
-        private global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage _explicitNullValueQuotaUsage = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponse"/> and sets the default values.
@@ -71,7 +59,6 @@ namespace Soenneker.Canva.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "job", n => { Job = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob>(global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob.CreateFromDiscriminatorValue); } },
-                { "quota_usage", n => { QuotaUsage = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage>(global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -82,7 +69,6 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob>("job", Job);
-            writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponseQuotaUsage>("quota_usage", QuotaUsage);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -54,6 +54,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Resizes
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.FeatureQuotaExceededError">When receiving a 429 status code</exception>
@@ -72,6 +73,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.Resizes
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "402", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Canva.OpenApiClient.Models.FeatureQuotaExceededError.CreateFromDiscriminatorValue },

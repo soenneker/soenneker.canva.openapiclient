@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// Dimensions of the design. Used to match a product type, or to create a custom-size design ifno product matches.
+    /// Dimensions of the design. Used to match a product type, or to create a custom-size design ifno product matches.When no matching product is found, the dimensions of each side, converted to pixels, must bebetween 40 and 8000, and the total area (width × height) must not exceed 25,000,000 pixelssquared.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PrintPartnerDesignDimensions : IAdditionalDataHolder, IParsable

@@ -52,9 +52,9 @@ namespace Soenneker.Canva.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "by_link" => new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterPageViewFilterByLink(),
-                "by_viewer" => new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterPageViewFilterByViewer(),
-                "for_editor" => new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterPageViewFilterForEditor(),
+                "by_link" => new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByLinkVariant(),
+                "by_viewer" => new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByViewerVariant(),
+                "for_editor" => new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterForEditorVariant(),
                 _ => new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilter(),
             };
         }

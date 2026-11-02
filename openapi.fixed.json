@@ -7836,9 +7836,9 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "by_viewer": "#/components/schemas/PageViewFilterPageViewFilterByViewer",
-            "for_editor": "#/components/schemas/PageViewFilterPageViewFilterForEditor",
-            "by_link": "#/components/schemas/PageViewFilterPageViewFilterByLink"
+            "by_viewer": "#/components/schemas/PageViewFilterByViewerVariant",
+            "for_editor": "#/components/schemas/PageViewFilterForEditorVariant",
+            "by_link": "#/components/schemas/PageViewFilterByLinkVariant"
           }
         },
         "x-client-original-tagged-union": {
@@ -16545,7 +16545,7 @@
           ]
         }
       },
-      "PageViewFilterPageViewFilterByViewer": {
+      "PageViewFilterByViewerVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/PageViewFilter"
@@ -16574,7 +16574,7 @@
           }
         ]
       },
-      "PageViewFilterPageViewFilterForEditor": {
+      "PageViewFilterForEditorVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/PageViewFilter"
@@ -16592,7 +16592,7 @@
           }
         ]
       },
-      "PageViewFilterPageViewFilterByLink": {
+      "PageViewFilterByLinkVariant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/PageViewFilter"

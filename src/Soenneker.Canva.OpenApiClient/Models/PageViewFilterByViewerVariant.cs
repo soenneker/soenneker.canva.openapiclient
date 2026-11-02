@@ -9,7 +9,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class PageViewFilterPageViewFilterByLink : global::Soenneker.Canva.OpenApiClient.Models.PageViewFilter, IParsable
+    public partial class PageViewFilterByViewerVariant : global::Soenneker.Canva.OpenApiClient.Models.PageViewFilter, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -20,9 +20,11 @@ namespace Soenneker.Canva.OpenApiClient.Models
             base.CaptureExplicitNulls(parseNode);
             if (parseNode.GetChildNode("link_id") is null) { _explicitNullValueLinkId = default!; _explicitNullProperties?.Remove("link_id"); }
             else if (parseNode.GetChildNode("link_id") is { } nullNodeLinkId && nullNodeLinkId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinkId = null;
+            if (parseNode.GetChildNode("viewer_id") is null) { _explicitNullValueViewerId = default!; _explicitNullProperties?.Remove("viewer_id"); }
+            else if (parseNode.GetChildNode("viewer_id") is { } nullNodeViewerId && nullNodeViewerId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ViewerId = null;
         }
 
-        /// <summary>The trackable link ID to filter by.</summary>
+        /// <summary>Filters to viewer traffic from a specific trackable link. Omit this field to target viewer traffic that did not come from a trackable link.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LinkId { get => _explicitNullValueLinkId; set { _explicitNullValueLinkId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link_id"); else _explicitNullProperties?.Remove("link_id"); } }
@@ -32,15 +34,25 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public string LinkId { get => _explicitNullValueLinkId; set { _explicitNullValueLinkId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link_id"); else _explicitNullProperties?.Remove("link_id"); } }
         private string _explicitNullValueLinkId = default!;
 #endif
+        /// <summary>The viewer ID to filter by.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ViewerId { get => _explicitNullValueViewerId; set { _explicitNullValueViewerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewer_id"); else _explicitNullProperties?.Remove("viewer_id"); } }
+        private string? _explicitNullValueViewerId = default!;
+#nullable restore
+#else
+        public string ViewerId { get => _explicitNullValueViewerId; set { _explicitNullValueViewerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewer_id"); else _explicitNullProperties?.Remove("viewer_id"); } }
+        private string _explicitNullValueViewerId = default!;
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterPageViewFilterByLink"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByViewerVariant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterPageViewFilterByLink CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByViewerVariant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterPageViewFilterByLink(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Canva.OpenApiClient.Models.PageViewFilterByViewerVariant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -51,6 +63,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "link_id", n => { LinkId = n.GetStringValue(); } },
+                { "viewer_id", n => { ViewerId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -61,7 +74,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteStringValue("link_id", LinkId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteStringValue("link_id", LinkId);
+            writer.WriteStringValue("viewer_id", ViewerId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

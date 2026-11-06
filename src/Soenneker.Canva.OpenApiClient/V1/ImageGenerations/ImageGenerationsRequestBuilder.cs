@@ -57,6 +57,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.ImageGenerations
         /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 401 status code</exception>
         /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 429 status code</exception>
         /// <exception cref="global::Soenneker.Canva.OpenApiClient.Models.Error">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,6 +76,7 @@ namespace Soenneker.Canva.OpenApiClient.V1.ImageGenerations
                 { "401", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "402", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "XXX", global::Soenneker.Canva.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponse>(requestInfo, global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);

@@ -52,6 +52,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             return mappingValue switch
             {
                 "authorization_code" => new global::Soenneker.Canva.OpenApiClient.Models.ExchangeAccessTokenRequestExchangeAuthCodeRequest(),
+                "client_credentials" => new global::Soenneker.Canva.OpenApiClient.Models.ExchangeAccessTokenRequestExchangeClientCredentialsRequest(),
                 "refresh_token" => new global::Soenneker.Canva.OpenApiClient.Models.ExchangeAccessTokenRequestExchangeRefreshTokenRequest(),
                 _ => new global::Soenneker.Canva.OpenApiClient.Models.ExchangeAccessTokenRequest(),
             };

@@ -135,6 +135,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         #pragma warning disable CS1591
         RequestTooLarge,
         #pragma warning restore CS1591
+        [EnumMember(Value = "model_capacity_reached")]
+        #pragma warning disable CS1591
+        ModelCapacityReached,
+        #pragma warning restore CS1591
         [EnumMember(Value = "folder_not_found")]
         #pragma warning disable CS1591
         FolderNotFound,

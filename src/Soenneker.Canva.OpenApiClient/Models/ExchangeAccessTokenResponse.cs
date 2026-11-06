@@ -30,7 +30,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             else if (parseNode.GetChildNode("token_type") is { } nullNodeTokenType && nullNodeTokenType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenType = null;
         }
 
-        /// <summary>The bearer access token to use to authenticate to Canva REST API endpoints. If requested using a `authorization_code` or `refresh_token`, this allows you to act on behalf of a user.</summary>
+        /// <summary>The bearer access token to use to authenticate to Canva REST API endpoints. If requested using `authorization_code` or `refresh_token`, this allows you to act on behalf of a user. If requested using `client_credentials`, this allows your service app to act on its own behalf.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AccessToken { get => _explicitNullValueAccessToken; set { _explicitNullValueAccessToken = value; AdditionalData?.Remove("access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_token"); else _explicitNullProperties?.Remove("access_token"); } }
@@ -45,7 +45,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>The expiry time (in seconds) for the access token.</summary>
         public long? ExpiresIn { get => _explicitNullValueExpiresIn; set { _explicitNullValueExpiresIn = value; AdditionalData?.Remove("expires_in"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_in"); else _explicitNullProperties?.Remove("expires_in"); } }
         private long? _explicitNullValueExpiresIn = default!;
-        /// <summary>The token that you can use to refresh the access token.</summary>
+        /// <summary>The token that you can use to refresh the access token.This is only returned when the access token was requested using `authorization_code` or `refresh_token`. Access tokens requested using `client_credentials` don&apos;t have a refresh token, so service apps generate a new access token instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RefreshToken { get => _explicitNullValueRefreshToken; set { _explicitNullValueRefreshToken = value; AdditionalData?.Remove("refresh_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_token"); else _explicitNullProperties?.Remove("refresh_token"); } }

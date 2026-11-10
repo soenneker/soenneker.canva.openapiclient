@@ -1188,7 +1188,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 30
+        "x-rate-limit-per-client-user": 30,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/asset-uploads/{jobId}": {
@@ -1294,7 +1295,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 180
+        "x-rate-limit-per-client-user": 180,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/url-asset-uploads": {
@@ -1392,7 +1394,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 30
+        "x-rate-limit-per-client-user": 30,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/url-asset-uploads/{jobId}": {
@@ -1489,7 +1492,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 180
+        "x-rate-limit-per-client-user": 180,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/autofills": {
@@ -1634,7 +1638,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 60
+        "x-rate-limit-per-client-user": 60,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/autofills/{jobId}": {
@@ -1731,7 +1736,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 120
+        "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/brand-templates": {
@@ -1868,7 +1874,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 100
+        "x-rate-limit-per-client-user": 100,
+        "x-rate-limit-per-client-credential": 100
       },
       "post": {
         "tags": [
@@ -2054,7 +2061,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 100
+        "x-rate-limit-per-client-user": 100,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/brand-templates/{brandTemplateId}/dataset": {
@@ -2140,7 +2148,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 100
+        "x-rate-limit-per-client-user": 100,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/comments": {
@@ -3412,7 +3421,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 100
+        "x-rate-limit-per-client-user": 100,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/designs/{designId}/dataset": {
@@ -3498,7 +3508,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 100
+        "x-rate-limit-per-client-user": 100,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/print-partner/designs": {
@@ -3900,6 +3911,7 @@
           }
         ],
         "x-rate-limit-per-client-user": 20,
+        "x-rate-limit-per-client-credential": 100,
         "x-required-capabilities": [
           "design_generation"
         ]
@@ -4081,6 +4093,7 @@
           }
         ],
         "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 100,
         "x-required-capabilities": [
           "design_generation"
         ]
@@ -4163,7 +4176,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 20
+        "x-rate-limit-per-client-user": 20,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/imports/{jobId}": {
@@ -4285,7 +4299,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 120
+        "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/url-imports": {
@@ -4380,7 +4395,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 20
+        "x-rate-limit-per-client-user": 20,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/url-imports/{jobId}": {
@@ -4493,7 +4509,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 120
+        "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/image-to-design-imports": {
@@ -4625,7 +4642,8 @@
         "x-required-capabilities": [
           "image_to_design_imports"
         ],
-        "x-rate-limit-per-client-user": 20
+        "x-rate-limit-per-client-user": 20,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/image-to-design-imports/{jobId}": {
@@ -4756,7 +4774,8 @@
         "x-required-capabilities": [
           "image_to_design_imports"
         ],
-        "x-rate-limit-per-client-user": 120
+        "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/exports": {
@@ -4914,7 +4933,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 20
+        "x-rate-limit-per-client-user": 20,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/print-partner/exports": {
@@ -5179,7 +5199,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 120
+        "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/folders/{folderId}": {
@@ -5751,7 +5772,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 100
+        "x-rate-limit-per-client-user": 100,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/folders": {
@@ -6075,7 +6097,8 @@
         "x-required-capabilities": [
           "image_generation"
         ],
-        "x-rate-limit-per-client-user": 20
+        "x-rate-limit-per-client-user": 20,
+        "x-rate-limit-per-client-credential": 1000
       }
     },
     "/v1/image-generations/{jobId}": {
@@ -6230,7 +6253,8 @@
         "x-required-capabilities": [
           "image_generation"
         ],
-        "x-rate-limit-per-client-user": 120
+        "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 1000
       }
     },
     "/v1/image-transformations": {
@@ -6400,7 +6424,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 20
+        "x-rate-limit-per-client-user": 20,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/image-transformations/{jobId}": {
@@ -6536,7 +6561,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 120
+        "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/merges": {
@@ -6689,7 +6715,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 100
+        "x-rate-limit-per-client-user": 100,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/merges/{jobId}": {
@@ -6776,7 +6803,8 @@
             ]
           }
         ],
-        "x-rate-limit-per-client-user": 100
+        "x-rate-limit-per-client-user": 100,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/oauth/token": {
@@ -7432,7 +7460,8 @@
         "x-required-capabilities": [
           "resize"
         ],
-        "x-rate-limit-per-client-user": 20
+        "x-rate-limit-per-client-user": 20,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/resizes/{jobId}": {
@@ -7519,7 +7548,8 @@
         "x-required-capabilities": [
           "resize"
         ],
-        "x-rate-limit-per-client-user": 120
+        "x-rate-limit-per-client-user": 120,
+        "x-rate-limit-per-client-credential": 100
       }
     },
     "/v1/users/me": {

@@ -14040,6 +14040,11 @@
         "properties": {
           "asset": {
             "$ref": "#/components/schemas/ImageTransformationJobResultAsset"
+          },
+          "url": {
+            "type": "string",
+            "description": "A URL for retrieving the transformed image at full resolution.\nThis URL is temporary and includes a query string that\u0027s required for retrieving the\nimage. To get a new URL, call the\n[Get image transformation job](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/get-image-transformation-job/)\nAPI again.\n\nOnly present if the user is allowed to access the transformed image at full\nresolution. For example, it\u0027s omitted if the source asset contains premium content\nthat the user doesn\u0027t have a license for.",
+            "example": "https://media-private.canva.com/Vczz9/zF9vzVtdADc/1/p.png?\u003Cquery-string\u003E"
           }
         },
         "description": "Result of the image transformation job. Only present if the job status is \u0060success\u0060."
@@ -20973,7 +20978,8 @@
                   "height": 335,
                   "url": "https://document-export.canva.com/Vczz9/zF9vzVtdADc/2/thumbnail/0001.png?\u003Cquery-string\u003E"
                 }
-              }
+              },
+              "url": "https://media-transformation.canva.com/Vczz9/zF9vzVtdADc/result.png?\u003Cquery-string\u003E"
             }
           }
         }

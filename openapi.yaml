@@ -7063,6 +7063,7 @@ components:
                 width: 595
                 height: 335
                 url: https://document-export.canva.com/Vczz9/zF9vzVtdADc/2/thumbnail/0001.png?<query-string>
+            url: https://media-transformation.canva.com/Vczz9/zF9vzVtdADc/result.png?<query-string>
     FailedImageTransformationJobExample:
       summary: Failed job
       value:
@@ -13586,6 +13587,19 @@ components:
           - $ref: '#/components/schemas/Asset'
           description: The new image asset produced by applying all of the requested
             transformations.
+        url:
+          description: |-
+            A URL for retrieving the transformed image at full resolution.
+            This URL is temporary and includes a query string that's required for retrieving the
+            image. To get a new URL, call the
+            [Get image transformation job](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/get-image-transformation-job/)
+            API again.
+
+            Only present if the user is allowed to access the transformed image at full
+            resolution. For example, it's omitted if the source asset contains premium content
+            that the user doesn't have a license for.
+          example: https://media-private.canva.com/Vczz9/zF9vzVtdADc/1/p.png?<query-string>
+          type: string
       required:
       - asset
       type: object

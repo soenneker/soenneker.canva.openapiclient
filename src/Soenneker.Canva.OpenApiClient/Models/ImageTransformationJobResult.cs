@@ -20,6 +20,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("asset") is null) { _explicitNullValueAsset = default!; _explicitNullProperties?.Remove("asset"); }
             else if (parseNode.GetChildNode("asset") is { } nullNodeAsset && nullNodeAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Asset = null;
+            if (parseNode.GetChildNode("url") is null) { _explicitNullValueUrl = default!; _explicitNullProperties?.Remove("url"); }
+            else if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,6 +35,16 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationJobResultAsset Asset { get => _explicitNullValueAsset; set { _explicitNullValueAsset = value; AdditionalData?.Remove("asset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset"); else _explicitNullProperties?.Remove("asset"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationJobResultAsset _explicitNullValueAsset = default!;
+#endif
+        /// <summary>A URL for retrieving the transformed image at full resolution.This URL is temporary and includes a query string that&apos;s required for retrieving theimage. To get a new URL, call the[Get image transformation job](https://www.canva.dev/docs/apps/rest-apis/reference/image-transformations/get-image-transformation-job/)API again.Only present if the user is allowed to access the transformed image at fullresolution. For example, it&apos;s omitted if the source asset contains premium contentthat the user doesn&apos;t have a license for.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string? _explicitNullValueUrl = default!;
+#nullable restore
+#else
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationJobResult"/> and sets the default values.
@@ -60,6 +72,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "asset", n => { Asset = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationJobResultAsset>(global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationJobResultAsset.CreateFromDiscriminatorValue); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -70,6 +83,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationJobResultAsset>("asset", Asset);
+            writer.WriteStringValue("url", Url);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

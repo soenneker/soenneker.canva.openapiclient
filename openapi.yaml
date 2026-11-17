@@ -13423,12 +13423,12 @@ components:
         Z Image Turbo. Pick this if the image includes text, or for food, drink, and
         general-purpose imagery.
     ImageGenerationAspectRatio:
-      default: square
       description: |-
         The aspect ratio of the generated image. Every aspect ratio is supported by every model
         you can select with `model`, so the choice of model never limits the aspect ratios you
         can use. The pixel dimensions of the output depend on the model. The job result reports
-        the actual `width` and `height`.
+        the actual `width` and `height`. If you omit the aspect ratio, Canva chooses one for the
+        image. Don't rely on a specific default: set the aspect ratio when the shape matters.
       enum:
       - square
       - landscape

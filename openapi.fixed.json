@@ -13815,7 +13815,7 @@
           "portrait_1_2"
         ],
         "type": "string",
-        "description": "The aspect ratio of the generated image. Every aspect ratio is supported by every model\nyou can select with \u0060model\u0060, so the choice of model never limits the aspect ratios you\ncan use. The pixel dimensions of the output depend on the model. The job result reports\nthe actual \u0060width\u0060 and \u0060height\u0060.",
+        "description": "The aspect ratio of the generated image. Every aspect ratio is supported by every model\nyou can select with \u0060model\u0060, so the choice of model never limits the aspect ratios you\ncan use. The pixel dimensions of the output depend on the model. The job result reports\nthe actual \u0060width\u0060 and \u0060height\u0060. If you omit the aspect ratio, Canva chooses one for the\nimage. Don\u0027t rely on a specific default: set the aspect ratio when the shape matters.",
         "x-enum-descriptions": [
           "A square (1:1) image.",
           "A wide (16:9) image, suitable for landscape-oriented content.",

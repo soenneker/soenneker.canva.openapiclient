@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
-    /// <summary>The aspect ratio of the generated image. Every aspect ratio is supported by every modelyou can select with `model`, so the choice of model never limits the aspect ratios youcan use. The pixel dimensions of the output depend on the model. The job result reportsthe actual `width` and `height`.</summary>
+    /// <summary>The aspect ratio of the generated image. Every aspect ratio is supported by every modelyou can select with `model`, so the choice of model never limits the aspect ratios youcan use. The pixel dimensions of the output depend on the model. The job result reportsthe actual `width` and `height`. If you omit the aspect ratio, Canva chooses one for theimage. Don&apos;t rely on a specific default: set the aspect ratio when the shape matters.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ImageGenerationAspectRatio
     {

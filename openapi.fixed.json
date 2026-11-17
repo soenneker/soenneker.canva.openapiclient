@@ -8494,92 +8494,6 @@
           ]
         }
       },
-      "ImportStatus": {
-        "required": [
-          "state"
-        ],
-        "type": "object",
-        "properties": {
-          "state": {
-            "$ref": "#/components/schemas/ImportStatusState"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ImportError"
-          }
-        },
-        "description": "The import status of the asset.",
-        "deprecated": true
-      },
-      "ImportStatusState": {
-        "enum": [
-          "failed",
-          "in_progress",
-          "success"
-        ],
-        "type": "string",
-        "description": "State of the import job for an uploaded asset.",
-        "example": "success",
-        "deprecated": true,
-        "x-ms-enum": {
-          "name": "ImportStatusState",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "failed",
-              "name": "Failed"
-            },
-            {
-              "value": "in_progress",
-              "name": "InProgress"
-            },
-            {
-              "value": "success",
-              "name": "Success"
-            }
-          ]
-        }
-      },
-      "ImportError": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "code": {
-            "$ref": "#/components/schemas/ImportErrorCode"
-          },
-          "message": {
-            "type": "string",
-            "description": "A human-readable description of what went wrong."
-          }
-        },
-        "description": "If the import fails, this object provides details about the error.",
-        "deprecated": true
-      },
-      "ImportErrorCode": {
-        "enum": [
-          "file_too_big",
-          "import_failed"
-        ],
-        "type": "string",
-        "description": "A short string indicating why the upload failed. This field can be used to handle errors programmatically.\n",
-        "deprecated": true,
-        "x-ms-enum": {
-          "name": "ImportErrorCode",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "file_too_big",
-              "name": "FileTooBig"
-            },
-            {
-              "value": "import_failed",
-              "name": "ImportFailed"
-            }
-          ]
-        }
-      },
       "CreateAssetUploadJobResponse": {
         "required": [
           "job"
@@ -8739,6 +8653,92 @@
           }
         },
         "description": "Metadata for the asset being uploaded."
+      },
+      "ImportStatus": {
+        "required": [
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "state": {
+            "$ref": "#/components/schemas/ImportStatusState"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ImportError"
+          }
+        },
+        "description": "The import status of the asset.",
+        "deprecated": true
+      },
+      "ImportStatusState": {
+        "enum": [
+          "failed",
+          "in_progress",
+          "success"
+        ],
+        "type": "string",
+        "description": "State of the import job for an uploaded asset.",
+        "example": "success",
+        "deprecated": true,
+        "x-ms-enum": {
+          "name": "ImportStatusState",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "failed",
+              "name": "Failed"
+            },
+            {
+              "value": "in_progress",
+              "name": "InProgress"
+            },
+            {
+              "value": "success",
+              "name": "Success"
+            }
+          ]
+        }
+      },
+      "ImportError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ImportErrorCode"
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable description of what went wrong."
+          }
+        },
+        "description": "If the import fails, this object provides details about the error.",
+        "deprecated": true
+      },
+      "ImportErrorCode": {
+        "enum": [
+          "file_too_big",
+          "import_failed"
+        ],
+        "type": "string",
+        "description": "A short string indicating why the upload failed. This field can be used to handle errors programmatically.\n",
+        "deprecated": true,
+        "x-ms-enum": {
+          "name": "ImportErrorCode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "file_too_big",
+              "name": "FileTooBig"
+            },
+            {
+              "value": "import_failed",
+              "name": "ImportFailed"
+            }
+          ]
+        }
       },
       "CreateDesignAutofillJobRequest": {
         "description": "Body parameters for creating a new autofill job. Use the \u0060type\u0060 discriminator to choose\nthe autofill mode:\n\n- Use \u0060create_from_brand_template\u0060 to create a new design from a brand template.\n\nNOTE: For backward compatibility, if \u0060type\u0060 isn\u0027t specified in the request,\nthe request type is assumed to be \u0060create_from_brand_template\u0060.",

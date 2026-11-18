@@ -86,7 +86,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "asset", n => { Asset = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.Asset>(global::Soenneker.Canva.OpenApiClient.Models.Asset.CreateFromDiscriminatorValue); } },
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.AssetUploadError>(global::Soenneker.Canva.OpenApiClient.Models.AssetUploadError.CreateFromDiscriminatorValue); } },

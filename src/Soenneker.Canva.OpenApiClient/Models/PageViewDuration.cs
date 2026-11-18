@@ -72,7 +72,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "average_duration_seconds", n => { AverageDurationSeconds = n.GetDoubleValue(); } },
                 { "page_id", n => { PageId = n.GetStringValue(); } },

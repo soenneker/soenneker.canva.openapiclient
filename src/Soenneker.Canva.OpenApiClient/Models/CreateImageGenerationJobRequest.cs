@@ -83,7 +83,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "aspect_ratio", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAspectRatio>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAspectRatio = default; _explicitNullProperties?.Remove("aspect_ratio"); AdditionalData["aspect_ratio"] = unknown; } else { AspectRatio = parsed; AdditionalData.Remove("aspect_ratio"); } } },
                 { "asset_upload", n => { AssetUpload = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAssetUpload>(global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAssetUpload.CreateFromDiscriminatorValue); } },

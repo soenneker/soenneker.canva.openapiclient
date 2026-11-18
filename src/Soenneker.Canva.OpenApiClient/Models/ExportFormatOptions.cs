@@ -165,7 +165,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "csv", n => { Csv = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormatOption>(global::Soenneker.Canva.OpenApiClient.Models.CsvExportFormatOption.CreateFromDiscriminatorValue); } },
                 { "gif", n => { Gif = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.GifExportFormatOption>(global::Soenneker.Canva.OpenApiClient.Models.GifExportFormatOption.CreateFromDiscriminatorValue); } },

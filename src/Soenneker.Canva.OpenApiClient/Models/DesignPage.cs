@@ -97,7 +97,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "design_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.DesignTypeOutputName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDesignType = default; _explicitNullProperties?.Remove("design_type"); AdditionalData["design_type"] = unknown; } else { DesignType = parsed; AdditionalData.Remove("design_type"); } } },
                 { "dimensions", n => { Dimensions = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.PageDimensions>(global::Soenneker.Canva.OpenApiClient.Models.PageDimensions.CreateFromDiscriminatorValue); } },

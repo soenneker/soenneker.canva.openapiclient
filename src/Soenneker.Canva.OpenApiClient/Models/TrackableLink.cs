@@ -94,7 +94,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "average_view_duration_seconds", n => { AverageViewDurationSeconds = n.GetLongValue(); } },
                 { "last_viewed_at", n => { LastViewedAt = n.GetLongValue(); } },

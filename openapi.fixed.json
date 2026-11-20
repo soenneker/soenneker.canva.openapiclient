@@ -13661,6 +13661,9 @@
         "properties": {
           "job": {
             "$ref": "#/components/schemas/ImageGenerationJob"
+          },
+          "model_expiry": {
+            "$ref": "#/components/schemas/ImageGenerationModelExpiry"
           }
         }
       },
@@ -13799,6 +13802,25 @@
             }
           ]
         }
+      },
+      "ImageGenerationModelExpiry": {
+        "required": [
+          "expires_at",
+          "model"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "$ref": "#/components/schemas/ImageGenerationModel"
+          },
+          "expires_at": {
+            "type": "integer",
+            "description": "When the model stops being available, as a Unix timestamp (in seconds since the Unix\nEpoch).",
+            "format": "int64",
+            "example": 1798761600
+          }
+        },
+        "description": "Notice that the \u0060model\u0060 requested is scheduled for retirement. Only present when the\nrequest pins a model that has an expiry time. From the expiry time, new jobs that pin the\nmodel fail with the \u0060model_retired\u0060 error code and don\u0027t include this notice. Canva doesn\u0027t\nguarantee a minimum notice period, so handle this notice as soon as it appears: switch to a\ndifferent model, or omit \u0060model\u0060 to let Canva select one."
       },
       "ImageGenerationAspectRatio": {
         "enum": [
@@ -13969,6 +13991,12 @@
               "$ref": "#/components/schemas/ImageTransformationType"
             },
             "description": "The transformations to apply, in order. Must contain at least one transformation.\nEach transformation is stacked on the result of the previous one. The job\u0027s result\nis a single new image asset with all of the transformations applied; intermediate\nresults are not returned."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "A key that makes the request idempotent. If you retry a request with the same key,\nthe API returns the original job instead of starting a new transformation, even if\nthe other request parameters differ. Canva keeps each key for 24 hours after the job\nis created. If you don\u0027t specify a key, each request starts a new job.",
+            "format": "uuid",
+            "example": "550e8400-e29b-41d4-a716-446655440000"
           }
         }
       },

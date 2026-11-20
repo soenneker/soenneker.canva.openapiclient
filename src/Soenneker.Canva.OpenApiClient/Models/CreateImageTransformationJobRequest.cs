@@ -19,6 +19,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("asset_id") is null) { _explicitNullValueAssetId = default!; _explicitNullProperties?.Remove("asset_id"); }
             else if (parseNode.GetChildNode("asset_id") is { } nullNodeAssetId && nullNodeAssetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetId = null;
+            if (parseNode.GetChildNode("idempotency_key") is null) { _explicitNullValueIdempotencyKey = default!; _explicitNullProperties?.Remove("idempotency_key"); }
+            else if (parseNode.GetChildNode("idempotency_key") is { } nullNodeIdempotencyKey && nullNodeIdempotencyKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdempotencyKey = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("transformations") is null) { _explicitNullValueTransformations = default!; _explicitNullProperties?.Remove("transformations"); }
@@ -37,6 +39,9 @@ namespace Soenneker.Canva.OpenApiClient.Models
         public string AssetId { get => _explicitNullValueAssetId; set { _explicitNullValueAssetId = value; AdditionalData?.Remove("asset_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_id"); else _explicitNullProperties?.Remove("asset_id"); } }
         private string _explicitNullValueAssetId = default!;
 #endif
+        /// <summary>A key that makes the request idempotent. If you retry a request with the same key,the API returns the original job instead of starting a new transformation, even ifthe other request parameters differ. Canva keeps each key for 24 hours after the jobis created. If you don&apos;t specify a key, each request starts a new job.</summary>
+        public Guid? IdempotencyKey { get => _explicitNullValueIdempotencyKey; set { _explicitNullValueIdempotencyKey = value; AdditionalData?.Remove("idempotency_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idempotency_key"); else _explicitNullProperties?.Remove("idempotency_key"); } }
+        private Guid? _explicitNullValueIdempotencyKey = default!;
         /// <summary>A name for the new image asset that the job produces. Canva doesn&apos;t localize thisvalue, so provide a name in the user&apos;s language. When omitted, the new asset inheritsthe name of the source asset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,9 +85,10 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "asset_id", n => { AssetId = n.GetStringValue(); } },
+                { "idempotency_key", n => { IdempotencyKey = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "transformations", n => { Transformations = n.GetCollectionOfObjectValues<global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationType>(global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationType.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -95,6 +101,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("asset_id", AssetId);
+            writer.WriteGuidValue("idempotency_key", IdempotencyKey);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Canva.OpenApiClient.Models.ImageTransformationType>("transformations", Transformations);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

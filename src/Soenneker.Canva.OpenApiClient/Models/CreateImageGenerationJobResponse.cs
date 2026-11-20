@@ -19,6 +19,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("job") is null) { _explicitNullValueJob = default!; _explicitNullProperties?.Remove("job"); }
             else if (parseNode.GetChildNode("job") is { } nullNodeJob && nullNodeJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Job = null;
+            if (parseNode.GetChildNode("model_expiry") is null) { _explicitNullValueModelExpiry = default!; _explicitNullProperties?.Remove("model_expiry"); }
+            else if (parseNode.GetChildNode("model_expiry") is { } nullNodeModelExpiry && nullNodeModelExpiry.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelExpiry = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,6 +34,16 @@ namespace Soenneker.Canva.OpenApiClient.Models
 #else
         public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; AdditionalData?.Remove("job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob _explicitNullValueJob = default!;
+#endif
+        /// <summary>Notice that the `model` requested is scheduled for retirement. Only present when therequest pins a model that has an expiry time. From the expiry time, new jobs that pin themodel fail with the `model_retired` error code and don&apos;t include this notice. Canva doesn&apos;tguarantee a minimum notice period, so handle this notice as soon as it appears: switch to adifferent model, or omit `model` to let Canva select one.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModelExpiry? ModelExpiry { get => _explicitNullValueModelExpiry; set { _explicitNullValueModelExpiry = value; AdditionalData?.Remove("model_expiry"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_expiry"); else _explicitNullProperties?.Remove("model_expiry"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModelExpiry? _explicitNullValueModelExpiry = default!;
+#nullable restore
+#else
+        public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModelExpiry ModelExpiry { get => _explicitNullValueModelExpiry; set { _explicitNullValueModelExpiry = value; AdditionalData?.Remove("model_expiry"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_expiry"); else _explicitNullProperties?.Remove("model_expiry"); } }
+        private global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModelExpiry _explicitNullValueModelExpiry = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.Models.CreateImageGenerationJobResponse"/> and sets the default values.
@@ -59,6 +71,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "job", n => { Job = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob>(global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob.CreateFromDiscriminatorValue); } },
+                { "model_expiry", n => { ModelExpiry = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModelExpiry>(global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModelExpiry.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,6 +82,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationJob>("job", Job);
+            writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModelExpiry>("model_expiry", ModelExpiry);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

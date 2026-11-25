@@ -4778,6 +4778,279 @@
         "x-rate-limit-per-client-credential": 100
       }
     },
+    "/v1/reviews": {
+      "get": {
+        "tags": [
+          "design_review"
+        ],
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nAVAILABILITY: To use this API, your integration must act on behalf of a user that\u0027s on a Canva plan with design approvals (such as Canva Pro, Canva Teams, or Canva Enterprise). This API isn\u0027t available to Canva for Education users.\n\nLists design reviews where the user is an assigned reviewer.\nThis doesn\u0027t include reviews that the user has requested from others.\nReviews can be sorted and paginated.",
+        "operationId": "ListDesignReviews",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter reviews by their current status. Currently, only \u0060needs_review\u0060 is supported, but other values will be added in the future.",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ReviewStatusFilter"
+            }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "description": "The field and direction used to sort results. Determines both what property\nthe results are ordered by and whether the order is ascending or descending.\nIf omitted, results are sorted by \u0060created_ascending\u0060.",
+            "schema": {
+              "$ref": "#/components/schemas/ReviewSortBy"
+            }
+          },
+          {
+            "name": "continuation",
+            "in": "query",
+            "description": "If the success response contains a continuation token, the list contains more reviews\nyou can list. You can use this token as a query parameter and retrieve more reviews\nfrom the list, for example \u0060?continuation={continuation}\u0060.\n\nTo retrieve all reviews, you might need to make multiple requests.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of reviews to return. The presence of a continuation token\nin the response indicates that more reviews are available, even if the number\nreturned is less than this limit.",
+            "schema": {
+              "maximum": 25,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDesignReviewsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_review_invalid_continuation_token": {
+                    "$ref": "#/components/examples/DesignReviewInvalidContinuationTokenError"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_review_permission_denied": {
+                    "$ref": "#/components/examples/DesignReviewPermissionDeniedError"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "too_many_requests": {
+                    "$ref": "#/components/examples/TooManyRequestsError"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauthAuthCode": [
+              "design:meta:read"
+            ]
+          }
+        ],
+        "x-rate-limit-per-client-user": 100
+      }
+    },
+    "/v1/designs/{designId}/review": {
+      "patch": {
+        "tags": [
+          "design_review"
+        ],
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public integrations that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nAVAILABILITY: To use this API, your integration must act on behalf of a user that\u0027s on a Canva plan with design approvals (such as Canva Pro, Canva Teams, or Canva Enterprise). This API isn\u0027t available to Canva for Education users.\n\nUpdates a design review by approving the design or requesting changes. The request can optionally include a feedback message from the reviewer.\n\nYou can get a list of pending reviews for a user with the [List design reviews API](https://www.canva.dev/docs/apps/rest-apis/reference/design-reviews/list-design-reviews/).",
+        "operationId": "UpdateDesignReview",
+        "parameters": [
+          {
+            "name": "designId",
+            "in": "path",
+            "description": "The design ID.",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDesignReviewRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDesignReviewResponse"
+                },
+                "examples": {
+                  "approve_design": {
+                    "$ref": "#/components/examples/ApproveDesignReviewResponse"
+                  },
+                  "request_changes": {
+                    "$ref": "#/components/examples/RequestChangesDesignReviewResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "missing_review_decision": {
+                    "$ref": "#/components/examples/MissingReviewDecisionError"
+                  },
+                  "review_note_too_long": {
+                    "$ref": "#/components/examples/ReviewNoteTooLongError"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_review_permission_denied": {
+                    "$ref": "#/components/examples/DesignReviewPermissionDeniedError"
+                  },
+                  "design_review_not_reviewer": {
+                    "$ref": "#/components/examples/DesignReviewNotReviewerError"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "design_review_not_found": {
+                    "$ref": "#/components/examples/DesignReviewNotFoundError"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "review_dismissed": {
+                    "$ref": "#/components/examples/ReviewDismissedError"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "too_many_requests": {
+                    "$ref": "#/components/examples/TooManyRequestsError"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauthAuthCode": [
+              "design:meta:write"
+            ]
+          }
+        ],
+        "x-rate-limit-per-client-user": 100
+      }
+    },
     "/v1/exports": {
       "post": {
         "tags": [
@@ -6090,6 +6363,12 @@
           },
           {
             "oauthAuthCode": [
+              "asset:write"
+            ]
+          },
+          {
+            "oauthAuthCode": [
+              "asset:read",
               "asset:write"
             ]
           }
@@ -9162,6 +9441,11 @@
             "description": "The brand template title, as shown in the Canva UI.",
             "example": "Advertisement Template"
           },
+          "description": {
+            "type": "string",
+            "description": "The brand template description, as shown in the Canva UI.",
+            "example": "A template for social media advertisements."
+          },
           "view_url": {
             "type": "string",
             "description": "A URL Canva users can visit to view the brand template.",
@@ -9211,6 +9495,11 @@
             "type": "string",
             "description": "The brand template title, as shown in the Canva UI.",
             "example": "Advertisement Template"
+          },
+          "description": {
+            "type": "string",
+            "description": "The brand template description, as shown in the Canva UI.",
+            "example": "A template for social media advertisements."
           },
           "view_url": {
             "type": "string",
@@ -11840,6 +12129,213 @@
             {
               "value": "internal_error",
               "name": "InternalError"
+            }
+          ]
+        }
+      },
+      "ListDesignReviewsResponse": {
+        "required": [
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DesignReview"
+            },
+            "description": "The list of design reviews matching the specified filters."
+          },
+          "continuation": {
+            "type": "string",
+            "description": "A continuation token. If present, more reviews are available and can be\nretrieved by passing this token in a subsequent request.",
+            "example": "RkFGMgXlsVTDbMd"
+          }
+        }
+      },
+      "DesignReview": {
+        "required": [
+          "design",
+          "status",
+          "team_id"
+        ],
+        "type": "object",
+        "properties": {
+          "design": {
+            "$ref": "#/components/schemas/DesignSummary"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ReviewStatusType"
+          },
+          "team_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+            "type": "string",
+            "description": "The ID of the team that owns the design.",
+            "example": "Oi2RJILTrKk0KRhRUZozX"
+          },
+          "requested_at": {
+            "type": "integer",
+            "description": "When the review was requested, as a Unix timestamp (in seconds since the Unix Epoch).\nAbsent if the review request date isn\u0027t available.",
+            "format": "int64",
+            "example": 1692928800
+          },
+          "requested_message": {
+            "type": "string",
+            "description": "A message from the author to the reviewer, provided when the review was requested.\nAbsent if no message was included.",
+            "example": "Please review this design for our upcoming campaign"
+          },
+          "due_at": {
+            "type": "integer",
+            "description": "The deadline for completing this review, as a Unix timestamp (in seconds since the Unix Epoch).\nAbsent if no deadline was set for the review.",
+            "format": "int64",
+            "example": 1693533600
+          },
+          "updated_at": {
+            "type": "integer",
+            "description": "When the review was last updated, as a Unix timestamp (in seconds since the Unix Epoch).\nAbsent if the review has never been updated.",
+            "format": "int64",
+            "example": 1692928800
+          }
+        },
+        "description": "A review record representing a reviewer\u0027s assessment of a single design."
+      },
+      "ReviewStatusFilter": {
+        "enum": [
+          "needs_review"
+        ],
+        "type": "string",
+        "x-enum-descriptions": [
+          "Filter for reviews awaiting a decision from the reviewer."
+        ],
+        "x-ms-enum": {
+          "name": "ReviewStatusFilter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "needs_review",
+              "name": "NeedsReview"
+            }
+          ]
+        }
+      },
+      "ReviewStatusType": {
+        "enum": [
+          "needs_review",
+          "approved",
+          "requested_changes"
+        ],
+        "type": "string",
+        "x-enum-descriptions": [
+          "The review is awaiting a decision from the reviewer.",
+          "The reviewer has approved the design.",
+          "The reviewer has requested changes to the design."
+        ],
+        "x-ms-enum": {
+          "name": "ReviewStatusType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "needs_review",
+              "name": "NeedsReview"
+            },
+            {
+              "value": "approved",
+              "name": "Approved"
+            },
+            {
+              "value": "requested_changes",
+              "name": "RequestedChanges"
+            }
+          ]
+        }
+      },
+      "ReviewSortBy": {
+        "enum": [
+          "created_ascending",
+          "created_descending",
+          "due_at_ascending",
+          "due_at_descending"
+        ],
+        "type": "string",
+        "x-enum-descriptions": [
+          "Sort by review creation time, earliest first.",
+          "Sort by review creation time, latest first.",
+          "Sort by due date, earliest deadline first. Reviews with no due date are returned last.",
+          "Sort by due date, latest deadline first. Reviews with no due date are returned last."
+        ],
+        "x-ms-enum": {
+          "name": "ReviewSortBy",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "created_ascending",
+              "name": "CreatedAscending"
+            },
+            {
+              "value": "created_descending",
+              "name": "CreatedDescending"
+            },
+            {
+              "value": "due_at_ascending",
+              "name": "DueAtAscending"
+            },
+            {
+              "value": "due_at_descending",
+              "name": "DueAtDescending"
+            }
+          ]
+        }
+      },
+      "UpdateDesignReviewRequest": {
+        "required": [
+          "review_decision"
+        ],
+        "type": "object",
+        "properties": {
+          "review_decision": {
+            "$ref": "#/components/schemas/ReviewDecision"
+          },
+          "review_note": {
+            "maxLength": 1500,
+            "type": "string",
+            "description": "A feedback message from the reviewer explaining their decision.",
+            "example": "Looks great, approved!"
+          }
+        }
+      },
+      "UpdateDesignReviewResponse": {
+        "required": [
+          "review"
+        ],
+        "type": "object",
+        "properties": {
+          "review": {
+            "$ref": "#/components/schemas/DesignReview"
+          }
+        }
+      },
+      "ReviewDecision": {
+        "enum": [
+          "approve",
+          "request_changes"
+        ],
+        "type": "string",
+        "description": "The decision submitted by the reviewer.",
+        "x-enum-descriptions": [
+          "The reviewer approves the design.",
+          "The reviewer requests changes to the design."
+        ],
+        "x-ms-enum": {
+          "name": "ReviewDecision",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "approve",
+              "name": "Approve"
+            },
+            {
+              "value": "request_changes",
+              "name": "RequestChanges"
             }
           ]
         }
@@ -20400,6 +20896,103 @@
           "message": "\u0027asset_id\u0027 must refer to an asset of one of the following types: png, jpeg, gif, webp, heic, heif, avif, tiff, jp2, jpx, jpm, jxr."
         }
       },
+      "ApproveDesignReviewResponse": {
+        "summary": "The reviewer approved the design, with a feedback note.",
+        "value": {
+          "review": {
+            "design": {
+              "id": "DAFVztcvd9z",
+              "title": "My summer holiday",
+              "url": "https://www.canva.com/design/DAFVztcvd9z/edit",
+              "urls": {
+                "edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzQyMDk5NDAzMDc5fQ..GKLx2hrJa3wSSDKQ.hk3HA59qJyxehR-ejzt2DThBW0cbRdMBz7Fb5uCpwD-4o485pCf4kcXt_ypUYX0qMHVeZ131YvfwGPIhbk-C245D8c12IIJSDbZUZTS7WiCOJZQ.sNz3mPSQxsETBvl_-upMYA/edit",
+                "view_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzQyMDk5NDAzMDc5fQ..GKLx2hrJa3wSSDKQ.hk3HA59qJyxehR-ejzt2DThBW0cbRdMBz7Fb5uCpwD-4o485pCf4kcXt_ypUYX0qMHVeZ131YvfwGPIhbk-C245D8c12IIJSDbZUZTS7WiCOJZQ.sNz3mPSQxsETBvl_-upMYA/view"
+              },
+              "created_at": 1377396000,
+              "updated_at": 1692928800
+            },
+            "status": "approved",
+            "team_id": "Oi2RJILTrKk0KRhRUZozX",
+            "requested_at": 1692928800,
+            "requested_message": "Please review this design for our upcoming campaign",
+            "due_at": 1693533600,
+            "updated_at": 1693137600
+          }
+        }
+      },
+      "RequestChangesDesignReviewResponse": {
+        "summary": "The reviewer requested changes to the design.",
+        "value": {
+          "review": {
+            "design": {
+              "id": "DAFVztcvd9z",
+              "title": "My summer holiday",
+              "url": "https://www.canva.com/design/DAFVztcvd9z/edit",
+              "urls": {
+                "edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzQyMDk5NDAzMDc5fQ..GKLx2hrJa3wSSDKQ.hk3HA59qJyxehR-ejzt2DThBW0cbRdMBz7Fb5uCpwD-4o485pCf4kcXt_ypUYX0qMHVeZ131YvfwGPIhbk-C245D8c12IIJSDbZUZTS7WiCOJZQ.sNz3mPSQxsETBvl_-upMYA/edit",
+                "view_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzQyMDk5NDAzMDc5fQ..GKLx2hrJa3wSSDKQ.hk3HA59qJyxehR-ejzt2DThBW0cbRdMBz7Fb5uCpwD-4o485pCf4kcXt_ypUYX0qMHVeZ131YvfwGPIhbk-C245D8c12IIJSDbZUZTS7WiCOJZQ.sNz3mPSQxsETBvl_-upMYA/view"
+              },
+              "created_at": 1377396000,
+              "updated_at": 1692928800
+            },
+            "status": "requested_changes",
+            "team_id": "Oi2RJILTrKk0KRhRUZozX",
+            "requested_at": 1692928800,
+            "requested_message": "Please review this design for our upcoming campaign",
+            "due_at": 1693533600,
+            "updated_at": 1693137600
+          }
+        }
+      },
+      "MissingReviewDecisionError": {
+        "summary": "The required review_decision field is missing.",
+        "value": {
+          "code": "invalid_field",
+          "message": "\u0027review_decision\u0027 must not be null."
+        }
+      },
+      "ReviewNoteTooLongError": {
+        "summary": "The review_note exceeds the maximum length.",
+        "value": {
+          "code": "invalid_field",
+          "message": "\u0027review_note\u0027 must have at most 1500 characters, but had 1501."
+        }
+      },
+      "DesignReviewInvalidContinuationTokenError": {
+        "summary": "The continuation token is invalid.",
+        "value": {
+          "code": "bad_query_params",
+          "message": "Invalid continuation token"
+        }
+      },
+      "DesignReviewPermissionDeniedError": {
+        "summary": "Design reviews are not available for Canva for Education accounts.",
+        "value": {
+          "code": "permission_denied",
+          "message": "Design reviews are not available for Canva for Education accounts."
+        }
+      },
+      "DesignReviewNotReviewerError": {
+        "summary": "The authenticated user is not an assigned reviewer for this design.",
+        "value": {
+          "code": "permission_denied",
+          "message": "You are not assigned as a reviewer for this review request."
+        }
+      },
+      "DesignReviewNotFoundError": {
+        "summary": "The design or review was not found.",
+        "value": {
+          "code": "not_found",
+          "message": "The specified review was not found."
+        }
+      },
+      "ReviewDismissedError": {
+        "summary": "The review has been dismissed and can no longer be actioned.",
+        "value": {
+          "code": "review_dismissed",
+          "message": "This review has been dismissed and can no longer be updated."
+        }
+      },
       "InvalidDesignTypeError": {
         "summary": "The requested preset design type is not available.",
         "value": {
@@ -21498,6 +22091,7 @@
             "scopes": {
               "design:content:read": "View the contents of the user\u0027s designs.",
               "design:meta:read": "View the metadata of the user\u0027s designs.",
+              "design:meta:write": "Update the metadata of the user\u0027s designs.",
               "design:content:write": "Create designs on the user\u0027s behalf.",
               "folder:read": "View the metadata and contents of the user\u0027s folders, including their **Projects**\nfolder.",
               "folder:write": "Add, move, or remove the user\u0027s folders. It also lets you edit folder metadata,\nsuch as the folder\u0027s name.",
@@ -21554,6 +22148,9 @@
     },
     {
       "name": "design_import"
+    },
+    {
+      "name": "design_review"
     },
     {
       "name": "export"

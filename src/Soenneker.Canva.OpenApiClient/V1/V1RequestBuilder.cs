@@ -22,6 +22,7 @@ using Soenneker.Canva.OpenApiClient.V1.Oauth;
 using Soenneker.Canva.OpenApiClient.V1.Oidc;
 using Soenneker.Canva.OpenApiClient.V1.PrintPartner;
 using Soenneker.Canva.OpenApiClient.V1.Resizes;
+using Soenneker.Canva.OpenApiClient.V1.Reviews;
 using Soenneker.Canva.OpenApiClient.V1.UrlAssetUploads;
 using Soenneker.Canva.OpenApiClient.V1.UrlImports;
 using Soenneker.Canva.OpenApiClient.V1.Users;
@@ -137,6 +138,11 @@ namespace Soenneker.Canva.OpenApiClient.V1
         public global::Soenneker.Canva.OpenApiClient.V1.Resizes.ResizesRequestBuilder Resizes
         {
             get => new global::Soenneker.Canva.OpenApiClient.V1.Resizes.ResizesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The reviews property</summary>
+        public global::Soenneker.Canva.OpenApiClient.V1.Reviews.ReviewsRequestBuilder Reviews
+        {
+            get => new global::Soenneker.Canva.OpenApiClient.V1.Reviews.ReviewsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The urlAssetUploads property</summary>
         public global::Soenneker.Canva.OpenApiClient.V1.UrlAssetUploads.UrlAssetUploadsRequestBuilder UrlAssetUploads

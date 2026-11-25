@@ -25,6 +25,7 @@ tags:
 - name: design
 - name: design_generation
 - name: design_import
+- name: design_review
 - name: export
 - name: folder
 - name: image_generation
@@ -3650,6 +3651,228 @@ paths:
       - image_to_design_imports
       x-rate-limit-per-client-user: 120
       x-rate-limit-per-client-credential: 100
+  /v1/reviews:
+    get:
+      description: |-
+        <Warning>
+
+        This API is currently provided as a preview. Be aware of the following:
+
+        - There might be unannounced breaking changes.
+        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).
+        - Public integrations that use preview APIs will not pass the review process, and can't be made available to all Canva users.
+
+        </Warning>
+
+        AVAILABILITY: To use this API, your integration must act on behalf of a user that's on a Canva plan with design approvals (such as Canva Pro, Canva Teams, or Canva Enterprise). This API isn't available to Canva for Education users.
+
+        Lists design reviews where the user is an assigned reviewer.
+        This doesn't include reviews that the user has requested from others.
+        Reviews can be sorted and paginated.
+      operationId: listDesignReviews
+      parameters:
+      - description: "Filter reviews by their current status. Currently, only `needs_review`\
+          \ is supported, but other values will be added in the future."
+        explode: true
+        in: query
+        name: status
+        required: true
+        schema:
+          $ref: '#/components/schemas/ReviewStatusFilter'
+        style: form
+      - description: |-
+          The field and direction used to sort results. Determines both what property
+          the results are ordered by and whether the order is ascending or descending.
+          If omitted, results are sorted by `created_ascending`.
+        explode: true
+        in: query
+        name: sort_by
+        required: false
+        schema:
+          $ref: '#/components/schemas/ReviewSortBy'
+        style: form
+      - description: |-
+          If the success response contains a continuation token, the list contains more reviews
+          you can list. You can use this token as a query parameter and retrieve more reviews
+          from the list, for example `?continuation={continuation}`.
+
+          To retrieve all reviews, you might need to make multiple requests.
+        explode: true
+        in: query
+        name: continuation
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          The maximum number of reviews to return. The presence of a continuation token
+          in the response indicates that more reviews are available, even if the number
+          returned is less than this limit.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 25
+          format: int32
+          maximum: 25
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDesignReviewsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                design_review_invalid_continuation_token:
+                  $ref: '#/components/examples/DesignReviewInvalidContinuationTokenError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                design_review_permission_denied:
+                  $ref: '#/components/examples/DesignReviewPermissionDeniedError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "429":
+          content:
+            application/json:
+              examples:
+                too_many_requests:
+                  $ref: '#/components/examples/TooManyRequestsError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too Many Requests
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      security:
+      - oauthAuthCode:
+        - design:meta:read
+      tags:
+      - design_review
+      x-rate-limit-per-client-user: 100
+  /v1/designs/{designId}/review:
+    patch:
+      description: |-
+        <Warning>
+
+        This API is currently provided as a preview. Be aware of the following:
+
+        - There might be unannounced breaking changes.
+        - Any breaking changes to preview APIs won't produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).
+        - Public integrations that use preview APIs will not pass the review process, and can't be made available to all Canva users.
+
+        </Warning>
+
+        AVAILABILITY: To use this API, your integration must act on behalf of a user that's on a Canva plan with design approvals (such as Canva Pro, Canva Teams, or Canva Enterprise). This API isn't available to Canva for Education users.
+
+        Updates a design review by approving the design or requesting changes. The request can optionally include a feedback message from the reviewer.
+
+        You can get a list of pending reviews for a user with the [List design reviews API](https://www.canva.dev/docs/apps/rest-apis/reference/design-reviews/list-design-reviews/).
+      operationId: updateDesignReview
+      parameters:
+      - description: The design ID.
+        explode: false
+        in: path
+        name: designId
+        required: true
+        schema:
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDesignReviewRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                approve_design:
+                  $ref: '#/components/examples/ApproveDesignReviewResponse'
+                request_changes:
+                  $ref: '#/components/examples/RequestChangesDesignReviewResponse'
+              schema:
+                $ref: '#/components/schemas/UpdateDesignReviewResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              examples:
+                missing_review_decision:
+                  $ref: '#/components/examples/MissingReviewDecisionError'
+                review_note_too_long:
+                  $ref: '#/components/examples/ReviewNoteTooLongError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                design_review_permission_denied:
+                  $ref: '#/components/examples/DesignReviewPermissionDeniedError'
+                design_review_not_reviewer:
+                  $ref: '#/components/examples/DesignReviewNotReviewerError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              examples:
+                design_review_not_found:
+                  $ref: '#/components/examples/DesignReviewNotFoundError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              examples:
+                review_dismissed:
+                  $ref: '#/components/examples/ReviewDismissedError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              examples:
+                too_many_requests:
+                  $ref: '#/components/examples/TooManyRequestsError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too Many Requests
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      security:
+      - oauthAuthCode:
+        - design:meta:write
+      tags:
+      - design_review
+      x-rate-limit-per-client-user: 100
   /v1/exports:
     post:
       description: |-
@@ -4604,6 +4827,9 @@ paths:
       - oauthClientCredentials:
         - service:asset:write
       - oauthAuthCode:
+        - asset:write
+      - oauthAuthCode:
+        - asset:read
         - asset:write
       tags:
       - image_generation
@@ -6631,6 +6857,79 @@ components:
         code: unsupported_asset
         message: "'asset_id' must refer to an asset of one of the following types:\
           \ png, jpeg, gif, webp, heic, heif, avif, tiff, jp2, jpx, jpm, jxr."
+    ApproveDesignReviewResponse:
+      summary: "The reviewer approved the design, with a feedback note."
+      value:
+        review:
+          design:
+            id: DAFVztcvd9z
+            title: My summer holiday
+            url: https://www.canva.com/design/DAFVztcvd9z/edit
+            urls:
+              edit_url: https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzQyMDk5NDAzMDc5fQ..GKLx2hrJa3wSSDKQ.hk3HA59qJyxehR-ejzt2DThBW0cbRdMBz7Fb5uCpwD-4o485pCf4kcXt_ypUYX0qMHVeZ131YvfwGPIhbk-C245D8c12IIJSDbZUZTS7WiCOJZQ.sNz3mPSQxsETBvl_-upMYA/edit
+              view_url: https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzQyMDk5NDAzMDc5fQ..GKLx2hrJa3wSSDKQ.hk3HA59qJyxehR-ejzt2DThBW0cbRdMBz7Fb5uCpwD-4o485pCf4kcXt_ypUYX0qMHVeZ131YvfwGPIhbk-C245D8c12IIJSDbZUZTS7WiCOJZQ.sNz3mPSQxsETBvl_-upMYA/view
+            created_at: 1377396000
+            updated_at: 1692928800
+          status: approved
+          team_id: Oi2RJILTrKk0KRhRUZozX
+          requested_at: 1692928800
+          requested_message: Please review this design for our upcoming campaign
+          due_at: 1693533600
+          updated_at: 1693137600
+    RequestChangesDesignReviewResponse:
+      summary: The reviewer requested changes to the design.
+      value:
+        review:
+          design:
+            id: DAFVztcvd9z
+            title: My summer holiday
+            url: https://www.canva.com/design/DAFVztcvd9z/edit
+            urls:
+              edit_url: https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzQyMDk5NDAzMDc5fQ..GKLx2hrJa3wSSDKQ.hk3HA59qJyxehR-ejzt2DThBW0cbRdMBz7Fb5uCpwD-4o485pCf4kcXt_ypUYX0qMHVeZ131YvfwGPIhbk-C245D8c12IIJSDbZUZTS7WiCOJZQ.sNz3mPSQxsETBvl_-upMYA/edit
+              view_url: https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzQyMDk5NDAzMDc5fQ..GKLx2hrJa3wSSDKQ.hk3HA59qJyxehR-ejzt2DThBW0cbRdMBz7Fb5uCpwD-4o485pCf4kcXt_ypUYX0qMHVeZ131YvfwGPIhbk-C245D8c12IIJSDbZUZTS7WiCOJZQ.sNz3mPSQxsETBvl_-upMYA/view
+            created_at: 1377396000
+            updated_at: 1692928800
+          status: requested_changes
+          team_id: Oi2RJILTrKk0KRhRUZozX
+          requested_at: 1692928800
+          requested_message: Please review this design for our upcoming campaign
+          due_at: 1693533600
+          updated_at: 1693137600
+    MissingReviewDecisionError:
+      summary: The required review_decision field is missing.
+      value:
+        code: invalid_field
+        message: '''review_decision'' must not be null.'
+    ReviewNoteTooLongError:
+      summary: The review_note exceeds the maximum length.
+      value:
+        code: invalid_field
+        message: "'review_note' must have at most 1500 characters, but had 1501."
+    DesignReviewInvalidContinuationTokenError:
+      summary: The continuation token is invalid.
+      value:
+        code: bad_query_params
+        message: Invalid continuation token
+    DesignReviewPermissionDeniedError:
+      summary: Design reviews are not available for Canva for Education accounts.
+      value:
+        code: permission_denied
+        message: Design reviews are not available for Canva for Education accounts.
+    DesignReviewNotReviewerError:
+      summary: The authenticated user is not an assigned reviewer for this design.
+      value:
+        code: permission_denied
+        message: You are not assigned as a reviewer for this review request.
+    DesignReviewNotFoundError:
+      summary: The design or review was not found.
+      value:
+        code: not_found
+        message: The specified review was not found.
+    ReviewDismissedError:
+      summary: The review has been dismissed and can no longer be actioned.
+      value:
+        code: review_dismissed
+        message: This review has been dismissed and can no longer be updated.
     InvalidDesignTypeError:
       summary: The requested preset design type is not available.
       value:
@@ -9288,6 +9587,10 @@ components:
           description: "The brand template title, as shown in the Canva UI."
           example: Advertisement Template
           type: string
+        description:
+          description: "The brand template description, as shown in the Canva UI."
+          example: A template for social media advertisements.
+          type: string
         view_url:
           description: A URL Canva users can visit to view the brand template.
           example: https://www.canva.com/design/DAE35hE8FA4/view
@@ -9332,6 +9635,10 @@ components:
         title:
           description: "The brand template title, as shown in the Canva UI."
           example: Advertisement Template
+          type: string
+        description:
+          description: "The brand template description, as shown in the Canva UI."
+          example: A template for social media advertisements.
           type: string
         view_url:
           description: A URL Canva users can visit to view the brand template.
@@ -11821,6 +12128,126 @@ components:
       - internal_error
       example: bad_input
       type: string
+    ListDesignReviewsResponse:
+      properties:
+        items:
+          description: The list of design reviews matching the specified filters.
+          items:
+            $ref: '#/components/schemas/DesignReview'
+          type: array
+        continuation:
+          description: |-
+            A continuation token. If present, more reviews are available and can be
+            retrieved by passing this token in a subsequent request.
+          example: RkFGMgXlsVTDbMd
+          type: string
+      required:
+      - items
+      type: object
+    DesignReview:
+      description: A review record representing a reviewer's assessment of a single
+        design.
+      properties:
+        design:
+          $ref: '#/components/schemas/DesignSummary'
+        status:
+          $ref: '#/components/schemas/ReviewStatusType'
+        team_id:
+          description: The ID of the team that owns the design.
+          example: Oi2RJILTrKk0KRhRUZozX
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        requested_at:
+          description: |-
+            When the review was requested, as a Unix timestamp (in seconds since the Unix Epoch).
+            Absent if the review request date isn't available.
+          example: 1692928800
+          format: int64
+          type: integer
+        requested_message:
+          description: |-
+            A message from the author to the reviewer, provided when the review was requested.
+            Absent if no message was included.
+          example: Please review this design for our upcoming campaign
+          type: string
+        due_at:
+          description: |-
+            The deadline for completing this review, as a Unix timestamp (in seconds since the Unix Epoch).
+            Absent if no deadline was set for the review.
+          example: 1693533600
+          format: int64
+          type: integer
+        updated_at:
+          description: |-
+            When the review was last updated, as a Unix timestamp (in seconds since the Unix Epoch).
+            Absent if the review has never been updated.
+          example: 1692928800
+          format: int64
+          type: integer
+      required:
+      - design
+      - status
+      - team_id
+      type: object
+    ReviewStatusFilter:
+      enum:
+      - needs_review
+      type: string
+      x-enum-descriptions:
+      - Filter for reviews awaiting a decision from the reviewer.
+    ReviewStatusType:
+      enum:
+      - needs_review
+      - approved
+      - requested_changes
+      type: string
+      x-enum-descriptions:
+      - The review is awaiting a decision from the reviewer.
+      - The reviewer has approved the design.
+      - The reviewer has requested changes to the design.
+    ReviewSortBy:
+      default: created_ascending
+      enum:
+      - created_ascending
+      - created_descending
+      - due_at_ascending
+      - due_at_descending
+      type: string
+      x-enum-descriptions:
+      - "Sort by review creation time, earliest first."
+      - "Sort by review creation time, latest first."
+      - "Sort by due date, earliest deadline first. Reviews with no due date are returned\
+        \ last."
+      - "Sort by due date, latest deadline first. Reviews with no due date are returned\
+        \ last."
+    UpdateDesignReviewRequest:
+      properties:
+        review_decision:
+          $ref: '#/components/schemas/ReviewDecision'
+        review_note:
+          description: A feedback message from the reviewer explaining their decision.
+          example: "Looks great, approved!"
+          maxLength: 1500
+          type: string
+      required:
+      - review_decision
+      type: object
+    UpdateDesignReviewResponse:
+      properties:
+        review:
+          $ref: '#/components/schemas/DesignReview'
+      required:
+      - review
+      type: object
+    ReviewDecision:
+      description: The decision submitted by the reviewer.
+      enum:
+      - approve
+      - request_changes
+      type: string
+      x-enum-descriptions:
+      - The reviewer approves the design.
+      - The reviewer requests changes to the design.
     DesignTypeInput:
       description: The desired design type.
       discriminator:
@@ -15026,6 +15453,7 @@ components:
           scopes:
             design:content:read: View the contents of the user's designs.
             design:meta:read: View the metadata of the user's designs.
+            design:meta:write: Update the metadata of the user's designs.
             design:content:write: Create designs on the user's behalf.
             folder:read: |-
               View the metadata and contents of the user's folders, including their **Projects**

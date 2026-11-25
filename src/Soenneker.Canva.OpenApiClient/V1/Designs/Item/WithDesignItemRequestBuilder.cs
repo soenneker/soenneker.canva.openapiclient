@@ -9,6 +9,7 @@ using Soenneker.Canva.OpenApiClient.V1.Designs.Item.Comments;
 using Soenneker.Canva.OpenApiClient.V1.Designs.Item.Dataset;
 using Soenneker.Canva.OpenApiClient.V1.Designs.Item.ExportFormats;
 using Soenneker.Canva.OpenApiClient.V1.Designs.Item.Pages;
+using Soenneker.Canva.OpenApiClient.V1.Designs.Item.Review;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -46,6 +47,11 @@ namespace Soenneker.Canva.OpenApiClient.V1.Designs.Item
         public global::Soenneker.Canva.OpenApiClient.V1.Designs.Item.Pages.PagesRequestBuilder Pages
         {
             get => new global::Soenneker.Canva.OpenApiClient.V1.Designs.Item.Pages.PagesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The review property</summary>
+        public global::Soenneker.Canva.OpenApiClient.V1.Designs.Item.Review.ReviewRequestBuilder Review
+        {
+            get => new global::Soenneker.Canva.OpenApiClient.V1.Designs.Item.Review.ReviewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Canva.OpenApiClient.V1.Designs.Item.WithDesignItemRequestBuilder"/> and sets the default values.

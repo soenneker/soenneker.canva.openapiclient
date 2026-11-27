@@ -16,6 +16,7 @@ tags:
 - description: Allow management of brands
   name: brands
 - name: analytics
+- name: api_specification
 - name: app
 - name: asset
 - name: autofill
@@ -667,6 +668,40 @@ paths:
       x-required-capabilities:
       - analytics
       x-rate-limit-per-client-user: 100
+  /v1/api-specifications/{version}:
+    get:
+      description: Returns the OpenAPI specification for the requested API version
+        as a YAML document. Use this to download the machine-readable contract for
+        the Canva Connect API.
+      operationId: getApiSpecification
+      parameters:
+      - description: "The API version to return the specification for, for example\
+          \ `2024-06-18`."
+        explode: false
+        in: path
+        name: version
+        required: true
+        schema:
+          example: 2024-06-18
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/yaml:
+              schema:
+                format: binary
+                type: string
+          description: OK
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error Response
+      tags:
+      - api_specification
   /v1/apps/{appId}/jwks:
     get:
       description: |-
@@ -7708,6 +7743,17 @@ components:
         code: user_not_found
         message: User not found
   parameters:
+    ApiSpecificationVersionPath:
+      description: "The API version to return the specification for, for example `2024-06-18`."
+      explode: false
+      in: path
+      name: version
+      required: true
+      schema:
+        example: 2024-06-18
+        pattern: "^[a-zA-Z0-9_-]{1,50}$"
+        type: string
+      style: simple
     appId:
       description: The app ID.
       explode: false

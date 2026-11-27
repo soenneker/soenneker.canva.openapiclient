@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Canva.OpenApiClient.V1.ApiSpecifications;
 using Soenneker.Canva.OpenApiClient.V1.Apps;
 using Soenneker.Canva.OpenApiClient.V1.AssetUploads;
 using Soenneker.Canva.OpenApiClient.V1.Assets;
@@ -38,6 +39,11 @@ namespace Soenneker.Canva.OpenApiClient.V1
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class V1RequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The apiSpecifications property</summary>
+        public global::Soenneker.Canva.OpenApiClient.V1.ApiSpecifications.ApiSpecificationsRequestBuilder ApiSpecifications
+        {
+            get => new global::Soenneker.Canva.OpenApiClient.V1.ApiSpecifications.ApiSpecificationsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The apps property</summary>
         public global::Soenneker.Canva.OpenApiClient.V1.Apps.AppsRequestBuilder Apps
         {

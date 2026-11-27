@@ -812,6 +812,50 @@
         "x-rate-limit-per-client-user": 100
       }
     },
+    "/v1/api-specifications/{version}": {
+      "get": {
+        "tags": [
+          "api_specification"
+        ],
+        "description": "Returns the OpenAPI specification for the requested API version as a YAML document. Use this to download the machine-readable contract for the Canva Connect API.",
+        "operationId": "GetApiSpecification",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "description": "The API version to return the specification for, for example \u00602024-06-18\u0060.",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+              "type": "string",
+              "example": "2024-06-18"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/yaml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetApiSpecification200YamlResponseSchema"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/apps/{appId}/jwks": {
       "get": {
         "tags": [
@@ -15777,6 +15821,10 @@
         },
         "description": "Credit quota usage at the time of the error. Not present if quota data is unavailable."
       },
+      "GetApiSpecification200YamlResponseSchema": {
+        "type": "string",
+        "format": "binary"
+      },
       "CreateAssetUploadJobOctetStreamRequestRequestBody": {
         "type": "string",
         "format": "binary"
@@ -19637,6 +19685,17 @@
       }
     },
     "parameters": {
+      "ApiSpecificationVersionPath": {
+        "name": "version",
+        "in": "path",
+        "description": "The API version to return the specification for, for example \u00602024-06-18\u0060.",
+        "required": true,
+        "schema": {
+          "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+          "type": "string",
+          "example": "2024-06-18"
+        }
+      },
       "appId": {
         "name": "appId",
         "in": "path",
@@ -22121,6 +22180,9 @@
     },
     {
       "name": "analytics"
+    },
+    {
+      "name": "api_specification"
     },
     {
       "name": "app"
@@ -26010,6 +26072,10 @@
           "type": "chart"
         }
       }
+    },
+    "GetApiSpecification200YamlResponse": {
+      "type": "string",
+      "format": "binary"
     },
     "CreateAssetUploadJobOctetStreamRequest": {
       "type": "string",

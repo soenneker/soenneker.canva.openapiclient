@@ -4718,9 +4718,11 @@ paths:
 
         The request requires a prompt and an idempotency key. Call this API with a user access token that has the `asset:write` scope.
 
-        To also save the generated image to the user's Canva account as an image asset, set `asset_upload` to `type: upload`. The job then returns the asset alongside the download URL. Saving the asset requires a user access token.
+        To also save the generated image to the user's Canva account as an image asset, set `asset_upload` to `type: upload`. The job then returns the asset alongside the download URL.
 
-        Starting a job consumes the user's [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a `402` error with the `credit_quota_exceeded` code.
+        To edit an image instead of generating one from the prompt alone, provide `images` with the `craft_v1_2k` model. The first image is the one to edit and any further images are references the prompt can refer to.
+
+        Starting a job consumes the user's [AI credit allowance](https://www.canva.com/help/ai-access/). An edit with more than one input image consumes additional credits for each image after the first. If the user has reached their AI allowance limit, the request returns a `402` error with the `credit_quota_exceeded` code.
 
         <Note>
 
@@ -4786,10 +4788,13 @@ paths:
                   $ref: '#/components/examples/InvalidOriginError'
                 InvalidIdsError:
                   $ref: '#/components/examples/InvalidIdsError'
+                unsupported_content_type:
+                  $ref: '#/components/examples/UnsupportedAssetTypeError'
+                asset_not_ready:
+                  $ref: '#/components/examples/AssetNotReadyError'
               schema:
                 $ref: '#/components/schemas/Error'
           description: Bad Request
-          x-http-status-code: 400
         "401":
           content:
             application/json:
@@ -4841,6 +4846,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: Forbidden
+        "404":
+          content:
+            application/json:
+              examples:
+                asset_not_found:
+                  $ref: '#/components/examples/AssetNotFoundError'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
         "429":
           content:
             application/json:
@@ -13723,6 +13737,24 @@ components:
           maxLength: 10000
           minLength: 1
           type: string
+        images:
+          description: |-
+            Input images to edit. When present, the generated image is the first image changed
+            as described by the prompt. Further images are references that the prompt can refer
+            to by position, for example "the logo in the second image". The generated image
+            has the shape `aspect_ratio` names. If you omit `aspect_ratio`, the model chooses
+            the shape from the prompt and the input images, usually the shape of the first
+            image. Omit `images` to generate an image from the prompt alone.
+
+            Only the `craft_v1_2k` model accepts input images, so set `model` to `craft_v1_2k`
+            when you provide `images`. Each image is either an image asset in the user's Canva
+            account or an image at a publicly accessible HTTPS URL. Asset inputs require a user
+            access token with the `asset:read` scope.
+          items:
+            $ref: '#/components/schemas/ImageGenerationImageInput'
+          maxItems: 12
+          minItems: 1
+          type: array
         aspect_ratio:
           $ref: '#/components/schemas/ImageGenerationAspectRatio'
         model:
@@ -13741,12 +13773,59 @@ components:
       - idempotency_key
       - prompt
       type: object
+    ImageGenerationImageInput:
+      description: "An input image, either an image asset in the user's Canva account\
+        \ or an image at an HTTPS URL."
+      discriminator:
+        mapping:
+          asset: '#/components/schemas/AssetImageGenerationImageInput'
+          url: '#/components/schemas/UrlImageGenerationImageInput'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/AssetImageGenerationImageInput'
+      - $ref: '#/components/schemas/UrlImageGenerationImageInput'
+    AssetImageGenerationImageInput:
+      description: |-
+        An image asset in the user's Canva account. The asset must be an image, not a video or a
+        vector graphic, and must have finished uploading. Requires a user access token that has
+        the `asset:read` scope.
+      properties:
+        type:
+          enum:
+          - asset
+          type: string
+        asset_id:
+          description: The ID of the image asset.
+          example: Msd59349ff
+          pattern: "^[a-zA-Z0-9_-]{1,50}$"
+          type: string
+      required:
+      - asset_id
+      - type
+      type: object
+    UrlImageGenerationImageInput:
+      description: An image available at an HTTPS URL. Canva downloads the image before
+        generation.
+      properties:
+        type:
+          enum:
+          - url
+          type: string
+        url:
+          description: A publicly accessible HTTPS URL for a JPEG or PNG image of
+            up to 50 MB. The URL must be fetchable without additional request headers.
+          example: https://example.com/images/photo.png
+          maxLength: 2048
+          minLength: 1
+          type: string
+      required:
+      - type
+      - url
+      type: object
     ImageGenerationAssetUpload:
       description: |-
         Whether to save the generated image as an image asset in the user's Canva account.
         Omitting `asset_upload` (or using `type: none`) returns only a download URL.
-
-        Saving the asset (`type: upload`) requires a user access token.
       discriminator:
         mapping:
           none: '#/components/schemas/NoneImageGenerationAssetUpload'
@@ -13876,8 +13955,12 @@ components:
         The model to use for image generation. We recommend omitting this parameter: Canva
         then selects the best available model for the request and falls back to another
         model if one is temporarily unavailable. Set it only if you need a specific model's
-        output. If the requested model can't serve the request, the job fails. Canva never
-        uses a different model to serve the request.
+        output, or if you provide `images`. If the requested model can't serve the request,
+        the job fails. Canva never uses a different model to serve the request.
+
+        To edit an image with `images`, you must set this parameter to `craft_v1_2k`, the
+        only model that accepts input images. A request with `images` and no `model` is
+        rejected.
 
         The model strengths below are based on Canva's evaluations. Results vary by
         prompt, so test with your own prompts before pinning a model.
@@ -13890,7 +13973,8 @@ components:
       - |-
         CRAFT-1 2K, Canva's first-party image generation model. Pick this model for the best
         image quality for infographics, posters, slides, people and portraits, abstract art,
-        patterns, landscapes, nature, products, and marketing materials.
+        patterns, landscapes, nature, products, and marketing materials. This is the only
+        model that can edit images provided in `images`.
       - |-
         Lucid Origin. Pick this for architecture, logos, posters, or sci-fi and fantasy
         scenes.

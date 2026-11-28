@@ -6192,7 +6192,7 @@
         "tags": [
           "image_generation"
         ],
-        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public apps that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate an image from a plain-text prompt. When the image is generated, you can download it using the URL provided. The download URL is only valid for 24 hours.\n\nThe request requires a prompt and an idempotency key. Call this API with a user access token that has the \u0060asset:write\u0060 scope.\n\nTo also save the generated image to the user\u0027s Canva account as an image asset, set \u0060asset_upload\u0060 to \u0060type: upload\u0060. The job then returns the asset alongside the download URL. Saving the asset requires a user access token.\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). If the user has reached their AI allowance limit, the request returns a \u0060402\u0060 error with the \u0060credit_quota_exceeded\u0060 code.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of image generation jobs created with this API using the [Get image generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-image-generation-job/).\n\n\u003C/Note\u003E",
+        "description": "\u003CWarning\u003E\n\nThis API is currently provided as a preview. Be aware of the following:\n\n- There might be unannounced breaking changes.\n- Any breaking changes to preview APIs won\u0027t produce a new [API version](https://www.canva.dev/docs/apps/rest-apis/versions/).\n- Public apps that use preview APIs will not pass the review process, and can\u0027t be made available to all Canva users.\n\n\u003C/Warning\u003E\n\nStarts a new [asynchronous job](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints) to generate an image from a plain-text prompt. When the image is generated, you can download it using the URL provided. The download URL is only valid for 24 hours.\n\nThe request requires a prompt and an idempotency key. Call this API with a user access token that has the \u0060asset:write\u0060 scope.\n\nTo also save the generated image to the user\u0027s Canva account as an image asset, set \u0060asset_upload\u0060 to \u0060type: upload\u0060. The job then returns the asset alongside the download URL.\n\nTo edit an image instead of generating one from the prompt alone, provide \u0060images\u0060 with the \u0060craft_v1_2k\u0060 model. The first image is the one to edit and any further images are references the prompt can refer to.\n\nStarting a job consumes the user\u0027s [AI credit allowance](https://www.canva.com/help/ai-access/). An edit with more than one input image consumes additional credits for each image after the first. If the user has reached their AI allowance limit, the request returns a \u0060402\u0060 error with the \u0060credit_quota_exceeded\u0060 code.\n\n\u003CNote\u003E\n\nFor more information on the workflow for using asynchronous jobs, see [API requests and responses](https://www.canva.dev/docs/apps/rest-apis/requests-responses/#asynchronous-job-endpoints). You can check the status and get the results of image generation jobs created with this API using the [Get image generation job API](https://www.canva.dev/docs/apps/rest-apis/reference/generations/get-image-generation-job/).\n\n\u003C/Note\u003E",
         "operationId": "CreateImageGenerationJob",
         "requestBody": {
           "content": {
@@ -6284,11 +6284,16 @@
                   },
                   "InvalidIdsError": {
                     "$ref": "#/components/examples/InvalidIdsError"
+                  },
+                  "unsupported_content_type": {
+                    "$ref": "#/components/examples/UnsupportedAssetTypeError"
+                  },
+                  "asset_not_ready": {
+                    "$ref": "#/components/examples/AssetNotReadyError"
                   }
                 }
               }
-            },
-            "x-http-status-code": 400
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -6365,6 +6370,21 @@
                   },
                   "user_role_required": {
                     "$ref": "#/components/examples/UserRoleRequiredError"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "asset_not_found": {
+                    "$ref": "#/components/examples/AssetNotFoundError"
                   }
                 }
               }
@@ -14125,6 +14145,15 @@
             "type": "string",
             "description": "A plain-text description of the image to generate."
           },
+          "images": {
+            "maxItems": 12,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImageGenerationImageInput"
+            },
+            "description": "Input images to edit. When present, the generated image is the first image changed\nas described by the prompt. Further images are references that the prompt can refer\nto by position, for example \u0022the logo in the second image\u0022. The generated image\nhas the shape \u0060aspect_ratio\u0060 names. If you omit \u0060aspect_ratio\u0060, the model chooses\nthe shape from the prompt and the input images, usually the shape of the first\nimage. Omit \u0060images\u0060 to generate an image from the prompt alone.\n\nOnly the \u0060craft_v1_2k\u0060 model accepts input images, so set \u0060model\u0060 to \u0060craft_v1_2k\u0060\nwhen you provide \u0060images\u0060. Each image is either an image asset in the user\u0027s Canva\naccount or an image at a publicly accessible HTTPS URL. Asset inputs require a user\naccess token with the \u0060asset:read\u0060 scope."
+          },
           "aspect_ratio": {
             "$ref": "#/components/schemas/ImageGenerationAspectRatio"
           },
@@ -14142,8 +14171,59 @@
           }
         }
       },
+      "ImageGenerationImageInput": {
+        "description": "An input image, either an image asset in the user\u0027s Canva account or an image at an HTTPS URL.",
+        "x-client-original-discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "asset": "#/components/schemas/AssetImageGenerationImageInput",
+            "url": "#/components/schemas/UrlImageGenerationImageInput"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "asset": "#/components/schemas/ImageGenerationImageInputAssetImageGenerationImageInput",
+            "url": "#/components/schemas/ImageGenerationImageInputUrlImageGenerationImageInput"
+          }
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AssetImageGenerationImageInput"
+            },
+            {
+              "$ref": "#/components/schemas/UrlImageGenerationImageInput"
+            }
+          ],
+          "description": "An input image, either an image asset in the user\u0027s Canva account or an image at an HTTPS URL.",
+          "x-client-original-discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "asset": "#/components/schemas/AssetImageGenerationImageInput",
+              "url": "#/components/schemas/UrlImageGenerationImageInput"
+            }
+          },
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "asset": "#/components/schemas/AssetImageGenerationImageInput",
+              "url": "#/components/schemas/UrlImageGenerationImageInput"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
       "ImageGenerationAssetUpload": {
-        "description": "Whether to save the generated image as an image asset in the user\u0027s Canva account.\nOmitting \u0060asset_upload\u0060 (or using \u0060type: none\u0060) returns only a download URL.\n\nSaving the asset (\u0060type: upload\u0060) requires a user access token.",
+        "description": "Whether to save the generated image as an image asset in the user\u0027s Canva account.\nOmitting \u0060asset_upload\u0060 (or using \u0060type: none\u0060) returns only a download URL.",
         "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -14167,7 +14247,7 @@
               "$ref": "#/components/schemas/UploadImageGenerationAssetUpload"
             }
           ],
-          "description": "Whether to save the generated image as an image asset in the user\u0027s Canva account.\nOmitting \u0060asset_upload\u0060 (or using \u0060type: none\u0060) returns only a download URL.\n\nSaving the asset (\u0060type: upload\u0060) requires a user access token.",
+          "description": "Whether to save the generated image as an image asset in the user\u0027s Canva account.\nOmitting \u0060asset_upload\u0060 (or using \u0060type: none\u0060) returns only a download URL.",
           "x-client-original-discriminator": {
             "propertyName": "type",
             "mapping": {
@@ -14318,9 +14398,9 @@
           "z_image_turbo"
         ],
         "type": "string",
-        "description": "The model to use for image generation. We recommend omitting this parameter: Canva\nthen selects the best available model for the request and falls back to another\nmodel if one is temporarily unavailable. Set it only if you need a specific model\u0027s\noutput. If the requested model can\u0027t serve the request, the job fails. Canva never\nuses a different model to serve the request.\n\nThe model strengths below are based on Canva\u0027s evaluations. Results vary by\nprompt, so test with your own prompts before pinning a model.",
+        "description": "The model to use for image generation. We recommend omitting this parameter: Canva\nthen selects the best available model for the request and falls back to another\nmodel if one is temporarily unavailable. Set it only if you need a specific model\u0027s\noutput, or if you provide \u0060images\u0060. If the requested model can\u0027t serve the request,\nthe job fails. Canva never uses a different model to serve the request.\n\nTo edit an image with \u0060images\u0060, you must set this parameter to \u0060craft_v1_2k\u0060, the\nonly model that accepts input images. A request with \u0060images\u0060 and no \u0060model\u0060 is\nrejected.\n\nThe model strengths below are based on Canva\u0027s evaluations. Results vary by\nprompt, so test with your own prompts before pinning a model.",
         "x-enum-descriptions": [
-          "CRAFT-1 2K, Canva\u0027s first-party image generation model. Pick this model for the best\nimage quality for infographics, posters, slides, people and portraits, abstract art,\npatterns, landscapes, nature, products, and marketing materials.",
+          "CRAFT-1 2K, Canva\u0027s first-party image generation model. Pick this model for the best\nimage quality for infographics, posters, slides, people and portraits, abstract art,\npatterns, landscapes, nature, products, and marketing materials. This is the only\nmodel that can edit images provided in \u0060images\u0060.",
           "Lucid Origin. Pick this for architecture, logos, posters, or sci-fi and fantasy\nscenes.",
           "Z Image Turbo. Pick this if the image includes text, or for food, drink, and\ngeneral-purpose imagery."
         ],
@@ -17149,6 +17229,38 @@
           ]
         }
       },
+      "AssetImageGenerationImageInputType": {
+        "enum": [
+          "asset"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "AssetImageGenerationImageInputType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "asset",
+              "name": "Asset"
+            }
+          ]
+        }
+      },
+      "UrlType": {
+        "enum": [
+          "url"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "UrlType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "url",
+              "name": "Url"
+            }
+          ]
+        }
+      },
       "NoneType": {
         "enum": [
           "none"
@@ -19103,6 +19215,59 @@
               }
             },
             "description": "Details about the brand template."
+          }
+        ]
+      },
+      "ImageGenerationImageInputAssetImageGenerationImageInput": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ImageGenerationImageInput"
+          },
+          {
+            "required": [
+              "asset_id",
+              "type"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/AssetImageGenerationImageInputType"
+              },
+              "asset_id": {
+                "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+                "type": "string",
+                "description": "The ID of the image asset.",
+                "example": "Msd59349ff"
+              }
+            },
+            "description": "An image asset in the user\u0027s Canva account. The asset must be an image, not a video or a\nvector graphic, and must have finished uploading. Requires a user access token that has\nthe \u0060asset:read\u0060 scope."
+          }
+        ]
+      },
+      "ImageGenerationImageInputUrlImageGenerationImageInput": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ImageGenerationImageInput"
+          },
+          {
+            "required": [
+              "type",
+              "url"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/UrlType"
+              },
+              "url": {
+                "maxLength": 2048,
+                "minLength": 1,
+                "type": "string",
+                "description": "A publicly accessible HTTPS URL for a JPEG or PNG image of up to 50 MB. The URL must be fetchable without additional request headers.",
+                "example": "https://example.com/images/photo.png"
+              }
+            },
+            "description": "An image available at an HTTPS URL. Canva downloads the image before generation."
           }
         ]
       },
@@ -24506,6 +24671,45 @@
         }
       },
       "description": "Metadata for the Canva Group, consisting of the Group ID,\ndisplay name, and whether it\u0027s an external Canva Group."
+    },
+    "AssetImageGenerationImageInput": {
+      "required": [
+        "asset_id",
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/AssetImageGenerationImageInputType"
+        },
+        "asset_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,50}$",
+          "type": "string",
+          "description": "The ID of the image asset.",
+          "example": "Msd59349ff"
+        }
+      },
+      "description": "An image asset in the user\u0027s Canva account. The asset must be an image, not a video or a\nvector graphic, and must have finished uploading. Requires a user access token that has\nthe \u0060asset:read\u0060 scope."
+    },
+    "UrlImageGenerationImageInput": {
+      "required": [
+        "type",
+        "url"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/UrlType"
+        },
+        "url": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": "string",
+          "description": "A publicly accessible HTTPS URL for a JPEG or PNG image of up to 50 MB. The URL must be fetchable without additional request headers.",
+          "example": "https://example.com/images/photo.png"
+        }
+      },
+      "description": "An image available at an HTTPS URL. Canva downloads the image before generation."
     },
     "NoneImageGenerationAssetUpload": {
       "required": [

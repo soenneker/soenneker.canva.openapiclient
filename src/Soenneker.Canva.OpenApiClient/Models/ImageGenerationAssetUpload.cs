@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Canva.OpenApiClient.Models
 {
     /// <summary>
-    /// Whether to save the generated image as an image asset in the user&apos;s Canva account.Omitting `asset_upload` (or using `type: none`) returns only a download URL.Saving the asset (`type: upload`) requires a user access token.
+    /// Whether to save the generated image as an image asset in the user&apos;s Canva account.Omitting `asset_upload` (or using `type: none`) returns only a download URL.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ImageGenerationAssetUpload : IAdditionalDataHolder, IParsable

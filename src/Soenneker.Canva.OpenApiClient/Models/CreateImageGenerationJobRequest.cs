@@ -23,6 +23,8 @@ namespace Soenneker.Canva.OpenApiClient.Models
             else if (parseNode.GetChildNode("asset_upload") is { } nullNodeAssetUpload && nullNodeAssetUpload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetUpload = null;
             if (parseNode.GetChildNode("idempotency_key") is null) { _explicitNullValueIdempotencyKey = default!; _explicitNullProperties?.Remove("idempotency_key"); }
             else if (parseNode.GetChildNode("idempotency_key") is { } nullNodeIdempotencyKey && nullNodeIdempotencyKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdempotencyKey = null;
+            if (parseNode.GetChildNode("images") is null) { _explicitNullValueImages = default!; _explicitNullProperties?.Remove("images"); }
+            else if (parseNode.GetChildNode("images") is { } nullNodeImages && nullNodeImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Images = null;
             if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
             else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
             if (parseNode.GetChildNode("prompt") is null) { _explicitNullValuePrompt = default!; _explicitNullProperties?.Remove("prompt"); }
@@ -34,7 +36,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>The aspect ratio of the generated image. Every aspect ratio is supported by every modelyou can select with `model`, so the choice of model never limits the aspect ratios youcan use. The pixel dimensions of the output depend on the model. The job result reportsthe actual `width` and `height`. If you omit the aspect ratio, Canva chooses one for theimage. Don&apos;t rely on a specific default: set the aspect ratio when the shape matters.</summary>
         public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAspectRatio? AspectRatio { get => _explicitNullValueAspectRatio; set { _explicitNullValueAspectRatio = value; AdditionalData?.Remove("aspect_ratio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aspect_ratio"); else _explicitNullProperties?.Remove("aspect_ratio"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAspectRatio? _explicitNullValueAspectRatio = default!;
-        /// <summary>Whether to save the generated image as an image asset in the user&apos;s Canva account.Omitting `asset_upload` (or using `type: none`) returns only a download URL.Saving the asset (`type: upload`) requires a user access token.</summary>
+        /// <summary>Whether to save the generated image as an image asset in the user&apos;s Canva account.Omitting `asset_upload` (or using `type: none`) returns only a download URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAssetUpload? AssetUpload { get => _explicitNullValueAssetUpload; set { _explicitNullValueAssetUpload = value; AdditionalData?.Remove("asset_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_upload"); else _explicitNullProperties?.Remove("asset_upload"); } }
@@ -47,7 +49,17 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <summary>A key to make create requests idempotent. Retrying with the same key returns theoriginal job without creating a duplicate, even if the other request parametersdiffer. Keys are held for 24 hours from job creation.</summary>
         public Guid? IdempotencyKey { get => _explicitNullValueIdempotencyKey; set { _explicitNullValueIdempotencyKey = value; AdditionalData?.Remove("idempotency_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idempotency_key"); else _explicitNullProperties?.Remove("idempotency_key"); } }
         private Guid? _explicitNullValueIdempotencyKey = default!;
-        /// <summary>The model to use for image generation. We recommend omitting this parameter: Canvathen selects the best available model for the request and falls back to anothermodel if one is temporarily unavailable. Set it only if you need a specific model&apos;soutput. If the requested model can&apos;t serve the request, the job fails. Canva neveruses a different model to serve the request.The model strengths below are based on Canva&apos;s evaluations. Results vary byprompt, so test with your own prompts before pinning a model.</summary>
+        /// <summary>Input images to edit. When present, the generated image is the first image changedas described by the prompt. Further images are references that the prompt can referto by position, for example &quot;the logo in the second image&quot;. The generated imagehas the shape `aspect_ratio` names. If you omit `aspect_ratio`, the model choosesthe shape from the prompt and the input images, usually the shape of the firstimage. Omit `images` to generate an image from the prompt alone.Only the `craft_v1_2k` model accepts input images, so set `model` to `craft_v1_2k`when you provide `images`. Each image is either an image asset in the user&apos;s Canvaaccount or an image at a publicly accessible HTTPS URL. Asset inputs require a useraccess token with the `asset:read` scope.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationImageInput>? Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; AdditionalData?.Remove("images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
+        private List<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationImageInput>? _explicitNullValueImages = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationImageInput> Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; AdditionalData?.Remove("images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
+        private List<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationImageInput> _explicitNullValueImages = default!;
+#endif
+        /// <summary>The model to use for image generation. We recommend omitting this parameter: Canvathen selects the best available model for the request and falls back to anothermodel if one is temporarily unavailable. Set it only if you need a specific model&apos;soutput, or if you provide `images`. If the requested model can&apos;t serve the request,the job fails. Canva never uses a different model to serve the request.To edit an image with `images`, you must set this parameter to `craft_v1_2k`, theonly model that accepts input images. A request with `images` and no `model` isrejected.The model strengths below are based on Canva&apos;s evaluations. Results vary byprompt, so test with your own prompts before pinning a model.</summary>
         public global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModel? _explicitNullValueModel = default!;
         /// <summary>A plain-text description of the image to generate.</summary>
@@ -83,11 +95,12 @@ namespace Soenneker.Canva.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(5)
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "aspect_ratio", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAspectRatio>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAspectRatio = default; _explicitNullProperties?.Remove("aspect_ratio"); AdditionalData["aspect_ratio"] = unknown; } else { AspectRatio = parsed; AdditionalData.Remove("aspect_ratio"); } } },
                 { "asset_upload", n => { AssetUpload = n.GetObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAssetUpload>(global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAssetUpload.CreateFromDiscriminatorValue); } },
                 { "idempotency_key", n => { IdempotencyKey = n.GetGuidValue(); } },
+                { "images", n => { Images = n.GetCollectionOfObjectValues<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationImageInput>(global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationImageInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { var parsed = n.GetEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModel>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueModel = default; _explicitNullProperties?.Remove("model"); AdditionalData["model"] = unknown; } else { Model = parsed; AdditionalData.Remove("model"); } } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
             };
@@ -102,6 +115,7 @@ namespace Soenneker.Canva.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAspectRatio>("aspect_ratio", AspectRatio);
             writer.WriteObjectValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationAssetUpload>("asset_upload", AssetUpload);
             writer.WriteGuidValue("idempotency_key", IdempotencyKey);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationImageInput>("images", Images);
             writer.WriteEnumValue<global::Soenneker.Canva.OpenApiClient.Models.ImageGenerationModel>("model", Model);
             writer.WriteStringValue("prompt", Prompt);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
